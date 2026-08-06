@@ -43,12 +43,29 @@ activity rows remain label-free. The full split build takes about 20 seconds and
 peaks near 5.7 GB RAM because standard RDKit Butina materializes the condensed
 pairwise distance matrix; unit tests remain sub-second.
 
-## Next gate
+## GPU feature smoke test
 
-GPU feature extraction is deliberately gated on the protocol and split tests.
-The extractor will cache only the two 384-dimensional affinity representations,
-not Nesso's much larger pairwise tensors.
+The bounded GPU gate selects 16 DRC compounds across all five scaffold-aware
+folds and the observed potency range. It runs Nesso through the same
+`lightning.Trainer.predict` path as the upstream CLI, temporarily captures both
+384-dimensional pre-regression affinity representations, and records a
+versioned schema plus reason-coded failures.
 
-The next iteration is a 16-compound GPU smoke test that must prove member-1 and
-member-2 feature capture, frozen-score parity, deterministic reruns, failure
-logging, and a versioned feature schema before the 4,134-compound E0 pass.
+The 2026-08-06 smoke run passed on an NVIDIA GeForce RTX 5070 Ti:
+
+- 16/16 examples succeeded with no failures.
+- Both reconstructed member scores agreed with Nesso within `1.2e-7`; the
+  captured ensemble output agreed with a fresh upstream CLI run within
+  `2.3e-16`.
+- Two independent runs produced bit-identical tensors and identical
+  safetensors SHA-256 values.
+- Each run took about 63 seconds for prediction and peaked near 1.08 GB of GPU
+  memory.
+
+Exact score parity depends on preserving Nesso's seed (`42`), worker count
+(`1`), five recycling steps, and `bf16-mixed` Lightning execution. Generated
+smoke inputs, references, features, metadata, schemas, and determinism reports
+live under `artifacts/experiments/feature_smoke/` and remain git-ignored.
+
+The next gate is the 4,134-compound E0 frozen-feature pass using this exact
+capture path.
