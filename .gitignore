@@ -1,0 +1,14 @@
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+build/
+dist/
+
+# Generated experiment outputs. Keep manifests/configs, not bulk tensors.
+artifacts/experiments/
+artifacts/frozen_features/
+artifacts/manifests/*
+!artifacts/manifests/.gitkeep

@@ -1,0 +1,37 @@
+protocol_version: 0.1.0
+data_root: /home/dan/projects/ADMET-PXR
+
+data:
+  drc_curated:
+    path: data/curated/activity_curation_v2/pxr-challenge_TRAIN_curated_weighted.csv
+    sha256: bcf4d0aea019bf8c7f73cb9f65fae8c2901b7fcfe3a8284f951425bca014e3ed
+  single_point:
+    path: data/pxr-challenge_single_concentration_TRAIN.csv
+    sha256: e781f8405e919a248b9b832a7cb24e8a615d400ee9dc50beea0d70d8aeaa8c2f
+  prepared_top_states:
+    path: data/prepared_ligands/pxr_prepared_top_ligands_simple.csv
+    sha256: f31d6f1e016ac14f362872bba41924705e4b0906a629d357377380bbf0f6dabe
+  holdout_assignments:
+    path: cache/holdout/activity_curation_v2_scaffold_20pct_seed20260505/holdout_assignments.csv
+    sha256: 5681c5d22bbec9fe464ebc8bc7553437629836a2110763a90c2ff34d8bade81f
+  blinded_activity:
+    path: data/pxr-challenge_TEST_BLINDED.csv
+    sha256: e8a8eed3e81e4fb6c443cba2200a89f855f769541ce786508f7efc2b4edb517c
+
+labels:
+  pEC50_column: pEC50
+  pEC50_standard_error_column: pEC50_std.error (-log10(molarity))
+  emax_column: Emax.vs.pos.ctrl_estimate (dimensionless)
+  initial_emax_minimum: 0.6
+  uncertainty_floor_grid: [0.10, 0.15, 0.20]
+
+splits:
+  method: butina_scaffold_components
+  n_folds: 5
+  seed: 20260806
+  morgan_radius: 2
+  fingerprint_bits: 2048
+  tanimoto_similarity_cutoff: 0.60
+  empty_scaffold_policy: canonical_smiles
+  lockbox_policy: immutable_existing_assignment
+  auxiliary_holdout_policy: exclude_matching_id_canonical_or_scaffold

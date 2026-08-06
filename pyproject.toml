@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nesso-pxr-finetune"
+version = "0.1.0"
+description = "Leakage-safe Nesso-1 adaptation experiments for OpenADMET PXR"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+  "numpy>=2.0",
+  "pandas>=2.2",
+  "pyyaml>=6.0",
+  "rdkit>=2024.3.2",
+  "scikit-learn>=1.5",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0", "ruff>=0.9"]
+train = ["lightning>=2.6", "safetensors>=0.7", "torch>=2.7"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
