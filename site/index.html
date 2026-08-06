@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="description" content="An auditable proof of concept for adapting Nesso-1 to PXR functional potency data.">
+<title>Summary · Nesso-1 PXR Fine-Tuning</title><link rel="stylesheet" href="assets/style.css"></head>
+<body><header><div class="masthead"><div class="brand">Nesso-1 · PXR Fine-Tuning</div><p class="updated-at">Updated <time datetime="2026-08-06T19:16Z">2026-08-06 19:16 UTC</time></p></div><nav><a href="index.html" class="active">Summary</a><a href="data.html">Data selection &amp; cleaning</a><a href="modeling.html">Modeling approach</a><a href="training-results.html">Training results</a></nav></header>
+<main>
+<div class="eyebrow">Project summary · full feature extraction running</div>
+<h1>Can Nesso-1 be adapted to functional PXR potency?</h1>
+<p class="lede">This study freezes Nesso’s cofolding representation and asks whether small, assay-specific regression heads improve PXR pEC50 prediction over frozen Nesso and fold-local calibration.</p>
+<div class="callout decision"><div class="label">Current state</div><p>Full frozen-feature extraction launched at approximately 2026-08-06 19:11 UTC for all 4,134 compounds on an NVIDIA GeForce RTX 5070 Ti. It uses the exact validated Lightning prediction path and is estimated to take 4.5–5 hours. Head training has not started, so there is not yet a loss curve or held-out training result.</p></div>
+<div class="metrics">
+  <div class="metric"><strong>4,134</strong><span>curated DRC compounds selected</span></div>
+  <div class="metric"><strong>5</strong><span>scaffold-aware development folds</span></div>
+  <div class="metric"><strong>16 / 16</strong><span>GPU feature-smoke successes</span></div>
+  <div class="metric"><strong>513</strong><span>blinded challenge ligands reserved</span></div>
+</div>
+<h2>What is fixed</h2>
+<ol class="result-list">
+  <li><strong>Primary population:</strong> all 4,134 curated dose-response compounds. The earlier Emax ≥ 0.6 subset is a sensitivity analysis, not the primary cohort.</li>
+  <li><strong>Leakage control:</strong> five-fold scaffold-aware splits use Morgan radius-2 fingerprints, Butina clustering at Tanimoto 0.60, and intact Bemis–Murcko scaffold groups.</li>
+  <li><strong>Adaptation scope:</strong> train only Nesso’s two pretrained regression MLPs over cached 384-dimensional representations; the cofolding trunk remains frozen.</li>
+  <li><strong>External test:</strong> the 513-ligand activity challenge set is final validation only and cannot tune hyperparameters, stopping, calibration, or model choice.</li>
+</ol>
+<h2>Current gates</h2>
+<ul class="status-list">
+  <li><strong class="status-pass">Passed</strong><span>Data identities, scaffold groups, roles, and blinded-label checks.</span></li>
+  <li><strong class="status-pass">Passed</strong><span>16-compound exact-path GPU capture, score reconstruction, and two-run determinism.</span></li>
+  <li><strong class="status-pass">Ready</strong><span>Full E0 manifest: 4,134 unique IDs; 4,133 prepared artifacts reused; one known stereochemical edge case explicitly recovered.</span></li>
+  <li><strong class="status-pending">Running</strong><span>Frozen Nesso representation extraction for all 4,134 curated DRC compounds; launched 19:11 UTC with a 4.5–5 hour estimate.</span></li>
+  <li><strong class="status-pending">Pending</strong><span>Five-fold head training, affine baseline comparison, three-seed selection, and frozen final refit.</span></li>
+</ul>
+<h2>Read the project</h2>
+<div class="page-grid">
+  <a class="page-link" href="data.html"><strong>1. Data selection &amp; cleaning</strong><span>Primary labels, curated exclusions, prepared ligand states, joint identities, folds, and challenge isolation.</span></a>
+  <a class="page-link" href="modeling.html"><strong>2. Modeling approach</strong><span>The frozen Nesso pathway, cached member representations, loss, model-selection rules, and baselines.</span></a>
+  <a class="page-link" href="training-results.html"><strong>3. Training results</strong><span>Live run status, exact-path extraction evidence, and the loss-versus-epoch panel that will fill as training proceeds.</span></a>
+</div>
+<div class="callout pass"><div class="label">Engineering gate</div><p>The feature-smoke run matched fresh upstream Nesso output within 2.22×10<sup>−16</sup>, reconstructed both member scores within 1.20×10<sup>−7</sup>, and produced bit-identical cached tensors across two runs.</p></div>
+</main><footer>Built from pinned local artifacts. Challenge labels are not used for development. This project page is intentionally unlisted and marked no-index.</footer></body></html>

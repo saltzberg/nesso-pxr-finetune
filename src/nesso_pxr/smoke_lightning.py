@@ -37,6 +37,8 @@ def extract_smoke_features_lightning(
     seed: int = 42,
     recycling_steps: int = 5,
     reference_tolerance: float = 1e-5,
+    require_reference: bool = True,
+    progress: bool = False,
 ) -> dict[str, Any]:
     """Run the upstream Lightning prediction path and capture both representations."""
 
@@ -53,6 +55,20 @@ def extract_smoke_features_lightning(
     selection = pd.read_csv(selection_path).sort_values("feature_row")
     if selection["feature_row"].tolist() != list(range(len(selection))):
         raise ValueError("selection feature_row must be contiguous and zero-based")
+
+    expected_reference_columns = [
+        "reference_affinity_pred_value1",
+        "reference_affinity_pred_value2",
+        "reference_affinity_pred_value",
+    ]
+    present_reference_columns = [
+        column for column in expected_reference_columns if column in selection
+    ]
+    if present_reference_columns and len(present_reference_columns) != 3:
+        raise ValueError("selection must contain either all or no reference columns")
+    reference_audit = len(present_reference_columns) == 3
+    if require_reference and not reference_audit:
+        raise ValueError("selection lacks required standard-reference columns")
 
     seed_everything(seed, workers=True)
     torch.backends.cudnn.benchmark = False
@@ -107,7 +123,16 @@ def extract_smoke_features_lightning(
                 )
             prediction["_member1_affinity_repr"] = captured["member1"].detach().clone()
             prediction["_member2_affinity_repr"] = captured["member2"].detach().clone()
-        return prediction
+        retained = {
+            "exception",
+            "record_id",
+            "affinity_pred_value",
+            "affinity_pred_value1",
+            "affinity_pred_value2",
+            "_member1_affinity_repr",
+            "_member2_affinity_repr",
+        }
+        return {key: value for key, value in prediction.items() if key in retained}
 
     model.predict_step = MethodType(predict_step_with_features, model)
     trainer = Trainer(
@@ -116,7 +141,7 @@ def extract_smoke_features_lightning(
         precision="bf16-mixed",
         logger=False,
         enable_checkpointing=False,
-        enable_progress_bar=False,
+        enable_progress_bar=progress,
     )
 
     failures: list[dict[str, Any]] = []
@@ -218,18 +243,22 @@ def extract_smoke_features_lightning(
             ensemble_error = float(
                 (ensemble - ((score1 + score2) / 2.0)).abs().max().item()
             )
-            reference_error1 = abs(
-                float(score1.item())
-                - float(selection_row["reference_affinity_pred_value1"])
-            )
-            reference_error2 = abs(
-                float(score2.item())
-                - float(selection_row["reference_affinity_pred_value2"])
-            )
-            reference_ensemble_error = abs(
-                float(ensemble.item())
-                - float(selection_row["reference_affinity_pred_value"])
-            )
+            reference_errors = {}
+            if reference_audit:
+                reference_errors = {
+                    "reference_error1": abs(
+                        float(score1.item())
+                        - float(selection_row["reference_affinity_pred_value1"])
+                    ),
+                    "reference_error2": abs(
+                        float(score2.item())
+                        - float(selection_row["reference_affinity_pred_value2"])
+                    ),
+                    "reference_ensemble_error": abs(
+                        float(ensemble.item())
+                        - float(selection_row["reference_affinity_pred_value"])
+                    ),
+                }
             metadata_rows.append(
                 {
                     **selection_row,
@@ -241,9 +270,7 @@ def extract_smoke_features_lightning(
                     "internal_reconstruction_error1": internal_error1,
                     "internal_reconstruction_error2": internal_error2,
                     "ensemble_mean_error": ensemble_error,
-                    "reference_error1": reference_error1,
-                    "reference_error2": reference_error2,
-                    "reference_ensemble_error": reference_ensemble_error,
+                    **reference_errors,
                 }
             )
         except Exception as error:
@@ -297,9 +324,13 @@ def extract_smoke_features_lightning(
         else math.inf
     )
     reference_max = (
-        float(metadata[reference_columns].to_numpy().max())
-        if not metadata.empty
-        else math.inf
+        (
+            float(metadata[reference_columns].to_numpy().max())
+            if not metadata.empty
+            else math.inf
+        )
+        if reference_audit
+        else None
     )
     summary = {
         "status": (
@@ -307,7 +338,7 @@ def extract_smoke_features_lightning(
             if len(metadata) == len(selection)
             and not failures
             and internal_max <= 1e-6
-            and reference_max <= reference_tolerance
+            and (reference_max is None or reference_max <= reference_tolerance)
             else "fail"
         ),
         "execution_path": "lightning.Trainer.predict",
@@ -317,7 +348,9 @@ def extract_smoke_features_lightning(
         "representation_dimension": 384,
         "internal_parity_max_abs": internal_max,
         "standard_reference_max_abs": reference_max,
+        "reference_audit": reference_audit,
         "reference_tolerance": reference_tolerance,
+        "progress_bar": progress,
         "wall_seconds_total": time.perf_counter() - total_start,
         "wall_seconds_predict": predict_wall_seconds,
         "wall_seconds_mean": mean_wall_seconds,

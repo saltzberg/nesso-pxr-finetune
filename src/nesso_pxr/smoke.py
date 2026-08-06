@@ -289,6 +289,11 @@ def _build_parser() -> argparse.ArgumentParser:
     extract.add_argument("--seed", type=int, default=42)
     extract.add_argument("--recycling-steps", type=int, default=5)
     extract.add_argument("--reference-tolerance", type=float, default=1e-5)
+    extract.add_argument(
+        "--allow-missing-references",
+        action="store_true",
+    )
+    extract.add_argument("--progress", action="store_true")
 
     compare = commands.add_parser("compare")
     compare.add_argument("--first", type=Path, required=True)
@@ -341,6 +346,8 @@ def main() -> None:
             seed=args.seed,
             recycling_steps=args.recycling_steps,
             reference_tolerance=args.reference_tolerance,
+            require_reference=not args.allow_missing_references,
+            progress=args.progress,
         )
         print(json.dumps(summary, indent=2, sort_keys=True))
         if summary["status"] != "pass":
