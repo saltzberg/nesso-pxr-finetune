@@ -1,43 +1,40 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="description" content="Current extraction and training results for Nesso-1 PXR fine-tuning.">
-<title>Training Results · Nesso-1 PXR Fine-Tuning</title><link rel="stylesheet" href="assets/style.css"></head>
-<body><header><div class="masthead"><div class="brand">Nesso-1 · PXR Fine-Tuning</div><p class="updated-at">Updated <time datetime="2026-08-06T19:16Z">2026-08-06 19:16 UTC</time></p></div><nav><a href="index.html">Summary</a><a href="data.html">Data selection &amp; cleaning</a><a href="modeling.html">Modeling approach</a><a href="training-results.html" class="active">Training results</a></nav></header>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="description" content="Current training status for the Nesso-1 PXR model.">
+<title>Training · Nesso-1 PXR Model</title><link rel="stylesheet" href="assets/style.css"></head>
+<body><header><div class="masthead"><div class="brand">Nesso-1 · PXR Model</div><p class="updated-at">Updated <time datetime="2026-08-06T19:46Z">2026-08-06 19:46 UTC</time></p></div><nav><a href="index.html">Summary</a><a href="data.html">Data</a><a href="modeling.html">Model</a><a href="training-results.html" class="active">Training</a></nav></header>
 <main>
-<div class="eyebrow">Evidence 3 of 3 · training pending</div>
-<h1>Training results</h1>
-<p class="lede">There are no training epochs to report yet. Full feature extraction is running on all 4,134 compounds. This page begins with the completed feature-capture gate and will update from a small versioned training-history file as scaffold-fold runs finish.</p>
-<div class="callout decision"><div class="label">Honest current result</div><p>No fine-tuned model, validation MAE, validation Spearman correlation, or challenge prediction exists yet. The only completed model-path result is the bounded exact-path feature extraction smoke test below.</p></div>
+<div class="eyebrow">Work in progress</div>
+<h1>Training status</h1>
+<p class="lede">Nesso is processing all 4,134 labeled compounds. Model training has not started, so the chart is empty.</p>
+<div class="callout decision"><div class="label">Current task</div><p>Nesso is describing each molecule with the two sets of numbers needed for training. The loss chart will begin filling when the five-group training runs start.</p></div>
 <h2>Loss by epoch</h2>
 <div class="chart-shell">
-  <div class="chart-head"><h3>Robust head-training loss</h3><p class="chart-note" id="chart-status">Loading current state…</p></div>
+  <div class="chart-head"><h3>Training and validation loss</h3><p class="chart-note" id="chart-status">Loading current state…</p></div>
   <svg id="loss-chart"></svg>
-  <div class="legend"><span>training</span><span class="validation">validation</span><span class="pending-key">pending</span></div>
+  <div class="legend"><span>training</span><span class="validation">validation</span><span class="pending-key">not started</span></div>
 </div>
-<p class="fineprint">When runs begin, this panel reads <code>assets/training-history.json</code>. Each run contributes epoch, training-loss, and validation-loss observations; no values are simulated or interpolated while pending.</p>
-<h2>Completed GPU gate</h2>
+<p class="fineprint">The chart reads <code>assets/training-history.json</code>. It will show measured values from each epoch. No sample values are added while training has not started.</p>
 <div class="metrics">
-  <div class="metric"><strong>16 / 16</strong><span>compounds completed</span></div>
-  <div class="metric"><strong>0.0</strong><span>max tensor difference across repeats</span></div>
-  <div class="metric"><strong>63.4 s</strong><span>total smoke runtime per run</span></div>
-  <div class="metric"><strong>1.08 GB</strong><span>peak GPU memory</span></div>
+  <div class="metric"><strong>4,134</strong><span>compounds being processed</span></div>
+  <div class="metric"><strong>5</strong><span>development groups</span></div>
+  <div class="metric"><strong>3</strong><span>repeat training runs planned</span></div>
+  <div class="metric"><strong>513</strong><span>challenge compounds kept for the end</span></div>
 </div>
-<div class="table-wrap"><table><thead><tr><th>check</th><th>observed result</th><th>acceptance</th></tr></thead><tbody>
-<tr><td>Examples completed</td><td>16 succeeded; 0 failed</td><td class="status-pass">Pass</td></tr>
-<tr><td>Fresh upstream CLI parity</td><td>maximum absolute difference 2.22×10<sup>−16</sup></td><td class="status-pass">Pass</td></tr>
-<tr><td>Regression-head reconstruction</td><td>maximum absolute difference 1.19×10<sup>−7</sup></td><td class="status-pass">Pass</td></tr>
-<tr><td>Two-run determinism</td><td>all seven tensors bit-identical; matching SHA-256</td><td class="status-pass">Pass</td></tr>
-<tr><td>Coverage</td><td>all five folds; pEC50 1.62–7.55</td><td class="status-pass">Pass</td></tr>
-</tbody></table></div>
-<h2>Run ledger</h2>
+<h2>Run plan</h2>
 <ul class="status-list">
-  <li><strong class="status-pass">E0 smoke</strong><span>Exact upstream prediction path and cached-feature determinism passed.</span></li>
-  <li><strong class="status-pass">E0 manifest</strong><span>4,134 unique compounds audited; 4,133 prepared artifacts reused; one known stereo edge case recovered.</span></li>
-  <li><strong class="status-pending">E0 full</strong><span>Running on RTX 5070 Ti via the exact Lightning path; launched approximately 19:11 UTC; estimated 4.5–5 hours.</span></li>
-  <li><strong class="status-pending">E1</strong><span>Frozen Nesso and fold-local affine calibration baselines.</span></li>
-  <li><strong class="status-pending">E2</strong><span>Three-seed head-only robust-loss training across scaffold folds.</span></li>
-  <li><strong class="status-pending">E3</strong><span>Uncertainty weighting and curation-weight ablations.</span></li>
-  <li><strong class="status-pending">Final</strong><span>Frozen all-data refit and 513-ligand challenge prediction.</span></li>
+  <li><strong class="status-pending">Running</strong><span>Use Nesso to describe all labeled compounds.</span></li>
+  <li><strong class="status-pending">Waiting</strong><span>Measure the unchanged Nesso model and the straight-line correction.</span></li>
+  <li><strong class="status-pending">Waiting</strong><span>Train the two small prediction models across five chemical groups.</span></li>
+  <li><strong class="status-pending">Waiting</strong><span>Test measurement-error and data-quality weights.</span></li>
+  <li><strong class="status-pending">Waiting</strong><span>Repeat the chosen setup from three starting points.</span></li>
+  <li><strong class="status-pending">Not started</strong><span>Check the model on the 790 compounds held back from development.</span></li>
+  <li><strong class="status-pending">Not started</strong><span>Train on all labels and create the PXR challenge predictions.</span></li>
 </ul>
-<h2>Promotion standard</h2>
-<p>A configuration must improve development performance consistently across at least two of three seeds, without material active-tail or activity-cliff regression. The study compares against frozen Nesso and fold-local affine calibration before claiming value from fine-tuning. The challenge set remains unopened to the selection loop.</p>
-</main><footer><a href="index.html">Back to summary</a> · Pending values remain visibly pending; missing results are never replaced with placeholders.</footer><script src="assets/training-chart.js"></script></body></html>
+<h2>How the model will be judged</h2>
+<ul class="result-list">
+  <li><strong>Average error:</strong> the average size of the pEC50 prediction error.</li>
+  <li><strong>Ordering:</strong> how well the model sorts compounds from weaker to stronger.</li>
+  <li><strong>Chemical groups:</strong> whether an improvement holds across different parts of the dataset.</li>
+  <li><strong>Repeat runs:</strong> whether an improvement depends on one random starting point.</li>
+</ul>
+</main><footer><a href="index.html">Back to summary</a> · The chart remains empty until model training produces real epoch data.</footer><script src="assets/training-chart.js"></script></body></html>

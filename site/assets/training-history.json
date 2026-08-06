@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-06T19:16:00Z",
+  "updated_at": "2026-08-06T19:46:00Z",
   "status": "pending",
-  "message": "No head-training run has started. Full frozen-feature extraction is running for all 4,134 compounds.",
+  "message": "Model training has not started. Nesso is processing all 4,134 labeled compounds.",
   "runs": []
 }
