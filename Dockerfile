@@ -5,6 +5,8 @@ WORKDIR /opt/nesso-pxr
 COPY pyproject.toml README.md /opt/nesso-pxr/
 COPY src /opt/nesso-pxr/src
 COPY configs /opt/nesso-pxr/configs
+COPY scripts /opt/nesso-pxr/scripts
+COPY site /opt/nesso-pxr/site
 COPY tests /opt/nesso-pxr/tests
 RUN python -m pip install ".[test]"
 
