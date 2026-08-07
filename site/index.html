@@ -1,24 +1,25 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="description" content="A project to adapt Nesso-1 for PXR activity prediction.">
 <title>Summary · Nesso-1 PXR Model</title><link rel="stylesheet" href="assets/style.css"></head>
-<body><header><div class="masthead"><div class="brand">Nesso-1 · PXR Model</div><p class="updated-at">Updated <time datetime="2026-08-06T19:46Z">2026-08-06 19:46 UTC</time></p></div><nav><a href="index.html" class="active">Summary</a><a href="data.html">Data</a><a href="modeling.html">Model</a><a href="training-results.html">Training</a></nav></header>
+<body><header><div class="masthead"><div class="brand">Nesso-1 · PXR Model</div><p class="updated-at">Updated <time datetime="2026-08-07T00:16Z">2026-08-07 00:16 UTC</time></p></div><nav><a href="index.html" class="active">Summary</a><a href="data.html">Data</a><a href="modeling.html">Model</a><a href="training-results.html">Training</a></nav></header>
 <main>
-<div class="eyebrow">Project summary · preparing the training data</div>
-<h1>Building a PXR activity model from Nesso-1</h1>
-<p class="lede">This project uses Nesso-1 as a starting point for predicting PXR activity. Most of Nesso stays fixed. We will train two small prediction models on measured PXR data.</p>
-<div class="callout decision"><div class="label">Where things stand</div><p>Nesso is processing all 4,134 training compounds and saving two compact descriptions of each one. Model training will start when that work is done.</p></div>
-<h2>The plan</h2>
+<div class="eyebrow">Project summary · training complete</div>
+<h1>A trained PXR activity model from Nesso-1</h1>
+<p class="lede">This project uses Nesso-1 as a starting point for predicting PXR activity. Most of Nesso stays fixed. Three small prediction models have been trained on measured PXR data.</p>
+<div class="callout decision"><div class="label">Where things stand</div><p>Training is complete. The three final models use all 4,134 labeled compounds. The PXR challenge compounds remain separate and are ready for prediction.</p></div>
+<h2>Work completed</h2>
 <ol class="result-list">
   <li>Use Nesso-1 to describe each molecule with two sets of 384 numbers.</li>
   <li>Train the two small prediction models on the PXR measurements.</li>
   <li>Choose training settings with five groups built from chemical structure.</li>
   <li>Check the chosen model once on the 790 compounds set aside for that purpose.</li>
-  <li>Train on all labeled compounds and make predictions for the 513-compound challenge set.</li>
+  <li>Train three final models on all labeled compounds.</li>
+  <li>Next: make predictions for the 513-compound challenge set.</li>
 </ol>
 <h2>Project pages</h2>
 <div class="page-grid">
   <a class="page-link" href="data.html"><strong>Data</strong><span>Which compounds are included, how structures are grouped, and which data stay out of training.</span></a>
   <a class="page-link" href="modeling.html"><strong>Model</strong><span>What stays fixed, what is trained, and how the model will be chosen.</span></a>
-  <a class="page-link" href="training-results.html"><strong>Training</strong><span>The current work status and a loss chart that will fill when training begins.</span></a>
+  <a class="page-link" href="training-results.html"><strong>Training</strong><span>The completed model comparison and measured loss curves.</span></a>
 </div>
 </main><footer>The PXR challenge set is kept out of model development. This page is unlisted and blocked from search indexing.</footer></body></html>

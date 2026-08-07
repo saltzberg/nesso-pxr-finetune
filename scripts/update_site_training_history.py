@@ -24,7 +24,12 @@ def build_payload(source: Path) -> dict[str, object]:
             epoch = int(row["epoch"])
             if epoch < 0:
                 raise ValueError("epoch must be non-negative")
-            grouped[row["run_id"]].append(
+            run_id = row["run_id"]
+            if row.get("fold") not in (None, ""):
+                run_id += " / fold {}".format(row["fold"])
+            if row.get("seed") not in (None, ""):
+                run_id += " / seed {}".format(row["seed"])
+            grouped[run_id].append(
                 {
                     "epoch": epoch,
                     "train_loss": float(row["train_loss"]),

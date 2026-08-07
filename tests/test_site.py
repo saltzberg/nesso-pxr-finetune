@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import math
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -36,7 +37,13 @@ def test_site_pages_are_noindex_and_links_resolve() -> None:
             )
 
 
-def test_training_history_starts_pending_without_synthetic_points() -> None:
+def test_training_history_contains_completed_measured_points() -> None:
     payload = json.loads((SITE_ROOT / "assets/training-history.json").read_text())
-    assert payload["status"] == "pending"
-    assert payload["runs"] == []
+    assert payload["status"] == "complete"
+    assert payload["runs"]
+    for run in payload["runs"]:
+        assert run["epochs"]
+        for point in run["epochs"]:
+            assert point["epoch"] >= 1
+            assert math.isfinite(point["train_loss"])
+            assert math.isfinite(point["validation_loss"])
