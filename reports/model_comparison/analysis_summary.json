@@ -1,0 +1,13 @@
+{
+  "bootstrap_replicates": 2000,
+  "challenge_analysis_status": "retrospective public-truth analysis; not a temporal blind test",
+  "challenge_rows": 513,
+  "confidence_interval_unit": "scaffold/Butina chemical-family cluster",
+  "historical_2d_challenge_model": "pre-existing ChemBL-augmented, globally offset LightGBM submission",
+  "historical_2d_holdout_model": "PXR-only LightGBM, Emax-qualified training, five-fold ensemble",
+  "lockbox_primary_rows": 714,
+  "nested_lower_emax_rows": 272,
+  "nested_primary_rows": 3072,
+  "nested_rows": 3344,
+  "status": "pass"
+}

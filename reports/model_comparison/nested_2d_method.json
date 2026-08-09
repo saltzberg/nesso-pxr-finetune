@@ -1,0 +1,32 @@
+{
+  "cohort": "all 3344 curated development dose-response compounds",
+  "feature_selection": "mean LightGBM gain in inner CV; top 1000 separately per outer fold",
+  "inner_split": "the four remaining outer cluster folds",
+  "input_feature_count": 14325,
+  "input_features": "/home/dan/projects/ADMET-PXR/data/features/reduced/v0_1_dev_emax0p6_var0p01_corr0p90/reduced_all_ligands_prepared_top.parquet",
+  "invalid_feature_imputation": "zero",
+  "model": "LightGBM regression",
+  "outer_split": "shared Nesso scaffold-aware Butina cluster folds",
+  "parameters": {
+    "bagging_seed": 20260809,
+    "colsample_bytree": 1.0,
+    "data_random_seed": 20260809,
+    "deterministic": true,
+    "feature_fraction_seed": 20260809,
+    "force_col_wise": true,
+    "learning_rate": 0.03,
+    "min_child_samples": 20,
+    "n_estimators": 5000,
+    "n_jobs": 4,
+    "num_leaves": 63,
+    "objective": "regression",
+    "random_state": 20260809,
+    "reg_alpha": 0.0,
+    "reg_lambda": 5.0,
+    "subsample": 1.0,
+    "verbosity": -1
+  },
+  "sample_weight": "inverse pEC50 standard error times curation weight",
+  "stopping": "median inner best iteration after inner-only feature selection, then fixed-round refit on all outer-training rows",
+  "top_k": 1000
+}

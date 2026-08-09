@@ -1,25 +1,26 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="description" content="A project to adapt Nesso-1 for PXR activity prediction.">
 <title>Summary · Nesso-1 PXR Model</title><link rel="stylesheet" href="assets/style.css"></head>
-<body><header><div class="masthead"><div class="brand">Nesso-1 · PXR Model</div><p class="updated-at">Updated <time datetime="2026-08-07T00:16Z">2026-08-07 00:16 UTC</time></p></div><nav><a href="index.html" class="active">Summary</a><a href="data.html">Data</a><a href="modeling.html">Model</a><a href="training-results.html">Training</a></nav></header>
+<body><header><div class="masthead"><div class="brand">Nesso-1 · PXR Model</div><p class="updated-at">Updated <time datetime="2026-08-09T14:52Z">2026-08-09 14:52 UTC</time></p></div><nav><a href="index.html" class="active">Summary</a><a href="data.html">Data</a><a href="modeling.html">Models</a><a href="training-results.html">Results</a></nav></header>
 <main>
-<div class="eyebrow">Project summary · training complete</div>
-<h1>A trained PXR activity model from Nesso-1</h1>
-<p class="lede">This project uses Nesso-1 as a starting point for predicting PXR activity. Most of Nesso stays fixed. Three small prediction models have been trained on measured PXR data.</p>
-<div class="callout decision"><div class="label">Where things stand</div><p>Training is complete. The three final models use all 4,134 labeled compounds. The PXR challenge compounds remain separate and are ready for prediction.</p></div>
-<h2>Work completed</h2>
+<div class="eyebrow">Project summary · matched comparison complete</div>
+<h1>Fine-tuning Nesso helps, but a 2D model remains stronger</h1>
+<p class="lede">This project tests whether PXR measurements can improve Nesso-1's activity predictions and whether the adapted model competes with a conventional molecular model. The answer is yes to the first question and no to the second.</p>
+<div class="callout decision"><div class="label">Main result</div><p>In a matched nested comparison on 3,344 compounds, fine-tuned Nesso reached an average error of 0.633 pEC50, improved from 0.915 for unchanged Nesso. A 2D LightGBM model reached 0.516. The same ordering appears on the historical check set and the public challenge data.</p></div>
+<div class="callout"><div class="label">Evidence status</div><p>The 513 challenge labels were public before this analysis. Those results are retrospective external-dataset evidence, not a temporal blind test.</p></div>
+<h2>What the project now shows</h2>
 <ol class="result-list">
-  <li>Use Nesso-1 to describe each molecule with two sets of 384 numbers.</li>
-  <li>Train the two small prediction models on the PXR measurements.</li>
-  <li>Choose training settings with five groups built from chemical structure.</li>
-  <li>Check the chosen model once on the 790 compounds set aside for that purpose.</li>
-  <li>Train three final models on all labeled compounds.</li>
-  <li>Next: make predictions for the 513-compound challenge set.</li>
+  <li>Fine-tuning transfers useful PXR signal into Nesso's two prediction heads.</li>
+  <li>A training-fold mean confirms that both learned models contain substantial signal.</li>
+  <li>Nested chemical-family cross-validation keeps each outer test fold out of model choice and stopping.</li>
+  <li>The established 2D model is more accurate and orders compounds better than fine-tuned Nesso.</li>
+  <li>The models make related mistakes: signed residual correlations are 0.77–0.82, although Nesso is better for about 39–40% of individual compounds.</li>
+  <li>Both models compress the highly active tail and rarely predict pEC50 above 6.</li>
 </ol>
 <h2>Project pages</h2>
 <div class="page-grid">
-  <a class="page-link" href="data.html"><strong>Data</strong><span>Which compounds are included, how structures are grouped, and which data stay out of training.</span></a>
-  <a class="page-link" href="modeling.html"><strong>Model</strong><span>What stays fixed, what is trained, and how the model will be chosen.</span></a>
-  <a class="page-link" href="training-results.html"><strong>Training</strong><span>The completed model comparison and measured loss curves.</span></a>
+  <a class="page-link" href="data.html"><strong>Data</strong><span>The development clusters, historical lockbox, public challenge set, and which outcomes informed each analysis.</span></a>
+  <a class="page-link" href="modeling.html"><strong>Models</strong><span>How cached-head Nesso and the 2D LightGBM comparator were trained under the nested design.</span></a>
+  <a class="page-link" href="training-results.html"><strong>Results</strong><span>Matched estimates, confidence intervals, residual agreement, calibration, and active-tail limitations.</span></a>
 </div>
-</main><footer>The PXR challenge set is kept out of model development. This page is unlisted and blocked from search indexing.</footer></body></html>
+</main><footer>The public challenge outcomes were not used to fit these models, but this evaluation was retrospective. This page is unlisted and blocked from search indexing.</footer></body></html>

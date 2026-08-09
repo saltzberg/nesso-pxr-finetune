@@ -1,0 +1,4 @@
+lightgbm>=4.6
+pyarrow>=20
+safetensors>=0.7
+torch>=2.7
