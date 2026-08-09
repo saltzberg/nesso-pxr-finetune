@@ -1,0 +1,8 @@
+.git
+.pytest_cache
+.ruff_cache
+.venv
+__pycache__
+artifacts/experiments
+artifacts/frozen_features
+models/nesso-1

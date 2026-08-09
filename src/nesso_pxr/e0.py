@@ -83,6 +83,10 @@ def build_e0_manifest(
     if len(rows) != expected_rows:
         raise ValueError(f"expected {expected_rows} DRC rows, found {len(rows)}")
 
+    source_labels = {
+        root.resolve(): f"processed_source_{index}"
+        for index, root in enumerate(processed_sources)
+    }
     source_by_record: dict[str, Path] = {}
     missing_records: list[str] = []
     for record_id in rows["record_id"]:
@@ -102,7 +106,7 @@ def build_e0_manifest(
         raise ValueError(f"incomplete Nesso artifacts: {missing_records[:10]}")
 
     rows["artifact_source"] = rows["record_id"].map(
-        lambda record_id: str(source_by_record[str(record_id)])
+        lambda record_id: source_labels[source_by_record[str(record_id)]]
     )
     rows = rows.sort_values("record_id", kind="stable").reset_index(drop=True)
     rows.insert(0, "feature_row", np.arange(len(rows), dtype=np.int64))

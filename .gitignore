@@ -7,6 +7,10 @@ __pycache__/
 build/
 dist/
 
+# Public upstream model weights are downloaded on demand and checksum-verified.
+models/nesso-1/
+!models/README.md
+
 # Generated experiment outputs. Keep manifests/configs, not bulk tensors.
 artifacts/experiments/
 artifacts/frozen_features/

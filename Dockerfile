@@ -1,14 +1,17 @@
-ARG NESSO_IMAGE=local/nesso:1.0.0@sha256:e3519ab0faa11d098f14f57b628530c21df748ab7c632f5b071754548e058a24
-FROM ${NESSO_IMAGE}
+FROM python:3.11-slim-bookworm
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
 WORKDIR /opt/nesso-pxr
-COPY pyproject.toml README.md /opt/nesso-pxr/
+COPY pyproject.toml README.md LICENSE /opt/nesso-pxr/
 COPY src /opt/nesso-pxr/src
 COPY configs /opt/nesso-pxr/configs
 COPY scripts /opt/nesso-pxr/scripts
 COPY site /opt/nesso-pxr/site
+COPY data /opt/nesso-pxr/data
+COPY reports /opt/nesso-pxr/reports
 COPY tests /opt/nesso-pxr/tests
-RUN python -m pip install ".[test]"
+RUN python -m pip install --no-cache-dir ".[test]"
 
-ENTRYPOINT ["python", "-m"]
-CMD ["pytest"]
+CMD ["python", "-m", "pytest"]

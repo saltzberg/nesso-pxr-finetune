@@ -301,7 +301,9 @@ def _training_manifest(
 
 def build_milestone0(protocol_path: Path, output_dir: Path) -> dict[str, Any]:
     protocol = load_protocol(protocol_path)
-    paths = resolve_and_verify_sources(protocol)
+    paths = resolve_and_verify_sources(
+        protocol, base_dir=protocol_path.resolve().parent
+    )
     labels = protocol["labels"]
     split_values = protocol["splits"]
     split_config = SplitConfig(
@@ -429,7 +431,10 @@ def build_milestone0(protocol_path: Path, output_dir: Path) -> dict[str, Any]:
     )
     _write_json(output_dir / "leakage_audit.json", audit)
     source_manifest = {
-        name: {"path": str(path), "sha256": sha256_file(path)}
+        name: {
+            "path": str(protocol["data"][name]["path"]),
+            "sha256": sha256_file(path),
+        }
         for name, path in paths.items()
     }
     _write_json(output_dir / "source_manifest.json", source_manifest)

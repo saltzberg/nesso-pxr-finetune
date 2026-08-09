@@ -1,9 +1,9 @@
 # Nesso-1 Fine-Tuning for PXR: Proof-of-Concept Specification
 
-Status: proposed proof of concept
-Project root: `/home/dan/projects/ADMET-PXR`
+Status: historical proof-of-concept protocol; the README and scientific report describe the completed analysis
+Project root: this repository
 Prepared: 2026-08-06
-Scope rule: this specification is based only on the local Nesso-1 source, local PXR artifacts, and experiments completed in this workspace. It does not assume unpublished Nesso training code or undocumented training procedures.
+Scope rule: this specification was based on the released Nesso-1 source and the public PXR challenge data. It does not assume unpublished Nesso training code or undocumented training procedures.
 
 ## 1. Executive summary
 
@@ -48,14 +48,16 @@ The core model work is PyTorch/Lightning because Nesso is a PyTorch model. A bou
 
 ### 3.1 Installed Nesso implementation
 
-The installed source is:
+The upstream source inspected for this protocol was:
 
-- repository: `/home/dan/containers/protein_structure/nesso`
-- upstream: `https://github.com/recursionpharma/nesso.git`
+- repository: <https://github.com/recursionpharma/nesso>
 - commit: `f0156e9a22326448684bae09ee96f73415902dcd`
-- container image: `local/nesso:1.0.0`
-- image ID: `sha256:e3519ab0faa11d098f14f57b628530c21df748ab7c632f5b071754548e058a24`
-- wrapper: `/home/dan/containers/bin/nesso`
+- released model: <https://huggingface.co/recursionpharma/nesso>
+- model revision used here: `1896c84c7186c506c7efd79051480809d51098bf`
+
+The completed cached-head comparison does not require a Nesso source checkout.
+The repository-local checkpoint downloader retrieves and verifies the released
+weights when nested training is rerun.
 
 The checkpoint contains approximately 41.22 million parameters:
 
@@ -83,15 +85,13 @@ These are engineering constraints, not evidence that the weights are intrinsical
 
 ### 3.2 Checkpoint and PXR protein artifacts
 
-Use the warm checkpoint already present on this device:
+Use the pinned released checkpoint downloaded by this repository:
 
 ```text
-/data1/datasets/openadmet_pxr/cofolding_bulk/home_data_folding/cache/nesso/
-  huggingface/models--recursionpharma--nesso/snapshots/
-  1896c84c7186c506c7efd79051480809d51098bf/v1.0.0/
-    hparams.json
-    model.safetensors
+models/nesso-1/v1.0.0/model.safetensors
 ```
+
+Run `python scripts/download_nesso_checkpoint.py` to create it.
 
 Checksums:
 
@@ -100,11 +100,10 @@ Checksums:
 | `hparams.json` | `06aa0c44fcd44eaa2c5c2473bfcf0d9a3af892d867e5279859bb22eb0f6e2d72` |
 | `model.safetensors` | `9928a8a824d147d665e76656804af1cd91c86731516d0b561f9fd1c91ee45622` |
 
-Reuse the precomputed PXR LBD ESM embedding:
-
-```text
-campaigns/openadmet_pxr/runs/nesso_pxr_unique_topstates_20260806/pxr_esm.safetensors
-```
+The exact cached PXR affinity representations used by the completed
+comparison are packaged as `data/published/nesso_features.safetensors`.
+The historical upstream feature extraction used a precomputed PXR LBD ESM
+embedding with the following identity:
 
 - SHA-256: `cff9ae494cb99a14e3164856db6b025458b662ef4019624176d7bdcfa2c8bfc5`
 - protein length: 293 residues
@@ -115,18 +114,10 @@ The PXR sequence must be copied from the existing campaign builder or YAML, not 
 
 ### 3.3 Existing zero-shot evidence
 
-The validated Nesso campaign is:
-
-```text
-campaigns/openadmet_pxr/runs/nesso_pxr_ec50_actual_challenge_topstates_20260806/
-```
-
-Key artifacts:
-
-- `validation_summary.json`: 1,777/1,777 records predicted, zero missing.
-- `source_predictions.csv`: all source-level results.
-- `ec50_truth_predictions.csv`: 653 exact-relation ChEMBL EC50 compounds joined to Nesso outputs.
-- `ec50_performance_summary.json`: direct-scale and diagnostic calibration metrics.
+A historical zero-shot Nesso campaign predicted 1,777/1,777 records with
+no missing outputs. Its aggregate evidence is retained here as protocol context;
+the machine-specific campaign directory is not an execution dependency of the
+completed comparison.
 
 On those 653 external ChEMBL compounds, conversion of Nesso's documented output using `predicted pIC50 = 6 - affinity_pred_value` produced:
 
@@ -139,14 +130,14 @@ This is evidence that frozen Nesso carries PXR-relevant rank signal. It is not t
 
 ## 4. Exact data artifacts
 
-All relative paths in this section are relative to `/home/dan/projects/ADMET-PXR`.
+All relative paths in this section are relative to this repository.
 
 ### 4.1 Primary dose-response labels
 
 Raw current project source:
 
 ```text
-data/pxr-challenge_TRAIN.csv
+data/openadmet/pxr-challenge_TRAIN.csv
 ```
 
 - rows: 4,139;
@@ -167,23 +158,24 @@ Observed ranges in the current file:
 Current curated source recommended for modeling:
 
 ```text
-data/curated/activity_curation_v2/pxr-challenge_TRAIN_curated_weighted.csv
+data/derived/pxr_train_curated_weighted.csv
 ```
 
 - rows: 4,134 after five named hard exclusions;
 - SHA-256: `bcf4d0aea019bf8c7f73cb9f65fae8c2901b7fcfe3a8284f951425bca014e3ed`;
 - adds canonical SMILES, applicability-domain annotations, `curation_sample_weight`, exclusion reasons, and review flags;
-- curation policy: `docs/activity_curation_v2.md`;
-- full audit ledger: `data/curated/activity_curation_v2/pxr-challenge_TRAIN_curation_ledger.csv`.
+- the packaged table retains its curation weights, exclusions, and review flags.
 
 The curated file is the baseline input. The raw file remains the immutable label audit source. Do not train from both as if they were independent rows.
 
-A dated release copy exists at `data/final_hf_release_20260703_171822Z/pxr-challenge_TRAIN.csv`, but it is not byte-identical to the root file; at minimum, the stereochemical representation of `OADMET-0001228` differs. Because the current curation and split artifacts were built from the root file, this proof of concept must pin the root checksum above. Any later public release must explicitly adjudicate the difference rather than silently changing sources.
+The packaged raw and curated files are checksum-pinned. The curated table is
+the modeling input; the raw OpenADMET table is retained as the immutable public
+label source and must not be concatenated as if it were an independent dataset.
 
 ### 4.2 Single-concentration auxiliary data
 
 ```text
-data/pxr-challenge_single_concentration_TRAIN.csv
+data/openadmet/pxr-challenge_single_concentration_TRAIN.csv
 ```
 
 - rows: 21,003;
@@ -204,25 +196,16 @@ Important observed properties:
 - median `n_replicates` is 1;
 - 2,735 canonical compounds overlap the DRC table.
 
-The existing conservative aggregation/weak-inactive methodology is documented in:
-
-```text
-docs/strategies/single_point_inactive_mining.md
-```
-
-Its generated audit artifacts are under:
-
-```text
-outputs/single_point_inactive_mining/
-outputs/single_point_inactive_mining_sim0p5/
-```
+Historical single-point inactive-mining experiments were exploratory and are
+not required by the completed dose-response comparison, so their machine-local
+outputs are intentionally not part of this package.
 
 Single-point data are not pEC50 measurements. They may only enter as an auxiliary response, ordinal/classification task, or carefully documented sample-weighting signal.
 
 ### 4.3 Optional counter-assay data
 
 ```text
-data/pxr-challenge_counter-assay_TRAIN.csv
+data/openadmet/pxr-challenge_counter-assay_TRAIN.csv
 ```
 
 - rows/unique compounds: 2,859;
@@ -237,7 +220,7 @@ This is PXR-null counter-assay evidence and may support an assay-specificity aux
 Activity challenge:
 
 ```text
-data/pxr-challenge_TEST_BLINDED.csv
+data/openadmet/pxr-challenge_TEST_BLINDED.csv
 ```
 
 - 513 rows/unique compounds;
@@ -246,7 +229,7 @@ data/pxr-challenge_TEST_BLINDED.csv
 Structure challenge:
 
 ```text
-data/pxr-challenge_structure_TEST_BLINDED.csv
+data/openadmet/pxr-challenge_structure_TEST_BLINDED.csv
 ```
 
 - 78 rows;
@@ -259,7 +242,7 @@ Neither file supplies labels. Neither may influence model selection, early stopp
 Baseline one-state-per-ligand mapping:
 
 ```text
-data/prepared_ligands/pxr_prepared_top_ligands_simple.csv
+data/derived/prepared_top_states.csv
 ```
 
 - 15,600 original ligand IDs;
@@ -275,15 +258,9 @@ Join rules:
 - activity blind: `Molecule Name` to `original_ligand_id`;
 - structure blind: `structure` to `original_ligand_id`.
 
-All retained states are available at:
-
-```text
-data/prepared_ligands/pxr_prepared_ligands_simple.csv
-```
-
-- 34,941 state rows;
-- 28,830 unique prepared SMILES;
-- SHA-256: `57d2ea4eed986ae36e74090c5f75d30c21861829986d38c614bce4030c434649`.
+The completed baseline uses only the packaged selected top-state mapping.
+The larger alternate-state table was not an input to the reported comparison and
+is intentionally omitted.
 
 The proof-of-concept baseline must use only the selected top state. Alternate-state augmentation is a later ablation. All states derived from one original ligand must remain in the same split and must not be counted as independent biological labels.
 
@@ -292,7 +269,7 @@ The proof-of-concept baseline must use only the selected top state. Alternate-st
 Primary scaffold lockbox:
 
 ```text
-cache/holdout/activity_curation_v2_scaffold_20pct_seed20260505/holdout_assignments.csv
+data/derived/holdout_assignments.csv
 ```
 
 - 4,134 assignments;
@@ -301,21 +278,10 @@ cache/holdout/activity_curation_v2_scaffold_20pct_seed20260505/holdout_assignmen
 - grouping: Bemis-Murcko scaffold;
 - seed: 20260505.
 
-Development-only folds for the established Emax >= 0.6 universe:
-
-```text
-cache/splits_dev_only/activity_curation_v2/emax_0p6/scaffold_folds.csv
-cache/splits_dev_only/activity_curation_v2/emax_0p6/random_folds.csv
-cache/splits_dev_only/activity_curation_v2/emax_0p6/cliff_cluster_folds.csv
-```
-
-Each contains 3,072 development compounds. Their SHA-256 values are, respectively:
-
-- `d0f0d7a1344fd68bad69a77dc0a1562aa171e22707605d5ff09a1437e4602e7c`;
-- `ea0ce194823018c9e7ee1020b76a6c174a596ff283fd2d1b4ab878663565a72d`;
-- `8e2aa76a26e4d82f96f582cc6a6aac94564a570a77c34756bd9e3917b3f6747c`.
-
-Primary model selection uses scaffold folds. Random folds are diagnostic. Cliff-cluster folds test local SAR/cliff behavior. The lockbox is opened only for frozen candidate families according to `docs/strategies/internal_holdout_and_feature_reduction_guard.md`.
+The repository rebuilds the development folds and leakage audit from
+`configs/protocol.yaml`. The completed publication comparison uses the packaged
+scaffold-aware Butina cluster assignments in
+`data/published/modeling_manifest.csv`; no external split cache is required.
 
 ## 5. Label contracts
 
@@ -443,7 +409,7 @@ Required automated audits:
 
 ### 7.1 Common wrapper
 
-Create an ADMET-PXR-owned `LightningModule` wrapper rather than editing the upstream Nesso checkout in place. It should:
+Create a repository-owned `LightningModule` wrapper rather than editing the upstream Nesso checkout in place. It should:
 
 - load the exact checkpoint with `Nesso1.from_pretrained`;
 - record upstream commit, checkpoint hashes, hparams, image ID, and PXR sequence hash;
@@ -693,9 +659,9 @@ This document does not authorize or implement that package; it specifies what a 
 Every experiment must save:
 
 - immutable config and resolved config;
-- git status and commit IDs for ADMET-PXR and Nesso;
+- git status and commit IDs for this repository and the upstream Nesso version;
 - container image ID and package versions;
-- source data paths, SHA-256 values, schemas, and row counts;
+- repository-relative source identifiers, SHA-256 values, schemas, and row counts;
 - base checkpoint and PXR ESM hashes;
 - training-row manifest with original ID, prepared-state ID, raw/prepared SMILES, split role, labels, standard errors, weights, and reason codes;
 - alias/state propagation and leakage audit;

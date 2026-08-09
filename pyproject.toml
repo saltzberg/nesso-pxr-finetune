@@ -19,6 +19,7 @@ dependencies = [
 [project.optional-dependencies]
 test = ["pytest>=8.0", "ruff>=0.9"]
 train = ["lightning>=2.6", "safetensors>=0.7", "torch>=2.7"]
+publication = ["lightgbm>=4.6", "pyarrow>=20"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -3,7 +3,7 @@
   "feature_selection": "mean LightGBM gain in inner CV; top 1000 separately per outer fold",
   "inner_split": "the four remaining outer cluster folds",
   "input_feature_count": 14325,
-  "input_features": "/home/dan/projects/ADMET-PXR/data/features/reduced/v0_1_dev_emax0p6_var0p01_corr0p90/reduced_all_ligands_prepared_top.parquet",
+  "input_features": "data/published/reduced_2d_features.parquet",
   "invalid_feature_imputation": "zero",
   "model": "LightGBM regression",
   "outer_split": "shared Nesso scaffold-aware Butina cluster folds",

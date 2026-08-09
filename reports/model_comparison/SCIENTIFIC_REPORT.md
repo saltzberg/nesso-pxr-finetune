@@ -173,13 +173,29 @@ nor does it support use in the highly active tail.
 
 ## Reproduction and artifact map
 
-Run the full comparison with:
+Regenerate the published aggregate analysis from the committed compound-level
+prediction tables with:
 
 ```bash
-PYTHONPATH=src /home/dan/projects/ADMET-PXR/.venv312/bin/python \
-  scripts/run_publication_comparison.py --stage all \
-  --output-dir reports/model_comparison --device cuda
+python scripts/run_publication_comparison.py \
+  --stage analyze \
+  --output-dir reproduced/model_comparison
 ```
+
+This CPU-only route requires no external checkout or model download. To refit
+both nested models from the packaged feature inputs, first retrieve the exact
+released Nesso checkpoint and then run the full GPU comparison:
+
+```bash
+python scripts/download_nesso_checkpoint.py
+python scripts/run_publication_comparison.py \
+  --stage all \
+  --output-dir reproduced/full_comparison \
+  --device cuda
+```
+
+All defaults resolve from the repository root. The packaged inputs and their
+SHA-256 manifest are under `data/published/`.
 
 Key outputs are:
 

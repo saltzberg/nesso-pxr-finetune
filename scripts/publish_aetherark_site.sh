@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-project_root=/home/dan/projects/nesso-finetune/PXR
+script_dir=$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+project_root=$(CDPATH= cd -- "$script_dir/.." && pwd)
 source_dir="$project_root/site/"
-remote_host=dan@178.156.236.86
-remote_dir=/var/www/aetherark.com/sites/nesso-pxr-finetune/
+
+: "${AETHERARK_REMOTE_HOST:?set AETHERARK_REMOTE_HOST (for example, user@host)}"
+: "${AETHERARK_REMOTE_DIR:?set AETHERARK_REMOTE_DIR to the destination directory}"
 
 test -f "${source_dir}index.html"
 test -f "${source_dir}data.html"
@@ -14,9 +16,10 @@ test -f "${source_dir}assets/training-history.json"
 
 rsync -az --delete \
   -e 'ssh -o BatchMode=yes -o ConnectTimeout=15' \
-  "$source_dir" "$remote_host:$remote_dir"
+  "$source_dir" "$AETHERARK_REMOTE_HOST:$AETHERARK_REMOTE_DIR"
 
-ssh -o BatchMode=yes -o ConnectTimeout=15 "$remote_host" \
-  'test -f /var/www/aetherark.com/sites/nesso-pxr-finetune/index.html && test -f /var/www/aetherark.com/sites/nesso-pxr-finetune/data.html && test -f /var/www/aetherark.com/sites/nesso-pxr-finetune/modeling.html && test -f /var/www/aetherark.com/sites/nesso-pxr-finetune/training-results.html'
+ssh -o BatchMode=yes -o ConnectTimeout=15 "$AETHERARK_REMOTE_HOST" \
+  "test -f '$AETHERARK_REMOTE_DIR/index.html' && test -f '$AETHERARK_REMOTE_DIR/data.html' && test -f '$AETHERARK_REMOTE_DIR/modeling.html' && test -f '$AETHERARK_REMOTE_DIR/training-results.html'"
 
-printf 'Published https://aetherark.com/sites/nesso-pxr-finetune/\n'
+printf 'Published site files to %s:%s\n' \
+  "$AETHERARK_REMOTE_HOST" "$AETHERARK_REMOTE_DIR"

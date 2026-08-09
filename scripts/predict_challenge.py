@@ -44,9 +44,7 @@ def prepare_selection(
     )
     if len(selection) != 513 or selection["prepared_smiles"].isna().any():
         raise ValueError("expected 513 challenge compounds with prepared states")
-    selection["record_id"] = selection["prepared_smiles"].map(
-        record_id_for_smiles
-    )
+    selection["record_id"] = selection["prepared_smiles"].map(record_id_for_smiles)
     if selection["record_id"].duplicated().any():
         raise ValueError("challenge record IDs must be unique")
 
@@ -82,9 +80,7 @@ def prepare_selection(
     selection = selection.merge(
         pd.DataFrame(references), on="record_id", validate="one_to_one"
     )
-    selection = selection.sort_values("record_id", kind="stable").reset_index(
-        drop=True
-    )
+    selection = selection.sort_values("record_id", kind="stable").reset_index(drop=True)
     selection.insert(0, "feature_row", np.arange(len(selection), dtype=np.int64))
     forbidden = {"pEC50", "phase", "truth"}.intersection(selection.columns)
     if forbidden:
@@ -202,8 +198,7 @@ def evaluate_predictions(
     if not predictions["source_smiles"].eq(predictions["SMILES"]).all():
         raise ValueError("challenge SMILES changed between blinded and truth files")
     challenge_order = {
-        molecule_id: index
-        for index, molecule_id in enumerate(blinded["Molecule Name"])
+        molecule_id: index for index, molecule_id in enumerate(blinded["Molecule Name"])
     }
     predictions["challenge_row"] = predictions["original_id"].map(challenge_order)
     predictions = predictions.sort_values("challenge_row", kind="stable")

@@ -1,0 +1,11 @@
+{
+  "activity_cliff_pairs.csv": "acb6be7287dae0273722a7df76bd56c66ea4a5a7baccc8f7627b15289ba15c63",
+  "established_2d_challenge_predictions.csv": "8180ef0ad59b8f630305e01ddd741885494c0ddeb66bbec3148dd0bbff63b8e4",
+  "established_2d_holdout_predictions.csv": "283a8948cdc8075a42ea5fcf3b4baa6be582a7300f2e92dc10074a336cca1572",
+  "modeling_manifest.csv": "b643e4f493cceaabc90355e00cef7c7476878296be8425bfde156a9dbb9d1c5d",
+  "nesso_challenge_predictions.csv": "ab147d3785231b5edc39daf45b38c44fc13e023c7adea9a33a76f4cb7adb21cd",
+  "nesso_feature_metadata.csv": "29a0cb22b4f6c95416a996fffc0c96b2be36ea95c2ad942b2161a2db0e86e051",
+  "nesso_features.safetensors": "30db43a2b17c50ae870f0c046cb125c10b09c81f366c635a4282c2267db287e5",
+  "nesso_holdout_predictions.csv": "f2794b556b9674f90b5be6fe130de341eb14401045225d52fb8a2e4fc439fbd2",
+  "reduced_2d_features.parquet": "10645714c0a2ca69892370d0da8bc0d2c986ed7f5cb9f00a28f523e3040302fd"
+}

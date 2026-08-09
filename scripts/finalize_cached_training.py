@@ -287,7 +287,9 @@ def main() -> None:
         save_file(state, checkpoint_path)
         history["scope"] = "all_4134_labels"
         final_histories.append(history)
-        final_checkpoints.append(str(checkpoint_path))
+        final_checkpoints.append(
+            checkpoint_path.relative_to(args.output_dir).as_posix()
+        )
     pd.concat(final_histories, ignore_index=True).to_csv(
         final_dir / "history.csv",
         index=False,

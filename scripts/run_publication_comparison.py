@@ -6,18 +6,12 @@ from __future__ import annotations
 import argparse
 import gc
 import json
-import math
-import sys
 from dataclasses import asdict, replace
 from pathlib import Path
 from typing import Any
 
 import numpy as np
 import pandas as pd
-
-REPO_ROOT = Path(__file__).resolve().parents[1]
-if str(REPO_ROOT / "src") not in sys.path:
-    sys.path.insert(0, str(REPO_ROOT / "src"))
 
 from nesso_pxr.chemistry import bemis_murcko_scaffold, scaffold_group_key
 from nesso_pxr.comparison import (
@@ -38,6 +32,11 @@ from nesso_pxr.train_cached import (
     make_twin_heads,
 )
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+PUBLISHED_INPUTS = REPO_ROOT / "data" / "published"
+PUBLISHED_REPORT = REPO_ROOT / "reports" / "model_comparison"
+NESSO_CHECKPOINT = REPO_ROOT / "models" / "nesso-1" / "v1.0.0" / "model.safetensors"
+
 E2_LEARNING_RATES = (1e-5, 3e-5, 1e-4, 3e-4)
 WEIGHT_DECAYS = (0.0, 1e-4, 1e-3)
 E3_UNCERTAINTY_FLOORS = (0.10, 0.15, 0.20)
@@ -54,91 +53,79 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--features",
         type=Path,
-        default=Path("artifacts/experiments/e0/full/run/features.safetensors"),
+        default=PUBLISHED_INPUTS / "nesso_features.safetensors",
     )
     parser.add_argument(
         "--feature-metadata",
         type=Path,
-        default=Path("artifacts/experiments/e0/full/run/metadata.csv"),
+        default=PUBLISHED_INPUTS / "nesso_feature_metadata.csv",
     )
     parser.add_argument(
         "--modeling-manifest",
         type=Path,
-        default=Path(
-            "artifacts/experiments/modeling/all_curated/modeling_manifest.csv"
-        ),
+        default=PUBLISHED_INPUTS / "modeling_manifest.csv",
     )
     parser.add_argument(
         "--checkpoint-weights",
         type=Path,
-        default=Path(
-            "/data1/datasets/openadmet_pxr/cofolding_bulk/home_data_folding/"
-            "cache/nesso/huggingface/models--recursionpharma--nesso/snapshots/"
-            "1896c84c7186c506c7efd79051480809d51098bf/v1.0.0/"
-            "model.safetensors"
-        ),
+        default=NESSO_CHECKPOINT,
     )
     parser.add_argument(
         "--reduced-2d-features",
         type=Path,
-        default=Path(
-            "/home/dan/projects/ADMET-PXR/data/features/reduced/"
-            "v0_1_dev_emax0p6_var0p01_corr0p90/"
-            "reduced_all_ligands_prepared_top.parquet"
-        ),
+        default=PUBLISHED_INPUTS / "reduced_2d_features.parquet",
     )
     parser.add_argument(
         "--historical-2d-holdout",
         type=Path,
-        default=Path(
-            "/home/dan/projects/ADMET-PXR/outputs/2d_closeout/"
-            "activity_curation_v2/task1_chembl_augmentation/octant_only/"
-            "holdout_predictions.csv"
-        ),
+        default=PUBLISHED_INPUTS / "established_2d_holdout_predictions.csv",
     )
     parser.add_argument(
         "--historical-2d-challenge",
         type=Path,
-        default=Path(
-            "/home/dan/projects/ADMET-PXR/outputs/2d_closeout/"
-            "task4_submission_2d_ceiling/"
-            "task4_test_predictions_with_uncertainty.csv"
-        ),
+        default=PUBLISHED_INPUTS / "established_2d_challenge_predictions.csv",
     )
     parser.add_argument(
         "--challenge-nesso",
         type=Path,
-        default=Path(
-            "artifacts/experiments/challenge/evaluation/"
-            "challenge_predictions_with_truth.csv"
-        ),
+        default=PUBLISHED_INPUTS / "nesso_challenge_predictions.csv",
     )
     parser.add_argument(
         "--nesso-holdout",
         type=Path,
-        default=Path(
-            "artifacts/experiments/modeling/final_selected/"
-            "holdout_predictions.csv"
-        ),
+        default=PUBLISHED_INPUTS / "nesso_holdout_predictions.csv",
     )
     parser.add_argument(
         "--cliff-pairs",
         type=Path,
-        default=Path(
-            "/home/dan/projects/ADMET-PXR/outputs/activity_cliff_analysis/"
-            "activity_curation_v2/labeled_pair_similarity_delta.csv"
-        ),
+        default=PUBLISHED_INPUTS / "activity_cliff_pairs.csv",
+    )
+    parser.add_argument(
+        "--analysis-input-dir",
+        type=Path,
+        default=PUBLISHED_REPORT,
+        help="directory containing the nested prediction tables for --stage analyze",
     )
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=Path("reports/model_comparison"),
+        default=PUBLISHED_REPORT,
     )
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--lgbm-threads", type=int, default=4)
     parser.add_argument("--top-k", type=int, default=1000)
     parser.add_argument("--bootstrap-replicates", type=int, default=2000)
     return parser.parse_args()
+
+
+def portable_path(path: Path) -> str:
+    """Return repository-relative provenance without leaking host paths."""
+
+    resolved = path.resolve()
+    try:
+        return resolved.relative_to(REPO_ROOT).as_posix()
+    except ValueError:
+        return path.name
 
 
 def load_development_manifest(args: argparse.Namespace) -> pd.DataFrame:
@@ -212,8 +199,7 @@ def fit_fixed_nesso(
             )
             optimizer.step()
     return {
-        key: value.detach().cpu().clone()
-        for key, value in model.state_dict().items()
+        key: value.detach().cpu().clone() for key, value in model.state_dict().items()
     }
 
 
@@ -407,9 +393,7 @@ def run_nested_nesso(args: argparse.Namespace) -> None:
 
     seed_columns = [f"nesso_seed_{seed}_pEC50" for seed in SEEDS]
     predictions["nesso_pEC50"] = predictions[seed_columns].mean(axis=1)
-    if predictions[
-        ["mean_pEC50", "affine_pEC50", "nesso_pEC50"]
-    ].isna().any().any():
+    if predictions[["mean_pEC50", "affine_pEC50", "nesso_pEC50"]].isna().any().any():
         raise AssertionError("nested Nesso predictions are incomplete")
     predictions.to_csv(args.output_dir / "nested_nesso_predictions.csv", index=False)
     pd.DataFrame(inner_rows).to_csv(
@@ -577,9 +561,7 @@ def run_nested_2d(args: argparse.Namespace) -> None:
         )
         print(f"completed nested 2D outer fold {outer_fold}", flush=True)
 
-    output = frame[
-        ["feature_row", "record_id", "original_id", "fold", "pEC50"]
-    ].copy()
+    output = frame[["feature_row", "record_id", "original_id", "fold", "pEC50"]].copy()
     output["two_d_pEC50"] = oof
     output.to_csv(args.output_dir / "nested_2d_predictions.csv", index=False)
     pd.DataFrame(outer_rows).to_csv(
@@ -604,7 +586,7 @@ def run_nested_2d(args: argparse.Namespace) -> None:
         ),
         "invalid_feature_imputation": "zero",
         "sample_weight": "inverse pEC50 standard error times curation weight",
-        "input_features": str(args.reduced_2d_features),
+        "input_features": portable_path(args.reduced_2d_features),
         "input_feature_count": len(feature_names),
         "top_k": args.top_k,
         "parameters": lgbm_params(args.lgbm_threads, seed=20260809),
@@ -674,7 +656,9 @@ def add_nested_nearest_neighbors(frame: pd.DataFrame) -> pd.DataFrame:
     return result
 
 
-def make_lockbox_frame(args: argparse.Namespace, manifest: pd.DataFrame) -> pd.DataFrame:
+def make_lockbox_frame(
+    args: argparse.Namespace, manifest: pd.DataFrame
+) -> pd.DataFrame:
     nesso = pd.read_csv(args.nesso_holdout)
     two_d = pd.read_csv(args.historical_2d_holdout).rename(
         columns={
@@ -729,7 +713,9 @@ def make_lockbox_frame(args: argparse.Namespace, manifest: pd.DataFrame) -> pd.D
     return lockbox
 
 
-def make_challenge_frame(args: argparse.Namespace, manifest: pd.DataFrame) -> pd.DataFrame:
+def make_challenge_frame(
+    args: argparse.Namespace, manifest: pd.DataFrame
+) -> pd.DataFrame:
     nesso = pd.read_csv(args.challenge_nesso).rename(
         columns={"trained_ensemble_pEC50": "nesso_pEC50"}
     )
@@ -784,9 +770,10 @@ def add_strata(frame: pd.DataFrame) -> pd.DataFrame:
         bins=(-np.inf, 0.3, 0.4, 0.5, 0.6, np.inf),
         labels=("<=0.3", "(0.3,0.4]", "(0.4,0.5]", "(0.5,0.6]", ">0.6"),
     ).astype(str)
-    if "pEC50_standard_error" in result and result[
-        "pEC50_standard_error"
-    ].notna().sum() >= 4:
+    if (
+        "pEC50_standard_error" in result
+        and result["pEC50_standard_error"].notna().sum() >= 4
+    ):
         result["assay_se_stratum"] = pd.qcut(
             result["pEC50_standard_error"],
             q=4,
@@ -800,10 +787,9 @@ def add_strata(frame: pd.DataFrame) -> pd.DataFrame:
             ["negative", "neutral", "positive"],
             default="unknown",
         )
-    result["is_train_neighbor_cliff"] = (
-        result["nearest_train_similarity"].ge(0.5)
-        & (result["pEC50"] - result["nearest_train_pEC50"]).abs().ge(1.5)
-    )
+    result["is_train_neighbor_cliff"] = result["nearest_train_similarity"].ge(0.5) & (
+        result["pEC50"] - result["nearest_train_pEC50"]
+    ).abs().ge(1.5)
     return result
 
 
@@ -859,8 +845,8 @@ def cliff_pair_rows(
 def run_analysis(args: argparse.Namespace) -> None:
     args.output_dir.mkdir(parents=True, exist_ok=True)
     manifest = pd.read_csv(args.modeling_manifest)
-    nested_nesso = pd.read_csv(args.output_dir / "nested_nesso_predictions.csv")
-    nested_2d = pd.read_csv(args.output_dir / "nested_2d_predictions.csv")
+    nested_nesso = pd.read_csv(args.analysis_input_dir / "nested_nesso_predictions.csv")
+    nested_2d = pd.read_csv(args.analysis_input_dir / "nested_2d_predictions.csv")
     nested = nested_nesso.merge(
         nested_2d[["original_id", "two_d_pEC50"]],
         on="original_id",
@@ -1096,13 +1082,69 @@ def run_analysis(args: argparse.Namespace) -> None:
     )
 
 
+def validate_stage_inputs(args: argparse.Namespace) -> None:
+    common = {
+        "modeling manifest": args.modeling_manifest,
+    }
+    nesso = {
+        **common,
+        "cached Nesso features": args.features,
+        "Nesso feature metadata": args.feature_metadata,
+        "released Nesso checkpoint": args.checkpoint_weights,
+    }
+    two_d = {
+        **common,
+        "reduced 2D features": args.reduced_2d_features,
+    }
+    analysis = {
+        **common,
+        "nested Nesso predictions": (
+            args.analysis_input_dir / "nested_nesso_predictions.csv"
+        ),
+        "nested 2D predictions": (
+            args.analysis_input_dir / "nested_2d_predictions.csv"
+        ),
+        "historical Nesso holdout predictions": args.nesso_holdout,
+        "historical 2D holdout predictions": args.historical_2d_holdout,
+        "retrospective Nesso challenge predictions": args.challenge_nesso,
+        "retrospective 2D challenge predictions": args.historical_2d_challenge,
+        "activity-cliff pairs": args.cliff_pairs,
+    }
+    if args.stage == "nesso":
+        required = nesso
+    elif args.stage == "2d":
+        required = two_d
+    elif args.stage == "analyze":
+        required = analysis
+    else:
+        required = {**nesso, **two_d}
+        required.update(
+            {
+                key: value
+                for key, value in analysis.items()
+                if not key.startswith("nested ")
+            }
+        )
+    missing = [
+        f"{label}: {path}" for label, path in required.items() if not path.is_file()
+    ]
+    if missing:
+        message = "missing required inputs:\n- " + "\n- ".join(missing)
+        if args.checkpoint_weights in required.values():
+            message += "\nRun: python scripts/download_nesso_checkpoint.py"
+        raise FileNotFoundError(message)
+
+
 def main() -> None:
     args = parse_args()
+    validate_stage_inputs(args)
     if args.stage in {"all", "nesso"}:
         run_nested_nesso(args)
     if args.stage in {"all", "2d"}:
         run_nested_2d(args)
     if args.stage in {"all", "analyze"}:
+        if args.stage == "all":
+            args.analysis_input_dir = args.output_dir
         run_analysis(args)
 
 

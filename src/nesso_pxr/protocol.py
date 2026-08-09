@@ -25,8 +25,18 @@ def load_protocol(path: Path) -> dict[str, Any]:
     return protocol
 
 
-def resolve_and_verify_sources(protocol: dict[str, Any]) -> dict[str, Path]:
-    root = Path(protocol["data_root"])
+def resolve_and_verify_sources(
+    protocol: dict[str, Any],
+    *,
+    base_dir: Path | None = None,
+) -> dict[str, Path]:
+    """Resolve configured inputs relative to the protocol file or current directory."""
+
+    root = Path(protocol.get("data_root", ".")).expanduser()
+    if not root.is_absolute():
+        anchor = Path.cwd() if base_dir is None else Path(base_dir)
+        root = anchor / root
+    root = root.resolve()
     resolved: dict[str, Path] = {}
     for name, source in protocol["data"].items():
         path = root / source["path"]

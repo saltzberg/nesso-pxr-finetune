@@ -1,71 +1,138 @@
 # Nesso-1 PXR fine-tuning
 
-This repository implements the proof of concept in
-`nesso1_pxr_finetuning_poc_spec.md`. The local ADMET-PXR checkout is an
-immutable data dependency; generated code and experiment artifacts live here.
+This repository is the self-contained analysis package for adapting Nesso-1 to
+human PXR pEC50 prediction. Fine-tuning clearly improves the released Nesso-1
+affinity head, but the matched 2D LightGBM comparator remains stronger.
 
-The first iteration is intentionally CPU-only and fast. It freezes the label
-contract, constructs joint compound identities, and creates five development
-folds by Butina clustering while enforcing intact Bemis-Murcko scaffold groups.
-The existing scaffold lockbox remains immutable.
+| Evaluation | Fine-tuned Nesso MAE | 2D MAE | Fine-tuned Nesso Spearman | 2D Spearman |
+|---|---:|---:|---:|---:|
+| Nested development (n=3,344) | 0.633 | 0.516 | 0.625 | 0.730 |
+| Historical shared lockbox (n=714) | 0.601 | 0.478 | 0.602 | 0.741 |
+| Public challenge (n=513) | 0.601 | 0.516 | 0.657 | 0.748 |
 
-## Fast test loop
+The challenge labels were public before this analysis. Those results are
+retrospective external-dataset evidence, not a temporal blind test. See the
+[scientific report](reports/model_comparison/SCIENTIFIC_REPORT.md) for the
+matched design, uncertainty intervals, subgroup results, and limitations.
+
+## Public sources
+
+- [OpenADMET PXR challenge](https://huggingface.co/spaces/openadmet/pxr-challenge)
+- [OpenADMET PXR train/test dataset](https://huggingface.co/datasets/openadmet/pxr-challenge-train-test)
+- [Original Nesso-1 code](https://github.com/recursionpharma/nesso)
+- [Released Nesso-1 model](https://huggingface.co/recursionpharma/nesso)
+
+The OpenADMET tables are distributed under Apache-2.0. Nesso-1 code and model
+weights are also released under Apache-2.0. This repository's `LICENSE` covers
+the original code and documentation here; upstream assets retain their source
+licenses.
+
+## Standalone contents
+
+No sibling repository, local container image, or machine-specific path is
+required. The exact frozen inputs used for the published comparison are under
+`data/`:
+
+- public OpenADMET challenge tables;
+- frozen curation, prepared-state, and holdout-assignment tables;
+- cached Nesso representations and their aligned modeling manifest;
+- the reduced 2D descriptor/fingerprint table;
+- historical Nesso and 2D prediction inputs used for the lockbox and
+  retrospective challenge comparisons.
+
+`data/published/SHA256SUMS.json` verifies the packaged publication inputs. The
+only large asset not committed is the released 165 MB Nesso-1 checkpoint. A
+repository-local downloader retrieves the exact pinned checkpoint and verifies
+its checksum.
+
+## Install and test
+
+Python 3.11 is recommended.
 
 ```bash
-PYTHONPATH=src /home/dan/projects/ADMET-PXR/.venv312/bin/python -m pytest
+python -m venv .venv
+. .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e ".[test,publication,train]"
+pytest
+ruff check src scripts tests
 ```
 
-The reproducible container is derived from the pinned local Nesso image:
+The CPU-only container test environment is built from a public Python image:
 
 ```bash
-docker build -t local/nesso-pxr:0.1.0 .
-docker run --rm local/nesso-pxr:0.1.0 pytest
-docker run --rm local/nesso-pxr:0.1.0 ruff check src tests
+docker build -t nesso-pxr-finetune .
+docker run --rm nesso-pxr-finetune
 ```
 
-## Milestone 0 audit
+## Reproduce the published analysis
+
+The fastest exact check starts from the committed out-of-fold and historical
+predictions and independently regenerates the aggregate metrics, cluster
+bootstrap intervals, paired differences, complementarity, stratified results,
+and active-tail diagnostics:
 
 ```bash
-PYTHONPATH=src /home/dan/projects/ADMET-PXR/.venv312/bin/python \
-  -m nesso_pxr.audit \
+python scripts/run_publication_comparison.py \
+  --stage analyze \
+  --output-dir /tmp/nesso-pxr-analysis
+```
+
+This route is CPU-only and does not need the Nesso checkpoint.
+
+To rerun the matched 2D training from the packaged 14,325-feature table:
+
+```bash
+python scripts/run_publication_comparison.py \
+  --stage 2d \
+  --output-dir /tmp/nesso-pxr-2d
+```
+
+To rerun the nested Nesso cached-head training, first download the exact
+released checkpoint and then use a CUDA device:
+
+```bash
+python scripts/download_nesso_checkpoint.py
+python scripts/run_publication_comparison.py \
+  --stage nesso \
+  --output-dir /tmp/nesso-pxr-nesso \
+  --device cuda
+```
+
+A full rerun performs nested Nesso training, nested 2D training, and the final
+analysis in sequence:
+
+```bash
+python scripts/download_nesso_checkpoint.py
+python scripts/run_publication_comparison.py \
+  --stage all \
+  --output-dir /tmp/nesso-pxr-full \
+  --device cuda
+```
+
+All input arguments remain overridable for sensitivity analyses; their defaults
+resolve from the repository root rather than the caller's working directory.
+
+## Rebuild the leakage audit
+
+The public and frozen derived tables needed for the identity/split audit are
+included locally:
+
+```bash
+python -m nesso_pxr.audit \
   --config configs/protocol.yaml \
-  --output artifacts/manifests/milestone0
+  --output /tmp/nesso-pxr-milestone0
 ```
 
-The current pinned sources produce 11,361 joint development compounds in five
-folds of 2,272--2,273 compounds. The 3,072 development DRC IDs exactly match the
-established Emax >= 0.6 universe. The current files yield 714 eligible lockbox
-rows; an older strategy note reports 718, so this discrepancy remains explicit.
+The audit verifies compound, canonical-SMILES, Bemis-Murcko-scaffold, and
+Butina-component separation across development and historical lockbox roles.
 
-The audit requires zero canonical-compound, original-ID, Bemis-Murcko-scaffold,
-or Butina-component overlap across roles. It also verifies that all 513 blinded
-activity rows remain label-free. The full split build takes about 20 seconds and
-peaks near 5.7 GB RAM because standard RDKit Butina materializes the condensed
-pairwise distance matrix; unit tests remain sub-second.
+## Repository map
 
-## GPU feature smoke test
-
-The bounded GPU gate selects 16 DRC compounds across all five scaffold-aware
-folds and the observed potency range. It runs Nesso through the same
-`lightning.Trainer.predict` path as the upstream CLI, temporarily captures both
-384-dimensional pre-regression affinity representations, and records a
-versioned schema plus reason-coded failures.
-
-The 2026-08-06 smoke run passed on an NVIDIA GeForce RTX 5070 Ti:
-
-- 16/16 examples succeeded with no failures.
-- Both reconstructed member scores agreed with Nesso within `1.2e-7`; the
-  captured ensemble output agreed with a fresh upstream CLI run within
-  `2.3e-16`.
-- Two independent runs produced bit-identical tensors and identical
-  safetensors SHA-256 values.
-- Each run took about 63 seconds for prediction and peaked near 1.08 GB of GPU
-  memory.
-
-Exact score parity depends on preserving Nesso's seed (`42`), worker count
-(`1`), five recycling steps, and `bf16-mixed` Lightning execution. Generated
-smoke inputs, references, features, metadata, schemas, and determinism reports
-live under `artifacts/experiments/feature_smoke/` and remain git-ignored.
-
-The next gate is the 4,134-compound E0 frozen-feature pass using this exact
-capture path.
+- `src/nesso_pxr/`: audit, split, cached-head training, and comparison code.
+- `scripts/`: publication runner, challenge evaluation, site utilities, and
+  checkpoint downloader.
+- `data/`: packaged public, derived, and exact publication inputs.
+- `reports/model_comparison/`: scientific report and all reported result tables.
+- `site/`: static AetherArk project pages.
+- `nesso1_pxr_finetuning_poc_spec.md`: historical proof-of-concept protocol.

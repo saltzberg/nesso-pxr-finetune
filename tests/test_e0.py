@@ -80,6 +80,10 @@ def test_build_e0_manifest_orders_rows_and_uses_fallback_source(tmp_path: Path) 
     selection = pd.read_csv(output / "selection.csv")
     assert selection["feature_row"].tolist() == [0, 1]
     assert selection["record_id"].tolist() == sorted([first_id, second_id])
+    assert set(selection["artifact_source"]) == {
+        "processed_source_0",
+        "processed_source_1",
+    }
     assert audit["rows"] == 2
     assert audit["role_counts"] == {
         "development_primary": 1,

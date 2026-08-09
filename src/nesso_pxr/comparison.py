@@ -19,7 +19,9 @@ def _rank(values: np.ndarray) -> np.ndarray:
     return pd.Series(values).rank(method="average").to_numpy(dtype=float)
 
 
-def regression_metrics(observed: Sequence[float], predicted: Sequence[float]) -> dict[str, float]:
+def regression_metrics(
+    observed: Sequence[float], predicted: Sequence[float]
+) -> dict[str, float]:
     """Return interpretable regression and calibration statistics.
 
     Calibration uses ``observed = intercept + slope * predicted``. A calibrated
@@ -29,7 +31,9 @@ def regression_metrics(observed: Sequence[float], predicted: Sequence[float]) ->
     y = np.asarray(observed, dtype=np.float64)
     pred = np.asarray(predicted, dtype=np.float64)
     if y.shape != pred.shape or y.ndim != 1:
-        raise ValueError("observed and predicted must be aligned one-dimensional arrays")
+        raise ValueError(
+            "observed and predicted must be aligned one-dimensional arrays"
+        )
     if not len(y):
         return {
             key: float("nan")
@@ -157,7 +161,9 @@ def clustered_bootstrap(
         for metric in metric_names
     }
     for replicate in range(replicates):
-        sampled_groups = rng.choice(unique_groups, size=len(unique_groups), replace=True)
+        sampled_groups = rng.choice(
+            unique_groups, size=len(unique_groups), replace=True
+        )
         sampled = np.concatenate([positions[group] for group in sampled_groups])
         observed = frame.iloc[sampled][observed_column].to_numpy(dtype=float)
         for model, column in models.items():
