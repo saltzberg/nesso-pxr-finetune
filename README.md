@@ -1,26 +1,25 @@
-# Cached Nesso-1 regression-head adaptation for PXR activity
+# Fine-tuning Nesso-1 for PXR activity
 
-This repository asks a narrow question: **does adapting Nesso-1 improve human
-PXR activity prediction, and does it compete with an established 2D molecular
-model?**
+PXR is a particularly challenging target in medicinal chemistry.  It's ability to bind many highly dissimilar chemotypes and the presence of severe activity cliffs make it particularly difficult to predict the activity of novel compounds using general learned methods.  [Nesso-1](https://github.com/recursionpharma/nesso) is a coarse-grained cofolding-based binding prediction model developed Recursion Pharma.  
 
-The answer is **yes, then no**. Updating Nesso-1's final regression heads from
-cached molecular representations substantially improves on frozen Nesso-1, but
-a matched 2D LightGBM model remains more accurate. The study is retrospective
-and supports an assay-prediction result, not a claim of improved physical
-binding-affinity prediction.
+This study asks three questions: 
 
-> **Evidence status:** nested development is the primary matched comparison.
-> The historical lockbox has been opened, and the OpenADMET challenge labels
-> were public before this analysis. The challenge result also has an unresolved
-> cached-feature provenance warning and should be treated as provisional until
-> that discrepancy is resolved.
+1. **does fine-tuning Nesso-1 improve its performance in human PXR activity prediction**
+2. **does it compete with a simple 2D molecular model?** (RDKit descriptors and LightGBM)
+3. **does Nesso-1 contain orthogonal information to a 2D molecular model?**
 
-## Study at a glance
+The answer is **yes, no, and not much**. 
+
+Updating Nesso-1's final regression heads from cached molecular representations substantially improves on frozen Nesso-1, but
+does not beat a 2D LightGBM model. Error correlation between the simple 2D model and finetuned Nesso-1 is high (~0.7-0.8 correlation). 
+The study is based on data generated for the [OpenADMET PXR challenge](https://huggingface.co/spaces/openadmet/pxr-challenge).
+
+
+## A bit deeper:
 
 This work addresses the **activity-prediction track** of the OpenADMET PXR
 challenge, not the structure-prediction track. The measured endpoint is
-functional human PXR activation reported as pEC50.
+functional human PXR activation reported as pEC50 in a cellular assay.
 
 ```text
 4,139 raw PXR dose-response records
@@ -29,7 +28,7 @@ functional human PXR activation reported as pEC50.
     └──   790 historical scaffold-lockbox compounds
           └── 714 Emax-qualified compounds shared by the historical models
 
-513 public challenge compounds → separate retrospective external dataset
+513 public challenge compounds → separate external dataset
 ```
 
 Development folds keep Bemis-Murcko scaffold groups and connected
@@ -37,10 +36,9 @@ Morgan-fingerprint/Butina components intact. The 714-compound lockbox comparison
 is the Emax-qualified intersection for which both historical Nesso and 2D
 predictions are available; the remaining 76 lockbox records have lower Emax.
 
-## What was actually trained
+## Nesso-1 fine-tuning approach
 
-This is **cached regression-head fine-tuning**, not end-to-end Nesso-1
-fine-tuning.
+I performed cached head-only fine-tuning rather than on all layers. This was to test if Nesso-1's pretrained features contained transferable signal for PXR, and also reducing the computational cost and overfitting risk of retraining the entire model (mostly computational cost).  
 
 - Nesso-1 first supplies two cached, 384-dimensional affinity representations
   per compound.
@@ -54,8 +52,9 @@ fine-tuning.
 - Training uses the pretrained head initialization and a Huber objective over
   both member predictions and their mean. The selected outer-fold models use
   26–28 epochs.
+- Nesso-1 feature extraction training time for the 4,647 training and test compounds was ~ 5 hours and training was approximately two minutes on a single RTX5070 Ti.
 
-Nesso's released affinity value is IC50-like and uses a different numerical
+Nesso's predicted affinity value is IC50-like and uses a different numerical
 orientation from pEC50. Training and prediction use:
 
 ```text
@@ -65,7 +64,7 @@ predicted pEC50            = 6 - affinity_pred_value
 
 This transform aligns numbers; it does **not** make the endpoints biologically
 equivalent. Cellular functional PXR EC50 also reflects efficacy, permeability,
-receptor context, and assay behavior.
+receptor context, and assay behavior. 
 
 > **Private model checkpoint:** The tested three-seed all-label head ensemble
 > is available at
@@ -74,7 +73,7 @@ receptor context, and assay behavior.
 > representations; Hugging Face sign-in and repository access are required
 > while it remains private.
 
-## Primary matched result
+## Primary results (questions 1 and 2)
 
 All four development estimates use the same 3,344 compounds and identical five
 outer chemical-family folds. Confidence intervals are 95% intervals from 2,000
@@ -87,93 +86,55 @@ paired scaffold/Butina-component cluster-bootstrap replicates.
 | Fine-tuned Nesso-1 regression heads | 0.633 (0.611, 0.654) | 0.686 | 0.625 (0.573, 0.677) |
 | Matched nested 2D LightGBM | **0.516 (0.498, 0.532)** | **0.559** | **0.730 (0.688, 0.771)** |
 
-Relative to frozen Nesso, fine-tuning reduces MAE by 0.282 pEC50 units (95% CI
-0.225–0.358) and increases Spearman by 0.240 (0.211–0.272). Relative to matched
-2D, fine-tuned Nesso has MAE higher by 0.117 (0.101–0.133) and Spearman lower by
-0.105 (0.084–0.131).
+Relative to frozen Nesso, fine-tuning: 
+* reduces MAE by 0.282 pEC50 units (95% CI 0.225–0.358)
+* increases Spearman by 0.240 (0.211–0.272).
 
-The mean baseline is recomputed from each outer-training partition. Its
-out-of-fold predictions are therefore fold-specific constants; their variation
-across folds permits a small nonzero, here negative, pooled Spearman value.
+Relative to LightGBM, the fine-tuned Nesso-1 has:
+* higher MAE by 0.117 (0.101–0.133)
+* lower spearman lower by 0.105 (0.084–0.131)
 
-## Supporting retrospective comparisons
 
-These comparisons use historical model outputs. They support the direction of
-the primary result but are not additional pristine tests of models selected in
-this repository.
-
-| Evaluation | Model | n | MAE (95% CI) | Spearman (95% CI) | Status |
-|---|---|---:|---:|---:|---|
-| Historical lockbox | Fine-tuned Nesso heads | 714 | 0.601 (0.561, 0.644) | 0.602 (0.543, 0.656) | Opened lockbox |
-| Historical lockbox | PXR-only 2D ensemble | 714 | **0.478 (0.446, 0.514)** | **0.741 (0.693, 0.780)** | Opened lockbox |
-| Public challenge | Fine-tuned Nesso heads | 513 | 0.601 (0.548, 0.655) | 0.657 (0.596, 0.713) | Retrospective; provisional provenance |
-| Public challenge | ChEMBL-augmented 2D submission | 513 | **0.516 (0.470, 0.566)** | **0.748 (0.693, 0.792)** | Retrospective public truth |
-
-The label “2D” does not denote one fitted estimator across all three settings:
-
-- **Development:** a newly nested, fold-matched LightGBM model.
-- **Lockbox:** a pre-existing PXR-only, Emax-qualified five-model LightGBM
-  ensemble.
-- **Challenge:** a pre-existing ChEMBL-augmented, globally offset LightGBM
-  submission.
-
-Likewise, the lockbox and challenge Nesso rows are frozen historical prediction
-artifacts, not outputs regenerated during the analysis-only command below.
-
-## The matched 2D model
+## Baseline model - PK and Morgan fingerprint + LightGBM
 
 The primary 2D comparator is a deterministic LightGBM regressor over RDKit and
 molfeat physicochemical descriptors plus hashed atom-pair, Morgan/ECFP,
 layered, pattern, Avalon, ErG, pharmacophore, topological, CATS2D,
 scaffold-key, EState, MACCS, and functional-group features.
 
-A legacy outcome-blind variance/correlation filter reduced 32,491 numeric
-features to the packaged 14,325-feature table. Within every outer fold, four
+A variance/correlation filter reduced 32,491 numeric
+features to the final 14,325-feature table. Within every outer fold, four
 inner LightGBM fits rank those inputs by mean gain and select a fold-specific
 top 1,000; a second inner pass chooses the boosting duration before the outer
 refit. Training weights combine inverse pEC50 standard error with curation
 weight. The fixed LightGBM configuration and every selected feature are
 recorded under [`reports/model_comparison/`](reports/model_comparison/).
 
-The 14,325-feature prefilter was created using development structures before
-this comparison. It used neither pEC50 nor lockbox compounds, but it was not
-recomputed inside each outer fold. Supervised selection and stopping are fully
-nested; the legacy unsupervised prefilter is fixed and mildly transductive.
+## Question 3 - does Nesso-1 contain orthogonal information? 
 
-## What the compound-level errors say
-
-The models do not appear to be succeeding on wholly different compound
+Mostly no.  The models do not appear to be succeeding on wholly different compound
 populations. Across the three evaluations, signed residual correlations are
 0.77–0.82 and absolute-error correlations are 0.66–0.72. Nesso nevertheless has
 the smaller absolute error for about 39–40% of compounds. An untuned equal
 blend does not improve on 2D MAE.
 
-Both learned models compress the active tail. For the 55 nested compounds with
+Both learned models compress the highly active molecules (pEC50 > 6.0). For the 55 nested compounds with
 pEC50 above 6, Nesso MAE is 1.349 and 2D MAE is 1.245; Nesso predicts one above
-6 and 2D predicts none. The subgroup, charge, similarity, potency-bin, and
-activity-cliff analyses are exploratory rather than confirmatory.
+6 and 2D predicts none.
 
 See the [scientific report](reports/model_comparison/SCIENTIFIC_REPORT.md) for
 paired differences, calibration, error complementarity, subgroup results, and
 the complete limitations.
 
-## Interpretation boundaries
+## Notes
 
-- The supported conclusion is assay-specific: cached-head adaptation transfers
+- This conclusion is specific to this particular pEC50 assay: cached-head adaptation transfers
   useful PXR signal into Nesso-1, while conventional 2D features remain
   materially stronger for this endpoint.
-- The opened historical lockbox cannot be reused for pristine optimization.
-- Challenge labels were public before this analysis, so challenge performance
-  is retrospective external-dataset evidence rather than a temporal blind test.
-- The cached challenge extraction has strong internal parity, but its recorded
-  run status fails a stricter comparison with a separate reference extraction.
-  That provenance discrepancy must be resolved before publication.
-- Cluster-bootstrap intervals address dependence within defined chemical
-  families, not dataset choice, systematic assay error, or uncertainty in the
-  fixed 2D prefilter.
-- The private checkpoint release distributes the adapted regression heads, not
-  a standalone end-to-end Nesso model; inference still requires the pinned
-  upstream Nesso-1 trunk or compatible cached representations.
+- This analysis was performed after the OpenADMET challenge data were released. Thus it is
+  a retrospective evaluation, not a true blind result.
+- Comparison of Nesso-1 to another cofolding-affinity model (Boltz-2) is in progress and will be posted when those cofolding models finish.
+- OpenAI Codex was used for most coding and method implementation and some of the writing of this report, especially text below this line.   
 
 ## Install and test
 
@@ -286,7 +247,7 @@ Butina-component separation across development and historical lockbox roles.
 | [`scripts/download_nesso_checkpoint.py`](scripts/download_nesso_checkpoint.py) | Pinned upstream checkpoint downloader |
 | [`src/nesso_pxr/`](src/nesso_pxr/) | Audit, splitting, cached-head training, and comparison code |
 | [`data/`](data/) | Public challenge data, frozen derived tables, and exact comparison inputs |
-| [`site/`](site/) | Static AetherArk project pages |
+| [`site/`](site/) | Project pages for website |
 | [`nesso1_pxr_finetuning_poc_spec.md`](nesso1_pxr_finetuning_poc_spec.md) | Historical protocol, including completed and unexecuted branches |
 
 The scripts `run_cached_screen.py`, `finalize_cached_training.py`, and
