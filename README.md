@@ -67,6 +67,13 @@ This transform aligns numbers; it does **not** make the endpoints biologically
 equivalent. Cellular functional PXR EC50 also reflects efficacy, permeability,
 receptor context, and assay behavior.
 
+> **Private model checkpoint:** The tested three-seed all-label head ensemble
+> is available at
+> [`dargason/nesso-1-pxr-heads` revision `d163260`](https://huggingface.co/dargason/nesso-1-pxr-heads/tree/d163260696bfb6c35b429c3d690f3623681f19dd).
+> This is a head-only release that requires compatible cached Nesso-1
+> representations; Hugging Face sign-in and repository access are required
+> while it remains private.
+
 ## Primary matched result
 
 All four development estimates use the same 3,344 compounds and identical five
@@ -164,8 +171,9 @@ the complete limitations.
 - Cluster-bootstrap intervals address dependence within defined chemical
   families, not dataset choice, systematic assay error, or uncertainty in the
   fixed 2D prefilter.
-- This package reproduces a scientific comparison. It does not yet distribute a
-  deployable adapted Nesso checkpoint.
+- The private checkpoint release distributes the adapted regression heads, not
+  a standalone end-to-end Nesso model; inference still requires the pinned
+  upstream Nesso-1 trunk or compatible cached representations.
 
 ## Install and test
 
