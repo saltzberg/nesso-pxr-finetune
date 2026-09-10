@@ -1,0 +1,180 @@
+{
+  "status": "PASS",
+  "scope": "saved-prediction arithmetic, displayed tables, identity/weight checks and local links; no training or model-state replay",
+  "displayed_values_checked": 24,
+  "source_sha256": "bae3f85713c18cf603b692717f68745cb8025ca1068ed29c5be2f8886054e0b2",
+  "inputs": {
+    "reports/architecture/results/heldout_predictions.csv": "6bafc036a6108265b931f2872ebd7125d42cdd5447b9b85cad69194e545d0f0f",
+    "reports/architecture/results/mw-controls/predictions.csv": "567f36c086b7c6a2b76fc16ab3a96ce702c2da4a3b2eb1983901ce1d6688a77f"
+  },
+  "scores": [
+    {
+      "budget": 100,
+      "method": "native_continuous",
+      "subset": "lt215",
+      "weighted_mae": 1.834096601172588,
+      "displayed": "1.834"
+    },
+    {
+      "budget": 500,
+      "method": "native_continuous",
+      "subset": "lt215",
+      "weighted_mae": 1.834096601172588,
+      "displayed": "1.834"
+    },
+    {
+      "budget": 100,
+      "method": "native",
+      "subset": "lt215",
+      "weighted_mae": 1.5199036998774897,
+      "displayed": "1.520"
+    },
+    {
+      "budget": 500,
+      "method": "native",
+      "subset": "lt215",
+      "weighted_mae": 1.5699609706207103,
+      "displayed": "1.570"
+    },
+    {
+      "budget": 100,
+      "method": "native_mw",
+      "subset": "lt215",
+      "weighted_mae": 0.9512538012330204,
+      "displayed": "0.951"
+    },
+    {
+      "budget": 500,
+      "method": "native_mw",
+      "subset": "lt215",
+      "weighted_mae": 1.1628662277196273,
+      "displayed": "1.163"
+    },
+    {
+      "budget": 100,
+      "method": "native_mw_interaction",
+      "subset": "lt215",
+      "weighted_mae": 0.7729841705640738,
+      "displayed": "0.773"
+    },
+    {
+      "budget": 500,
+      "method": "native_mw_interaction",
+      "subset": "lt215",
+      "weighted_mae": 0.8628801215678392,
+      "displayed": "0.863"
+    },
+    {
+      "budget": 100,
+      "method": "head_only",
+      "subset": "lt215",
+      "weighted_mae": 1.1651569375569277,
+      "displayed": "1.165"
+    },
+    {
+      "budget": 500,
+      "method": "head_only",
+      "subset": "lt215",
+      "weighted_mae": 1.3196922187966713,
+      "displayed": "1.320"
+    },
+    {
+      "budget": 100,
+      "method": "head_plus_lora",
+      "subset": "lt215",
+      "weighted_mae": 1.038003757602906,
+      "displayed": "1.038"
+    },
+    {
+      "budget": 500,
+      "method": "head_plus_lora",
+      "subset": "lt215",
+      "weighted_mae": 1.1786597061366935,
+      "displayed": "1.179"
+    },
+    {
+      "budget": 100,
+      "method": "native_continuous",
+      "subset": "full",
+      "weighted_mae": 0.6272246217981061,
+      "displayed": "0.6272"
+    },
+    {
+      "budget": 500,
+      "method": "native_continuous",
+      "subset": "full",
+      "weighted_mae": 0.6272246217981061,
+      "displayed": "0.6272"
+    },
+    {
+      "budget": 100,
+      "method": "head_only",
+      "subset": "full",
+      "weighted_mae": 0.5894197050700019,
+      "displayed": "0.5894"
+    },
+    {
+      "budget": 500,
+      "method": "head_only",
+      "subset": "full",
+      "weighted_mae": 0.577255604876789,
+      "displayed": "0.5773"
+    },
+    {
+      "budget": 100,
+      "method": "head_plus_lora",
+      "subset": "full",
+      "weighted_mae": 0.5831049200163235,
+      "displayed": "0.5831"
+    },
+    {
+      "budget": 500,
+      "method": "head_plus_lora",
+      "subset": "full",
+      "weighted_mae": 0.5610158981704034,
+      "displayed": "0.5610"
+    },
+    {
+      "budget": 100,
+      "method": "repr_ridge_stable",
+      "subset": "full",
+      "weighted_mae": 0.6186101546473791,
+      "displayed": "0.6186"
+    },
+    {
+      "budget": 500,
+      "method": "repr_ridge_stable",
+      "subset": "full",
+      "weighted_mae": 0.5344679183218226,
+      "displayed": "0.5345"
+    },
+    {
+      "budget": 100,
+      "method": "descriptor_lightgbm_rdkit_mordred",
+      "subset": "full",
+      "weighted_mae": 0.6102662645055482,
+      "displayed": "0.6103"
+    },
+    {
+      "budget": 500,
+      "method": "descriptor_lightgbm_rdkit_mordred",
+      "subset": "full",
+      "weighted_mae": 0.5005882644475288,
+      "displayed": "0.5006"
+    },
+    {
+      "budget": 100,
+      "method": "native_mw_interaction",
+      "subset": "full",
+      "weighted_mae": 0.5868217914965591,
+      "displayed": "0.5868"
+    },
+    {
+      "budget": 500,
+      "method": "native_mw_interaction",
+      "subset": "full",
+      "weighted_mae": 0.5828063484136574,
+      "displayed": "0.5828"
+    }
+  ]
+}

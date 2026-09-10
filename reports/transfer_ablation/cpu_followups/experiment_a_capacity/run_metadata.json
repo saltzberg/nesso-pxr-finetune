@@ -1,0 +1,69 @@
+{
+  "analysis_spec": "reports/transfer_ablation/cpu_followups/analysis_spec.json",
+  "analysis_spec_sha256": "914d3c443bf786d8f806d7ba7e2075b52621d0e308e52c99d102363c36e1c5d9",
+  "child_peak_rss_kib": 697404,
+  "command": [
+    "python",
+    "scripts/run_cpu_followup_experiments.py",
+    "--stage",
+    "capacity",
+    "--max-workers",
+    "6"
+  ],
+  "inputs": {
+    "features": {
+      "path": "data/published/nesso_features.safetensors",
+      "sha256": "30db43a2b17c50ae870f0c046cb125c10b09c81f366c635a4282c2267db287e5"
+    },
+    "historical_development_predictions": {
+      "path": "reports/model_comparison/nested_nesso_predictions.csv",
+      "sha256": "cfa693510c3545fd93090e4b8e24b96d65316142ec799886955851aa4d1e3b99"
+    },
+    "historical_lockbox_predictions": {
+      "path": "data/published/nesso_holdout_predictions.csv",
+      "sha256": "f2794b556b9674f90b5be6fe130de341eb14401045225d52fb8a2e4fc439fbd2"
+    },
+    "manifest": {
+      "path": "data/published/modeling_manifest.csv",
+      "sha256": "b643e4f493cceaabc90355e00cef7c7476878296be8425bfde156a9dbb9d1c5d"
+    }
+  },
+  "resource_contract": {
+    "affinity": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "cuda_visible_devices": "",
+    "malloc_arena_max": "2",
+    "max_workers": 6,
+    "mkl_num_threads": "1",
+    "nice": 10,
+    "numexpr_num_threads": "1",
+    "omp_num_threads": "1",
+    "openblas_num_threads": "1",
+    "veclib_maximum_threads": "1"
+  },
+  "self_peak_rss_kib": 858524,
+  "stage": "experiment_a_capacity",
+  "started_unix": 1786567100.2099044,
+  "status": "complete",
+  "versions": {
+    "lightgbm": "4.6.0",
+    "matplotlib": "3.10.9",
+    "numpy": "2.4.4",
+    "pandas": "2.3.3",
+    "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+    "rdkit": "2026.03.1",
+    "safetensors": "0.7.0",
+    "scikit_learn": "1.8.0",
+    "scipy": "1.17.1",
+    "torch": "2.11.0+cu130"
+  },
+  "wall_seconds": 302.80945788137615,
+  "working_directory": "."
+}

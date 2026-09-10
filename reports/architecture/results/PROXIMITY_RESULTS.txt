@@ -1,0 +1,22 @@
+Proximity diagnostic — retrospective, no new fits
+
+Conclusion: the largest held-out prediction changes are not concentrated among close Morgan neighbors of the fitting compounds. The strict chemical split excluded similarity >=0.35; recomputation against each actual FIT and FIT+CAL set confirms a maximum of 0.349398. This conclusion concerns Morgan radius-2 2048-bit Tanimoto, not learned Nesso feature distance or original pretraining overlap.
+
+Median nearest-FIT similarity (all / top20 head-only changes / top20 head+LoRA changes):
+N100: 0.237 / 0.214 / 0.198
+N500: 0.277 / 0.250 / 0.268
+Top20 selection uses absolute change from the saved native baseline, independently per arm and budget. Including calibration gives medians 0.242 / 0.234 / 0.198 and 0.284 / 0.257 / 0.276 respectively. FIT counts are 80 and 400; total budgets include 20 and 100 calibration compounds.
+
+Pooled Spearman correlation of absolute prediction change with nearest-FIT similarity:
+N100 head-only -0.096; head+LoRA -0.093; incremental LoRA -0.088.
+N500 head-only -0.163; head+LoRA -0.112; incremental LoRA -0.045.
+No positive concentration at high similarity. N500 correlations are negative within every fold. These are descriptive, not independent-replicate significance tests.
+
+Both adapted methods improve weighted error over native in every tested similarity bin [0,.2), [.2,.25), [.25,.3), [.3,.35), at both budgets. Incremental LoRA also improves the aggregate weighted error in every bin. N500 incremental improvements are 0.00854, 0.01147, 0.01595 and 0.02041 respectively: more benefit near the upper end, but not only there.
+
+Largest changes are not automatically best corrections. Of each arm's top20 native-relative changes, raw absolute error improves for 19/20 head-only and 17/20 LoRA at N100, 18/20 for both at N500. Among the top20 incremental LoRA changes, only 9/20 improve over head-only at N100 and 11/20 at N500; weighted error worsens by 0.377 and 0.090 respectively in those selected tails. Overall incremental LoRA still improves.
+
+Example: nesso_4f5d960ee79593ed1c2e is the largest native-relative mover in both arms and budgets. Observed pEC50 2.69, native 4.652; N100 head-only 0.717 and LoRA 0.273; N500 1.093 and 1.006. Nearest FIT similarity 0.2083, label 1.92. This is substantial overshoot, not a close chemical analogue.
+Example: N500 nesso_56ced9f6b257bd2a4a19 has observed 2.13, native 4.566, head-only 2.816 and LoRA 0.969. Nearest FIT similarity 0.2653 and label 5.95. Its large downward movement goes away from that neighbor's label.
+
+Reproducibility: proximity.py, proximity_protocol.json, proximity_verification.json. All 3,344 held-out compounds were evaluated for both budgets; 6,688 compound-budget rows. CSVs contain exact IDs, SMILES, actual nearest fitting neighbor, label and all predictions. proximity_top20.csv contains 20 selections per comparison for six comparisons (120 rows, overlapping identities intentional). Nearest-neighbor ties use saved FIT order. No change to models or predictions.

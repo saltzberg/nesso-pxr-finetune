@@ -1,0 +1,13 @@
+dataset,model,n,source_path,source_row,metric,value,source_metric,subset
+nested_development,ridge_member1_384d,3344.0,reports/transfer_ablation/representation_probe_metrics.csv,0,mae,0.6807906163433151,mae,
+nested_development,ridge_member2_384d,3344.0,reports/transfer_ablation/representation_probe_metrics.csv,2,mae,0.6248929336789177,mae,
+nested_development,ridge_mean_384d,3344.0,reports/transfer_ablation/representation_probe_metrics.csv,4,mae,0.632789341475056,mae,
+nested_development,ridge_concat_768d,3344.0,reports/transfer_ablation/representation_probe_metrics.csv,6,mae,0.6262024466987571,mae,
+nested_development,ridge_member1_384d,3344.0,reports/transfer_ablation/representation_probe_metrics.csv,0,spearman,0.5806148531851989,spearman,
+nested_development,ridge_member2_384d,3344.0,reports/transfer_ablation/representation_probe_metrics.csv,2,spearman,0.6621509077254902,spearman,
+nested_development,ridge_mean_384d,3344.0,reports/transfer_ablation/representation_probe_metrics.csv,4,spearman,0.6537124795131735,spearman,
+nested_development,ridge_concat_768d,3344.0,reports/transfer_ablation/representation_probe_metrics.csv,6,spearman,0.6637836684161205,spearman,
+nested_development,fine_tuned_nesso,,reports/model_comparison/metrics.csv,28,mae,0.6329507983947217,estimate,all
+nested_development,fine_tuned_nesso,,reports/model_comparison/metrics.csv,32,spearman,0.625215523785095,estimate,all
+nested_development,nested_2d_lightgbm,,reports/model_comparison/metrics.csv,37,mae,0.5159594459141478,estimate,all
+nested_development,nested_2d_lightgbm,,reports/model_comparison/metrics.csv,41,spearman,0.7304467583777929,estimate,all

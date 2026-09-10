@@ -1,0 +1,24 @@
+{
+  "slug": "stable-readouts",
+  "message": "Stable scaling and target centering reduce MLP error; adding weight decay barely changes the curve.",
+  "caption": "Retrospective development cohort of 3,344 compounds; each mean-task point equally averages five outer folds \u00d7 ten paired draws (50 tasks), not a pooled weighted score. Neural predictions average three seeds before scoring; repeated draws are dependent. No inferential bands are drawn. Weighted MAE uses 1/max(assay SE, 0.10); lower is better. Budgets include 80% FIT/inner selection and 20% CAL labels. Chemical-cluster split, original and follow-up MLP recipes, N25\u2013500. All use the same frozen concatenated 768D vectors and 768\u2013128\u20131 MLP architecture. Stable per-feature scaling has a training-only variance floor; centered variants subtract and restore the training weighted target mean. Only the final variant adds AdamW decay 0.01. The centered and regularized curves nearly coincide; no prediction clipping or outlier exclusion.",
+  "design": "A sequence of four matched recipe curves makes the large preprocessing changes and negligible incremental decay effect visible. Cross markers preserve the regularized curve where it overlaps the centered circles.",
+  "sources": [
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_followup_20260906/final_analysis/task_means.csv",
+      "sha256": "ac9cec051c656e05504b8669318fc942a8685ed20b746cbddc316e13855dc35b"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_low_data_followup/READOUTS.md",
+      "sha256": "581385c3d076d8d39403b59577ad0c01490910f6abeb355e015a3e80942f86a5"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_low_data_followup/RESULTS.md",
+      "sha256": "d2cfc6ff45c2283e37166e8b171656d674c595f37afae40626422b0a4830a413"
+    }
+  ],
+  "plotted_rows": 20,
+  "svg": "assets/experiment-summaries/stable-readouts.svg",
+  "png": "assets/experiment-summaries/stable-readouts.png",
+  "data": "assets/experiment-summaries/stable-readouts.csv"
+}

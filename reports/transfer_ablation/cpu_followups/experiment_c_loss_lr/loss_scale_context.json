@@ -1,0 +1,16 @@
+{
+  "active_n": 55,
+  "active_threshold": 6.0,
+  "assay_standard_error_median": 0.153,
+  "assay_standard_error_q75": 0.246,
+  "huber_delta_0_5_concentration_fold_error": 3.1622776601683795,
+  "huber_delta_0_5_fraction_of_pEC50_iqr": 0.32626427406199016,
+  "huber_delta_0_5_over_median_assay_standard_error": 3.2679738562091503,
+  "pEC50_iqr": 1.5325000000000002,
+  "pEC50_maximum": 7.54855421686747,
+  "pEC50_median": 4.63,
+  "pEC50_minimum": 1.61,
+  "pEC50_q25": 3.5775,
+  "pEC50_q75": 5.11,
+  "target_coordinate": "6-pEC50; exactly equivalent to direct pEC50 after final-layer sign/offset transformation"
+}

@@ -1,0 +1,19 @@
+{
+  "direct_historical_scores_exact": true,
+  "historical_replay_absolute_tolerance": 1e-06,
+  "historical_replays_within_tolerance": true,
+  "internal_head_replay_exact": true,
+  "internal_head_replay_max_abs": 0.0,
+  "interpretation_gate": "Ablation metrics are interpretable only when all-pairs reproduces the historical extraction and released head exactly.",
+  "maximum_absolute_differences": {
+    "ensemble_direct_score_vs_historical": 0.0,
+    "member1_all_pairs_repr_vs_historical": 0.0,
+    "member1_direct_score_vs_historical": 0.0,
+    "member1_replayed_score_vs_historical": 3.5762786865234375e-07,
+    "member2_all_pairs_repr_vs_historical": 0.0,
+    "member2_direct_score_vs_historical": 0.0,
+    "member2_replayed_score_vs_historical": 4.76837158203125e-07
+  },
+  "representation_exact": true,
+  "status": "pass"
+}

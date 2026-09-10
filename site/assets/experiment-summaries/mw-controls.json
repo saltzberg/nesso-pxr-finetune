@@ -1,0 +1,24 @@
+{
+  "slug": "mw-controls",
+  "message": "A scalar interaction beats LoRA on small compounds\u2014not larger ones",
+  "caption": "Pooled N500 held-out scores: 237 compounds below 215 Da and 3,107 above; none exactly 215 Da. N500 = 400 FIT + 100 CAL per fold, one draw and seed; five reused strict-chemical development folds, not independent replicates or a fresh holdout. Score+MW has three fitted coefficients; interaction adds a fourth. Controls used FIT-only weighted least squares, not the neural objective; the native reference is unchanged. Errors use weights 1/max(reported assay SE, 0.1); lower weighted MAE is better. Subgroup correction does not imply a biological mechanism.",
+  "design": "Two molecular-size strata on identical error scales show both the simple-control success and its limit; direct method labels avoid a legend.",
+  "sources": [
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/mw-controls/metrics.csv",
+      "sha256": "27753828d5c761df9ac498eb895732b579f01dea01a9fc07e52347e786f086b1"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_mw_controls/README.md",
+      "sha256": "3d3212872b106e9284f56ac1edc45ed43c5bdc5533fd02e28bcdcb8f36cf19be"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/scripts/experiment_summary_figures/later.py",
+      "sha256": "643da076fa2c7f8cf378e6b7877d0a4a7bb3efe9ad8387016b266cf23bd39dab"
+    }
+  ],
+  "plotted_rows": 8,
+  "svg": "assets/experiment-summaries/mw-controls.svg",
+  "png": "assets/experiment-summaries/mw-controls.png",
+  "data": "assets/experiment-summaries/mw-controls.csv"
+}

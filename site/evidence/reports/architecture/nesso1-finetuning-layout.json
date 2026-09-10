@@ -1,0 +1,336 @@
+{
+  "texts": [
+    {
+      "text": "Fine-tuning inside the affinity branch",
+      "x": 40,
+      "y": 21,
+      "width": 596.90625,
+      "height": 38
+    },
+    {
+      "text": "Same selected layers in two independent native members: affinity_module and affinity_module2",
+      "x": 40,
+      "y": 70,
+      "width": 974.671875,
+      "height": 26
+    },
+    {
+      "text": "Frozen upstream context",
+      "x": 40,
+      "y": 118,
+      "width": 273.83642578125,
+      "height": 26
+    },
+    {
+      "text": "Affinity-member zoom",
+      "x": 400,
+      "y": 118,
+      "width": 242.796875,
+      "height": 26
+    },
+    {
+      "text": "Continuous readout",
+      "x": 1140,
+      "y": 118,
+      "width": 218.818359375,
+      "height": 26
+    },
+    {
+      "text": "External ESM model",
+      "x": 58,
+      "y": 192,
+      "width": 192.28125,
+      "height": 22
+    },
+    {
+      "text": "Cached 1,280-d features",
+      "x": 58,
+      "y": 220,
+      "width": 220.15625,
+      "height": 22
+    },
+    {
+      "text": "Token encoders + trunk",
+      "x": 58,
+      "y": 477,
+      "width": 225.564453125,
+      "height": 22
+    },
+    {
+      "text": "Recycled pair-only state",
+      "x": 58,
+      "y": 505,
+      "width": 213.4375,
+      "height": 22
+    },
+    {
+      "text": "Distogram probabilities",
+      "x": 58,
+      "y": 533,
+      "width": 203.421875,
+      "height": 22
+    },
+    {
+      "text": "All base weights frozen",
+      "x": 58,
+      "y": 561,
+      "width": 205.671875,
+      "height": 22
+    },
+    {
+      "text": "esm_proj.0 \u00b7 LayerNorm 1280",
+      "x": 418,
+      "y": 192,
+      "width": 279.03125,
+      "height": 22
+    },
+    {
+      "text": "esm_proj.1 + LoRA",
+      "x": 418,
+      "y": 282,
+      "width": 181.71875,
+      "height": 22
+    },
+    {
+      "text": "1280 \u2192 384 \u00b7 rank 4",
+      "x": 418,
+      "y": 310,
+      "width": 182.34375,
+      "height": 22
+    },
+    {
+      "text": "esm_proj.3 + LoRA",
+      "x": 768,
+      "y": 282,
+      "width": 181.71875,
+      "height": 22
+    },
+    {
+      "text": "384 \u2192 384 \u00b7 rank 4",
+      "x": 768,
+      "y": 310,
+      "width": 171.21875,
+      "height": 22
+    },
+    {
+      "text": "ReLU (.2) between projections",
+      "x": 690,
+      "y": 239,
+      "width": 243.125,
+      "height": 20
+    },
+    {
+      "text": "Add projected ESM to valid protein tokens",
+      "x": 418,
+      "y": 422,
+      "width": 402.265625,
+      "height": 22
+    },
+    {
+      "text": "Pair-state projection + single broadcasts",
+      "x": 418,
+      "y": 450,
+      "width": 356.3125,
+      "height": 22
+    },
+    {
+      "text": "Distogram conditioning \u2192 affinity pair state",
+      "x": 418,
+      "y": 478,
+      "width": 379.828125,
+      "height": 22
+    },
+    {
+      "text": "Block 0 \u00b7 triangle multiplication + attention",
+      "x": 418,
+      "y": 587,
+      "width": 403.9375,
+      "height": 22
+    },
+    {
+      "text": "pairformer_stack.layers.0.transition_z",
+      "x": 418,
+      "y": 687,
+      "width": 360.171875,
+      "height": 22
+    },
+    {
+      "text": "norm \u2192 SiLU(fc1(x)) \u00d7 fc2(x) \u2192 fc3 \u2192 residual",
+      "x": 418,
+      "y": 715,
+      "width": 415.09375,
+      "height": 22
+    },
+    {
+      "text": "fc1: 128 \u2192 512 + LoRA",
+      "x": 438,
+      "y": 762,
+      "width": 215.09375,
+      "height": 22
+    },
+    {
+      "text": "fc2 / fc3 / norm frozen",
+      "x": 715,
+      "y": 767,
+      "width": 193.421875,
+      "height": 22
+    },
+    {
+      "text": "Blocks 1\u20137 \u00b7 all base weights frozen",
+      "x": 418,
+      "y": 877,
+      "width": 341.234375,
+      "height": 22
+    },
+    {
+      "text": "Masked pair pooling \u2192 affinity_out_mlp",
+      "x": 418,
+      "y": 982,
+      "width": 378.9375,
+      "height": 22
+    },
+    {
+      "text": "128 \u2192 128 \u2192 384 \u00b7 shared representation g",
+      "x": 418,
+      "y": 1010,
+      "width": 391.359375,
+      "height": 22
+    },
+    {
+      "text": "affinity_heads.",
+      "x": 1140,
+      "y": 172,
+      "width": 128.625,
+      "height": 23
+    },
+    {
+      "text": "to_affinity_pred_value",
+      "x": 1140,
+      "y": 198,
+      "width": 233.515625,
+      "height": 25
+    },
+    {
+      "text": ".0 \u00b7 Linear 384 \u2192 384",
+      "x": 1158,
+      "y": 252,
+      "width": 198.7578125,
+      "height": 22
+    },
+    {
+      "text": "Train weight [384,384] + bias [384]",
+      "x": 1158,
+      "y": 280,
+      "width": 306.6875,
+      "height": 22
+    },
+    {
+      "text": ".2 \u00b7 Linear 384 \u2192 384",
+      "x": 1158,
+      "y": 407,
+      "width": 198.7578125,
+      "height": 22
+    },
+    {
+      "text": "Train weight [384,384] + bias [384]",
+      "x": 1158,
+      "y": 435,
+      "width": 306.6875,
+      "height": 22
+    },
+    {
+      "text": ".4 \u00b7 Linear 384 \u2192 1",
+      "x": 1158,
+      "y": 562,
+      "width": 175.640625,
+      "height": 22
+    },
+    {
+      "text": "Train weight [1,384] + bias [1]",
+      "x": 1158,
+      "y": 590,
+      "width": 262.1875,
+      "height": 22
+    },
+    {
+      "text": "ReLU (.1)",
+      "x": 1373,
+      "y": 351,
+      "width": 82.359375,
+      "height": 21
+    },
+    {
+      "text": "ReLU (.3)",
+      "x": 1373,
+      "y": 506,
+      "width": 82.359375,
+      "height": 21
+    },
+    {
+      "text": "Both native member scalars",
+      "x": 1158,
+      "y": 699,
+      "width": 266.78125,
+      "height": 22
+    },
+    {
+      "text": "Arithmetic mean \u2192 6 \u2212 mean",
+      "x": 1158,
+      "y": 727,
+      "width": 259.5625,
+      "height": 22
+    },
+    {
+      "text": "Adapted cellular pEC50",
+      "x": 1158,
+      "y": 755,
+      "width": 210.140625,
+      "height": 22
+    },
+    {
+      "text": "Parallel binary branch \u00b7 frozen",
+      "x": 1158,
+      "y": 877,
+      "width": 286.75,
+      "height": 22
+    },
+    {
+      "text": "affinity_heads.to_affinity_pred_score",
+      "x": 1158,
+      "y": 905,
+      "width": 325.046875,
+      "height": 23
+    },
+    {
+      "text": "\u2192 to_affinity_logits_binary",
+      "x": 1158,
+      "y": 933,
+      "width": 234.21875,
+      "height": 23
+    },
+    {
+      "text": "Weights fixed; outputs can change",
+      "x": 1158,
+      "y": 961,
+      "width": 305.390625,
+      "height": 22
+    },
+    {
+      "text": "when upstream LoRA changes g",
+      "x": 1157,
+      "y": 989,
+      "width": 290.078125,
+      "height": 22
+    },
+    {
+      "text": "Orange: head weights + biases (both arms)     Blue: added A/B only (head + LoRA)     Gray: frozen base parameters",
+      "x": 40,
+      "y": 1086,
+      "width": 1130.1875,
+      "height": 26
+    }
+  ],
+  "outside": [],
+  "overlaps": [],
+  "box_overflow": []
+}

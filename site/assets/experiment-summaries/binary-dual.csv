@@ -1,0 +1,11 @@
+dataset,cohort,model,n,source_path,source_row,metric,value
+development,all,affinity_only_linear,3344.0,reports/transfer_ablation/binary_head_reanalysis/regression_metrics.csv,1,mae,0.8393458962515085
+development,all,continuous_plus_binary_polynomial2,3344.0,reports/transfer_ablation/binary_head_reanalysis/regression_metrics.csv,4,mae,0.7736164716108205
+development,all,fine_tuned_continuous_head,3344.0,reports/transfer_ablation/binary_head_reanalysis/regression_metrics.csv,11,mae,0.6329507983947217
+development,all,fine_tuned_dual_branch_activity_adapter,3344.0,reports/transfer_ablation/binary_head_reanalysis/regression_metrics.csv,12,mae,0.6289296897651208
+development,all,lightgbm,3344.0,reports/transfer_ablation/binary_head_reanalysis/regression_metrics.csv,13,mae,0.5159594459141478
+challenge,all,affinity_only_linear,513.0,reports/transfer_ablation/binary_head_reanalysis/regression_metrics.csv,85,mae,0.8675366861714102
+challenge,all,continuous_plus_binary_polynomial2,513.0,reports/transfer_ablation/binary_head_reanalysis/regression_metrics.csv,88,mae,0.8170972510552381
+challenge,all,fine_tuned_continuous_head,513.0,reports/transfer_ablation/binary_head_reanalysis/regression_metrics.csv,95,mae,0.6013735309941521
+challenge,all,fine_tuned_dual_branch_activity_adapter,513.0,reports/transfer_ablation/binary_head_reanalysis/regression_metrics.csv,96,mae,0.6467418263157895
+challenge,all,lightgbm,513.0,reports/transfer_ablation/binary_head_reanalysis/regression_metrics.csv,97,mae,0.5164250652797187

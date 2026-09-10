@@ -1,0 +1,129 @@
+{
+  "status": "PASS",
+  "formula": "abs(fitted-truth)-abs(native-truth)",
+  "x_axis": "difference distance from truth",
+  "positive_means": "worse",
+  "xlim": [
+    -2.611490892791748,
+    2.4399929374694826
+  ],
+  "ylim": [
+    -0.07,
+    1250.740399999999
+  ],
+  "complete_rows": 13376,
+  "stratified_panels": [
+    {
+      "budget": 100,
+      "method": "head_only",
+      "charged": false,
+      "low_potency": true,
+      "n": 626
+    },
+    {
+      "budget": 100,
+      "method": "head_only",
+      "charged": true,
+      "low_potency": true,
+      "n": 410
+    },
+    {
+      "budget": 100,
+      "method": "head_only",
+      "charged": false,
+      "low_potency": false,
+      "n": 2037
+    },
+    {
+      "budget": 100,
+      "method": "head_only",
+      "charged": true,
+      "low_potency": false,
+      "n": 271
+    },
+    {
+      "budget": 100,
+      "method": "head_plus_lora",
+      "charged": false,
+      "low_potency": true,
+      "n": 626
+    },
+    {
+      "budget": 100,
+      "method": "head_plus_lora",
+      "charged": true,
+      "low_potency": true,
+      "n": 410
+    },
+    {
+      "budget": 100,
+      "method": "head_plus_lora",
+      "charged": false,
+      "low_potency": false,
+      "n": 2037
+    },
+    {
+      "budget": 100,
+      "method": "head_plus_lora",
+      "charged": true,
+      "low_potency": false,
+      "n": 271
+    },
+    {
+      "budget": 500,
+      "method": "head_only",
+      "charged": false,
+      "low_potency": true,
+      "n": 626
+    },
+    {
+      "budget": 500,
+      "method": "head_only",
+      "charged": true,
+      "low_potency": true,
+      "n": 410
+    },
+    {
+      "budget": 500,
+      "method": "head_only",
+      "charged": false,
+      "low_potency": false,
+      "n": 2037
+    },
+    {
+      "budget": 500,
+      "method": "head_only",
+      "charged": true,
+      "low_potency": false,
+      "n": 271
+    },
+    {
+      "budget": 500,
+      "method": "head_plus_lora",
+      "charged": false,
+      "low_potency": true,
+      "n": 626
+    },
+    {
+      "budget": 500,
+      "method": "head_plus_lora",
+      "charged": true,
+      "low_potency": true,
+      "n": 410
+    },
+    {
+      "budget": 500,
+      "method": "head_plus_lora",
+      "charged": false,
+      "low_potency": false,
+      "n": 2037
+    },
+    {
+      "budget": 500,
+      "method": "head_plus_lora",
+      "charged": true,
+      "low_potency": false,
+      "n": 271
+    }
+  ]
+}

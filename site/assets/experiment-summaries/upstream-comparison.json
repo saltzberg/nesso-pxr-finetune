@@ -1,0 +1,24 @@
+{
+  "slug": "upstream-comparison",
+  "message": "LoRA adds a small gain; descriptors lead at 500 labels",
+  "caption": "Pooled held-out scores, 3,344 compounds once per method and budget. N100 = 80 FIT + 20 CAL; N500 = 400 FIT + 100 CAL per fold, one draw and seed; five reused strict-chemical development folds, not independent replicates or a fresh holdout. Both neural arms used 40 full-FIT updates with matched optimizer; controls had different tuning procedures. Errors use weights 1/max(reported assay SE, 0.1); lower weighted MAE is better.",
+  "design": "Aligned method dot plots on a shared error scale compare the matched neural gain with practical controls; no bars on a truncated baseline.",
+  "sources": [
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/pooled_metrics.csv",
+      "sha256": "514b0eb1aa4c7d87ec32d6d960b8eafa0f034cb6eb1ec93619551a3f94892b03"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_affinity_comparison/RESULTS.md",
+      "sha256": "b27df4dd305ebdac8d0fee7442e78c7025fdc82e620f169db6217b89d27489cd"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/scripts/experiment_summary_figures/later.py",
+      "sha256": "643da076fa2c7f8cf378e6b7877d0a4a7bb3efe9ad8387016b266cf23bd39dab"
+    }
+  ],
+  "plotted_rows": 8,
+  "svg": "assets/experiment-summaries/upstream-comparison.svg",
+  "png": "assets/experiment-summaries/upstream-comparison.png",
+  "data": "assets/experiment-summaries/upstream-comparison.csv"
+}

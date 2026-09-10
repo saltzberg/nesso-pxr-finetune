@@ -1,0 +1,24 @@
+{
+  "slug": "pair-pooling",
+  "message": "Ligand\u2013ligand final pooling improves development MAE, but its validation advantage is unresolved.",
+  "caption": "Nested mean-384D ridge, 3,344 development and 790 previously opened validation compounds. Left: unweighted compound-level pEC50 MAE for three final pools (lower is better). Right: ligand\u2013ligand minus all-pairs MAE; negative favors ligand\u2013ligand. Saved paired 95% chemical-family bootstrap intervals use 2,000 replicates (2,931 development and 735 validation clusters). Upstream features were frozen and already protein-conditioned; this is not a protein-removal ablation.",
+  "design": "Absolute paired marks anchor effect size; saved difference intervals directly expose the unresolved validation effect. Receptor\u2013ligand-only is a diagnostic tick, not the principal contrast; no value annotations.",
+  "sources": [
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/pair_pool_full/ridge_probe_metrics.csv",
+      "sha256": "01cc828366ebc640abcdf72e949d8d0f63ce22fbde01f035aca3498224c6d38f"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/pair_pool_full/paired_family_bootstrap_differences.csv",
+      "sha256": "0f2f5642ddbcf576821bcbcf89a003e39f3f552cb2cfcd347654cc1f0a9066aa"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/pair_pool_full/REPORT.md",
+      "sha256": "6b2497d90a457ae8143fe4d7b5698108e7a173b7143c72e356f3f7f04516930d"
+    }
+  ],
+  "plotted_rows": 8,
+  "svg": "assets/experiment-summaries/pair-pooling.svg",
+  "png": "assets/experiment-summaries/pair-pooling.png",
+  "data": "assets/experiment-summaries/pair-pooling.csv"
+}

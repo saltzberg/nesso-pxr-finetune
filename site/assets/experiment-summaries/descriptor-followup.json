@@ -1,0 +1,28 @@
+{
+  "slug": "descriptor-followup",
+  "message": "Descriptors overtake the head from N250 overall, while the head retains lower N500 error at pEC50 \u22654.",
+  "caption": "Retrospective development cohort of 3,344 compounds; each mean-task point equally averages five outer folds \u00d7 ten paired draws (50 tasks), not a pooled weighted score. Neural predictions average three seeds before scoring; repeated draws are dependent. No inferential bands are drawn. Weighted MAE uses 1/max(assay SE, 0.10); lower is better. Budgets include 80% FIT/inner selection and 20% CAL labels. Strict chemical separation (retained FIT/CAL-to-test Morgan similarity <0.35). Left: mean-task scores. Right: N500 pooled within-stratum weighted errors across ten dependent draws, not means of task errors; 1,036 unique compounds / 10,360 predictions below pEC50 4 and 2,308 / 23,080 at or above 4 (16.35% and 83.65% of evaluation weight). Descriptor features are canonical-SMILES RDKit2D, Mordred2D and Morgan with training-only reduction; this is not the historical richer descriptor pipeline. Potency strata are retrospective, not a routing rule.",
+  "design": "Learning-curve crossing communicates the budget-dependent ordering; a separate potency panel shows the reversal that the overall score conceals. Explicit axis names keep mean-task and pooled metrics distinct.",
+  "sources": [
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_followup_20260906/final_analysis/task_means.csv",
+      "sha256": "ac9cec051c656e05504b8669318fc942a8685ed20b746cbddc316e13855dc35b"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_followup_20260906/final_analysis/strata.csv",
+      "sha256": "2ed493beed89e5a02e30bd0a7e84b2bc9283e5c4ab7d6a3c86a9a5fda5b5e9df"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_low_data_followup/BASELINES.md",
+      "sha256": "8932c1953a09b309b2bac0123bd38e41cd0e21f60f4faefef083459ede9019ac"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_low_data_followup/RESULTS.md",
+      "sha256": "d2cfc6ff45c2283e37166e8b171656d674c595f37afae40626422b0a4830a413"
+    }
+  ],
+  "plotted_rows": 14,
+  "svg": "assets/experiment-summaries/descriptor-followup.svg",
+  "png": "assets/experiment-summaries/descriptor-followup.png",
+  "data": "assets/experiment-summaries/descriptor-followup.csv"
+}

@@ -1,0 +1,129 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta name="readme-sha256" content="63e2e78841dbbe84fe96a155d65ca29110ba86a7277ddb0d1f4b78b72a7e6250"><title>PXR molecular weight, efficacy and curve uncertainty</title><style>body{font:16px/1.55 system-ui,sans-serif;color:#20303a;max-width:1050px;margin:30px auto;padding:0 20px}h1{font-size:28px;line-height:1.2}h2{font-size:22px}img{max-width:100%;height:auto}table{border-collapse:collapse;font-size:14px;width:100%}th,td{padding:7px 10px;text-align:left;border-bottom:1px solid #ddd}th{background:#f0f5f6}pre{overflow:auto;background:#f3f5f6;padding:12px;font-size:12px}a{color:#176b83}details{border-top:1px solid #ccc;padding:12px 0}summary{cursor:pointer;font-weight:600;font-size:20px}code{overflow-wrap:anywhere}</style><main><h1>PXR native-score, molecular-weight and efficacy diagnostic</h1>
+<p>This retrospective study tests whether small molecules receiving favorable native Nesso scores have lower activation efficacy or less precisely resolved activation curves. <strong>The uncertainty explanation is supported descriptively; lower positive-control-normalized Emax is not.</strong> No predictor was fitted or rerun.</p>
+<p>Created and last edited: 2026-09-08 (UTC). Exploratory development-cohort analysis, not new validation.</p><section><h2>Results</h2><table>
+<thead>
+<tr>
+<th>Quantity (median unless indicated)</th>
+<th style="text-align: right;">&lt;215 Da</th>
+<th style="text-align: right;">≥215 Da</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compounds</td>
+<td style="text-align: right;">237</td>
+<td style="text-align: right;">3,107</td>
+</tr>
+<tr>
+<td>Saved chemical groups represented</td>
+<td style="text-align: right;">114</td>
+<td style="text-align: right;">1,907</td>
+</tr>
+<tr>
+<td>Emax / positive control, dimensionless</td>
+<td style="text-align: right;">1.240</td>
+<td style="text-align: right;">0.977</td>
+</tr>
+<tr>
+<td>Emax, log2 fold change versus baseline</td>
+<td style="text-align: right;">2.170</td>
+<td style="text-align: right;">2.530</td>
+</tr>
+<tr>
+<td>Reported pEC50 standard error</td>
+<td style="text-align: right;">0.558</td>
+<td style="text-align: right;">0.141</td>
+</tr>
+<tr>
+<td>Reported normalized Emax standard error</td>
+<td style="text-align: right;">0.457</td>
+<td style="text-align: right;">0.173</td>
+</tr>
+<tr>
+<td>Reported raw Emax standard error</td>
+<td style="text-align: right;">0.375</td>
+<td style="text-align: right;">0.187</td>
+</tr>
+<tr>
+<td>Assay pEC50</td>
+<td style="text-align: right;">2.45</td>
+<td style="text-align: right;">4.70</td>
+</tr>
+<tr>
+<td>Native IC50-equivalent score</td>
+<td style="text-align: right;">4.533</td>
+<td style="text-align: right;">5.014</td>
+</tr>
+<tr>
+<td>Historical normalized Emax ≥0.6 qualification</td>
+<td style="text-align: right;">237/237</td>
+<td style="text-align: right;">2,835/3,107</td>
+</tr>
+</tbody>
+</table>
+<p>The small-minus-large median difference is <strong>+0.263</strong> for normalized Emax (95% group-bootstrap interval <strong>+0.249 to +0.301</strong>) and <strong>+0.417</strong> for pEC50 SE (<strong>+0.398 to +0.432</strong>). These are marginal, exploratory intervals from 1,000 draws of the saved chemical groups, conditional on this cohort and the already completed systems. Groups can span both MW strata; group counts are not additive. No confirmatory p-values are claimed.</p>
+<p>The efficacy conclusion depends on normalization: small molecules have <em>higher</em> normalized Emax but <em>lower</em> baseline-relative log2 Emax. Neither scale alone justifies calling these compounds nonactivators. The positive-control denominator and the actual observed curve plateau cannot be reconstructed from these summary fields. All small molecules pass the existing normalized-Emax qualification. The data therefore weaken the proposed <strong>low normalized efficacy</strong> explanation rather than confirming binding without activation.</p>
+<p><img alt="All native scores versus Emax and assay uncertainty, with MW facets" src="artifacts/native_score_outcomes.png" /></p></section><section><h2>Comparing similar native-score ranges</h2><p>The intersection of the two observed score ranges is <strong>4.126392–5.663596</strong>: <strong>217/237 small</strong> and <strong>3,001/3,107 larger</strong> molecules remain. Within it, the normalized-Emax median difference is <strong>+0.262</strong> (interval <strong>+0.249 to +0.301</strong>) and the SE difference is <strong>+0.420</strong> (<strong>+0.398 to +0.434</strong>). Restricting to this range does not match score distributions; it only removes unsupported tails.</p>
+<p>Fixed 0.5-unit native-score bins give more local comparisons (all bins, including empty-stratum tails, are in <a href="artifacts/score_bins.csv">score_bins.csv</a>):</p>
+<table>
+<thead>
+<tr>
+<th>Native score range</th>
+<th style="text-align: right;">Small / large n</th>
+<th style="text-align: right;">Normalized Emax medians, small / large</th>
+<th style="text-align: right;">SE medians, small / large</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[4.0, 4.5)</td>
+<td style="text-align: right;">104 / 75</td>
+<td style="text-align: right;">1.240 / 1.030</td>
+<td style="text-align: right;">0.564 / 0.223</td>
+</tr>
+<tr>
+<td>[4.5, 5.0)</td>
+<td style="text-align: right;">111 / 1,418</td>
+<td style="text-align: right;">1.250 / 0.992</td>
+<td style="text-align: right;">0.564 / 0.166</td>
+</tr>
+<tr>
+<td>[5.0, 5.5)</td>
+<td style="text-align: right;">17 / 1,365</td>
+<td style="text-align: right;">1.230 / 0.947</td>
+<td style="text-align: right;">0.412 / 0.119</td>
+</tr>
+<tr>
+<td>[5.5, 6.0)</td>
+<td style="text-align: right;">1 / 216</td>
+<td style="text-align: right;">1.390 / 0.972</td>
+<td style="text-align: right;">0.623 / 0.109</td>
+</tr>
+</tbody>
+</table>
+<p>The last bin has only one small molecule and is not reliable evidence about favorable-score tails. No favorable-score cutoff or potency cutoff was selected.</p>
+<p>Continuous MW correlates with normalized Emax at Spearman <strong>−0.134</strong>, and with pEC50 SE at <strong>−0.342</strong>. After descriptive rank adjustment for native score these become <strong>−0.093</strong> and <strong>−0.247</strong>. After additionally adjusting for pEC50 they shrink to <strong>−0.017</strong> and <strong>−0.090</strong>. Potency and fit uncertainty are strongly entangled (pEC50–SE rho <strong>−0.858</strong>); this adjustment is not causal, and conditioning on a jointly fitted endpoint can obscure as well as clarify relationships. Small molecules also have less favorable native scores on average, despite their strong overprediction relative to their much lower cellular pEC50.</p>
+<p><img alt="MW, normalized efficacy and curve uncertainty" src="artifacts/mw_emax_uncertainty.png" /></p></section><details><summary>What the saved corrections show</summary><p>For the 500-label saved systems, downward correction means <strong>native minus adapted prediction</strong>, so positive values lower the predicted potency. It correlates with SE at <strong>0.279</strong> for head-only and <strong>0.460</strong> for head-plus-LoRA. After rank adjustment for MW, native score and pEC50, these become <strong>0.013</strong> and approximately <strong>0.000</strong>. At 100 labels, the corresponding unadjusted correlations are <strong>0.266 / 0.408</strong>, and adjusted correlations <strong>−0.046 / −0.063</strong>. Normalized-Emax correlations are also small after adjustment. The correction is associated with the same size/potency/uncertainty structure; this is not evidence that an adapter independently learned efficacy or curve quality. No efficacy-selected performance claim or model refitting was performed.</p></details><details><summary>Assay meaning and selection</summary><p>The provider describes an <strong>8-point cellular chimeric PXR-LBD/luciferase reporter assay</strong>, not a direct binding measurement. Curves were empirically classified for activity and rollover, then fit using a product of two three-parameter models (EC50, Emax and Hill slope for activation and rollover), with classification-constrained EC50 and negative-control mean as baseline. The primary screen advanced hits with log2 fold change &gt;1 and FDR &lt;5% at the lowest tested dose, supplemented by analogs and an additional diversity set. That single-point hit rule is <strong>not an Emax cutoff</strong>.</p>
+<p>pEC50 is −log10 EC50 in molar units; Emax is response magnitude, not potency. The source provides both baseline-relative <strong>log2 fold change</strong> and <strong>dimensionless positive-control-normalized Emax</strong>, each with SE and reported confidence bounds. The retrieved provider documentation does not specify the positive-control compound, denominator calculation or batch-level normalization sufficiently to independently reconstruct it. Ratios above one are retained, not clipped or relabeled percentages. The <code>OCNT Batch</code> field is unique per compound here (3,344 values), and cannot serve as a shared assay-plate adjustment. No plate effect was inferred from its name.</p>
+<p>Emax SE and pEC50 SE are strongly associated (rho <strong>0.801</strong> for normalized Emax SE and <strong>0.880</strong> for raw Emax SE). Joint parameter fitting, dose-range coverage, constraints, rollover and biological response can all contribute. Larger SE supports less precise fitted potency, but cannot distinguish flat nonactivation from extrapolation or other curve problems. A true nonactivator has no defined activation EC50: a low numeric pEC50 in this table does not prove nonactivation or censoring.</p>
+<p>The exact cohort is the saved <strong>3,344 development identities</strong>, not an Emax-refiltered sample: <strong>3,072 historical Emax-qualified plus 272 lower-Emax records</strong>. Qualification is reconstructed exactly as normalized Emax ≥0.6 versus the manifest's historical role. The broader local raw table has 4,139 rows; curation retains 4,134 after five named exclusions (<a href="artifacts/audit.json">audit</a>); the historical role allocation reserves 790 records outside development. Those records and opened challenge/external sets were not used as fresh validation. Current selection therefore does not exclude the 272 lower-Emax development compounds, but it remains conditional on the upstream selected, QC-passed DRC population with fitted potency labels. It is not representative of all screened compounds or all binders.</p>
+<p><strong>Material missing evidence:</strong> no dose-by-dose response traces, per-curve replicate counts, curve classification, rollover/censor flags, posterior parameter covariance, control measurements, or row-level interference/cytotoxicity flags are present in the primary summary table used here. The provider FAQ notes revised confidence intervals for multiply replicated compounds, without giving those replicate counts here. No raw-curve refit or mechanistic inference is possible from this packet.</p></details><details><summary>Identity and scalar provenance</summary><p>Saved development IDs → prepared label/feature-row map → modeling manifest → raw molecule-name and OCNT identity → source efficacy/SE fields. The merged table preserves identities, SMILES, roles, raw confidence bounds, chemistry, scalar scores, chemical groups and each saved head/LoRA prediction once per compound.</p>
+<p>The native scalar is exactly the <code>fresh_features/native_points.npy</code> used by the MW controls: <strong>6 minus the FP32 arithmetic mean of the two continuous member outputs</strong>, with higher scores more favorable on an IC50-equivalent scale. The cached <code>scalar_features</code> member values reconstruct it exactly, and saved native held-out predictions match exactly. This is numerical scale alignment, not biological equivalence to cellular EC50. MW is the historical identity-SMILES molecular weight; independent RDKit recomputation agreed exactly. The chemistry report's native scalar differs by at most 0.000000954; it was not substituted for the authoritative array.</p>
+<p>Native binary probability is retained separately as the arithmetic mean of sigmoid-transformed <strong>same-packet</strong> cached member logits, along with both logits. An older binary-report packet was also inspected and preserved under explicitly historical columns: its continuous scalar differs by &gt;0.00001 on 3,342 compounds, maximum 0.703409. It is not silently equated to the current native packet. Neither binary probability nor favorable continuous affinity proves binding.</p>
+<p>All primary numerical fields have <strong>3,344/3,344 coverage and no missing values</strong>. There are 1,975 saved chemical groups, 1,458 singleton groups and a largest group of 36 compounds. Bootstrap resampling preserves group membership and multiplicity, not independence of molecules within groups.</p></details><details><summary>Reproduction and artifacts</summary><p>From <code>/home/dan/projects/nesso-finetune</code>:</p>
+<pre><code class="language-bash">/home/dan/swr/miniconda3/envs/cheminf/bin/python PXR/experiments/20260908_PXR-MW-efficacy-diagnostic/run.py
+/home/dan/swr/miniconda3/envs/cheminf/bin/python PXR/experiments/20260908_PXR-MW-efficacy-diagnostic/verify.py
+/home/dan/swr/miniconda3/envs/cheminf/bin/python PXR/experiments/20260908_PXR-MW-efficacy-diagnostic/render.py
+</code></pre>
+<p>The verifier independently recomputes median contrasts, every pairwise rank correlation and partial ranks using QR projection; checks source hashes and identity/qualification assertions; and reruns analysis into a temporary directory, requiring <strong>byte-identical tables, JSON and both PNGs</strong>. Four tests passed. Both real PNGs were visually inspected: full tails retained, shared facet scales readable, no clipping observed. HTML is generated from this canonical editable README; no separate narrative is maintained. CPU numerical pools are capped at one thread; no GPU, cloud, inference or historical model refit was used.</p>
+<ul>
+<li><a href="protocol.json">Frozen exploratory protocol</a></li>
+<li><a href="artifacts/merged_compounds.csv">Exact merged compound table</a></li>
+<li><a href="artifacts/primary_contrasts.csv">Primary group-bootstrap contrasts</a></li>
+<li><a href="artifacts/stratum_summaries.csv">Stratum distributions</a></li>
+<li><a href="artifacts/associations.csv">Full continuous associations</a></li>
+<li><a href="artifacts/adjusted_and_correction_associations.csv">Adjusted and saved-correction associations</a></li>
+<li><a href="artifacts/source_hashes.json">Input hashes</a>, <a href="artifacts/audit.json">coverage/identity audit</a>, <a href="verification.json">verification receipt</a></li>
+<li><a href="documentation/sources.json">Provider documentation URLs and snapshot hashes</a></li>
+</ul>
+<p><strong>Completion scope:</strong> a completed, source-bound retrospective descriptive study. It supports an association between low MW and higher fitted-curve uncertainty, exposes normalization-dependent efficacy behavior, and does not establish binding without activation or a causal explanation for adaptation gains.</p></details></main></html>

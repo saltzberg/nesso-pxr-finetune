@@ -1,0 +1,178 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="source-sha256" content="bae3f85713c18cf603b692717f68745cb8025ca1068ed29c5be2f8886054e0b2"><title>Nesso-1 PXR case study</title><style>body{font:16px/1.65 system-ui,sans-serif;color:#26323b;max-width:940px;margin:auto;padding:28px}h1{font-size:34px;line-height:1.2}h2{margin-top:2.2em;line-height:1.3}h3{margin-top:1.6em}a{color:#2166ac}table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:14px}th,td{padding:9px;border-bottom:1px solid #dbe1e5;text-align:left}th:not(:first-child),td:not(:first-child){text-align:right}pre{background:#f5f6f7;padding:16px;overflow:auto}code{font-size:.9em}.scroll{overflow:auto}nav{font-size:14px;border-bottom:1px solid #ddd;padding-bottom:12px}@media(max-width:600px){body{padding:18px;font-size:15px}h1{font-size:28px}table{min-width:570px}}</style></head><body><nav><a href="../index.html">Architecture</a> · <a href="../results/index.html">Adaptation results</a> · <a href="../results/mw-controls/index.html">Molecular-weight controls</a></nav><main><h1>Fine-tuning Nesso-1 for PXR activation</h1>
+<p>Created: 2026-09-08. Last edited: 2026-09-08.</p>
+<p>The <a href="http://192.168.6.154:8890/">main experimental page</a> now follows the complete study with individual sub-experiments, including the hybrid, CYP extension and efficacy diagnostic. This page retains the detailed PXR adaptation/MW comparison.</p>
+<p>This case study asks what Nesso-1 learns when adapted from binding-affinity prediction to cellular PXR activation, and whether that adaptation is more useful than simpler molecular models.</p>
+<p><strong>The central diagnostic finding is the correction of low-molecular-weight compounds that native Nesso overpredicts. Fine-tuning makes large downward corrections for these molecules. Adding molecular weight to a simple fitted mapping of the native Nesso score recapitulates this behavior; including a score–MW interaction produces an even stronger small-molecule correction.</strong> This is a useful explanation of an important adaptation effect, not evidence that neural fine-tuning uniquely learned the biology separating binding from activation.</p>
+<p><a href="../results/mw-controls/index.html">Explore the molecular-weight control HTML</a> · <a href="../index.html">Inspect Nesso's architecture and trainable layers</a> · <a href="../results/index.html">Full adaptation results and compound plots</a></p>
+<h2>The low-MW finding</h2>
+<p>The native model strongly overpredicts activation potency for the small-molecule subset. Both head-only adaptation and upstream LoRA correct much of this error. Molecular weight is sufficient to reproduce this conspicuous pattern when combined with the native score in a small fitted model.</p>
+<p>The MW analysis includes all 3,344 development compounds: 237 below 215 Da and 3,107 above 215 Da, with none exactly 215 Da. The threshold describes the displayed subgroup; the simple models fit all compounds and use continuous MW, not a threshold rule. It was a retrospective diagnostic, not a prespecified model-selection subgroup.</p>
+<h3>Error among compounds below 215 Da</h3>
+<p>Weighted mean absolute error in pEC50 units; lower is better. Each column compares predictions on the same 237 compounds.</p>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Prediction system</th>
+<th style="text-align:right">100 labels</th>
+<th style="text-align:right">500 labels</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Native Nesso, unchanged</td>
+<td style="text-align:right">1.834</td>
+<td style="text-align:right">1.834</td>
+</tr>
+<tr>
+<td>Native score, fitted linear mapping</td>
+<td style="text-align:right">1.520</td>
+<td style="text-align:right">1.570</td>
+</tr>
+<tr>
+<td>Native score + MW</td>
+<td style="text-align:right">0.951</td>
+<td style="text-align:right">1.163</td>
+</tr>
+<tr>
+<td>Native score + MW + interaction</td>
+<td style="text-align:right">0.773</td>
+<td style="text-align:right">0.863</td>
+</tr>
+<tr>
+<td>Fine-tuned continuous heads</td>
+<td style="text-align:right">1.165</td>
+<td style="text-align:right">1.320</td>
+</tr>
+<tr>
+<td>Fine-tuned heads + upstream LoRA</td>
+<td style="text-align:right">1.038</td>
+<td style="text-align:right">1.179</td>
+</tr>
+</tbody>
+</table></div>
+<p>The additive MW model recapitulates the small-molecule correction. The interaction model exceeds the LoRA correction in every fold at both label budgets. It has only four fitted coefficients:</p>
+<pre><code>predicted pEC50 = intercept + a × native score + b × MW
+                 + c × native score × MW
+</code></pre>
+<p>The actual fitting uses training-only centered/scaled inputs. Native score means the unchanged continuous Nesso output converted to the pIC50-equivalent numerical orientation. All coefficients are fitted to cellular PXR pEC50 with inverse-assay-SE weighted least squares. This is a fitted activation mapping, not an unchanged native binding prediction. The interaction allows the association between the native score and activation to vary with molecular weight.</p>
+<h3>What this does—and does not—explain</h3>
+<ul>
+<li><strong>A core visible improvement is calibration of small molecules, not strong ranking within that subset.</strong> The interaction model's small-molecule Spearman correlations are only 0.112 and 0.083 at the two budgets.</li>
+<li><strong>MW alone is not the whole explanation.</strong> Adding native score to MW improves full-cohort weighted error in every fold at both budgets. The sources contain complementary predictive information.</li>
+<li><strong>This does not account for every neural improvement.</strong> At 500 labels, LoRA has lower weighted error than the interaction model among larger compounds: 0.544 versus 0.575. Descriptor LightGBM remains stronger than either on that subset.</li>
+<li><strong>Small-molecule correction is not synonymous with most of the aggregate gain.</strong> The separate potency decomposition attributes most of LoRA's net improvement over head-only adaptation to compounds below pEC50 4. Low MW and low potency overlap strongly here; they are not interchangeable groups, and the data do not establish a causal MW mechanism.</li>
+</ul>
+<p><a href="../results/mw-controls/README.md">Complete MW methods, subgroup metrics and replay checks</a></p>
+<h2>What was fine-tuned?</h2>
+<p>Nesso-1 predicts distograms and binding-related outputs; it does not generate cofolded coordinates. Its protein-conditioned representations are useful inputs for an assay-specific predictor, but a binding score is not itself a cellular activation prediction.</p>
+<pre><code>Protein sequence + prepared ligand
+  → released Nesso input processing and main trunk [frozen]
+  → two affinity modules
+  → two 384-dimensional representations
+  → continuous prediction heads
+  → fitted cellular PXR pEC50 prediction
+</code></pre>
+<p>The study distinguishes three adaptation boundaries:</p>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>What uses PXR labels?</th>
+<th>What stays frozen?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frozen-vector probe</td>
+<td>A new ridge or small neural readout</td>
+<td>All native Nesso weights and cached representations</td>
+</tr>
+<tr>
+<td>Head-only fine-tuning</td>
+<td>Both released continuous 384 → 384 → 384 → 1 MLPs</td>
+<td>Everything upstream of the cached vectors</td>
+</tr>
+<tr>
+<td>Head + upstream LoRA</td>
+<td>Both continuous heads plus rank-4 adapters in each affinity member's ESM-feature projections and first Pairformer transition</td>
+<td>External ESM encoder, main trunk, original affinity base weights and remaining parameters</td>
+</tr>
+</tbody>
+</table></div>
+<p>The upstream adapters target <code>esm_proj.1</code>, <code>esm_proj.3</code>, and <code>pairformer_stack.layers.0.transition_z.fc1</code> in each affinity member. Updating an ESM-feature projection is not updating the ESM encoder. This is genuine adaptation before the pooled affinity vector, but not full-Nesso fine-tuning.</p>
+<p>The latest comparison uses the same pretrained heads, acquired compounds, initialization and fixed optimizer schedule for head-only and LoRA. Both run for 40 full-fitting-set optimizer updates, without tuning or early stopping. It isolates the effect of adding these adapters under one recipe; it does not establish the best attainable performance of either model family.</p>
+<p><a href="../index.html">Interactive architecture and source inventory</a></p>
+<h2>Did it improve prediction?</h2>
+<p>Yes, compared with unchanged Nesso. LoRA also improves its matched head-only recipe. At 500 labels, however, both frozen-vector ridge and ligand-descriptor LightGBM have lower weighted error than the neural recipes.</p>
+<h3>Full-cohort weighted error</h3>
+<p>Each entry pools one held-out prediction per compound across the five reused development folds, on the same 3,344 compounds.</p>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Prediction system</th>
+<th style="text-align:right">100 labels</th>
+<th style="text-align:right">500 labels</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Native Nesso, unchanged</td>
+<td style="text-align:right">0.6272</td>
+<td style="text-align:right">0.6272</td>
+</tr>
+<tr>
+<td>Fine-tuned continuous heads</td>
+<td style="text-align:right">0.5894</td>
+<td style="text-align:right">0.5773</td>
+</tr>
+<tr>
+<td>Fine-tuned heads + upstream LoRA</td>
+<td style="text-align:right">0.5831</td>
+<td style="text-align:right">0.5610</td>
+</tr>
+<tr>
+<td>Ridge on frozen Nesso vectors</td>
+<td style="text-align:right">0.6186</td>
+<td style="text-align:right">0.5345</td>
+</tr>
+<tr>
+<td>Ligand-descriptor LightGBM</td>
+<td style="text-align:right">0.6103</td>
+<td style="text-align:right">0.5006</td>
+</tr>
+<tr>
+<td>Native score + MW + interaction</td>
+<td style="text-align:right">0.5868</td>
+<td style="text-align:right">0.5828</td>
+</tr>
+</tbody>
+</table></div>
+<p>At 100 labels, LoRA leads this panel on weighted MAE, but descriptor LightGBM has lower unweighted MAE and slightly better ranking. At 500 labels, descriptor LightGBM leads on all three measures. There is no all-budget, all-metric Nesso win.</p>
+<p>LoRA's gain over head-only adaptation is modest and uneven. Error improves mainly below pEC50 4; among compounds at or above 4, weighted error slightly worsens. Both neural methods still underpredict every compound in the 56-compound pEC50-at-least-6 subset at 500 labels. More spread in the predictions is not a solution to the active tail.</p>
+<p><a href="../results/RESULTS.md">Complete results, paired uncertainty and potency decomposition</a> · <a href="../results/heldout_predictions.csv">Compound-level predictions</a></p>
+<h2>Subsequent experiments change the overall conclusion</h2>
+<p>The adaptation/MW panel above remains unchanged. A later, locked-procedure CPU comparison combined descriptor LightGBM with a ridge readout of frozen Nesso representations. Across all five reused development folds, weighted MAE improved from 0.5006 to 0.4868 and pooled Spearman from 0.6569 to 0.6864. The benefit occurred mainly among compounds with pEC50 ≥4; lower-potency error worsened. This is complementary information from frozen representations, not evidence of extra LoRA benefit. It remains retrospective and conditional on one acquired-subset draw.</p>
+<p>A four-CYP direct-inhibition extension found a small additional MW benefit for CYP2C9 and CYP3A4, but no consistent benefit from the interaction and no uniform small-molecule bias direction. Those were scalar mappings with unweighted MAE, not neural fine-tuning or a replication of PXR's assay-SE-weighted protocol.</p>
+<p>Finally, the proposed explanation that small PXR molecules bind without activating was tested against Emax and assay uncertainty. The small molecules have higher pEC50 SE (median 0.558 versus 0.141), but higher normalized Emax (1.240 versus 0.977), while baseline-relative response is lower. All 237 small compounds pass the historical normalized-Emax qualification. The data support an uncertainty association; they do not establish binding without activation. Raw curves and reconstructable positive-control normalization are missing.</p>
+<p>These studies and their source evidence are linked from the main experimental page. A favorable native score is not proof of binding, and poorly determined EC50 is not equivalent to absent efficacy.</p>
+<h2>How strong is the evidence?</h2>
+<p>The latest matched comparison evaluates 100- and 500-label budgets. These include interval calibration: 80 fitting + 20 calibration compounds, or 400 + 100. The fitting/calibration pool excludes compounds with Morgan Tanimoto similarity at least 0.35 to the outer test set. The main score is absolute pEC50 error weighted by <code>1 / max(reported assay SE, 0.1)</code>; weights are identical across models on the same evaluated compounds.</p>
+<p>These are retrospective results on reused development folds, not a new untouched test. The upstream comparison uses one acquired-subset draw and one initialization. Reported group-bootstrap intervals condition on the saved fitted systems and do not measure retraining variability. The MW controls were proposed after inspecting the neural results, although their coefficients were fitted without outer-test labels.</p>
+<p>The broader project also tested native continuous and binary readouts, low-data learning curves, stable frozen-vector readouts, stronger ligand-only baselines, expanded head learning-rate/loss settings, and final pair pooling. Those studies have different budgets and evaluation protocols; their metrics should not be merged into this table. The root project README links the historical records.</p>
+<h2>What can a reader take away?</h2>
+<ol>
+<li><strong>Separate binding outputs from the target assay.</strong> Numerical conversion does not turn binding affinity into cellular activation potency.</li>
+<li><strong>Test simple controls before assigning a biological explanation to fine-tuning.</strong> A scalar molecular property recapitulated the most conspicuous small-molecule correction.</li>
+<li><strong>Test frozen representations before increasing trainable capacity.</strong> A simple readout can outperform a more expensive adaptation recipe.</li>
+<li><strong>Name the trained layers.</strong> Cached heads, affinity-module LoRA and full-trunk training answer different questions.</li>
+<li><strong>Distinguish the standalone and hybrid results.</strong> Descriptor LightGBM leads the original N500 standalone panel; the later frozen-feature hybrid improves it consistently within the reused development evaluation. Neither establishes prospective superiority.</li>
+<li><strong>Test the explanation as well as the prediction.</strong> The efficacy diagnostic supports an uncertainty association but does not support a simple low-normalized-efficacy explanation for small molecules.</li>
+</ol>
+<p>This is a case study of Nesso adaptation for one PXR cellular pEC50 assay. It does not establish a clinical activation-liability model, general fine-tuning advice across targets, or a causal protein-specific mechanism.</p>
+<h2>Reproduce the summary</h2>
+<p>From the project root, using Python with <code>markdown-it-py</code> installed:</p>
+<pre><code>python scripts/render_case_study.py
+</code></pre>
+<p>This regenerates this HTML from the editable README and independently checks its displayed tables against saved predictions. It performs no model training or inference. The existing MW HTML retains its original figures, model states and verification downloads. Full training remains in the linked experiment records; the compact summary does not claim a clean-environment end-to-end training reproduction.</p>
+<p><a href="README.md">Editable case study</a> · <a href="verification.json">Summary verification</a></p>
+</main></body></html>

@@ -1,0 +1,3 @@
+probe,selected_learning_rate,fixed_all_development_epochs,selection_note
+random_one_hidden_twin_mlp,0.0003,18,post-hoc five-fold screen; seeds 43/44 repeat selected LR
+random_two_hidden_twin_mlp,0.001,15,post-hoc five-fold screen; seeds 43/44 repeat selected LR

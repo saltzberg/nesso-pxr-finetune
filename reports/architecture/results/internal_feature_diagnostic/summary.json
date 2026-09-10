@@ -1,0 +1,105 @@
+{
+  "analysis": "retrospective descriptive associations, not predictive evaluation",
+  "budgets": [
+    100,
+    500
+  ],
+  "charge_different_from_identity": 673,
+  "diagnostics_prediction_parity": {
+    "head_only": {
+      "different_exact": 7,
+      "max_absolute_difference": 8.881784197001252e-16
+    },
+    "head_plus_lora": {
+      "different_exact": 6,
+      "max_absolute_difference": 8.881784197001252e-16
+    },
+    "native": {
+      "different_exact": 0,
+      "max_absolute_difference": 0.0
+    },
+    "y_true": {
+      "different_exact": 0,
+      "max_absolute_difference": 0.0
+    }
+  },
+  "error_delta": "absolute adapted error minus absolute reference error; negative improves. LoRA increment compares head_plus_lora with head_only, not matched representation deltas.",
+  "limitations": [
+    "Global PCA is exploratory/transductive descriptive geometry; no held-out predictive gain or causal claim.",
+    "No adapted feature tensors are used. Native-feature association with LoRA output changes is not evidence of LoRA-induced internal-feature change.",
+    "Prepared charge is the selected solution-state formal charge, not identity-SMILES charge; MW is the existing identity-SMILES descriptor.",
+    "No uncertainty intervals or multiplicity-corrected significance tests; repeated budgets analyzed separately, each compound once per budget.",
+    "Fold and potency/charge adjustment is descriptive linear/rank residualization; nonlinear chemistry and structural confounding remain."
+  ],
+  "missing_native_features": 0,
+  "missing_prepared_charge": 0,
+  "n_association_rows": 4644,
+  "n_ledger_rows": 6688,
+  "n_unique": 3344,
+  "native_baseline_discrepancy": [
+    {
+      "budget": 100,
+      "different_exact": 786,
+      "max_absolute_difference": 9.5367431640625e-07,
+      "n": 3344
+    },
+    {
+      "budget": 500,
+      "different_exact": 786,
+      "max_absolute_difference": 9.5367431640625e-07,
+      "n": 3344
+    }
+  ],
+  "partial": "Pearson residual correlation or rank-first residual correlation (partial Spearman). Intercept, categorical fold and prepared charge, continuous potency; remove target from covariates; optional MW. Nuisance projection only, not predictive model fitting.",
+  "pca": "Centered, unscaled FP64 covariance eigendecomposition over all unique development rows; largest absolute loading positive; descriptive only, not a learned predictive transformation.",
+  "prepared_charge_counts": {
+    "-1": 219,
+    "-2": 4,
+    "0": 2663,
+    "1": 409,
+    "2": 48,
+    "3": 1
+  },
+  "provenance_validation": "All feature-cache output hashes, extractor hash, controls-bound feature manifest, stage manifest hash, stage identity sources, strict identities verified. Exact ordered records/feature_row/SMILES, development roles, labels and FP32 cached scalar parity verified. Full upstream multi-GB tensor/checkpoint inventory not rehashed; its historical hashes remain in source manifests.",
+  "runtime": {
+    "gpu_used": false,
+    "new_inference": false,
+    "numpy": "2.4.4",
+    "pandas": "3.0.2",
+    "predictive_fits": 0,
+    "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+    "scipy": "1.17.1",
+    "threadpools": [
+      {
+        "filepath": "/home/dan/swr/miniconda3/lib/libmkl_rt.so.2",
+        "internal_api": "mkl",
+        "num_threads": 2,
+        "prefix": "libmkl_rt",
+        "threading_layer": "intel",
+        "user_api": "blas",
+        "version": "2025.0-Product"
+      },
+      {
+        "filepath": "/home/dan/swr/miniconda3/lib/libiomp5.so",
+        "internal_api": "openmp",
+        "num_threads": 2,
+        "prefix": "libiomp",
+        "user_api": "openmp",
+        "version": null
+      }
+    ],
+    "threads": 2
+  },
+  "shape": [
+    3344,
+    768
+  ],
+  "status": "complete",
+  "top5_explained_variance": [
+    0.6675789220601255,
+    0.1650907748716938,
+    0.04645540033571889,
+    0.038490188255977414,
+    0.028849906369071
+  ]
+}

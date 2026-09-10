@@ -1,18 +1,40 @@
-.pytest_cache/
-.ruff_cache/
+# Python and test/build caches
 __pycache__/
 *.py[cod]
 *.egg-info/
-.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
 build/
 dist/
+.venv/
 
-# Public upstream model weights are downloaded on demand and checksum-verified.
+# Local agent and editor state
+.hermes/
+.vscode/
+.idea/
+.DS_Store
+
+# Logs and transient files
+*.log
+*.tmp
+*.bak
+
+# Downloaded upstream model weights
 models/nesso-1/
 !models/README.md
 
-# Generated experiment outputs. Keep manifests/configs, not bulk tensors.
+# Raw/generated experiment products. Curated public evidence is in site/.
+artifacts/analysis/
+artifacts/architecture/
+artifacts/cloud/
 artifacts/experiments/
 artifacts/frozen_features/
 artifacts/manifests/*
 !artifacts/manifests/.gitkeep
+
+# Superseded review and publication workspaces
+reports/site_dossier/
+reports/site_revision_backups/

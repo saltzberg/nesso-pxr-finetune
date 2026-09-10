@@ -1,0 +1,24 @@
+{
+  "slug": "low-data",
+  "message": "Continuous heads improve with more labels; the original vector probes show large, irregular errors.",
+  "caption": "Retrospective development cohort of 3,344 compounds; each mean-task point equally averages five outer folds \u00d7 ten paired draws (50 tasks), not a pooled weighted score. Neural predictions average three seeds before scoring; repeated draws are dependent. No inferential bands are drawn. Weighted MAE uses 1/max(assay SE, 0.10); lower is better. Budgets include 80% FIT/inner selection and 20% CAL labels. Original chemical-cluster split only, N25\u2013500; full outer-pool reference omitted. Panels have different y ranges to keep the practical head comparison legible. Saved-model inspection in the independent assessment found scaling/extrapolation failures; the curves alone do not isolate a scaling cause. Random versus pretrained refers only to head initialization, not upstream pretraining. Native output is an unchanged binding-affinity anchor, not native cellular pEC50.",
+  "design": "Separate probe failures from the practical comparison rather than compress all methods under an outlier-dominated y scale. Two explicit mean-task axes and external legends; no confidence interpretation of repeated draws.",
+  "sources": [
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/independent_assessment_aggregates.csv",
+      "sha256": "a38916e84b46a7a2dc57f60076b02e223c8569bc3af31b06fda9bd6056f4ce54"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/independent_assessment.md",
+      "sha256": "f184dfbd180ef7bb3b0ecd7e8fea99d6f7641d620e6cadfcf9807598cbb260b9"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260905_low_data_adaptation/README.md",
+      "sha256": "330f6fc32c351015e49fbc6511fbbd5e50cdcedaec039412c35ccd0b57725a69"
+    }
+  ],
+  "plotted_rows": 30,
+  "svg": "assets/experiment-summaries/low-data.svg",
+  "png": "assets/experiment-summaries/low-data.png",
+  "data": "assets/experiment-summaries/low-data.csv"
+}

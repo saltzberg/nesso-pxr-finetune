@@ -1,0 +1,13 @@
+{
+  "status": "frozen exploratory protocol before association computation",
+  "cohort": "Exact 3344 ordered fresh_features identities, matched to prepared inputs and modeling manifest development role; no external validation",
+  "native": "Saved native_points.npy: 6 minus FP32 arithmetic mean of two native continuous outputs; higher means more favorable IC50-equivalent score, not verified binding or cellular potency",
+  "primary": ["Spearman MW versus Emax positive-control ratio and versus pEC50 assay SE", "Difference in medians, MW<215 minus MW>=215, Emax ratio and pEC50 SE", "Same differences restricted to native-score min/max intersection; honest counts and fixed 0.5 score-unit bins", "Partial Spearman MW-outcome controlling continuous native rank; secondary adjustment additionally for pEC50 rank"],
+  "secondary": "Full pairwise rank associations including raw Emax, Emax SE, native, MW, pEC50; saved native-minus-head/LoRA correction at each budget, unadjusted and controlling MW/native/pEC50 ranks",
+  "thresholds": "215 Da inherited descriptive split, not optimized. Historical Emax ratio >=0.6 qualification reported only, never interpreted as nonactivation. No potency or favorable-score cutoff.",
+  "uncertainty": "1000 chemical-group bootstrap draws, seed 20260908, percentile 95% marginal intervals for four median contrasts; resample full saved chemical groups with replacement. Conditional on existing cohort and saved systems; no confirmatory p-values.",
+  "figures": "Two real figures: full native score vs Emax ratio and pEC50-SE faceted by MW split (all points, shared axes, counts); MW vs outcomes and Emax vs assay-SE with both size strata. Log display for positive outcomes without deleting tails.",
+  "missingness": "Pairwise finite rows, explicit counts, no imputation. Raw curve/classification/replicate/censor metadata not inferred from numeric pEC50 or SE.",
+  "resources": "Local CPU only, each numerical thread pool capped at 1; no fitting of predictors, no inference, no GPU or cloud",
+  "documentation": "Canonical README generates compact hash-bound HTML. Source hashes, merged table, independent recomputation and deterministic artifact replay."
+}

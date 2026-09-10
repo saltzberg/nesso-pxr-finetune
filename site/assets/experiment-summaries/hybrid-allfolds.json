@@ -1,0 +1,28 @@
+{
+  "slug": "hybrid-allfolds",
+  "message": "Every fold gains overall\u2014and pays a lower-potency penalty",
+  "caption": "Paired within-fold weighted-MAE differences for the same held-out compounds: fold totals 669/669/669/668/669; 3,344 unique compounds overall, 1,036 below pEC50 4. N500 = 400 FIT + 100 CAL per fold, one draw and seed; five reused strict-chemical development folds, not independent replicates or a fresh holdout. Fold 0 reuses the inspected pilot byte-identically; folds 1\u20134 apply the locked procedure, selecting their own FIT-only blend weights. Errors use weights 1/max(reported assay SE, 0.1); lower weighted MAE is better. Below-4 compounds carry 16.4% of pooled weight; this is not uniform improvement or retraining-variability evidence.",
+  "design": "Aligned fold-level difference dots share a zero and scale, making consistent aggregate gains and consistent lower-potency losses directly visible without treating folds as independent confidence intervals.",
+  "sources": [
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/descriptor_nesso_blend_allfolds_20260908/all_test_predictions.csv",
+      "sha256": "e77097e4d26dc789630b88e84db9160636c827929122b56503e2c28e79083bae"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/descriptor_nesso_blend_allfolds_20260908/metrics.json",
+      "sha256": "a6350809c4b5fde21ceb2e41fccdac422afe29b265cdd124d90889e2cc2f40c4"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_descriptor_nesso_blend_allfolds/README.md",
+      "sha256": "5c409baacbda466398d728c7b3c9260b14c26a8a9ddff114076e76078c99e797"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/scripts/experiment_summary_figures/later.py",
+      "sha256": "643da076fa2c7f8cf378e6b7877d0a4a7bb3efe9ad8387016b266cf23bd39dab"
+    }
+  ],
+  "plotted_rows": 10,
+  "svg": "assets/experiment-summaries/hybrid-allfolds.svg",
+  "png": "assets/experiment-summaries/hybrid-allfolds.png",
+  "data": "assets/experiment-summaries/hybrid-allfolds.csv"
+}

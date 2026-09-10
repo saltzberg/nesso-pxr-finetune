@@ -1,0 +1,13 @@
+module,kind,input,output,weight_shape,bias_shape,A_shape,B_shape,rank,alpha,trainable
+affinity_module.affinity_heads.to_affinity_pred_value.0,head,384,384,"[384, 384]",[384],,,0,0,147840
+affinity_module.affinity_heads.to_affinity_pred_value.2,head,384,384,"[384, 384]",[384],,,0,0,147840
+affinity_module.affinity_heads.to_affinity_pred_value.4,head,384,1,"[1, 384]",[1],,,0,0,385
+affinity_module.esm_proj.1,lora,1280,384,"[384, 1280]",,"[4, 1280]","[384, 4]",4,4,6656
+affinity_module.esm_proj.3,lora,384,384,"[384, 384]",,"[4, 384]","[384, 4]",4,4,3072
+affinity_module.pairformer_stack.layers.0.transition_z.fc1,lora,128,512,"[512, 128]",,"[4, 128]","[512, 4]",4,4,2560
+affinity_module2.affinity_heads.to_affinity_pred_value.0,head,384,384,"[384, 384]",[384],,,0,0,147840
+affinity_module2.affinity_heads.to_affinity_pred_value.2,head,384,384,"[384, 384]",[384],,,0,0,147840
+affinity_module2.affinity_heads.to_affinity_pred_value.4,head,384,1,"[1, 384]",[1],,,0,0,385
+affinity_module2.esm_proj.1,lora,1280,384,"[384, 1280]",,"[4, 1280]","[384, 4]",4,4,6656
+affinity_module2.esm_proj.3,lora,384,384,"[384, 384]",,"[4, 384]","[384, 4]",4,4,3072
+affinity_module2.pairformer_stack.layers.0.transition_z.fc1,lora,128,512,"[512, 128]",,"[4, 128]","[512, 4]",4,4,2560

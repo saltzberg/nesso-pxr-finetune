@@ -1,0 +1,17 @@
+{
+  "README.md": "3d3212872b106e9284f56ac1edc45ed43c5bdc5533fd02e28bcdcb8f36cf19be",
+  "protocol.json": "0d7ce8ef5f61452e3940fd35a9b470650b13f792c52f7c0814270837798ced21",
+  "run.py": "25f7713d2a84181716a49888f89a0d52e4080b4ce5f62f90450cc7f95f9511bb",
+  "verify.py": "c436256dacb4043b2546b097be07fa6b73ebbf1ed709517f1cb25cb70554c2c9",
+  "render.py": "da3b38f6368b18ee26f5f4aeb824abeace9516bb81506c8d0ef6184e52a7fb18",
+  "metrics.csv": "27753828d5c761df9ac498eb895732b579f01dea01a9fc07e52347e786f086b1",
+  "fold_metrics.csv": "2d016654acdd23a7160b7c29c8d9c8ed36d8adaacac5dfc29750cf635ce5a39b",
+  "contrasts.csv": "1ad2f84a0eede3a3e42b0257bdc0ce6913dfd17f2c24f7feff3164e8ea35abf6",
+  "predictions.csv": "567f36c086b7c6a2b76fc16ab3a96ce702c2da4a3b2eb1983901ce1d6688a77f",
+  "verification.json": "dffb6ad707399053d29b9e8b33531f75d879bd813ea4fe24b25e0b35513c8696",
+  "independent_verification.json": "36330e9fb3ca32edfdc5e303a36772287ea29ca09b410541734ff6dd0a6921bf",
+  "design.md": "93bfe66db986d42cf956f718b0f917dbc5933ed1b31631f98a1a43ec552db474",
+  "index.html": "961f03c967429e51881ec939c902a9d6bd027148b2dd3140b81b87e2cfec4b57",
+  "paired-folds.png": "d67fcf0f26c77b665a0a98d286a1628fac47feb12f350b6ed2f22fc087ee690a",
+  "paired-folds.svg": "3cf5e92894aecf16c9fde133df0c658f0817e41f4c58310fda0925d08f3fec74"
+}

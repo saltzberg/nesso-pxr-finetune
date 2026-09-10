@@ -1,0 +1,11 @@
+{
+  "adaptation_feature_rows.csv": "c32507462983a6f84fb8fd0e603f532eb5bbb3b8285acbefa1be72a4219f4c6e",
+  "associations.csv": "706ba389fbc794d252d3eade4e52700105eb926eb6e23b448f5f0fb250f50b88",
+  "input_provenance.json": "c0e35c6d4cbe9ffe12f8b50b6a19ca82da34a254b9e1d3e39310e603bcfd5f35",
+  "native_feature_scores.csv": "51ddd9198378f8ef8622b5957c5eee64c5f0ba50febb663a1e6bfdded92f4c34",
+  "pca_center.csv": "31af64283072eaddd423b538db2a0bde0c29ae60e626cd52a7a6b5d56e186866",
+  "pca_loadings.csv": "cd3520f1e4f8651321b9c9728d96150f0d622fb9a602782c6fbef5ecfaf724a7",
+  "pca_variance.csv": "7651a169db03641dc51d3ebab6d4d8d1617a96192cedb85d0d6f817e8f3fba28",
+  "stratum_medians.csv": "8b7edf54588a9904760ce5d7c3793815b207f6b5b89f06f3c6508264e87c0032",
+  "summary.json": "d44123bef1af494b503d8bbdb022ae8d4a3487f9ddb1702f9d7ba0cd51d154aa"
+}

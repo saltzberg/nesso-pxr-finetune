@@ -1,0 +1,16 @@
+{
+  "boxes": 21,
+  "texts": 91,
+  "box_texts_checked": 79,
+  "containment_failures": [],
+  "text_overlap_failures": [],
+  "wires_checked": 18,
+  "wire_box_collisions": [],
+  "wire_wire_crossings": [],
+  "canvas": [
+    2640,
+    1630
+  ],
+  "reference_sha256": "591dd67f7342c7e8c999087f3cc5ed46d4f4ac2bb0e7be14b897f77a60d7badf",
+  "reference_unchanged": true
+}

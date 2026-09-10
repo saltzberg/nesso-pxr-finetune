@@ -1,0 +1,20 @@
+{
+  "slug": "loss-lr",
+  "message": "Joint loss and learning-rate selection reduces average error without restoring predictions above pEC50 6.",
+  "caption": "All 3,344 nested development predictions per model; 55 observations exceed pEC50 6. Each objective selects LR within outer training folds, with weight decay zero; joint selector also selects objective. Raw MAE lower is better; maximum prediction is a range diagnostic, not an accuracy metric. Dashed line marks pEC50 6. No uncertainty inferred from these maxima.",
+  "design": "Aligned objective rows pair average error with the actual prediction ceiling, keeping distinct units on separate axes and avoiding a misleading aggregate-only success claim.",
+  "sources": [
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv",
+      "sha256": "76ab3bb2c33ca7557b0cecbd8bbeda2e6be6a0853e54dbfab72022caa9ab9eb5"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/cpu_followups/README.md",
+      "sha256": "083885c18eebba6187a1c267d664014688ae6b895048dcaeab6689c059e859e2"
+    }
+  ],
+  "plotted_rows": 16,
+  "svg": "assets/experiment-summaries/loss-lr.svg",
+  "png": "assets/experiment-summaries/loss-lr.png",
+  "data": "assets/experiment-summaries/loss-lr.csv"
+}

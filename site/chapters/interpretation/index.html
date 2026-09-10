@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Interpretation and conclusion · Nesso PXR</title><link rel="stylesheet" href="../../assets/style.css"><style>main img{max-width:100%;height:auto} .evidence{overflow-wrap:anywhere} table{display:block;overflow-x:auto} .study-status{color:#276749} .study-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px} .study-grid a{border:1px solid #d8d4cc;padding:16px;text-decoration:none} .study-grid small{display:block;color:#66635f;margin-top:8px} figure.narrative{max-width:880px;display:flex;flex-direction:column;gap:8px} figure.narrative .plot-key{margin:0} @media(max-width:600px){figure.narrative .plot-key{order:-1}} .figure-link{cursor:zoom-in;display:block} .figure-link picture{display:block} header nav{display:flex;flex-wrap:wrap;gap:8px 19px} header nav a{margin:0;white-space:nowrap} figure.narrative img{border:0} .plot-key{font:13px/1.5 system-ui,sans-serif;margin-top:12px} .small-dot{color:#ad501b} .other-dot{color:#356c78} .reading-path{font:14px/1.8 system-ui,sans-serif;border-block:1px solid #d8d4cc;padding:16px 0;max-width:100%} details{margin:28px 0} summary{cursor:pointer;font:600 15px/1.5 system-ui,sans-serif} .chapter-nav{margin:28px 0}</style></head><body><header><div class="masthead"><div class="brand">Nesso-1 · PXR experimental case study</div><p class="updated-at">Updated 2026-09-08</p></div><nav><a href="../../index.html">Overview</a><a href="../../chapters/transfer/index.html">Read the story</a><a href="../../index.html#experiments">Supporting archive</a><a href="../../architecture/index.html">Architecture</a></nav></header><main><h1>4 · What the correction does—and does not—mean</h1>
+<p>A tempting explanation for small-molecule overprediction is “they bind but do not activate.” The saved data allow an efficacy and uncertainty diagnostic, but not a direct test of binding or cellular mechanism. The native affinity-equivalent score is itself a model output, not an experimental binding measurement.</p>
+<h2>Efficacy does not support a simple non-activation story</h2>
+<p>The diagnostic joins molecular weight, native scores, observed pEC50 and reported assay summary fields. Raw baseline-relative log2 fold-change Emax and positive-control-normalized Emax are different quantities and must not be interchanged.</p>
+<table>
+<thead>
+<tr>
+<th>Assay summary (median)</th>
+<th style="text-align:right">MW &lt;215 Da (n=237)</th>
+<th style="text-align:right">MW ≥215 Da (n=3,107)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Positive-control-normalized Emax</td>
+<td style="text-align:right">1.240</td>
+<td style="text-align:right">0.977</td>
+</tr>
+<tr>
+<td>Baseline-relative Emax (log2 fold change)</td>
+<td style="text-align:right">2.170</td>
+<td style="text-align:right">2.530</td>
+</tr>
+<tr>
+<td>pEC50 standard error</td>
+<td style="text-align:right">0.558</td>
+<td style="text-align:right">0.141</td>
+</tr>
+</tbody>
+</table>
+<p>Small molecules have higher normalized efficacy, lower baseline-relative response, and less precise fitted potency. These are subgroup medians, not a causal explanation.</p>
+<p>All <strong>237</strong> small molecules meet the historical normalized-Emax qualification of ≥0.6. The association with larger standard errors matters for interpreting the weighted evaluation, but does not justify treating lower-potency measurements as meaningless. Raw curves and the normalization denominator are unavailable, so the diagnostic cannot resolve the assay-scale discrepancy or prove that adapters learned efficacy.</p>
+<p><a href="../../experiments/efficacy-uncertainty/index.html">Full efficacy diagnostic and source summaries</a></p>
+<h2>Supporting side branch: direct CYP inhibition</h2>
+<p>The four-CYP study asks whether scalar native-score/MW controls transfer to direct enzyme inhibition, where the endpoint differs from cellular PXR activation. It is <strong>not a CYP tuning experiment</strong> and should not be read as a second neural benchmark.</p>
+<p>Additive MW helps CYP2C9 and CYP3A4, while the interaction is not consistently better. Low-MW groups are sparse; CYP1A2 even has the opposite subgroup direction. This is mixed support for a simple size-related calibration effect, not a universal low-MW mechanism.</p>
+<p>CYP errors are unweighted: supplied standard-deviation/confidence-interval fields do not establish per-row sampling standard errors. Importing PXR precision weights would create a false comparability. <a href="../../experiments/cyp-transfer/index.html">Supporting CYP report and evidence →</a></p>
+<h2>Conclusion: retain the simple reference; test the incremental candidate</h2>
+<p>Three observations survive the controls. Tuning improves native transfer but does not beat descriptors at N500. Much of the visible small-molecule correction is reproducible by a simple score + MW fit. Frozen Nesso features nevertheless add a modest improvement in all five reused development folds when blended with descriptors, with a real lower-potency penalty.</p>
+<p>Retain descriptor LightGBM as the standalone reference. Treat the locked frozen-feature blend as a candidate whose value depends on the intended error objective—not as an automatically promoted model. The next decisive study should freeze its selection rule, use independent label draws/seeds, and evaluate genuinely untouched data. More retrospective selection cannot supply that confirmation.</p>
+<p><a href="../../index.html">Return to the visual overview</a> · <a href="../../index.html#experiments">Complete supporting archive</a></p>
+<nav class="chapter-nav"><a href="../transfer/index.html">Transfer and tuning</a> · <a href="../mw/index.html">The molecular-weight control</a> · <a href="../hybrid/index.html">Complementary frozen features</a></nav><p class="fineprint"><a download href="../../experiment-content/chapters/interpretation.md">Editable chapter Markdown</a></p></main><footer><p class="fineprint">Nesso → PXR · <a href="../../source-map.json">Evidence provenance</a> · <a href="../../experiment-content/index.md" download>Editable overview</a></p></footer></body></html>

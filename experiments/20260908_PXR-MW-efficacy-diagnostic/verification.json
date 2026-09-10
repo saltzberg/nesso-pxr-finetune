@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "tests": 4,
+  "independent_checks": "source integrity, identities/counts/qualification/SE, all rank associations, QR partial ranks, primary medians/counts",
+  "byte_replay": "all files in artifacts, including PNGs; no inference or predictor fitting"
+}

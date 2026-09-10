@@ -1,0 +1,26 @@
+{
+  "n": 3344,
+  "method": "native_continuous",
+  "budget": 500,
+  "weighted_mae": 0.6272246217981061,
+  "raw_mae": 0.9141240809370189,
+  "weight_sum": 22195.68651120898,
+  "weight_definition": "1/max(reported pEC50 SE, 0.1)",
+  "axis_limits": [
+    -1,
+    9
+  ],
+  "observed_range": [
+    1.61,
+    7.54855421686747
+  ],
+  "prediction_range": [
+    3.730055809020996,
+    7.441765785217285
+  ],
+  "sources": {
+    "reports/architecture/results/heldout_predictions.csv": "6bafc036a6108265b931f2872ebd7125d42cdd5447b9b85cad69194e545d0f0f",
+    "reports/architecture/results/pooled_metrics.csv": "514b0eb1aa4c7d87ec32d6d960b8eafa0f034cb6eb1ec93619551a3f94892b03",
+    "reports/narrative/verification.json": "d0e297c2b8d751c349539d4fc887d63d5bd793ac90bbcb3ab2cbdd53842168a0"
+  }
+}

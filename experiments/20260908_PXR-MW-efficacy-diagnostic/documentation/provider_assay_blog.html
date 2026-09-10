@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Announcing the next OpenADMET Blind Challenge: Predicting PXR Induction</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preload" as="style" href="/assets/built/screen.css?v=kOX3KKd4h9ZnlKPB">
+    <link rel="preload" as="script" href="/assets/built/source.js?v=hgnv3dFRNrcfIROn">
+    
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-roman.woff2?v=OecsB5TBLy27FKD2" crossorigin="anonymous">
+<style>
+    @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: optional;
+        src: url(/assets/fonts/inter-roman.woff2?v=OecsB5TBLy27FKD2) format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+</style>
+
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css?v=kOX3KKd4h9ZnlKPB">
+
+    <style>
+        :root {
+            --background-color: #ffffff
+        }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* OpenADMET Brand Overrides */
+        :root {
+            --color-openadmet-red: #c0392b;
+            --color-openadmet-red-dark: #a93226;
+            --color-openadmet-dark: #212529;
+            --font-sans: "Nunito Sans", Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            font-family: "Nunito Sans", Helvetica, Arial, sans-serif !important;
+            color: #585858;
+            font-size: 22px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Abril Fatface", "Times New Roman", Times, serif !important;
+            color: #000;
+        }
+
+        /* Sticky navbar */
+        .gh-navigation {
+            background-color: #212529 !important;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .gh-navigation a,
+        .gh-navigation-brand,
+        .gh-navigation-brand span,
+        .gh-navigation-list a {
+            color: #fff !important;
+        }
+
+        .gh-navigation a:hover {
+            color: rgba(255,255,255,0.75) !important;
+            opacity: 1;
+        }
+
+        /* Keep navigation actions background matching the dark nav */
+        .gh-navigation-actions {
+            background-color: #212529 !important;
+        }
+
+        /* White search icon and burger lines */
+        .gh-search {
+            color: #fff !important;
+        }
+        .gh-burger-box .gh-burger-inner,
+        .gh-burger-box .gh-burger-inner::before,
+        .gh-burger-box .gh-burger-inner::after {
+            background-color: #fff;
+        }
+
+        /* Red pill buttons */
+        .gh-btn-primary,
+        .gh-subscribe-btn,
+        .kg-signup-card-btn,
+        .gh-portal-close-button {
+            background-color: #c0392b !important;
+            border-color: #c0392b !important;
+            border-radius: 999px !important;
+            color: #fff !important;
+            font-weight: 600;
+        }
+
+        .gh-btn-primary:hover,
+        .gh-subscribe-btn:hover {
+            background-color: #a93226 !important;
+            border-color: #a93226 !important;
+        }
+
+        /* Links */
+        a { color: #c0392b; }
+        a:hover { color: #a93226; }
+
+        /* Remove default Ghost content wrapper padding on homepage */
+        .home-template .gh-main { padding: 0 !important; }
+
+        /* Dark footer */
+        .gh-foot {
+            background-color: #212529 !important;
+            color: #fff;
+            padding: 0 2rem !important;
+        }
+        .gh-foot-inner { display: flex; align-items: center; min-height: 80px; }
+        .gh-foot-logo { display: flex; align-items: center; }
+
+        .gh-foot,
+        .gh-foot a,
+        .gh-foot p,
+        .gh-foot h4,
+        .gh-foot span,
+        .gh-footer-bar,
+        .gh-footer-bar a {
+            color: rgba(255,255,255,0.85) !important;
+        }
+
+        .gh-foot a:hover,
+        .gh-footer-bar a:hover {
+            color: #fff !important;
+        }
+
+        .gh-footer-bar {
+            background-color: #1a1e21 !important;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Tags */
+        .gh-card-tag { color: #c0392b; font-weight: 600; }
+
+        /* Post card hover */
+        .gh-card:hover .gh-card-title { color: #c0392b; }
+
+        /* =====================================================
+           Homepage Layout — Option C
+        ===================================================== */
+        .oa-hero { background-color: #495057; color: #fff; padding: 0; width: 100%; box-sizing: border-box; }
+        .oa-hero-inner { width: 100%; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: row; align-items: stretch; min-height: 340px; }
+        .oa-hero-image { flex: 0 0 48%; overflow: hidden; }
+        .oa-hero-image img { width: 100%; height: 100%; min-height: 300px; object-fit: cover; display: block; }
+        .oa-hero-content { flex: 1; padding: 2.5rem 2.5rem 2.5rem 3rem; display: flex; flex-direction: column; justify-content: center; }
+        .oa-hero-content--full { flex: 1; padding: 3rem; }
+        .oa-hero-title { font-family: "Abril Fatface", serif !important; font-size: 3.4rem; color: #fff !important; margin: 0.75rem 0; line-height: 1.15; }
+        .oa-hero-title a { color: #fff !important; text-decoration: none; }
+        .oa-hero-title a:hover { color: rgba(255,255,255,0.8) !important; }
+        .oa-hero-excerpt { color: rgba(255,255,255,0.8); font-size: 1.5rem; line-height: 1.65; margin-bottom: 1.25rem; }
+        .oa-hero-meta { font-size: 1.2rem; color: rgba(255,255,255,0.55); margin-bottom: 1.5rem; }
+        .oa-hero-label { font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.45); margin: 0 0 0.4rem; }
+        .oa-tag-pill { display: inline-block; background-color: #c0392b; color: #fff; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.3rem 0.9rem; border-radius: 999px; margin-bottom: 0.5rem; }
+        .oa-meta-sep { margin: 0 0.4rem; opacity: 0.5; }
+        .oa-btn { display: inline-block; background-color: #c0392b; color: #fff !important; border: 2px solid #c0392b; border-radius: 999px; padding: 0.65rem 1.6rem; font-weight: 600; font-size: 1.2rem; text-decoration: none; transition: background-color 0.15s ease; cursor: pointer; }
+        .oa-btn:hover { background-color: #a93226; border-color: #a93226; color: #fff !important; }
+        .oa-btn-sm { padding: 0.6rem 1.4rem; font-size: 1.3rem; }
+        .oa-btn-outline { display: inline-block; background-color: #c0392b; color: #fff !important; border: 2px solid #c0392b; border-radius: 999px; padding: 0.6rem 1.6rem; font-weight: 600; font-size: 1.15rem; text-decoration: none; transition: all 0.15s ease; }
+        .oa-btn-outline:hover { background-color: #a93226; border-color: #a93226; color: #fff !important; }
+        .oa-sections { background-color: #fff; }
+        .oa-section { padding: 3rem 0; background-color: #fff; }
+        .oa-section--alt { background-color: #f8f9fa; }
+        .oa-section-header { max-width: 1200px; margin: 0 auto 0; padding: 0 2rem; }
+        .oa-section-header h2 { font-family: "Abril Fatface", serif !important; font-size: 2rem; color: #fff !important; background-color: #212529; display: inline-block; padding: 0.7rem 1.6rem; border-radius: 1rem 1rem 0 0; margin: 0; }
+        .oa-section-header::after { content: ""; display: block; width: 120px; height: 6px; background-color: #c0392b; border-radius: 999px; margin: 0 2rem 1.5rem; }
+        .oa-card-grid { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .oa-card { background: #fff; border-radius: 1rem; box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075); overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, transform 0.2s ease; border: 0; height: 100%; }
+        .oa-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.13); transform: translateY(-3px); }
+        .oa-card-image-link { display: block; margin-bottom: 0; }
+        .oa-card-image { width: 100%; height: 200px; object-fit: contain; display: block; border-radius: 0.5rem; margin-bottom: 1rem; background-color: #f8f9fa; }
+        .oa-card-image--fallback { width: 100%; height: 200px; background-color: #f8f9fa; display: flex; align-items: center; justify-content: center; border-radius: 0.5rem; margin-bottom: 1rem; }
+        .oa-card-image--fallback img { height: 70px; width: auto; object-fit: contain; opacity: 0.85; display: block; margin: 0 auto; }
+        .oa-card-image--logo { width: 100%; height: 200px; background-color: #f8f9fa; display: flex !important; align-items: center; justify-content: center; border-radius: 0.5rem; margin-bottom: 1rem; padding: 1.5rem; box-sizing: border-box; }
+        .oa-card-image--logo img { max-width: 80%; max-height: 120px; width: auto; height: auto; object-fit: contain; display: block; }
+        .oa-hero-fallback-img { object-fit: contain !important; background-color: #1a1e21; padding: 3rem; }
+        .oa-card-body { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+        .oa-card-title { font-family: "Abril Fatface", "Times New Roman", Times, serif !important; font-size: 2.2rem; color: #000 !important; margin: 0 0 0.75rem; line-height: 1.2; font-weight: 500; }
+        .oa-card-title a { color: #000 !important; text-decoration: none; }
+        .oa-card-title a:hover { color: #c0392b !important; }
+        .oa-card-excerpt { font-size: 1.4rem; color: #212529; line-height: 1.6; margin-bottom: 0; font-weight: 400; flex-grow: 1; }
+        .oa-card-meta { font-size: 1.4rem; color: #6c757d; font-weight: 400; margin-bottom: 0.6rem; }
+        .oa-card-footer { padding: 0 1.5rem 1.5rem; }
+        .oa-section-more { max-width: 1200px; margin: 1.5rem auto 0; padding: 0 2rem; text-align: right; }
+        .oa-cta { background-color: #212529; color: #fff; padding: 3rem 0; text-align: center; }
+        .oa-cta-inner { max-width: 600px; margin: 0 auto; padding: 0 2rem; }
+        .oa-cta h2 { font-family: "Abril Fatface", serif !important; color: #fff !important; font-size: 2.6rem; margin-bottom: 0.75rem; }
+        .oa-cta p { color: rgba(255,255,255,0.75); margin-bottom: 1.5rem; font-size: 1.3rem; }
+        .oa-divider { width: 120px; height: 6px; background-color: #c0392b; border: none; border-radius: 999px; margin: 0 auto 1.5rem; }
+        .oa-subscribe-form { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+        .oa-subscribe-input { flex: 1; min-width: 220px; border: 2px solid rgba(255,255,255,0.25); border-radius: 999px; background: rgba(255,255,255,0.1); color: #fff; padding: 0.55rem 1.25rem; font-size: 0.95rem; outline: none; }
+        .oa-subscribe-input:focus { border-color: #c0392b; }
+        .oa-subscribe-input::placeholder { color: rgba(255,255,255,0.45); }
+        @media (max-width: 900px) {
+            .oa-hero-inner { flex-direction: column; }
+            .oa-hero-image img { min-height: 220px; height: 220px; }
+            .oa-hero-content { padding: 2rem; }
+            .oa-card-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .oa-card-grid { grid-template-columns: 1fr; }
+            .oa-hero-title { font-size: 2.4rem; }
+            .oa-section-more { text-align: center; }
+        }
+
+        /* =====================================================
+           Blog filter pills
+        ===================================================== */
+        .oa-filter-bar { max-width: 1200px; margin: 2.5rem auto 0; padding: 0 2rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+        .oa-filter-pill { display: inline-block; padding: 0.7rem 1.8rem; border-radius: 999px; border: 2px solid #c0392b; color: #c0392b !important; font-weight: 600; font-size: 1.6rem; text-decoration: none; transition: all 0.15s ease; }
+        .oa-filter-pill:hover { background-color: #c0392b; color: #fff !important; }
+        .oa-filter-pill--active { background-color: #c0392b; color: #fff !important; }
+
+        /* Tag label inside card */
+        .oa-card-tag-label { color: #c0392b; font-weight: 700; }
+
+        /* Extra padding for blog listing grid */
+        .oa-blog-grid { padding-top: 2rem; padding-bottom: 3rem; }
+
+        /* Remove default gh-main padding on tag pages */
+        .tag-template .gh-main { padding: 0 !important; }
+
+        /* Pagination */
+        .oa-pagination { max-width: 1200px; margin: 0 auto; padding: 0 2rem 3rem; }
+        .oa-pagination .pagination { display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; }
+        .oa-pagination .older-posts,
+        .oa-pagination .newer-posts { display: inline-block; padding: 0.45rem 1.2rem; border-radius: 999px; border: 2px solid #c0392b; color: #c0392b !important; font-weight: 600; font-size: 1.1rem; text-decoration: none; transition: all 0.15s ease; }
+        .oa-pagination .older-posts:hover,
+        .oa-pagination .newer-posts:hover { background-color: #c0392b; color: #fff !important; }
+        .oa-pagination .page-number { font-size: 1.1rem; color: #6c757d; }
+
+        /* Empty state */
+        .oa-no-posts { max-width: 1200px; margin: 3rem auto; padding: 0 2rem; color: #6c757d; font-size: 1.3rem; }
+    </style>
+
+    <script>
+        /* The script for calculating the color contrast has been taken from
+        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
+        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
+        accentColor = accentColor.trim().slice(1);
+
+        if (accentColor.length === 3) {
+            accentColor = accentColor[0] + accentColor[0] + accentColor[1] + accentColor[1] + accentColor[2] + accentColor[2];
+        }
+
+        var r = parseInt(accentColor.substr(0, 2), 16);
+        var g = parseInt(accentColor.substr(2, 2), 16);
+        var b = parseInt(accentColor.substr(4, 2), 16);
+        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+        var textColor = (yiq >= 128) ? 'dark' : 'light';
+
+        document.documentElement.className = `has-${textColor}-text`;
+    </script>
+
+    <meta name="description" content="An introduction to the next blind challenge and why blinded datasets remain important for realistic benchmarking.">
+    <link rel="icon" href="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w256h256/2026/05/oADMET-icon-on-dark-1.png" type="image/png">
+    <link rel="canonical" href="https://openadmet.ghost.io/announcing-the-next-openadmet-blind-challenge-predicting-pxr-induction/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="OpenADMET">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Announcing the next OpenADMET Blind Challenge: Predicting PXR Induction">
+    <meta property="og:description" content="An introduction to the next blind challenge and why blinded datasets remain important for realistic benchmarking.">
+    <meta property="og:url" content="https://openadmet.ghost.io/announcing-the-next-openadmet-blind-challenge-predicting-pxr-induction/">
+    <meta property="og:image" content="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w1200/2026/03/PXR_DRC_pEC50_combined.png">
+    <meta property="article:published_time" content="2026-03-17T14:00:13.000Z">
+    <meta property="article:modified_time" content="2026-08-04T05:11:25.000Z">
+    <meta property="article:tag" content="Blind Challenges">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ghost">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Announcing the next OpenADMET Blind Challenge: Predicting PXR Induction">
+    <meta name="twitter:description" content="An introduction to the next blind challenge and why blinded datasets remain important for realistic benchmarking.">
+    <meta name="twitter:url" content="https://openadmet.ghost.io/announcing-the-next-openadmet-blind-challenge-predicting-pxr-induction/">
+    <meta name="twitter:image" content="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w1200/2026/03/PXR_DRC_pEC50_combined.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="OpenADMET">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Blind Challenges">
+    <meta name="twitter:site" content="@ghost">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "OpenADMET",
+        "url": "https://openadmet.ghost.io/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/2026/05/oADMET-wordmark-on-dark-1.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "OpenADMET",
+        "url": "https://openadmet.ghost.io/author/openadmet/",
+        "sameAs": []
+    },
+    "contributor": [
+        {
+            "@type": "Person",
+            "name": "OpenADMET",
+            "url": "https://openadmet.ghost.io/author/openadmet-2/",
+            "sameAs": []
+        }
+    ],
+    "headline": "Announcing the next OpenADMET Blind Challenge: Predicting PXR Induction",
+    "url": "https://openadmet.ghost.io/announcing-the-next-openadmet-blind-challenge-predicting-pxr-induction/",
+    "datePublished": "2026-03-17T14:00:13.000Z",
+    "dateModified": "2026-08-04T05:11:25.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w1200/2026/03/PXR_DRC_pEC50_combined.png",
+        "width": 1200,
+        "height": 600
+    },
+    "keywords": "Blind Challenges",
+    "description": "An introduction to the next blind challenge and why blinded datasets remain important for realistic benchmarking.",
+    "mainEntityOfPage": "https://openadmet.ghost.io/announcing-the-next-openadmet-blind-challenge-predicting-pxr-induction/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 6.63">
+    <link rel="alternate" type="application/rss+xml" title="OpenADMET" href="https://openadmet.ghost.io/rss/">
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.71/umd/portal.min.js" data-i18n="true" data-ghost="https://openadmet.ghost.io/" data-key="0ba39870d45a7812a90ccfc928" data-api="https://openadmet.ghost.io/ghost/api/content/" data-locale="en" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="0ba39870d45a7812a90ccfc928" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://openadmet.ghost.io/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://openadmet.ghost.io/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=ShRHxgy4po8zN-Wf"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=WwnU9jw5ancNC8Gc">
+    <script defer src="/public/member-attribution.min.js?v=AKG4hWena9j3yX3I"></script>
+    <script defer src="/public/ghost-stats.min.js?v=vFcCUf6ZQ0Hyhc8h" data-stringify-payload="false" data-datasource="analytics_events" data-storage="localStorage" data-host="https://openadmet.ghost.io/.ghost/analytics/api/v1/page_hit"  tb_site_uuid="3f515c22-43d0-4696-a664-031fddd40688" tb_post_uuid="266b3424-53eb-415d-8523-c99ceb3b2aad" tb_post_type="post" tb_member_uuid="undefined" tb_member_status="undefined" tb_gift_link=""></script><style>:root {--ghost-accent-color: #b82c2c;}</style>
+    <style>
+@media (min-width: 768px) {
+  .gh-article-image img {
+    max-height: 45vh;
+    width: auto;
+    max-width: 55vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+</style>
+
+</head>
+<body class="post-template tag-blind-challenges has-sans-title has-sans-body">
+
+<div class="gh-viewport">
+    
+    <header id="gh-navigation" class="gh-navigation is-middle-logo gh-outer">
+    <div class="gh-navigation-inner gh-inner">
+
+        <div class="gh-navigation-brand">
+            <a class="gh-navigation-logo is-title" href="https://openadmet.ghost.io">
+                    <img src="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/2026/05/oADMET-wordmark-on-dark-1.png" alt="OpenADMET">
+            </a>
+            <button class="gh-search gh-icon-button" aria-label="Search this site" data-ghost-search>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>            <button class="gh-burger gh-icon-button" aria-label="Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path></svg>                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>            </button>
+        </div>
+
+        <nav class="gh-navigation-menu">
+            <ul class="nav">
+    <li class="nav-home"><a href="https://openadmet.ghost.io/">Home</a></li>
+</ul>
+
+        </nav>
+
+        <div class="gh-navigation-actions">
+                <button class="gh-search gh-icon-button" aria-label="Search this site" data-ghost-search>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>                <div class="gh-navigation-members">
+                            <a href="#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-button" href="#/portal/signup" data-portal="signup">Subscribe</a>
+                </div>
+        </div>
+
+    </div>
+</header>
+
+    
+
+<main class="gh-main">
+
+    <article class="gh-article post tag-blind-challenges">
+
+        <header class="gh-article-header gh-canvas">
+
+                <a class="gh-article-tag" href="https://openadmet.ghost.io/tag/blind-challenges/">Blind Challenges</a>
+            <h1 class="gh-article-title is-title">Announcing the next OpenADMET Blind Challenge: Predicting PXR Induction</h1>
+                <p class="gh-article-excerpt is-body">An introduction to the next blind challenge and why blinded datasets remain important for realistic benchmarking.</p>
+
+                <div class="gh-meta-share">
+                    <div class="gh-article-meta">
+                        <div class="gh-article-meta-wrapper">
+                            <div class="gh-article-meta-content">
+                                <time class="gh-article-meta-date" datetime="2026-03-17">17 Mar 2026</time>
+                                    <span class="gh-article-meta-length"><span class="bull">—</span> 12 min read</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/share" class="gh-button gh-button-share">
+                        Share
+                    </a>
+                </div>
+
+                <figure class="gh-article-image">
+        <img
+            srcset="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w320/2026/03/PXR_DRC_pEC50_combined.png 320w,
+                    https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w600/2026/03/PXR_DRC_pEC50_combined.png 600w,
+                    https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w960/2026/03/PXR_DRC_pEC50_combined.png 960w,
+                    https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w1200/2026/03/PXR_DRC_pEC50_combined.png 1200w,
+                    https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w2000/2026/03/PXR_DRC_pEC50_combined.png 2000w"
+            sizes="(max-width: 1200px) 100vw, 1120px"
+            src="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w1200/2026/03/PXR_DRC_pEC50_combined.png"
+            alt="Announcing the next OpenADMET Blind Challenge: Predicting PXR Induction"
+        >
+    </figure>
+
+        </header>
+
+        <section class="gh-content gh-canvas is-body">
+            <p><strong>Authors:</strong> Hugo MacDermott-Opeskin, Jon Swain, Scott Simpkins, Bryan Jiang, Sam Sabaat, Robert Warnerford-Thompson, Galen Correy, Nikhil Gupta, Pat Walters<br>
+<strong>DOI:</strong> <a href="https://doi.org/10.5281/zenodo.21784673?ref=openadmet.ghost.io">10.5281/zenodo.21784673</a></p>
+<h2 id="introduction"><strong>Introduction</strong></h2>
+<p>OpenADMET facilitates blind challenges to bridge the gap between computational modeling and experimental reality in drug discovery. By providing high-quality, blinded datasets, these challenges offer a transparent benchmark for evaluating the predictive power of ADMET (Absorption, Distribution, Metabolism, Excretion, and Toxicity) models. We are excited to present our next challenge made possible by our in-house data generation efforts at <a href="https://www.octant.bio/?ref=openadmet.ghost.io">Octant</a> and structural biology capabilities at UCSF with the <a href="https://fraserlab.com/?ref=openadmet.ghost.io">Fraser lab</a>.</p>
+<p>The next OpenADMET blind challenge focuses on predicting human <a href="https://en.wikipedia.org/wiki/Pregnane_X_receptor?ref=openadmet.ghost.io"><strong>Pregnane-X Receptor</strong></a> <strong>(hPXR)</strong> induction. PXR is a nuclear hormone receptor and master regulator of drug-metabolizing enzymes and transporters. Because compounds that induce PXR can derail drug discovery projects by causing adverse interactions, accurate prediction is critical. While PXR induction is traditionally assessed during later-stage lead optimization or ADME profiling, identifying these liabilities earlier in the pipeline can prevent costly late-stage failures. By enabling accurate prediction up front, researchers can prioritize safer candidates and streamline the path to clinical success.</p>
+<p>This challenge features two distinct tracks, each with its own leaderboard and structure:</p>
+<ol>
+<li><strong>Activity Prediction:</strong> Predicting the pEC50 values for a test set of 513 compounds (split into two stages).</li>
+<li><strong>Structure Prediction:</strong> Predicting the bound structures of 110 ligands to PXR.</li>
+</ol>
+<hr>
+<h3 id="background-why-pxr-matters"><strong>Background: Why PXR Matters</strong></h3>
+<p>Evaluating PXR liabilities is a fundamental pillar of a late-stage ADMET cascade. PXR functions as a xenobiotic sensor, detecting foreign compounds and marshalling drug-metabolising enzymes and transporters by activating their transcription. It primarily regulates <strong>CYP3A4</strong>, the enzyme responsible for metabolizing approximately 50% of all marketed drugs. Activation of PXR can lead to:</p>
+<ul>
+<li><strong>Drug-Drug Interactions (DDIs):</strong> Accelerated metabolism can reduce co-administered drug concentrations to sub-optimal levels.</li>
+<li><strong>Hepatotoxicity:</strong> Increased production of reactive, toxic metabolites.</li>
+<li><strong>Chemoresistance:</strong> Enhanced clearance of chemotherapeutic agents in tumor cells.</li>
+</ul>
+<p>Drug discovery teams face a unique challenge with PXR due to its large, flexible ligand-binding pocket, which accommodates a wide range of chemical structures. PXR is also relatively underrepresented in the literature, with only 800 high-quality pEC50 values from nearly 150 papers in ChEMBL.</p>
+<hr>
+<h2 id="the-activity-dataset"><strong>The Activity Dataset</strong></h2>
+<p>Using our data capabilities at  <a href="https://www.octant.bio/?ref=openadmet.ghost.io">Octant</a>, OpenADMET has generated a PXR induction dataset of <strong>more than 11,000 compounds</strong> using a low-cost, high-fidelity in-house assay. Compounds were sourced primarily from two Enamine libraries  (the <a href="https://enamine.net/compound-libraries/diversity-libraries/dds-10240?ref=openadmet.ghost.io">Discovery Diversity 10</a> set, and <a href="https://enamine.net/compound-libraries/bioactive-libraries/fda-approved-drugs-collection?ref=openadmet.ghost.io">FDA Approved Drugs</a> set), then iteratively expanded with follow-on analogs, with compounds  profiled through a rigorous multi-step assay flow reminiscent of an on-target drug discovery program:</p>
+<ol>
+<li><strong>Primary Screen:</strong> 11,362 diverse compounds screened at a single concentration.</li>
+<li><strong>Dose-Response:</strong> 4,779 compounds selected for an 8-concentration dose-response. Extensive counter screening in a PXR-null cell line was also conducted to evaluate specificity for PXR.</li>
+<li><strong>Refinement:</strong> 114 compounds showed EC50 ≤ 1µM.</li>
+<li><strong>Counter-Screen:</strong> We used a PXR-null cell line as a filter, selecting 63 compounds with minimal activity in the PXR-null assay to rule out non-specific effects.</li>
+<li><strong>Analog Expansion:</strong> Similarity searches of these 63 actives yielded the 513-compound test set (post final QC) that was ordered from Enamine and assayed.</li>
+</ol>
+<p>The design of this challenge mimics a <strong>lead optimization scenario, where the focus shifts from broad hit-finding to detailed exploration of Structure-Activity Relationships (SAR).</strong>  Consequently, this dataset contains detailed SAR and activity cliffs that should prove challenging for predictive models. Cumulatively, this represents the largest publicly available PXR activity dataset available today. In our view, the addition of focused analog expansion significantly differentiates this dataset from other broad screens such as Tox21, making it much more like a realistic drug discovery project. We are very much looking forward to seeing what the community can do with this dataset.</p>
+<h3 id="developing-the-assay">Developing the Assay</h3>
+<p>The assay we leveraged employs a cell-based reporter system to measure PXR induction. To specifically isolate receptor activation, we utilize a well-established two-part chimeric design (<a href="https://pubmed.ncbi.nlm.nih.gov/31041747/?ref=openadmet.ghost.io">Heering &amp; Merk, 2019</a>, <a href="https://pubmed.ncbi.nlm.nih.gov/21687560/?ref=openadmet.ghost.io">Paguio et al., 2010</a>, <a href="https://pubmed.ncbi.nlm.nih.gov/10628745/?ref=openadmet.ghost.io">Jones et al., 2000</a>, <a href="https://pubmed.ncbi.nlm.nih.gov/9727070/?ref=openadmet.ghost.io">Lehmann et al., 1998</a>). This fusion protein is composed of the ligand-binding domain (LBD) of human PXR attached to a heterologous DNA-binding domain, which acts via a reporter construct containing the corresponding DNA response element upstream of a luciferase gene.  This approach offers several advantages over using the native, promiscuous PXR promoter element: it reduces crosstalk, provides superior specificity, and maximizes the signal-to-noise ratio, as the response element can be engineered to drive expression at levels significantly higher than the native promoter.</p>
+<p>When a test compound acts as an agonist, it binds the PXR-LBD and induces a conformational change. This shift promotes the recruitment of transcriptional activators, driving expression of the luciferase reporter. Because the availability of these regulatory proteins varies across tissues, we evaluated multiple cell lines and tested several genetic constructs (varying the fusion architectures and expression profiles) to maximize the assay's statistical amenability (maximize dynamic range, minimize noise). By testing these cell lines and constructs against a reference set of known compounds, we optimized the system to achieve highly robust and reproducible data that match literature data for reference metrics (e.g. pEC50s).  This two-part system is stably integrated into the selected cell line to ensure consistent/controlled reporter activity across screening runs.</p>
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/2026/03/PXR_DRC_pEC50_combined.png" class="kg-image" alt="" loading="lazy" width="2000" height="1000" srcset="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w600/2026/03/PXR_DRC_pEC50_combined.png 600w, https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w1000/2026/03/PXR_DRC_pEC50_combined.png 1000w, https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w1600/2026/03/PXR_DRC_pEC50_combined.png 1600w, https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w2400/2026/03/PXR_DRC_pEC50_combined.png 2400w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">Figure 1: (Left) Dose response curves of select PXR agonists for a subset of cell lines generated during our PXR reporter development phase. (Right) Comparison of Octant’s cell line to data from commercially available kits and ChEMBL data for select reference agonists. Each data point represents an independent run.</span></figcaption></figure><p>To ensure signal specificity and eliminate false positives, we also developed and employed a parallel counter-screen. This counter-assay utilizes an identical cell-based reporter system, but the chimeric gene contains multiple early nonsense mutations that abolish functional protein expression.  This step is critical for filtering out compounds that artificially inflate the luminescent signal without actually interacting with PXR. Consequently, we can identify and confidently exclude non-specific upregulators, such as general transcriptional activators or molecules that alter chromatin dynamics (e.g., HDAC inhibitors), from our pool of true PXR agonists. At Octant we have found both that counter-assays of this type to be essential for producing the high-quality data required to train robust ML models and that these assays are broadly lacking in currently available datasets.</p>
+<h3 id="how-we-constructed-the-dataset">How We Constructed the Dataset</h3>
+<p>As discussed in our <a href="https://openadmet.org/Octant_CYP_blog_post/?ref=openadmet.ghost.io">previous post</a>, assay design inherently requires balancing tradeoffs between cost, capacity, chemical space coverage, and data completeness. To optimize both throughput and broad chemical space evaluation, we implemented a two-tier screening strategy. This approach begins with an initial primary screen at a limited number of doses, followed by comprehensive dose-response curves (DRCs) and counter-screens for selected hits.</p>
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/2026/03/plot-1-1.png" class="kg-image" alt="" loading="lazy" width="1500" height="900" srcset="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w600/2026/03/plot-1-1.png 600w, https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w1000/2026/03/plot-1-1.png 1000w, https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/2026/03/plot-1-1.png 1500w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">Figure 2: UpSet plot of hits identified across varying concentrations in the pilot screen. Rows represent screening concentrations, with horizontal bars showing total hits per concentration; columns illustrate unique concentration combinations yielding active compounds. Nearly all hits (with two exceptions) occurred at a single concentration or across a contiguous range, suggesting minimal assay noise. Furthermore, while most 10 µM hits overlapped with 30 µM hits, the data demonstrate that excluding the 10 µM screen would risk false negatives for more potent (sub-10 µM) compounds.</span></figcaption></figure><p>To determine the optimal concentrations for this primary screen, we performed a pilot screen on a representative plate from the chemical deck at 10, 30, and 100 µM. We ultimately selected 10 and 30 µM, as their respective hit rates of ~17% and ~51% were sufficient to yield a robust, manageable set of compounds for follow-up DRCs. Furthermore, prioritizing the lowest possible concentrations that generate acceptable hit rates mitigates widespread solubility issues and biases our focus toward the most potent compounds.</p>
+<p>From here, selecting hits to advance to follow-up DRCs is straightforward. For each plate, we fit a linear model on logged data with a fixed effect term for the compound, contrasting against the negative control. This yields an estimated log fold change for each compound relative to the negative control signal. Despite screening in singlicate for each dose, this model assigns standard errors, p-values, and confidence intervals to these estimates based on the noise observed in replicated control conditions. Finally, to account for the thousands of hypotheses tested, we apply the Benjamini-Hochberg method to calculate the false discovery rate (FDR). A compound is formally classified as a hit when its log2 fold change exceeds 1 and its FDR is below 5%.</p>
+<p>We then collected 8-point dose-response curves for every compound classified as a hit at the lowest (10 μM) dose in the primary screen. Beyond the primary hits, we also tested two additional sets in dose-response mode: chemically similar analogs from the Enamine decks that were not initially prioritized, and a separate set from an additional diversity library. All of these follow-on compounds are included in the final dataset.</p>
+<p>To extract dose-response parameters from the collected data, we performed an initial empirical curve classification followed by Bayesian curve-fitting. In the classification, we determine if a curve shows any activity or “rollover,” a common observation in cell-based assays at high concentrations of compound in which the signal reverts to baseline or decreases to zero (generally either due to insolubility or toxicity, respectively). We then fit a model that captures a compound’s activity and rollover as the product of two 3-parameter models (EC50, Emax, and Hillslope for each), with the EC50 parameters constrained by the initial classification and the mean of the negative controls assigned as the Emin (baseline signal). Other parameter constraints, curve classifications, and best practices for using the data will be provided in an upcoming data release FAQ.</p>
+<p>Following evaluation of our DRC dataset, we conducted hit expansion on potent compounds demonstrating on-target PXR activity.. By selecting compounds with  EC50 ≤ 1µM (pEC50 of 6) and at least 1.5 log units difference between the pEC50 in the primary assay and counterassay, we identified 63 promising candidates for hit-expansion in the Analog set. We then selected a set of chemisimilars from the Enamine US on-demand catalog that had an ECFP4 Tanimoto similarity &gt; 0.4 to the potent and selective set as analogs, expecting a wide range of activity. DRCs and EC50s were then collected for this set which form the test set. Counter screen data was also collected for the Analog set to evaluate whether activity was on-target. Post processing QC was used to ensure only reliable DRCs were retained. Note that as we have conducted additional QC, train data is slightly smaller than the raw data  above (and Figure 3).</p>
+<p>Cumulatively this leaves us with a wealth of PXR activity data to train and evaluate our models ensuring both potency, selectivity in a lead-opt like setting.</p>
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/2026/03/PXR_Challenge_Figure.png" class="kg-image" alt="" loading="lazy" width="1280" height="720" srcset="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w600/2026/03/PXR_Challenge_Figure.png 600w, https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w1000/2026/03/PXR_Challenge_Figure.png 1000w, https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/2026/03/PXR_Challenge_Figure.png 1280w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">Figure 3: Schematic of assay flow and challenge split design for the Activity track. Primary screen, DRC and counter assay data form the training set. Hit expansion on potent compounds yielded the Analog sets which cumulatively form the test set. Additional selections were derived from a ChemBridge diversity deck. Note that the training set is shown in raw form here, further QC reduces the training set size slightly</span></figcaption></figure><h2 id="the-structure-dataset"><strong>The Structure Dataset</strong></h2>
+<p>PXR’s large flexible binding pocket is highly dynamic and is capable of recognising ligands of vastly different sizes and shapes, essential for its role as a xenobiotic sensor. This structural plasticity represents a significant challenge to structure based design methodologies. At OpenADMET we are aiming to create impactful large-scale structural datasets across a variety of anti-targets. To identify new ligands, we use X-ray crystallography to perform a fragment screen, essentially turning structural biology into a primary binding assay. This data resolves binding events for even very weakly bound fragments and provides a map of the pharmacophore recognition potential within the binding pocket. To accomplish this on PXR, we expressed and purified the ligand binding domain of PXR with a co-activator peptide using a construct based on previous apo (PDB 3CTB) and agonist-bound (PDB 3HVL) structures. The construct was modified by insertion of a TEV protease site after the N-terminal His-tag and deletion of an additional 12 residues from the N-terminus.</p>
+<p>Fragments from the DSI-poised, Enamine Essential and UCSF libraries were soaked into crystals at UCSF using the previously published <strong>P2₁2₁2₁</strong> crystal form at a nominal concentration of 10 mM, with diffraction data collected at NSLS-II using the AMX and FMX beamlines. Data were reduced using Autoproc and electron density maps were analyzed for fragment binding events using PanDDA. Ligands were modeled in COOT using coordinates and restraints generated by phenix.elbow and models were refined with phenix.refine. We are collaborating with Schrödinger on refinement against experimental data to ensure chemical accuracy of both protein and ligand protonation and conformations. They are holding the data in strict confidence and it will not feature into any tool development during the course of the challenge. The entirety of the fragment set will be used as a test set during the challenge, with half used for a live leaderboard and the other remaining fully blinded. In addition, we have re-refined 68 structures from the PDB and generated new coordinate sets that will be available as training data.</p>
+<h2 id="challenge-details"><strong>Challenge Details</strong></h2>
+<p>The challenge consists of two tracks, and participants are welcome to enter <strong>either or both</strong> tracks.  Following the model of our previous challenge, the competition will be hosted in a dedicated <a href="https://huggingface.co/spaces/openadmet/pxr-challenge?ref=openadmet.ghost.io">HuggingFace space.</a> We will be coordinating the challenge through the <em><strong>#pxr-challenge</strong></em> channel on the OpenADMET Discord; use the invite <a href="https://discord.gg/4mERqNsQh7?ref=openadmet.ghost.io">here</a> to join if you haven’t already.</p>
+<h3 id="1-activity-prediction-track"><strong>1. Activity Prediction Track</strong></h3>
+<p>Participants will predict pEC50 values for the 513-compound Analog set. We will provide an extensive data package for the training set, including PXR pEC50 and Emax, null line pEC50 and Emax, and supporting raw data. The SMILES strings for the blinded test set(s) will be provided for participants to make predictions on.</p>
+<p>The track proceeds in two phases to simulate the progression of a drug discovery program:</p>
+<ul>
+<li><strong>Phase 1:</strong> Participants predict activity for the full set of 513 compounds (Analog Sets 1 and 2). During this stage, <strong>Analog Set 1 will be used as a live leaderboard</strong>.</li>
+<li><strong>Phase 2:</strong> pEC50 values for Analog Set 1 are unblinded, participants may refine their predictions for the remaining compounds in Analog Set 2. To ensure a rigorous final assessment, <strong>there will be no live leaderboard for this component:</strong> predictions on Analog Set 2 will be fully blinded.</li>
+</ul>
+<p>Note that you will only be evaluated on the pEC50s of each respective Analog set without consideration of the counter-assay (PXR-null) data. We viewed determination of on- vs off-target PXR selectivity for the test set as too subjective to be ideal for this challenge format. However, we are interested to see how you utilize the data, and welcome feedback for future challenges on the utility of off-target data. All relevant data will be released after the challenge.</p>
+<p>The primary metric used for evaluating submissions in the activity track will be the <strong>RAE with respect to the test set</strong>. Extensive secondary metrics and error estimation via bootstrapping will be available. Participants should submit their predictions <strong>for all 513 compounds</strong> (Analog Sets 1 and 2) in CSV or Parquet format, using the OpenADMET ID as the key for each molecule. Automated submission feedback will also be given through a dedicated channel on our Discord server.</p>
+<h3 id="2-structure-prediction-track"><strong>2. Structure Prediction Track</strong></h3>
+<p>Participants are provided with <strong>SMILES strings</strong> for 110 fragment-sized small molecules (subject to final QC) for which we have determined PXR X-ray crystal structures. Submissions must consist of the predicted protein-ligand complex for each of the 110 ligands, and participants are encouraged to use protein structure prediction tools or existing PDB structures in their workflows. Because fragment binding prediction is a challenging problem, we look forward to seeing what strategies participants come up with. To track progress, there <strong>will be a live leaderboard with</strong> half of the PXR fragment structures to calculate real-time performance.</p>
+<p>The primary metric used to score participants will be <strong>Local Difference Test for Protein Ligand Interactions (LDDT-PLI)</strong>, with other secondary metrics such Binding-Site Superposed, Symmetry-Corrected Pose Root Mean Square Deviation (BiSyRSMD) available alongside error estimation. Participants will need to submit a ZIP file containing their <strong>full predicted structure</strong> for each protein-ligand complex <strong>as PDB files</strong>. Submitted PXR structures should be a monomer. Each predicted structure is then evaluated against its reference keyed by the crystal ID using the <a href="https://openstructure.org/?ref=openadmet.ghost.io">OpenStructure</a> structure comparison workflow, which conducts automatic matching of predictions against reference structures. Submission feedback will be given automatically in a dedicated discord channel.</p>
+<p><strong>Further detailed instructions, FAQs and example submission and validation pipelines will be made available on the day of challenge launch</strong>.</p>
+<hr>
+<h3 id="the-timeline"><strong>The Timeline</strong></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Date</th>
+<th style="text-align:left">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>March 17</strong></td>
+<td style="text-align:left">Challenge announced</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>April 1</strong></td>
+<td style="text-align:left">Training and test sets released; SMILES for pose prediction structures released; submissions open [both tracks].</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>May 25</strong></td>
+<td style="text-align:left">Phase 1 concludes [Activity track]; all Phase 1 submissions are due, Intermediate leaderboard for both tracks.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>May 26</strong></td>
+<td style="text-align:left">Analog Set 1 unblinded [Activity track]</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>July 1</strong></td>
+<td style="text-align:left">Phase 2 concludes [Activity track]; all Phase 2 submissions are due.  Submissions for the structure prediction challenge [Structure track] are due. Challenge closes.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>After July 1</strong></td>
+<td style="text-align:left">Webinars, blog posts and wrap up.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="acknowledgements"><strong>Acknowledgements</strong></h2>
+<p>We would like to acknowledge the hard work of all the experimentalists at Octant and UCSF for making this challenge possible. In particular, we would like to thank Sam Sabaat, Scott Simpkins, Yuning Shen, Bryan Jiang, Henry Chan, Jeff Tang, Ayesha Ghazali, Theo Tarver, Steven Edgar, Dominic Ky, and <strong>many others</strong> from Octant and Galen Correy, Nikhil Gupta, and others from the Fraser lab at UCSF. We also thank the beamline staff at NSLS-II.</p>
+
+        </section>
+
+    </article>
+
+
+</main>
+
+
+            <section class="gh-container is-grid gh-outer">
+                <div class="gh-container-inner gh-inner">
+                    <h2 class="gh-container-title">Read more</h2>
+                    <div class="gh-feed">
+                            <article class="gh-card post">
+    <a class="gh-card-link" href="/applicability-domain-how-to-know-when-your-model-is-actually-relevant/">
+            <figure class="gh-card-image">
+                <img
+                    srcset="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w160/format/webp/2026/08/ad_top_figure.png 160w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w320/format/webp/2026/08/ad_top_figure.png 320w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w600/format/webp/2026/08/ad_top_figure.png 600w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w960/format/webp/2026/08/ad_top_figure.png 960w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w1200/format/webp/2026/08/ad_top_figure.png 1200w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w2000/format/webp/2026/08/ad_top_figure.png 2000w"
+                    sizes="320px"
+                    src="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w600/2026/08/ad_top_figure.png"
+                    alt="Applicability Domain: How to know when your model is actually relevant"
+                    loading="lazy"
+                >
+            </figure>
+        <div class="gh-card-wrapper">
+            <h3 class="gh-card-title is-title">Applicability Domain: How to know when your model is actually relevant</h3>
+                <p class="gh-card-excerpt is-body">Knowing where in chemical space your models will give reliable predictions is essential to getting actionable insights. But how do you figure out where your model is applicable?</p>
+            <footer class="gh-card-meta">
+<!--
+             -->
+                    <time class="gh-card-date" datetime="2026-09-01">01 Sep 2026</time>
+                <!--
+         --></footer>
+        </div>
+    </a>
+</article>
+                            <article class="gh-card post">
+    <a class="gh-card-link" href="/dont-look-back-in-error-what-we-learned-predicting-pxr-induction-part-i/">
+            <figure class="gh-card-image">
+                <img
+                    srcset="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w160/format/webp/2026/08/PXR_blog_post_header_v2.jpeg 160w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w320/format/webp/2026/08/PXR_blog_post_header_v2.jpeg 320w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w600/format/webp/2026/08/PXR_blog_post_header_v2.jpeg 600w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w960/format/webp/2026/08/PXR_blog_post_header_v2.jpeg 960w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w1200/format/webp/2026/08/PXR_blog_post_header_v2.jpeg 1200w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w2000/format/webp/2026/08/PXR_blog_post_header_v2.jpeg 2000w"
+                    sizes="320px"
+                    src="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w600/2026/08/PXR_blog_post_header_v2.jpeg"
+                    alt="Don’t Look Back in Error: What we learned predicting PXR induction (Part I)"
+                    loading="lazy"
+                >
+            </figure>
+        <div class="gh-card-wrapper">
+            <h3 class="gh-card-title is-title">Don’t Look Back in Error: What we learned predicting PXR induction (Part I)</h3>
+                <p class="gh-card-excerpt is-body">Exploring the limits of ligand-based ML models in predicting PXR induction, based on key learnings from our recent blind challenge.</p>
+            <footer class="gh-card-meta">
+<!--
+             -->
+                    <time class="gh-card-date" datetime="2026-08-27">27 Aug 2026</time>
+                <!--
+         --></footer>
+        </div>
+    </a>
+</article>
+                            <article class="gh-card post">
+    <a class="gh-card-link" href="/lowering-inhibitions-one-cyp-at-a-time-building-the-openadmet-cyp-inhibition-and-tdi-dataset/">
+            <figure class="gh-card-image">
+                <img
+                    srcset="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w160/format/webp/2026/08/one-cyp-at-a-time.jpeg 160w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w320/format/webp/2026/08/one-cyp-at-a-time.jpeg 320w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w600/format/webp/2026/08/one-cyp-at-a-time.jpeg 600w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w960/format/webp/2026/08/one-cyp-at-a-time.jpeg 960w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w1200/format/webp/2026/08/one-cyp-at-a-time.jpeg 1200w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w2000/format/webp/2026/08/one-cyp-at-a-time.jpeg 2000w"
+                    sizes="320px"
+                    src="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w600/2026/08/one-cyp-at-a-time.jpeg"
+                    alt="Lowering Inhibitions, One CYP at a Time: Building the OpenADMET CYP Inhibition and TDI Dataset"
+                    loading="lazy"
+                >
+            </figure>
+        <div class="gh-card-wrapper">
+            <h3 class="gh-card-title is-title">Lowering Inhibitions, One CYP at a Time: Building the OpenADMET CYP Inhibition and TDI Dataset</h3>
+                <p class="gh-card-excerpt is-body">Octant details their robust, reproducible, and scalable assays to map the inhibition of the most pharmacologically relevant cyotochrome P450 isoforms for &gt;10k molecules across chemical space.</p>
+            <footer class="gh-card-meta">
+<!--
+             -->
+                    <time class="gh-card-date" datetime="2026-08-25">25 Aug 2026</time>
+                <!--
+         --></footer>
+        </div>
+    </a>
+</article>
+                            <article class="gh-card post">
+    <a class="gh-card-link" href="/scaling-blind-challenges-a-new-partnership-with-radial-and-the-astera-institute/">
+            <figure class="gh-card-image">
+                <img
+                    srcset="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w160/format/webp/2026/08/Pasted_Image_8_24_26__8_15---AM-2.png 160w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w320/format/webp/2026/08/Pasted_Image_8_24_26__8_15---AM-2.png 320w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w600/format/webp/2026/08/Pasted_Image_8_24_26__8_15---AM-2.png 600w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w960/format/webp/2026/08/Pasted_Image_8_24_26__8_15---AM-2.png 960w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w1200/format/webp/2026/08/Pasted_Image_8_24_26__8_15---AM-2.png 1200w,
+                            https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w2000/format/webp/2026/08/Pasted_Image_8_24_26__8_15---AM-2.png 2000w"
+                    sizes="320px"
+                    src="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/size/w600/2026/08/Pasted_Image_8_24_26__8_15---AM-2.png"
+                    alt="Scaling Blind Challenges: A New Partnership with Radial and the Astera Institute"
+                    loading="lazy"
+                >
+            </figure>
+        <div class="gh-card-wrapper">
+            <h3 class="gh-card-title is-title">Scaling Blind Challenges: A New Partnership with Radial and the Astera Institute</h3>
+                <p class="gh-card-excerpt is-body">We are excited to announce that OpenADMET has received new grant funding from Radial, the life sciences division of the Astera Institute.</p>
+            <footer class="gh-card-meta">
+<!--
+             -->
+                    <time class="gh-card-date" datetime="2026-08-24">24 Aug 2026</time>
+                <!--
+         --></footer>
+        </div>
+    </a>
+</article>
+                    </div>
+                </div>
+            </section>
+
+    
+    <footer class="gh-foot gh-outer">
+    <div class="gh-foot-inner gh-inner">
+        <span class="gh-foot-logo">
+                <img src="https://storage.ghost.io/c/3f/51/3f515c22-43d0-4696-a664-031fddd40688/content/images/2026/05/oADMET-wordmark-on-dark-1.png" alt="OpenADMET" style="height:64px; opacity:0.9;">
+        </span>
+    </div>
+</footer>
+
+<div class="gh-footer-bar gh-outer">
+    <div class="gh-inner">
+        <p class="gh-license" xmlns:cc="http://creativecommons.org/ns#">
+            © 2026 <a href="https://openadmet.ghost.io" rel="cc:attributionURL">OpenADMET</a>
+            · Content licensed <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener" target="_blank">CC BY 4.0</a>
+        </p>
+    </div>
+</div>
+
+<style>
+    .gh-footer-bar { padding: 0.8rem 2rem; }
+    .gh-footer-bar .gh-license {
+        margin: 0;
+        text-align: center;
+        font-size: 1.1rem;
+        line-height: 1.5;
+        letter-spacing: 0.02em;
+        color: rgba(255,255,255,0.42) !important;
+    }
+    .gh-footer-bar .gh-license a {
+        color: rgba(255,255,255,0.6) !important;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255,255,255,0.18);
+    }
+    .gh-footer-bar .gh-license a:hover {
+        color: #fff !important;
+        border-bottom-color: rgba(255,255,255,0.5);
+    }
+</style>
+    
+</div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/built/source.js?v=hgnv3dFRNrcfIROn"></script>
+
+
+
+</body>
+</html>

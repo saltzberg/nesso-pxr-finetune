@@ -1,0 +1,19 @@
+{
+  "compounds": 3344,
+  "chemical_groups": 1975,
+  "singleton_groups": 1458,
+  "singleton_compounds": 1458,
+  "largest_group": 36,
+  "fold_sizes": {
+    "0": 669,
+    "1": 669,
+    "2": 669,
+    "3": 668,
+    "4": 669
+  },
+  "effective_weighted_n": 2782.3431885649925,
+  "native_baseline_max_abs_vs_capture": 9.5367431640625e-07,
+  "neurals": 20,
+  "control_cells": 30,
+  "metric_cells_recomputed": 50
+}

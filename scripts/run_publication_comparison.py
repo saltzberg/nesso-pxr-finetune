@@ -112,6 +112,13 @@ def parse_args() -> argparse.Namespace:
         default=PUBLISHED_REPORT,
     )
     parser.add_argument("--device", default="cuda")
+    parser.add_argument(
+        "--nesso-learning-rates",
+        type=float,
+        nargs="+",
+        default=E2_LEARNING_RATES,
+        help=("Nesso E2 learning-rate grid; defaults to the historical bounded grid"),
+    )
     parser.add_argument("--lgbm-threads", type=int, default=4)
     parser.add_argument("--top-k", type=int, default=1000)
     parser.add_argument("--bootstrap-replicates", type=int, default=2000)
@@ -282,7 +289,7 @@ def run_nested_nesso(args: argparse.Namespace) -> None:
         e2_candidates: list[
             tuple[str, CachedHeadConfig, dict[str, float], list[int]]
         ] = []
-        for learning_rate in E2_LEARNING_RATES:
+        for learning_rate in args.nesso_learning_rates:
             for weight_decay in WEIGHT_DECAYS:
                 config = CachedHeadConfig(
                     learning_rate=learning_rate,

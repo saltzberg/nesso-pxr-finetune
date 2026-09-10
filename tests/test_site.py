@@ -1,49 +1,70 @@
 from __future__ import annotations
 
+import hashlib
 import json
-import math
-from html.parser import HTMLParser
 from pathlib import Path
 
 SITE_ROOT = Path(__file__).parents[1] / "site"
 
 
-class LinkParser(HTMLParser):
-    def __init__(self) -> None:
-        super().__init__()
-        self.links: list[str] = []
-        self.meta_robots: list[str] = []
+def test_site_matches_published_release_manifest() -> None:
+    """The repository site tree is the exact staged public release."""
+    manifest_path = SITE_ROOT / "release-manifest.json"
+    release = json.loads(manifest_path.read_text(encoding="utf-8"))
 
-    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
-        values = dict(attrs)
-        if tag in {"a", "link", "script"}:
-            target = values.get("href") or values.get("src")
-            if target:
-                self.links.append(target)
-        if tag == "meta" and values.get("name") == "robots" and values.get("content"):
-            self.meta_robots.append(values["content"])
+    assert release["route"] == "/projects/finetuning-nesso-1/"
+    assert release["github"] == "https://github.com/saltzberg/nesso-pxr-finetune"
 
+    expected = set(release["files"]) | {"release-manifest.json"}
+    actual = {
+        path.relative_to(SITE_ROOT).as_posix()
+        for path in SITE_ROOT.rglob("*")
+        if path.is_file()
+    }
+    assert actual == expected
 
-def test_site_pages_are_noindex_and_links_resolve() -> None:
-    for page in SITE_ROOT.glob("*.html"):
-        parser = LinkParser()
-        parser.feed(page.read_text(encoding="utf-8"))
-        assert "noindex,nofollow" in parser.meta_robots
-        for link in parser.links:
-            if link.startswith(("http://", "https://", "#")):
-                continue
-            assert (page.parent / link).resolve().exists(), (
-                f"broken link in {page}: {link}"
-            )
+    for relative, record in release["files"].items():
+        path = SITE_ROOT / relative
+        payload = path.read_bytes()
+        assert len(payload) == record["bytes"], relative
+        assert hashlib.sha256(payload).hexdigest() == record["sha256"], relative
 
 
-def test_training_history_contains_completed_measured_points() -> None:
-    payload = json.loads((SITE_ROOT / "assets/training-history.json").read_text())
-    assert payload["status"] == "complete"
-    assert payload["runs"]
-    for run in payload["runs"]:
-        assert run["epochs"]
-        for point in run["epochs"]:
-            assert point["epoch"] >= 1
-            assert math.isfinite(point["train_loss"])
-            assert math.isfinite(point["validation_loss"])
+def test_release_contains_only_the_current_experimental_site() -> None:
+    current = {
+        "index.html",
+        "architecture/index.html",
+        "experiment-manifest.json",
+        "source-map.json",
+    }
+    assert all((SITE_ROOT / relative).is_file() for relative in current)
+
+    superseded = {
+        "index.pre-experimental-20260908.html",
+        "introduction.html",
+        "data.html",
+        "modeling.html",
+        "training-results.html",
+        "low-data",
+        "low-data-verified",
+        "low-data-assessment",
+        "low-data-followup",
+    }
+    assert all(not (SITE_ROOT / relative).exists() for relative in superseded)
+
+
+def test_release_assets_are_complete() -> None:
+    figure_root = SITE_ROOT / "assets" / "figures"
+    expected = {
+        "01_predicted_vs_observed.png",
+        "02_performance_vs_distance.png",
+        "03_residual_vs_activity.png",
+        "04_learning_curves.png",
+        "05_hyperparameter_landscape.png",
+        "06_head_behavior.png",
+        "07_binder_proxy_roc_pr.png",
+    }
+    assert {path.name for path in figure_root.glob("*.png")} == expected
+    assert all(
+        (figure_root / filename).stat().st_size > 10_000 for filename in expected
+    )

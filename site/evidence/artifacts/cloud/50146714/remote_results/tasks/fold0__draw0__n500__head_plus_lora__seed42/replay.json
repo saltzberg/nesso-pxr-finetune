@@ -1,0 +1,1 @@
+{"all_rows":769,"binding":"afb7014f4cc5bef487b094a1665e234526896d4e72c1af6eac16b87b76bace4b","native_parity_max_abs":0.0,"point_max_abs":0.0,"scoring_replayed":true,"task":{"arm":"head_plus_lora","draw":0,"n_train":500,"outer_fold":0,"seed":42,"smoke":false,"split":"strict_chemical","task_id":"fold0__draw0__n500__head_plus_lora__seed42"}}

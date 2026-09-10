@@ -1,0 +1,13 @@
+representation,model_class,selected_candidate,selected_alpha,fixed_refit_epochs,learning_rate,weight_decay,development_cv_mae,development_cv_spearman
+member1_384d,ridge,alpha10,10.0,,,,,
+member2_384d,ridge,alpha100,100.0,,,,,
+mean_384d,ridge,alpha100,100.0,,,,,
+concat_768d,ridge,alpha100,100.0,,,,,
+member1_384d,one_hidden_mlp,lr0.0003_wd0.0001,,23.0,0.0003,0.0001,0.6678011062138085,0.5765428315427141
+member1_384d,two_hidden_mlp,lr0.001_wd0.0001,,17.0,0.001,0.0001,0.663468243868583,0.5748670417150342
+member2_384d,one_hidden_mlp,lr0.0003_wd0.0001,,21.0,0.0003,0.0001,0.6080626837671106,0.658034887752895
+member2_384d,two_hidden_mlp,lr0.001_wd0,,16.0,0.001,0.0,0.6167351100899654,0.6482885001727804
+mean_384d,one_hidden_mlp,lr0.001_wd0,,22.0,0.001,0.0,0.6138037452619344,0.6439458033001598
+mean_384d,two_hidden_mlp,lr0.001_wd0,,14.0,0.001,0.0,0.6061833820284536,0.6502053615863647
+concat_768d,one_hidden_mlp,lr0.0003_wd0,,10.0,0.0003,0.0,0.6188631082967121,0.6539431226693573
+concat_768d,two_hidden_mlp,lr0.0003_wd0,,15.0,0.0003,0.0,0.6210020831665052,0.6545830618048106

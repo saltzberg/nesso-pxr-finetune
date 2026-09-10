@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Fine-tuning screen · Nesso PXR</title><link rel="stylesheet" href="../../assets/style.css"><style>main img{max-width:100%;height:auto} .evidence{overflow-wrap:anywhere} table{display:block;overflow-x:auto} .study-status{color:#276749} .study-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px} .study-grid a{border:1px solid #d8d4cc;padding:16px;text-decoration:none} .study-grid small{display:block;color:#66635f;margin-top:8px} figure.narrative{max-width:880px;display:flex;flex-direction:column;gap:8px} figure.narrative .plot-key{margin:0} @media(max-width:600px){figure.narrative .plot-key{order:-1}} .figure-link{cursor:zoom-in;display:block} .figure-link picture{display:block} header nav{display:flex;flex-wrap:wrap;gap:8px 19px} header nav a{margin:0;white-space:nowrap} figure.narrative img{border:0} .plot-key{font:13px/1.5 system-ui,sans-serif;margin-top:12px} .small-dot{color:#ad501b} .other-dot{color:#356c78} .reading-path{font:14px/1.8 system-ui,sans-serif;border-block:1px solid #d8d4cc;padding:16px 0;max-width:100%} details{margin:28px 0} summary{cursor:pointer;font:600 15px/1.5 system-ui,sans-serif} .chapter-nav{margin:28px 0}</style><style>main{overflow-wrap:anywhere}main code{white-space:normal}main table{max-width:100%;overflow-wrap:normal}main td:nth-child(n+3){white-space:nowrap}main th{min-width:70px}</style></head><body><header><div class="masthead"><div class="brand">Nesso-1 · PXR experimental case study</div><p class="updated-at">Updated 2026-09-08</p></div><nav><a href="../../index.html">Overview</a><a href="../../chapters/transfer/index.html">Read the story</a><a href="../../index.html#experiments">Supporting archive</a><a href="../../architecture/index.html">Architecture</a></nav></header><main><h1>Fine-tuning screen</h1>
+<p><a href="../../index.html#methodology">← Overview</a></p>
+<p>Fine-tuning improved direct transfer to PXR induction, but the tested neural recipe did not beat ligand descriptors at N500. This page brings together the completed matched affinity-adaptation screen and its Vast.ai continuation; it is a synthesis of the existing experiment, not an additional independent study.</p>
+<h2>What we trained</h2>
+<p>We first tested fitting the continuous regression heads, then compared that arm with heads plus upstream low-rank adaptation. Both arms update <code>affinity_heads.to_affinity_pred_value</code> in <strong>both</strong> <code>affinity_module</code> and <code>affinity_module2</code>. The LoRA arm additionally trains rank-4, alpha-4 adapters in each member at:</p>
+<ul>
+<li><code>esm_proj.1</code></li>
+<li><code>esm_proj.3</code></li>
+<li><code>pairformer_stack.layers.0.transition_z.fc1</code></li>
+</ul>
+<p>These are local affinity projections and the first affinity Pairformer block's transition, not the external ESM model. The original weights under the adapters, binary heads, main trunk and all other parameters and buffers remain frozen. See <a href="../../architecture/index.html#fine-tuning">architecture analysis and selected layers</a> for the highlighted diagram and exact layer audit.</p>
+<p>The completed matrix contains <strong>20 scientific fits: five reused development folds × two label budgets × two neural arms</strong>. N100 uses 80 FIT and 20 calibration compounds per fold; N500 uses 400 FIT and 100 calibration compounds. Each method/budget pools one held-out prediction for each of 3,344 compounds. There is one subset draw and seed (42), not five independent replications.</p>
+<p>Both arms use the same fixed 40-epoch AdamW recipe: learning rate 0.0003, weight decay 0.0001, Huber beta 0.5, and full-FIT inverse-SE-weighted gradient accumulation with one optimizer update per epoch. There is no early stopping or checkpoint selection from test outcomes. Calibration labels are reserved for intervals, not gradient fitting.</p>
+<h2>What ran on Vast.ai</h2>
+<p>The scientific run began locally and finished through Vast.ai instance <strong>50146714</strong>. The preserved matrix contains <strong>3 historical local fits and 17 remote continuation fits</strong>, not 20 newly trained cloud fits. The three completed local tasks were copied byte-identically and not refitted; a resumed task retained its saved epoch and optimizer state.</p>
+<p>Before the scientific matrix, separate engineering and eight-compound pilot runs checked differentiable/native parity, seed isolation, pause/resume and saved-state replay. Those smoke tests establish that the training machinery works; they are not held-out performance results and are not included in the 20 scientific fits.</p>
+<p>The continuation used immutable cached packets for both affinity members, source/checkpoint bindings and first-access SHA-256 checks. Cross-hardware historical replay used an explicitly approved absolute tolerance of 0.0001; new-fit same-machine saved-state replay remained exact. The final execution record confirms all 20 fits, full-cache verification and all-fit replay completed. Artifacts were preserved locally before the cloud instance was destroyed.</p>
+<h2>Results</h2>
+<p>Pooled held-out metrics from the saved <a href="../../evidence/reports/architecture/results/pooled_metrics.csv">exact metrics CSV</a>, rounded to four decimals below. Weighted MAE and raw MAE are lower-is-better; Spearman ranking is higher-is-better. These are pooled scores, not equal-fold means.</p>
+<table>
+<thead>
+<tr>
+<th>Budget (FIT / calibration)</th>
+<th>System</th>
+<th style="text-align:right">Weighted MAE</th>
+<th style="text-align:right">Raw MAE</th>
+<th style="text-align:right">Spearman</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N100 (80 / 20)</td>
+<td>Native unchanged</td>
+<td style="text-align:right">0.6272</td>
+<td style="text-align:right">0.9141</td>
+<td style="text-align:right">0.3869</td>
+</tr>
+<tr>
+<td>N100 (80 / 20)</td>
+<td>Head-only</td>
+<td style="text-align:right">0.5894</td>
+<td style="text-align:right">0.7907</td>
+<td style="text-align:right">0.4436</td>
+</tr>
+<tr>
+<td>N100 (80 / 20)</td>
+<td>Head + LoRA</td>
+<td style="text-align:right">0.5831</td>
+<td style="text-align:right">0.7635</td>
+<td style="text-align:right">0.4943</td>
+</tr>
+<tr>
+<td>N100 (80 / 20)</td>
+<td>Ligand-descriptor LightGBM</td>
+<td style="text-align:right">0.6103</td>
+<td style="text-align:right">0.7450</td>
+<td style="text-align:right">0.5006</td>
+</tr>
+<tr>
+<td>N500 (400 / 100)</td>
+<td>Native unchanged</td>
+<td style="text-align:right">0.6272</td>
+<td style="text-align:right">0.9141</td>
+<td style="text-align:right">0.3869</td>
+</tr>
+<tr>
+<td>N500 (400 / 100)</td>
+<td>Head-only</td>
+<td style="text-align:right">0.5773</td>
+<td style="text-align:right">0.7932</td>
+<td style="text-align:right">0.4726</td>
+</tr>
+<tr>
+<td>N500 (400 / 100)</td>
+<td>Head + LoRA</td>
+<td style="text-align:right">0.5610</td>
+<td style="text-align:right">0.7565</td>
+<td style="text-align:right">0.5293</td>
+</tr>
+<tr>
+<td>N500 (400 / 100)</td>
+<td>Ligand-descriptor LightGBM</td>
+<td style="text-align:right">0.5006</td>
+<td style="text-align:right">0.5996</td>
+<td style="text-align:right">0.6569</td>
+</tr>
+</tbody>
+</table>
+<p>Weighted MAE = Σ wᵢ |predictionᵢ − observedᵢ| / Σ wᵢ, where wᵢ = 1/max(reported pEC50 SEᵢ, 0.1). Raw MAE divides the unweighted absolute-error sum by 3,344. Native uses the unchanged affinity-equivalent conversion, 6 minus the mean of the two continuous member values; it is not a native cellular pEC50 output. Native point predictions are identical at both budgets. The historical descriptor fits were reused and verified, not rerun on Vast.ai; their tuning procedure differs from the neural recipe, so this is practical context rather than an optimizer-matched architecture ablation.</p>
+<p>At N100, LoRA has the lowest weighted MAE of these systems, but descriptors have lower raw MAE and better ranking. At N500, LoRA improves on head-only in all five folds on weighted MAE, yet descriptors remain better on all three pooled metrics. Much of the LoRA gain comes from reducing low-potency overprediction; it is not a uniform improvement across the activity range. Frozen-feature ridge also beats both neural recipes at N500, so this result does not mean that Nesso's representations lack useful information.</p>
+<h2>Interpretation and limits</h2>
+<p>This is a retrospective comparison on reused development folds, not a fresh blind-challenge result or a broad hyperparameter search. The folds share training pools, and the single draw/seed does not measure retraining variability. Chemical purging excludes acquired compounds with Morgan radius-2/2,048-bit Tanimoto at least 0.35 to any outer-test compound. Calibration roles can change between the nested N100 and N500 budgets. No outer-test labels entered the fits.</p>
+<p>The tested adaptation works as a correction but does not justify replacing descriptors at N500. A further optimization screen needs an inner selection rule, additional draws/seeds and untouched evaluation rather than choosing another recipe on these outcomes.</p>
+<h2>Supporting methods and evidence</h2>
+<ul>
+<li><a href="../upstream-comparison/index.html">Upstream comparison experiment</a> and <a href="../../chapters/transfer/index.html">transfer results and scatterplots</a></li>
+<li><a href="../head-only/index.html">Head-only methods</a> and <a href="../identity-standardization/index.html">chemical splits</a></li>
+<li><a href="../../evidence/experiments/20260906_affinity_comparison/train_protocol.json">Exact completed training protocol</a></li>
+<li><a href="../../evidence/experiments/20260906_affinity_comparison/RESULTS.md">Scientific results</a> and <a href="../../evidence/experiments/20260906_affinity_comparison/EXECUTION.md">execution record</a></li>
+<li><a href="../../evidence/artifacts/cloud/50146714/continuation.json">Vast.ai continuation binding and historical-task list</a></li>
+<li><a href="../../evidence/reports/architecture/results/sources.csv">Fit/control provenance table</a> and <a href="../../evidence/reports/architecture/results/RESULTS.md">full method report</a></li>
+<li><a href="../../experiment-content/fine-tuning-screen.md">Editable page Markdown</a></li>
+</ul>
+</main><footer><p class="fineprint">Nesso → PXR · <a href="../../source-map.json">Evidence provenance</a> · <a href="../../experiment-content/index.md" download>Editable overview</a></p></footer></body></html>

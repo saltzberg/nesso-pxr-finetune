@@ -1,0 +1,20 @@
+{
+  "experiment": "20260908_descriptor_nesso_blend",
+  "status": "approved exploratory CPU pilot; persisted before fits",
+  "scope": {"split": "strict_chemical", "outer_fold": 0, "draw": 0, "n_train": 500, "fit": 400, "calibration": 100},
+  "heldout_fresh": false,
+  "roles_source": "artifacts/experiments/low_data_followup_20260906/strict_split",
+  "native_features": "artifacts/experiments/affinity_comparison_20260906/controls_v1/fresh_features",
+  "descriptor_recipe": "Unchanged experiments/20260906_low_data_followup/code/baselines.py RECIPE and fit_predict; six-candidate grid, train-only mean imputation/variance/correlation/gain reduction; weighted squared-error trees selected by pooled weighted MAE",
+  "ridge_recipe": "Unchanged experiments/20260906_low_data_followup/code/readouts.py repr_ridge_stable; concatenated fresh frozen affinity member vectors, weighted centering, scale floor max(0.1*global_RMS,1e-8), SVD ridge",
+  "ridge_alpha": [1, 100, 10000, 1000000],
+  "seed": 42,
+  "threads": 2,
+  "nesting": "Three GroupKFold meta folds INSIDE FIT. Each meta-training subset independently calls original descriptor/ridge fit_predict with three further GroupKFold folds to select hyperparameters, with transformations fitted inside each tuning train. Predict untouched meta-validation subset once. Select scalar weight from all 400 genuinely nested inner-OOF rows. Refit each full recipe on all 400 FIT rows with its own grouped hyperparameter CV. No saved outer OOF used to learn weight.",
+  "blend": "p=(1-alpha)*descriptor+alpha*ridge, alpha in [0,1]. Exact convex weighted-L1 minimization over endpoints and clipped residual/difference breakpoints; lowest alpha on equal objective. No intercept, clipping, CAL tuning or outer-label tuning.",
+  "objective": "MAE weighted by inverse max(reported assay SE,0.1), same frozen evaluation weights as affinity comparison; fitting weights normalized to training mean 1",
+  "calibration": "Retain exact 100 CAL identities; no CAL outcomes used by fitting or blend selection. Point-only pilot; no new interval experiment. Persist CAL predictions without labels.",
+  "evaluation": "After all fits/weight fixed: outer-test weighted MAE primary; raw MAE and Spearman, pEC50 >=4 stratum weighted/raw MAE and rank descriptive. Report paired differences, no promotion threshold or significance claim.",
+  "verification": "Source/feature hashes and identity map; original preparation hash gate; nested row/group audits and transform instrumentation; saved-model predictions independently reconstructed; CSV metrics independently recomputed with round-trip floats; exact historical descriptor and fresh ridge prediction parity after new fits; tests before real fits.",
+  "boundaries": "Only this new experiment and matching artifacts directory. No GPU/cloud, broader sweep, additional fold, external publication, source-data changes or root README/site edits. Stop after this pilot even if promising. Historical stacking exists; not a first-ever blend claim. Reused development test fold limits inference."
+}

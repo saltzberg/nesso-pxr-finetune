@@ -1,0 +1,3 @@
+budget,comparison,official_weighted_delta,leave_one_group_out_min,leave_one_group_out_max,descriptive_posthoc
+100,LoRA minus head-only,-0.006314785053678255,-0.006807249768222436,-0.005482339214952388,True
+500,LoRA minus head-only,-0.016239706706385495,-0.01658351814782257,-0.01578862766186006,True

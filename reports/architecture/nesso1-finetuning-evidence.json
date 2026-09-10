@@ -1,0 +1,890 @@
+{
+  "counts": {
+    "head": 592130,
+    "head_plus_lora": 616706,
+    "lora": 24576
+  },
+  "fits": [
+    {
+      "arm": "head_only",
+      "budget": 100,
+      "changed_tensors": 12,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_only__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_only__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_only__seed42/replay.json"
+      ],
+      "fold": 0,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold0__draw0__n100__head_only__seed42"
+    },
+    {
+      "arm": "head_plus_lora",
+      "budget": 100,
+      "changed_tensors": 24,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_plus_lora__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_plus_lora__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_plus_lora__seed42/replay.json"
+      ],
+      "fold": 0,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold0__draw0__n100__head_plus_lora__seed42"
+    },
+    {
+      "arm": "head_only",
+      "budget": 500,
+      "changed_tensors": 12,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_only__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_only__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_only__seed42/replay.json"
+      ],
+      "fold": 0,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold0__draw0__n500__head_only__seed42"
+    },
+    {
+      "arm": "head_plus_lora",
+      "budget": 500,
+      "changed_tensors": 24,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_plus_lora__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_plus_lora__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_plus_lora__seed42/replay.json"
+      ],
+      "fold": 0,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold0__draw0__n500__head_plus_lora__seed42"
+    },
+    {
+      "arm": "head_only",
+      "budget": 100,
+      "changed_tensors": 12,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_only__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_only__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_only__seed42/replay.json"
+      ],
+      "fold": 1,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold1__draw0__n100__head_only__seed42"
+    },
+    {
+      "arm": "head_plus_lora",
+      "budget": 100,
+      "changed_tensors": 24,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_plus_lora__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_plus_lora__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_plus_lora__seed42/replay.json"
+      ],
+      "fold": 1,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold1__draw0__n100__head_plus_lora__seed42"
+    },
+    {
+      "arm": "head_only",
+      "budget": 500,
+      "changed_tensors": 12,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_only__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_only__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_only__seed42/replay.json"
+      ],
+      "fold": 1,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold1__draw0__n500__head_only__seed42"
+    },
+    {
+      "arm": "head_plus_lora",
+      "budget": 500,
+      "changed_tensors": 24,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_plus_lora__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_plus_lora__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_plus_lora__seed42/replay.json"
+      ],
+      "fold": 1,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold1__draw0__n500__head_plus_lora__seed42"
+    },
+    {
+      "arm": "head_only",
+      "budget": 100,
+      "changed_tensors": 12,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_only__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_only__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_only__seed42/replay.json"
+      ],
+      "fold": 2,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold2__draw0__n100__head_only__seed42"
+    },
+    {
+      "arm": "head_plus_lora",
+      "budget": 100,
+      "changed_tensors": 24,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_plus_lora__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_plus_lora__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_plus_lora__seed42/replay.json"
+      ],
+      "fold": 2,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold2__draw0__n100__head_plus_lora__seed42"
+    },
+    {
+      "arm": "head_only",
+      "budget": 500,
+      "changed_tensors": 12,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_only__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_only__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_only__seed42/replay.json"
+      ],
+      "fold": 2,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold2__draw0__n500__head_only__seed42"
+    },
+    {
+      "arm": "head_plus_lora",
+      "budget": 500,
+      "changed_tensors": 24,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_plus_lora__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_plus_lora__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_plus_lora__seed42/replay.json"
+      ],
+      "fold": 2,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold2__draw0__n500__head_plus_lora__seed42"
+    },
+    {
+      "arm": "head_only",
+      "budget": 100,
+      "changed_tensors": 12,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_only__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_only__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_only__seed42/replay.json"
+      ],
+      "fold": 3,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold3__draw0__n100__head_only__seed42"
+    },
+    {
+      "arm": "head_plus_lora",
+      "budget": 100,
+      "changed_tensors": 24,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_plus_lora__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_plus_lora__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_plus_lora__seed42/replay.json"
+      ],
+      "fold": 3,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold3__draw0__n100__head_plus_lora__seed42"
+    },
+    {
+      "arm": "head_only",
+      "budget": 500,
+      "changed_tensors": 12,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_only__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_only__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_only__seed42/replay.json"
+      ],
+      "fold": 3,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold3__draw0__n500__head_only__seed42"
+    },
+    {
+      "arm": "head_plus_lora",
+      "budget": 500,
+      "changed_tensors": 24,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_plus_lora__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_plus_lora__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_plus_lora__seed42/replay.json"
+      ],
+      "fold": 3,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold3__draw0__n500__head_plus_lora__seed42"
+    },
+    {
+      "arm": "head_only",
+      "budget": 100,
+      "changed_tensors": 12,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_only__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_only__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_only__seed42/replay.json"
+      ],
+      "fold": 4,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold4__draw0__n100__head_only__seed42"
+    },
+    {
+      "arm": "head_plus_lora",
+      "budget": 100,
+      "changed_tensors": 24,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_plus_lora__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_plus_lora__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_plus_lora__seed42/replay.json"
+      ],
+      "fold": 4,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold4__draw0__n100__head_plus_lora__seed42"
+    },
+    {
+      "arm": "head_only",
+      "budget": 500,
+      "changed_tensors": 12,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_only__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_only__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_only__seed42/replay.json"
+      ],
+      "fold": 4,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold4__draw0__n500__head_only__seed42"
+    },
+    {
+      "arm": "head_plus_lora",
+      "budget": 500,
+      "changed_tensors": 24,
+      "epochs": 40,
+      "files": [
+        "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_plus_lora__seed42/complete.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_plus_lora__seed42/audit.json",
+        "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_plus_lora__seed42/replay.json"
+      ],
+      "fold": 4,
+      "frozen_tensors": 666,
+      "frozen_unchanged": true,
+      "replay_max_abs": 0.0,
+      "task_id": "fold4__draw0__n500__head_plus_lora__seed42"
+    }
+  ],
+  "layers": [
+    {
+      "alpha": 0,
+      "bias_shape": [
+        384
+      ],
+      "input": 384,
+      "kind": "head",
+      "module": "affinity_module.affinity_heads.to_affinity_pred_value.0",
+      "output": 384,
+      "rank": 0,
+      "trainable": 147840,
+      "weight_shape": [
+        384,
+        384
+      ]
+    },
+    {
+      "alpha": 0,
+      "bias_shape": [
+        384
+      ],
+      "input": 384,
+      "kind": "head",
+      "module": "affinity_module.affinity_heads.to_affinity_pred_value.2",
+      "output": 384,
+      "rank": 0,
+      "trainable": 147840,
+      "weight_shape": [
+        384,
+        384
+      ]
+    },
+    {
+      "alpha": 0,
+      "bias_shape": [
+        1
+      ],
+      "input": 384,
+      "kind": "head",
+      "module": "affinity_module.affinity_heads.to_affinity_pred_value.4",
+      "output": 1,
+      "rank": 0,
+      "trainable": 385,
+      "weight_shape": [
+        1,
+        384
+      ]
+    },
+    {
+      "A_shape": [
+        4,
+        1280
+      ],
+      "B_shape": [
+        384,
+        4
+      ],
+      "alpha": 4,
+      "input": 1280,
+      "kind": "lora",
+      "module": "affinity_module.esm_proj.1",
+      "output": 384,
+      "rank": 4,
+      "trainable": 6656,
+      "weight_shape": [
+        384,
+        1280
+      ]
+    },
+    {
+      "A_shape": [
+        4,
+        384
+      ],
+      "B_shape": [
+        384,
+        4
+      ],
+      "alpha": 4,
+      "input": 384,
+      "kind": "lora",
+      "module": "affinity_module.esm_proj.3",
+      "output": 384,
+      "rank": 4,
+      "trainable": 3072,
+      "weight_shape": [
+        384,
+        384
+      ]
+    },
+    {
+      "A_shape": [
+        4,
+        128
+      ],
+      "B_shape": [
+        512,
+        4
+      ],
+      "alpha": 4,
+      "input": 128,
+      "kind": "lora",
+      "module": "affinity_module.pairformer_stack.layers.0.transition_z.fc1",
+      "output": 512,
+      "rank": 4,
+      "trainable": 2560,
+      "weight_shape": [
+        512,
+        128
+      ]
+    },
+    {
+      "alpha": 0,
+      "bias_shape": [
+        384
+      ],
+      "input": 384,
+      "kind": "head",
+      "module": "affinity_module2.affinity_heads.to_affinity_pred_value.0",
+      "output": 384,
+      "rank": 0,
+      "trainable": 147840,
+      "weight_shape": [
+        384,
+        384
+      ]
+    },
+    {
+      "alpha": 0,
+      "bias_shape": [
+        384
+      ],
+      "input": 384,
+      "kind": "head",
+      "module": "affinity_module2.affinity_heads.to_affinity_pred_value.2",
+      "output": 384,
+      "rank": 0,
+      "trainable": 147840,
+      "weight_shape": [
+        384,
+        384
+      ]
+    },
+    {
+      "alpha": 0,
+      "bias_shape": [
+        1
+      ],
+      "input": 384,
+      "kind": "head",
+      "module": "affinity_module2.affinity_heads.to_affinity_pred_value.4",
+      "output": 1,
+      "rank": 0,
+      "trainable": 385,
+      "weight_shape": [
+        1,
+        384
+      ]
+    },
+    {
+      "A_shape": [
+        4,
+        1280
+      ],
+      "B_shape": [
+        384,
+        4
+      ],
+      "alpha": 4,
+      "input": 1280,
+      "kind": "lora",
+      "module": "affinity_module2.esm_proj.1",
+      "output": 384,
+      "rank": 4,
+      "trainable": 6656,
+      "weight_shape": [
+        384,
+        1280
+      ]
+    },
+    {
+      "A_shape": [
+        4,
+        384
+      ],
+      "B_shape": [
+        384,
+        4
+      ],
+      "alpha": 4,
+      "input": 384,
+      "kind": "lora",
+      "module": "affinity_module2.esm_proj.3",
+      "output": 384,
+      "rank": 4,
+      "trainable": 3072,
+      "weight_shape": [
+        384,
+        384
+      ]
+    },
+    {
+      "A_shape": [
+        4,
+        128
+      ],
+      "B_shape": [
+        512,
+        4
+      ],
+      "alpha": 4,
+      "input": 128,
+      "kind": "lora",
+      "module": "affinity_module2.pairformer_stack.layers.0.transition_z.fc1",
+      "output": 512,
+      "rank": 4,
+      "trainable": 2560,
+      "weight_shape": [
+        512,
+        128
+      ]
+    }
+  ],
+  "members": [
+    "affinity_module",
+    "affinity_module2"
+  ],
+  "scope": "Completed matched 20-fit comparison; saved JSON/hash audit only, no new checkpoint replay or inference",
+  "sources": [
+    {
+      "bytes": 19040,
+      "sha256": "16396be0967df5b7ea226aa8194e5db1f6c442cc37b2ccc631280dbf1b68698d",
+      "source_key": "artifacts/architecture/architecture_audit.md"
+    },
+    {
+      "bytes": 213420,
+      "sha256": "96fa1dd243268b62653b3acad83e21fae5566e66f566a537445477fe31a9b63b",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_only__seed42/audit.json"
+    },
+    {
+      "bytes": 913,
+      "sha256": "09d562acbeb7b5073af77f3d9a05ccb29bab51def84b1dbae2ce00d15b681b2f",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_only__seed42/complete.json"
+    },
+    {
+      "bytes": 331,
+      "sha256": "152851be04e81640ad9fa6f2c4b774fcc1a0e9fc34c2edf3d4e27fe0bbd3de65",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_only__seed42/replay.json"
+    },
+    {
+      "bytes": 217699,
+      "sha256": "5692ff831eb7aac94e43c06d2cf8b2bc34db62d2d210e1c389fa9df08ac65e26",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_plus_lora__seed42/audit.json"
+    },
+    {
+      "bytes": 923,
+      "sha256": "7afff61a206f716ccedab15cb2dba6ad638347e954d89638c6b9345b3c95c3fd",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_plus_lora__seed42/complete.json"
+    },
+    {
+      "bytes": 341,
+      "sha256": "12f4d611bf6da816f137ae0fa935ddc876f1c0b8208ded47bfe0ffb091f8f8ef",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_plus_lora__seed42/replay.json"
+    },
+    {
+      "bytes": 225007,
+      "sha256": "291176d7c00a693b7f03aba027bb13ef84f57001d3c342d0e5839c8a2af78e69",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_only__seed42/audit.json"
+    },
+    {
+      "bytes": 913,
+      "sha256": "474c48625b02c5b0353db9f365a8d916b2d5c541c97bcac25e3caf2b3b747782",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_only__seed42/complete.json"
+    },
+    {
+      "bytes": 331,
+      "sha256": "6d64b7124960671d57496ebf241ef37a5733acaa0c979f23d1be526bd7e30ce2",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_only__seed42/replay.json"
+    },
+    {
+      "bytes": 229298,
+      "sha256": "14c1e2c9684b6ebbe3761fe5cbaa3eaa3417dc00f3e134357b6ea5f6554a0a54",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_plus_lora__seed42/audit.json"
+    },
+    {
+      "bytes": 923,
+      "sha256": "0e8fbdc20c1accdfdedb706460594614029afa59077a0c6b8952ca751e8b0752",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_plus_lora__seed42/complete.json"
+    },
+    {
+      "bytes": 341,
+      "sha256": "8b699d63abfe1a29bcb4fe8ba4d3e67fd911d3584bccaab090813f80ccdbe56b",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_plus_lora__seed42/replay.json"
+    },
+    {
+      "bytes": 213408,
+      "sha256": "15eca4bce483a777e6638b76d4023244805e59a7ba836fa9bc4eb4ad937631cb",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_only__seed42/audit.json"
+    },
+    {
+      "bytes": 913,
+      "sha256": "6e48e7ed73d00a47fbebefb4000634160a5729101d3dc7084a63bc3b31fb7eec",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_only__seed42/complete.json"
+    },
+    {
+      "bytes": 331,
+      "sha256": "01be6646bbff6cef9704df5ee9068fa57d76ba28e202ecd8157413b92bf058f6",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_only__seed42/replay.json"
+    },
+    {
+      "bytes": 217690,
+      "sha256": "3a25507b15d334b676a6cb81649ec052adbfbbdf5c862b4d75e0e051e02d1642",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_plus_lora__seed42/audit.json"
+    },
+    {
+      "bytes": 923,
+      "sha256": "5d605fa9fa9239555c8d4361d7f69b654444368927f10ae493ced0be21e81ca7",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_plus_lora__seed42/complete.json"
+    },
+    {
+      "bytes": 341,
+      "sha256": "a2dab9cf2679ede0d541f4259fb33376bd7eb5f89eaadaeb173fde5c7e7492c5",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_plus_lora__seed42/replay.json"
+    },
+    {
+      "bytes": 225017,
+      "sha256": "92a5ac0d65110ef0a91a1ffaca9e579dd6d3fc77d1699188bd286688665f9eb1",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_only__seed42/audit.json"
+    },
+    {
+      "bytes": 913,
+      "sha256": "5acf4eb03692c37dab099b6af003198ea8160b91449796f4e001029d48309f1c",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_only__seed42/complete.json"
+    },
+    {
+      "bytes": 331,
+      "sha256": "b0d8631f102aec40edf2e2f92fe9f391997d3a1d1bc6363354268d4da29d65f9",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_only__seed42/replay.json"
+    },
+    {
+      "bytes": 229305,
+      "sha256": "df5bcf46d2d463b8f12d8407c76a21e0d88dbcdc9fdd5e9737655327c0c7a005",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_plus_lora__seed42/audit.json"
+    },
+    {
+      "bytes": 923,
+      "sha256": "6a561faa5c2d317826655d1c2996db63e8af4492fd0a51295a71a11876dc9585",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_plus_lora__seed42/complete.json"
+    },
+    {
+      "bytes": 341,
+      "sha256": "42b2819a42408022fc8493ccb103effdab6a0d44484935c2e0deb08ce51e984f",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_plus_lora__seed42/replay.json"
+    },
+    {
+      "bytes": 213422,
+      "sha256": "2ff8f6c1285295cf23999655c789bd9f573468119ea272c91c4997009f134c73",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_only__seed42/audit.json"
+    },
+    {
+      "bytes": 913,
+      "sha256": "1909e28655cef1966fee201be069bd82f232b577cc08d11620eb41c2011cc329",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_only__seed42/complete.json"
+    },
+    {
+      "bytes": 331,
+      "sha256": "32d649d5c0f011086c3958570949ce3dd5626fe46f0a5cc20c7ae6272ab4d600",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_only__seed42/replay.json"
+    },
+    {
+      "bytes": 217707,
+      "sha256": "3b74e8bed20be36bab60b499a20be02ff9901f1e6fc262826142204c7db32597",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_plus_lora__seed42/audit.json"
+    },
+    {
+      "bytes": 923,
+      "sha256": "9160717bc72960b1fdc4031dd84e4b38de08bfb81dfc03c47c53f7af9f3c12d7",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_plus_lora__seed42/complete.json"
+    },
+    {
+      "bytes": 341,
+      "sha256": "73ee9bf438f4615084ec03175adecae06ba7ce848d462c96a4eb00f70badd79e",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_plus_lora__seed42/replay.json"
+    },
+    {
+      "bytes": 225019,
+      "sha256": "284514cec3e90054acb196edcfb5f4b9de99369e4e9ecf21482c64668d0fef65",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_only__seed42/audit.json"
+    },
+    {
+      "bytes": 913,
+      "sha256": "b5f8e2d936f5aa5a492193b67903cc86bdacf796e0a3c65f0b115d0eab4002dd",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_only__seed42/complete.json"
+    },
+    {
+      "bytes": 331,
+      "sha256": "9697af0586e0572442cc393c47d0020c32f777431a849ecc91177eec90ca0975",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_only__seed42/replay.json"
+    },
+    {
+      "bytes": 229292,
+      "sha256": "3661a6628cff8504b478e07f76e269003bc9e1ace776eba227759b5ed4df16fe",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_plus_lora__seed42/audit.json"
+    },
+    {
+      "bytes": 923,
+      "sha256": "4bf3e22c5ea49e8d880b861f14777b7bc1e77e5333c03a0a68470d86b1177cb1",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_plus_lora__seed42/complete.json"
+    },
+    {
+      "bytes": 341,
+      "sha256": "7938ea9723e17166d12153b36509b522a3fb3cd434f8fe638fea811ac9be8156",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_plus_lora__seed42/replay.json"
+    },
+    {
+      "bytes": 213389,
+      "sha256": "4858b8504617a3ba279d9e3c92ebff1209b3e8b8d89dd476ad85f6bdebb95727",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_only__seed42/audit.json"
+    },
+    {
+      "bytes": 913,
+      "sha256": "29750134ed296be800f6fc04a2a505258094e87f359bfb4362cea8e2af349e69",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_only__seed42/complete.json"
+    },
+    {
+      "bytes": 331,
+      "sha256": "b6b2da98df829ab0f2fc0964f5a73e0a34775b1f930439ffafbb045cd837edb0",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_only__seed42/replay.json"
+    },
+    {
+      "bytes": 217669,
+      "sha256": "bb52d5243d959195bf9007264bf94b38332c1e50569bc1fe3eaeac43b96f3f21",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_plus_lora__seed42/audit.json"
+    },
+    {
+      "bytes": 923,
+      "sha256": "1fbb8962387eb018e9a14ae02c67000227d52ee10ef0f2581482c5ea5c1e9a9d",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_plus_lora__seed42/complete.json"
+    },
+    {
+      "bytes": 341,
+      "sha256": "e35c6899eca47f5cf6207f72d74cdfe794f3de1d33b293dac1115a41e623537f",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_plus_lora__seed42/replay.json"
+    },
+    {
+      "bytes": 224989,
+      "sha256": "5c577e4f548e7cd839813c75eaa65cb5b5480d3fb837e9c1357bde6909e38625",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_only__seed42/audit.json"
+    },
+    {
+      "bytes": 913,
+      "sha256": "110ddb7da0e5bd1c24508bbd37f77316c7c320a25e084e0ffcd3af87c8a94573",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_only__seed42/complete.json"
+    },
+    {
+      "bytes": 331,
+      "sha256": "37def9dcf2b6503db423f2cc850617b874135b9d1ac644d971912983b5dd8965",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_only__seed42/replay.json"
+    },
+    {
+      "bytes": 229270,
+      "sha256": "f438afc2f008bfd9c600eab368805143e8269610a331d8a733e7b82ece638e0f",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_plus_lora__seed42/audit.json"
+    },
+    {
+      "bytes": 923,
+      "sha256": "b9042c22f8e2d1b1990b82e5b2e1d69b8714583e73bb502e76f55a2b7addb960",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_plus_lora__seed42/complete.json"
+    },
+    {
+      "bytes": 341,
+      "sha256": "29c9e2909e2d00680a40ea005168faaabce137ad71d9c442c52262c8af2879f6",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_plus_lora__seed42/replay.json"
+    },
+    {
+      "bytes": 213425,
+      "sha256": "1ed33b1fa5ebcc7727054d5b09b54b763197465bdcf238506e927eb549335e57",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_only__seed42/audit.json"
+    },
+    {
+      "bytes": 913,
+      "sha256": "aea826bd29a649df4a5bd85345583d2015ecf9cb50d52867089a99e98f1cb702",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_only__seed42/complete.json"
+    },
+    {
+      "bytes": 331,
+      "sha256": "71471d22f769ade4aacb5dbc93dc1d5f9225759e14547dfbb4d7de18fe90960c",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_only__seed42/replay.json"
+    },
+    {
+      "bytes": 217698,
+      "sha256": "f55d825fb5e7856d4aaa96f98d2eb807fcd3e5679617588da409bc6409754cba",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_plus_lora__seed42/audit.json"
+    },
+    {
+      "bytes": 923,
+      "sha256": "f1ea3870d1b2dfc51f8ff0a738ffe41c6a0de00c1954b03738533a4e7d0960aa",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_plus_lora__seed42/complete.json"
+    },
+    {
+      "bytes": 341,
+      "sha256": "ac0bc528b004ba3ae5dc56f0867e9b9c2fce51c1aef80bc718f0f6e4d10562ee",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_plus_lora__seed42/replay.json"
+    },
+    {
+      "bytes": 225019,
+      "sha256": "1edd9301ab1c23f1599ed3317342629c82a72081b4d47ea0c6a735e4eeefa3d1",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_only__seed42/audit.json"
+    },
+    {
+      "bytes": 913,
+      "sha256": "2f7215cdd2a7bbd5b9fa11e4ba4e8d10b8a50acab19489c60012dc4229717f87",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_only__seed42/complete.json"
+    },
+    {
+      "bytes": 331,
+      "sha256": "624e661a50cc8adaa1dbcc36406b2e81e3200a44e5903c7c6ff5f98ecfe65478",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_only__seed42/replay.json"
+    },
+    {
+      "bytes": 229298,
+      "sha256": "da1d7d1ebebdb0e1625d592ed43b2e833d5789161f7e707595bacc0e607491bf",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_plus_lora__seed42/audit.json"
+    },
+    {
+      "bytes": 923,
+      "sha256": "0257e487ae2c1f3a4c393f2077f5adf70c34f0575fd84cf24fdb174570527bee",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_plus_lora__seed42/complete.json"
+    },
+    {
+      "bytes": 341,
+      "sha256": "41ed4b01fcc685804216895bcc939c506a61c92a37f2099b2399529d4719397c",
+      "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_plus_lora__seed42/replay.json"
+    },
+    {
+      "bytes": 18189,
+      "sha256": "b27df4dd305ebdac8d0fee7442e78c7025fdc82e620f169db6217b89d27489cd",
+      "source_key": "experiments/20260906_affinity_comparison/RESULTS.md"
+    },
+    {
+      "bytes": 2230,
+      "sha256": "3b57c3775bf3f7a38b5f4a0b93ce45d8fcef629d0b9b1a3ede276f732c087fb8",
+      "source_key": "experiments/20260906_affinity_comparison/train_protocol.json"
+    },
+    {
+      "bytes": 1698,
+      "sha256": "6e52c87243acea1e74b0b5d8c75ebd43473db019c85a8865db93caa41d5e3f9e",
+      "source_key": "reports/architecture/results/analysis_protocol.json"
+    },
+    {
+      "bytes": 6195,
+      "sha256": "514b0eb1aa4c7d87ec32d6d960b8eafa0f034cb6eb1ec93619551a3f94892b03",
+      "source_key": "reports/architecture/results/pooled_metrics.csv"
+    },
+    {
+      "bytes": 13919,
+      "sha256": "adc590a46693d2a5754109cd909a0e5338226f087e44a7b84cceabadfc65e533",
+      "source_key": "reports/architecture/results/sources.csv"
+    }
+  ]
+}

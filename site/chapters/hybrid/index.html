@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Complementary frozen features · Nesso PXR</title><link rel="stylesheet" href="../../assets/style.css"><style>main img{max-width:100%;height:auto} .evidence{overflow-wrap:anywhere} table{display:block;overflow-x:auto} .study-status{color:#276749} .study-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px} .study-grid a{border:1px solid #d8d4cc;padding:16px;text-decoration:none} .study-grid small{display:block;color:#66635f;margin-top:8px} figure.narrative{max-width:880px;display:flex;flex-direction:column;gap:8px} figure.narrative .plot-key{margin:0} @media(max-width:600px){figure.narrative .plot-key{order:-1}} .figure-link{cursor:zoom-in;display:block} .figure-link picture{display:block} header nav{display:flex;flex-wrap:wrap;gap:8px 19px} header nav a{margin:0;white-space:nowrap} figure.narrative img{border:0} .plot-key{font:13px/1.5 system-ui,sans-serif;margin-top:12px} .small-dot{color:#ad501b} .other-dot{color:#356c78} .reading-path{font:14px/1.8 system-ui,sans-serif;border-block:1px solid #d8d4cc;padding:16px 0;max-width:100%} details{margin:28px 0} summary{cursor:pointer;font:600 15px/1.5 system-ui,sans-serif} .chapter-nav{margin:28px 0}</style></head><body><header><div class="masthead"><div class="brand">Nesso-1 · PXR experimental case study</div><p class="updated-at">Updated 2026-09-08</p></div><nav><a href="../../index.html">Overview</a><a href="../../chapters/transfer/index.html">Read the story</a><a href="../../index.html#experiments">Supporting archive</a><a href="../../architecture/index.html">Architecture</a></nav></header><main><h1>3 · Complement, rather than replace, descriptors</h1>
+<p>The standalone comparison changes the next question. If descriptors already outperform tuned Nesso, the useful test is whether Nesso retains information that descriptors miss. The completed hybrid does this with <strong>frozen native representations</strong>, not LoRA representations.</p>
+<h2>Where challenge labels enter</h2>
+<p>Ligand descriptors feed a fitted LightGBM model. Frozen Nesso affinity representations feed a fitted ridge readout of scaled frozen features. A nested inner selection procedure chooses their mixture within each outer training fold; the outer test compounds do not choose the mixture. The all-fold study preserves the pilot fold and extends the same procedure to four more folds, rather than applying the pilot coefficient everywhere.</p>
+<figure class="narrative"><a class="figure-link" href="../../evidence/reports/narrative/hybrid.svg" title="Open full-size figure"><picture><source media="(max-width: 600px)" srcset="../../evidence/reports/narrative/hybrid-mobile.svg"><img src="../../evidence/reports/narrative/hybrid.svg" alt="Descriptor and frozen-Nesso blend predicted versus observed pEC50"></picture></a><figcaption>The gain is small and the clouds remain similar. The lower overall error comes with worse error below pEC50 4; high-potency underprediction remains.</figcaption></figure>
+<table>
+<thead>
+<tr>
+<th>Pooled N500 metric</th>
+<th style="text-align:right">Descriptor</th>
+<th style="text-align:right">Frozen-feature blend</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Weighted MAE ↓</td>
+<td style="text-align:right">0.501</td>
+<td style="text-align:right">0.487</td>
+</tr>
+<tr>
+<td>Raw MAE ↓</td>
+<td style="text-align:right">0.600</td>
+<td style="text-align:right">0.595</td>
+</tr>
+<tr>
+<td>Spearman rank correlation ↑</td>
+<td style="text-align:right">0.657</td>
+<td style="text-align:right">0.686</td>
+</tr>
+<tr>
+<td>Weighted MAE, observed pEC50 ≥4 ↓</td>
+<td style="text-align:right">0.434</td>
+<td style="text-align:right">0.412</td>
+</tr>
+<tr>
+<td>Weighted MAE, observed pEC50 &lt;4 ↓</td>
+<td style="text-align:right">0.840</td>
+<td style="text-align:right">0.870</td>
+</tr>
+</tbody>
+</table>
+<p>Weighted error improves in <strong>all five folds</strong>. Lower-potency weighted error worsens in <strong>every fold</strong>. The below-4 group contains 31% of the compounds but only 16.4% of the evaluation weight, under the assay-SE weighting defined in chapter 1. The weighted objective emphasizes more precise measurements; it does not make the lower-potency penalty irrelevant.</p>
+<h2>What the modest win establishes</h2>
+<p>The frozen representation adds predictive value under this selection and scoring procedure. This is evidence of complementarity in reused development folds, not confirmation on a new assay population. One label draw and seed do not establish stability across label draws.</p>
+<p>The choice now depends on the intended objective: broad weighted accuracy, equal-compound error, or performance among active compounds. Keep all three views visible before promoting a model.</p>
+<p><a href="../interpretation/index.html">Continue to the efficacy test and conclusion →</a></p>
+<p><a href="../../experiments/hybrid-allfolds/index.html">All-fold experiment, exact metrics and predictions</a> · <a href="../../experiments/hybrid-pilot/index.html">Pilot and nested-selection record</a></p>
+<nav class="chapter-nav"><a href="../transfer/index.html">Transfer and tuning</a> · <a href="../mw/index.html">The molecular-weight control</a> · <a href="../interpretation/index.html">Interpretation and conclusion</a></nav><p class="fineprint"><a download href="../../experiment-content/chapters/hybrid.md">Editable chapter Markdown</a></p></main><footer><p class="fineprint">Nesso → PXR · <a href="../../source-map.json">Evidence provenance</a> · <a href="../../experiment-content/index.md" download>Editable overview</a></p></footer></body></html>

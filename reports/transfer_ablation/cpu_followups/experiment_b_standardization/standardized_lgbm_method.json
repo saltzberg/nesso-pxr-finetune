@@ -1,0 +1,47 @@
+{
+  "descriptor_input": "published reduced 2D features generated from original prepared states",
+  "feature_selection": "mean inner LightGBM gain, top 1000",
+  "full_development_first_pass_iterations": [
+    791,
+    492,
+    594,
+    2282,
+    338
+  ],
+  "full_development_fixed_refit_iterations": 672,
+  "full_development_second_pass_iterations": [
+    1665,
+    940,
+    427,
+    672,
+    504
+  ],
+  "inner_split": "remaining standardized outer family folds",
+  "input_feature_count": 14325,
+  "model": "LightGBM regression",
+  "outer_split": "standardized Butina/Murcko/connectivity families",
+  "parameters": {
+    "bagging_seed": 20260809,
+    "colsample_bytree": 1.0,
+    "data_random_seed": 20260809,
+    "deterministic": true,
+    "feature_fraction_seed": 20260809,
+    "force_col_wise": true,
+    "learning_rate": 0.03,
+    "min_child_samples": 20,
+    "n_estimators": 5000,
+    "n_jobs": 6,
+    "num_leaves": 63,
+    "objective": "regression",
+    "random_state": 20260809,
+    "reg_alpha": 0.0,
+    "reg_lambda": 5.0,
+    "subsample": 1.0,
+    "verbosity": -1
+  },
+  "sample_weight": "inverse pEC50 standard error times curation weight",
+  "standardization_role": "primary RDKit fragment parents define family folds and similarity only",
+  "stopping": "median inner best iteration then fixed-round refit",
+  "threads": 6,
+  "top_k": 1000
+}

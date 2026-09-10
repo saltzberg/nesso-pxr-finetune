@@ -1,0 +1,5 @@
+comparison,metric,estimate,ci_lower,ci_upper,dataset
+ligand_ligand_only_minus_all_pairs,mae,0.01098848467107405,-0.002496725229615554,0.0271000282613348,development
+ligand_ligand_only_minus_all_pairs,spearman,-0.0039629211122266805,-0.03750068481151821,0.027554842910772547,development
+ligand_ligand_only_minus_all_pairs,mae,0.008922673055462016,-0.009029635225858918,0.027137595890814936,validation
+ligand_ligand_only_minus_all_pairs,spearman,0.01913914797403965,-0.023282675966847955,0.060911613483482695,validation

@@ -1,0 +1,7 @@
+{
+  "direct_pEC50_coordinate_loss": 0.8719069073658956,
+  "loss_absolute_difference": 0.0,
+  "member1_gradient_max_absolute_difference": 6.938893903907228e-18,
+  "member2_gradient_max_absolute_difference": 6.938893903907228e-18,
+  "nesso_coordinate_loss": 0.8719069073658956
+}

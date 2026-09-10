@@ -1,0 +1,42 @@
+{
+  "axis_limits": [
+    -1,
+    9
+  ],
+  "low_mw_n": 237,
+  "mw_threshold_da": 215,
+  "n_per_panel": 3344,
+  "panels": {
+    "native_continuous": {
+      "n": 3344,
+      "raw_mae": 0.9141240809370189,
+      "subset_weighted_mae": 1.834096601172588,
+      "weighted_mae": 0.6272246217981061
+    },
+    "head_plus_lora": {
+      "n": 3344,
+      "raw_mae": 0.7565352583634529,
+      "subset_weighted_mae": 1.1786597061366935,
+      "weighted_mae": 0.5610158981704034
+    },
+    "native_mw": {
+      "n": 3344,
+      "raw_mae": 0.7881206275545599,
+      "subset_weighted_mae": 1.1628662277196273,
+      "weighted_mae": 0.6003679706127945
+    }
+  },
+  "sources": {
+    "artifacts/experiments/descriptor_nesso_blend_allfolds_20260908/all_test_predictions.csv": "e77097e4d26dc789630b88e84db9160636c827929122b56503e2c28e79083bae",
+    "experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/stratum_summaries.csv": "689037826db1158237e7ad841bfa7f16d507706f651899b9ba06f6c874c96ba7",
+    "reports/architecture/results/heldout_predictions.csv": "6bafc036a6108265b931f2872ebd7125d42cdd5447b9b85cad69194e545d0f0f",
+    "reports/architecture/results/mw-controls/predictions.csv": "567f36c086b7c6a2b76fc16ab3a96ce702c2da4a3b2eb1983901ce1d6688a77f"
+  },
+  "panel_order": [
+    "native_continuous",
+    "head_plus_lora",
+    "native_mw"
+  ],
+  "desktop_layout": "Native centered above LoRA and additive Native + MW",
+  "native_mw_definition": "Saved additive native-score + MW fit; no score\u2013MW interaction."
+}

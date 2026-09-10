@@ -1,0 +1,489 @@
+{
+  "acquisition": "Nested seeded exact-N prefixes; last ceil(calibration_fraction*N) rows calibrate within N. Fit-only sets need not nest. All methods share these manifests.",
+  "caveat": "Butina is centroid grouping, not connected components: cross-fold similarity can exceed the cutoff. Random splits are identity-held-out, not series-held-out. Nearest similarities here use the full outer training pool; task novelty must be recalculated from fit rows only.",
+  "chemical_method": "RDKit Butina, reordering=True, no scaffold union",
+  "compounds_in_multicompound_groups": 1886,
+  "folds": [
+    {
+      "assay_standard_error": {
+        "maximum": 0.728,
+        "mean": 0.19135818360784182,
+        "median": 0.151,
+        "minimum": 0.0144,
+        "q05": 0.0459,
+        "q95": 0.5702
+      },
+      "chemical_group_overlap": 264,
+      "effective_n": 557.8339393323973,
+      "identity_overlap": 0,
+      "n_outer_train": 2675,
+      "n_test": 669,
+      "nearest_outer_train_similarity": {
+        "maximum": 1.0,
+        "mean": 0.39443125479201097,
+        "median": 0.37142857142857144,
+        "minimum": 0.13043478260869565,
+        "q05": 0.2677798751270509,
+        "q95": 0.5800229621125145
+      },
+      "nearest_similarity_ge_080_count": 4,
+      "nearest_similarity_ge_cutoff_count": 405,
+      "outer_fold": 0,
+      "pEC50": {
+        "maximum": 6.855,
+        "mean": 4.333445440956652,
+        "median": 4.64,
+        "minimum": 1.62,
+        "q05": 1.95,
+        "q95": 5.67
+      },
+      "scaffold_group_overlap": 49,
+      "split": "random",
+      "test_compounds_with_train_scaffold": 96
+    },
+    {
+      "assay_standard_error": {
+        "maximum": 0.656,
+        "mean": 0.19348124998060193,
+        "median": 0.146,
+        "minimum": 0.0112,
+        "q05": 0.04634683925352808,
+        "q95": 0.574
+      },
+      "chemical_group_overlap": 242,
+      "effective_n": 559.4872028162948,
+      "identity_overlap": 0,
+      "n_outer_train": 2675,
+      "n_test": 669,
+      "nearest_outer_train_similarity": {
+        "maximum": 1.0,
+        "mean": 0.38720815449719886,
+        "median": 0.3695652173913043,
+        "minimum": 0.13953488372093023,
+        "q05": 0.26515264333581534,
+        "q95": 0.5474393530997305
+      },
+      "nearest_similarity_ge_080_count": 1,
+      "nearest_similarity_ge_cutoff_count": 400,
+      "outer_fold": 1,
+      "pEC50": {
+        "maximum": 6.845,
+        "mean": 4.32814648729447,
+        "median": 4.65,
+        "minimum": 1.68,
+        "q05": 1.984,
+        "q95": 5.752000000000001
+      },
+      "scaffold_group_overlap": 41,
+      "split": "random",
+      "test_compounds_with_train_scaffold": 84
+    },
+    {
+      "assay_standard_error": {
+        "maximum": 0.677,
+        "mean": 0.19604395662628518,
+        "median": 0.155,
+        "minimum": 0.0111,
+        "q05": 0.04548,
+        "q95": 0.5832
+      },
+      "chemical_group_overlap": 254,
+      "effective_n": 556.5917183978045,
+      "identity_overlap": 0,
+      "n_outer_train": 2675,
+      "n_test": 669,
+      "nearest_outer_train_similarity": {
+        "maximum": 1.0,
+        "mean": 0.38782114055534855,
+        "median": 0.36363636363636365,
+        "minimum": 0.17142857142857143,
+        "q05": 0.2585855915399868,
+        "q95": 0.5936090225563911
+      },
+      "nearest_similarity_ge_080_count": 2,
+      "nearest_similarity_ge_cutoff_count": 377,
+      "outer_fold": 2,
+      "pEC50": {
+        "maximum": 6.494999999999999,
+        "mean": 4.294730941704036,
+        "median": 4.63,
+        "minimum": 1.61,
+        "q05": 1.928,
+        "q95": 5.716
+      },
+      "scaffold_group_overlap": 53,
+      "split": "random",
+      "test_compounds_with_train_scaffold": 93
+    },
+    {
+      "assay_standard_error": {
+        "maximum": 0.681,
+        "mean": 0.19646208580293487,
+        "median": 0.155,
+        "minimum": 0.0032536748543859,
+        "q05": 0.04346597475497662,
+        "q95": 0.5716
+      },
+      "chemical_group_overlap": 255,
+      "effective_n": 556.4858491381515,
+      "identity_overlap": 0,
+      "n_outer_train": 2675,
+      "n_test": 669,
+      "nearest_outer_train_similarity": {
+        "maximum": 1.0,
+        "mean": 0.3940729974640993,
+        "median": 0.375,
+        "minimum": 0.1794871794871795,
+        "q05": 0.2657028112449799,
+        "q95": 0.5874239350912779
+      },
+      "nearest_similarity_ge_080_count": 2,
+      "nearest_similarity_ge_cutoff_count": 406,
+      "outer_fold": 3,
+      "pEC50": {
+        "maximum": 7.54855421686747,
+        "mean": 4.251731770129847,
+        "median": 4.57,
+        "minimum": 1.62,
+        "q05": 1.902,
+        "q95": 5.66
+      },
+      "scaffold_group_overlap": 50,
+      "split": "random",
+      "test_compounds_with_train_scaffold": 97
+    },
+    {
+      "assay_standard_error": {
+        "maximum": 0.672,
+        "mean": 0.19911010481268013,
+        "median": 0.1595,
+        "minimum": 0.0215,
+        "q05": 0.04734271035720263,
+        "q95": 0.589
+      },
+      "chemical_group_overlap": 245,
+      "effective_n": 552.0572513571627,
+      "identity_overlap": 0,
+      "n_outer_train": 2676,
+      "n_test": 668,
+      "nearest_outer_train_similarity": {
+        "maximum": 0.78,
+        "mean": 0.3890425152325731,
+        "median": 0.36954689146469966,
+        "minimum": 0.22535211267605634,
+        "q05": 0.26644678195756816,
+        "q95": 0.5818465810482472
+      },
+      "nearest_similarity_ge_080_count": 0,
+      "nearest_similarity_ge_cutoff_count": 389,
+      "outer_fold": 4,
+      "pEC50": {
+        "maximum": 6.63,
+        "mean": 4.274273952095808,
+        "median": 4.64,
+        "minimum": 1.66,
+        "q05": 1.94,
+        "q95": 5.7
+      },
+      "scaffold_group_overlap": 46,
+      "split": "random",
+      "test_compounds_with_train_scaffold": 87
+    },
+    {
+      "assay_standard_error": {
+        "maximum": 0.677,
+        "mean": 0.18445439961685092,
+        "median": 0.148,
+        "minimum": 0.0107,
+        "q05": 0.0456,
+        "q95": 0.5468000000000001
+      },
+      "chemical_group_overlap": 0,
+      "effective_n": 567.8473215867117,
+      "identity_overlap": 0,
+      "n_outer_train": 2675,
+      "n_test": 669,
+      "nearest_outer_train_similarity": {
+        "maximum": 0.725,
+        "mean": 0.3482725086918511,
+        "median": 0.3333333333333333,
+        "minimum": 0.16101694915254236,
+        "q05": 0.2572798605056669,
+        "q95": 0.5066666666666669
+      },
+      "nearest_similarity_ge_080_count": 0,
+      "nearest_similarity_ge_cutoff_count": 226,
+      "outer_fold": 0,
+      "pEC50": {
+        "maximum": 6.845,
+        "mean": 4.370149476831092,
+        "median": 4.64,
+        "minimum": 1.61,
+        "q05": 2.01,
+        "q95": 5.666
+      },
+      "scaffold_group_overlap": 32,
+      "split": "chemical_cluster",
+      "test_compounds_with_train_scaffold": 78
+    },
+    {
+      "assay_standard_error": {
+        "maximum": 0.728,
+        "mean": 0.19029592370910747,
+        "median": 0.152,
+        "minimum": 0.0032536748543859,
+        "q05": 0.0447,
+        "q95": 0.5686
+      },
+      "chemical_group_overlap": 0,
+      "effective_n": 557.6965945340913,
+      "identity_overlap": 0,
+      "n_outer_train": 2675,
+      "n_test": 669,
+      "nearest_outer_train_similarity": {
+        "maximum": 0.6911764705882353,
+        "mean": 0.34180628563773724,
+        "median": 0.3333333333333333,
+        "minimum": 0.17073170731707318,
+        "q05": 0.2645030425963489,
+        "q95": 0.4744736842105263
+      },
+      "nearest_similarity_ge_080_count": 0,
+      "nearest_similarity_ge_cutoff_count": 203,
+      "outer_fold": 1,
+      "pEC50": {
+        "maximum": 7.54855421686747,
+        "mean": 4.3768887208024925,
+        "median": 4.71,
+        "minimum": 1.71,
+        "q05": 1.984,
+        "q95": 5.75
+      },
+      "scaffold_group_overlap": 33,
+      "split": "chemical_cluster",
+      "test_compounds_with_train_scaffold": 57
+    },
+    {
+      "assay_standard_error": {
+        "maximum": 0.681,
+        "mean": 0.20942786734360772,
+        "median": 0.155,
+        "minimum": 0.0163,
+        "q05": 0.04436,
+        "q95": 0.5966
+      },
+      "chemical_group_overlap": 0,
+      "effective_n": 544.0824766056642,
+      "identity_overlap": 0,
+      "n_outer_train": 2675,
+      "n_test": 669,
+      "nearest_outer_train_similarity": {
+        "maximum": 0.7083333333333334,
+        "mean": 0.3509398398154198,
+        "median": 0.33766233766233766,
+        "minimum": 0.13953488372093023,
+        "q05": 0.2634502923976608,
+        "q95": 0.5
+      },
+      "nearest_similarity_ge_080_count": 0,
+      "nearest_similarity_ge_cutoff_count": 223,
+      "outer_fold": 2,
+      "pEC50": {
+        "maximum": 6.87,
+        "mean": 4.213916292974589,
+        "median": 4.57,
+        "minimum": 1.62,
+        "q05": 1.874,
+        "q95": 5.706
+      },
+      "scaffold_group_overlap": 38,
+      "split": "chemical_cluster",
+      "test_compounds_with_train_scaffold": 103
+    },
+    {
+      "assay_standard_error": {
+        "maximum": 0.652,
+        "mean": 0.19204769422074458,
+        "median": 0.154,
+        "minimum": 0.0111,
+        "q05": 0.04693344546876874,
+        "q95": 0.5636499999999999
+      },
+      "chemical_group_overlap": 0,
+      "effective_n": 558.6124616867144,
+      "identity_overlap": 0,
+      "n_outer_train": 2676,
+      "n_test": 668,
+      "nearest_outer_train_similarity": {
+        "maximum": 0.7719298245614035,
+        "mean": 0.34875142073152154,
+        "median": 0.3333333333333333,
+        "minimum": 0.13043478260869565,
+        "q05": 0.2638237159162968,
+        "q95": 0.48881681370005187
+      },
+      "nearest_similarity_ge_080_count": 0,
+      "nearest_similarity_ge_cutoff_count": 222,
+      "outer_fold": 3,
+      "pEC50": {
+        "maximum": 6.494999999999999,
+        "mean": 4.2685104790419155,
+        "median": 4.595,
+        "minimum": 1.62,
+        "q05": 1.9535,
+        "q95": 5.6965
+      },
+      "scaffold_group_overlap": 37,
+      "split": "chemical_cluster",
+      "test_compounds_with_train_scaffold": 84
+    },
+    {
+      "assay_standard_error": {
+        "maximum": 0.672,
+        "mean": 0.20021913927248172,
+        "median": 0.156,
+        "minimum": 0.0112,
+        "q05": 0.04568,
+        "q95": 0.5956
+      },
+      "chemical_group_overlap": 0,
+      "effective_n": 554.2784719107543,
+      "identity_overlap": 0,
+      "n_outer_train": 2675,
+      "n_test": 669,
+      "nearest_outer_train_similarity": {
+        "maximum": 0.7719298245614035,
+        "mean": 0.35065556191617864,
+        "median": 0.3333333333333333,
+        "minimum": 0.16831683168316833,
+        "q05": 0.26515264333581534,
+        "q95": 0.5043478260869567
+      },
+      "nearest_similarity_ge_080_count": 0,
+      "nearest_similarity_ge_cutoff_count": 213,
+      "outer_fold": 4,
+      "pEC50": {
+        "maximum": 6.63,
+        "mean": 4.252855007473841,
+        "median": 4.6,
+        "minimum": 1.66,
+        "q05": 1.97,
+        "q95": 5.636
+      },
+      "scaffold_group_overlap": 42,
+      "split": "chemical_cluster",
+      "test_compounds_with_train_scaffold": 85
+    }
+  ],
+  "group_size_histogram": {
+    "1": 1458,
+    "10": 4,
+    "11": 6,
+    "12": 3,
+    "13": 3,
+    "14": 1,
+    "16": 1,
+    "17": 1,
+    "18": 1,
+    "19": 1,
+    "2": 230,
+    "3": 113,
+    "36": 1,
+    "4": 64,
+    "5": 43,
+    "6": 17,
+    "7": 16,
+    "8": 7,
+    "9": 5
+  },
+  "largest_group": 36,
+  "largest_groups": [
+    {
+      "chemical_group": 0,
+      "n_compounds": 36
+    },
+    {
+      "chemical_group": 1,
+      "n_compounds": 19
+    },
+    {
+      "chemical_group": 2,
+      "n_compounds": 18
+    },
+    {
+      "chemical_group": 3,
+      "n_compounds": 17
+    },
+    {
+      "chemical_group": 4,
+      "n_compounds": 16
+    },
+    {
+      "chemical_group": 5,
+      "n_compounds": 14
+    },
+    {
+      "chemical_group": 7,
+      "n_compounds": 13
+    },
+    {
+      "chemical_group": 8,
+      "n_compounds": 13
+    },
+    {
+      "chemical_group": 6,
+      "n_compounds": 13
+    },
+    {
+      "chemical_group": 11,
+      "n_compounds": 12
+    },
+    {
+      "chemical_group": 9,
+      "n_compounds": 12
+    },
+    {
+      "chemical_group": 10,
+      "n_compounds": 12
+    },
+    {
+      "chemical_group": 16,
+      "n_compounds": 11
+    },
+    {
+      "chemical_group": 12,
+      "n_compounds": 11
+    },
+    {
+      "chemical_group": 14,
+      "n_compounds": 11
+    },
+    {
+      "chemical_group": 17,
+      "n_compounds": 11
+    },
+    {
+      "chemical_group": 13,
+      "n_compounds": 11
+    },
+    {
+      "chemical_group": 15,
+      "n_compounds": 11
+    },
+    {
+      "chemical_group": 18,
+      "n_compounds": 10
+    },
+    {
+      "chemical_group": 21,
+      "n_compounds": 10
+    }
+  ],
+  "n_compounds": 3344,
+  "n_groups": 1975,
+  "similarity_cutoff": 0.35,
+  "singleton_compound_fraction": 0.43600478468899523,
+  "singleton_compounds": 1458,
+  "singleton_groups": 1458,
+  "status": "pass"
+}

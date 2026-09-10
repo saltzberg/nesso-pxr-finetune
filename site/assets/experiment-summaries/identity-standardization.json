@@ -1,0 +1,20 @@
+{
+  "slug": "identity-standardization",
+  "message": "Conservative identity standardization leaves the development error gap unchanged.",
+  "caption": "The same 3,344 development compounds: RDKit Cleanup plus charge-retaining FragmentParent changed zero fold assignments after alignment. Historical and standardized nested raw MAE agree to numerical precision (ridge differs by less than 3e-15); lower is better. This is a split-identity control, not a change to prepared Nesso molecular states. The separate all-790 validation refit is not plotted.",
+  "design": "Two paired flat trajectories directly show exact reproduced errors and the retained descriptor gap without overlapping before/after symbols or implied equivalence testing.",
+  "sources": [
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/cpu_followups/experiment_b_standardization/standardized_split_metrics.csv",
+      "sha256": "e4d97663255412b27ce35a67df48d9f35091d4f76945b1538f8f49a656f3386c"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/cpu_followups/README.md",
+      "sha256": "083885c18eebba6187a1c267d664014688ae6b895048dcaeab6689c059e859e2"
+    }
+  ],
+  "plotted_rows": 4,
+  "svg": "assets/experiment-summaries/identity-standardization.svg",
+  "png": "assets/experiment-summaries/identity-standardization.png",
+  "data": "assets/experiment-summaries/identity-standardization.csv"
+}
