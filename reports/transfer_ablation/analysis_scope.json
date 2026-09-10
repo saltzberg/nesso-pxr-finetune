@@ -1,0 +1,6 @@
+{
+  "device": "cuda",
+  "lockbox_status": "previously_opened_retrospective_evaluation",
+  "stage": "diagnostics",
+  "status": "post_hoc_sensitivity"
+}

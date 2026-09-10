@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Chemical splits: Random and Butina · Nesso PXR</title><link rel="stylesheet" href="../../assets/style.css"><style>main img{max-width:100%;height:auto} .evidence{overflow-wrap:anywhere} table{display:block;overflow-x:auto} .study-status{color:#276749} .study-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px} .study-grid a{border:1px solid #d8d4cc;padding:16px;text-decoration:none} .study-grid small{display:block;color:#66635f;margin-top:8px} figure.narrative{max-width:880px;display:flex;flex-direction:column;gap:8px} figure.narrative .plot-key{margin:0} @media(max-width:600px){figure.narrative .plot-key{order:-1}} .figure-link{cursor:zoom-in;display:block} .figure-link picture{display:block} header nav{display:flex;flex-wrap:wrap;gap:8px 19px} header nav a{margin:0;white-space:nowrap} figure.narrative img{border:0} .plot-key{font:13px/1.5 system-ui,sans-serif;margin-top:12px} .small-dot{color:#ad501b} .other-dot{color:#356c78} .reading-path{font:14px/1.8 system-ui,sans-serif;border-block:1px solid #d8d4cc;padding:16px 0;max-width:100%} details{margin:28px 0} summary{cursor:pointer;font:600 15px/1.5 system-ui,sans-serif} .chapter-nav{margin:28px 0}</style><style>.experiment-summary{max-width:760px;margin:24px 0 32px}.experiment-summary img{border:0;width:100%;height:auto}.summary-message{font-weight:600;max-width:760px}.summary-downloads{font:12px/1.5 system-ui,sans-serif}</style></head><body><header><div class="masthead"><div class="brand">Nesso-1 · PXR experimental case study</div><p class="updated-at">Updated 2026-09-08</p></div><nav><a href="../../index.html">Overview</a><a href="../../chapters/transfer/index.html">Read the story</a><a href="../../index.html#experiments">Supporting archive</a><a href="../../architecture/index.html">Architecture</a></nav></header><main><h1>Chemical splits: Random, Butina and strict separation</h1>
+<h2>Question</h2>
+<p>How were compounds separated when the PXR models were tested? <strong>Random compound holdout and Butina cluster holdout were both executed in the low-data comparison.</strong> Later strict experiments kept the Butina test compounds but purged neighboring training compounds. The earlier head-versus-descriptor comparison used a different, scaffold-aware Butina split.</p>
+<h2>Design and fitted/frozen flow</h2>
+<h3>Dataset and shared fingerprint</h3>
+<p>The OpenADMET dose-response TRAIN table has 4,139 records; curation retained <strong>4,134 original molecules</strong>, split into <strong>3,344 development / 790 lockbox</strong>. The 513 public challenge records are separate. Earlier efficacy qualification selected 3,072 development / 714 lockbox rows; the all-curated nested comparison and low-data studies use all 3,344 development compounds. A historical 714-row score and later all-790 score therefore evaluate different cohorts.</p>
+<p>These splits keep original compound identities together, not independently sampled prepared protonation states. Low-data preparation explicitly requires unique canonical SMILES: one input row per compound. <strong>No pEC50, activity-class or uncertainty stratification</strong> is used.</p>
+<p>Both Butina generations use standard <strong>Morgan radius 2, 2,048-bit binary fingerprints</strong>, RDKit <code>GetMorganGenerator</code> / <code>GetFingerprint</code>: atom invariants, not feature-Morgan/FCFP; default bond types included, chirality and count simulation off. Similarity is Tanimoto; <strong>distance = 1 − similarity</strong>. RDKit Butina uses <code>isDistData=True, reordering=True</code>. Butina groups centroid neighborhoods—it does not guarantee that all pairs across clusters fall below its similarity cutoff.</p>
+<h3>Random and Butina: the completed low-data comparison</h3>
+<p>The authoritative run is <strong><code>low_data_20260905_cut035_run2</code></strong>. It constructs new assignments on the 3,344 development compounds; the older published manifest’s <code>fold</code> and <code>cluster_component</code> are <strong>not</strong> these low-data labels.</p>
+<ul>
+<li><strong>Random (<code>random</code>)</strong> groups by canonical isomeric SMILES, unique in this input. <code>_balanced_group_folds</code> orders groups largest first with seeded random tie ordering, then assigns each to a randomly chosen currently smallest fold. Seed <strong>20260905</strong>. It is identity-held-out compound CV, not arbitrary assay-row splitting, sklearn <code>RepeatedKFold</code>, or series holdout. Related structures can occur on both sides.</li>
+<li><strong>Butina (<code>chemical_cluster</code>)</strong> uses similarity cutoff <strong>0.35</strong>, hence Butina distance cutoff <strong>0.65</strong>, and <strong>no scaffold union</strong>. Its 1,975 saved <code>chemical_group</code> IDs remain indivisible during fold allocation, using the same balancing algorithm and seed <strong>20260905</strong>. There are 1,458 singleton compounds; the largest cluster contains 36. The completed matrix uses this 0.35 preparation, selected by structure-only sensitivity analysis; the earlier 0.50 preparation is retained separately.</li>
+</ul>
+<p>Each policy has <strong>one fixed five-fold partition</strong>, approximately 80% outer training pool / 20% TEST. For each fold, <strong>ten draws (0–9)</strong> permute sorted outer-pool indices using <code>default_rng(SeedSequence([1701, policy_code, fold, draw]))</code>: policy code 0 for Random, 1 for Butina. Acquired prefixes are <strong>N25, N50, N100, N250, N500</strong>, plus full-pool (<code>n_train=-1</code>). The final <code>ceil(0.20*N)</code> compounds are <strong>CAL</strong> (<code>calibration</code>); the rest <strong>FIT</strong> (<code>fit</code>). N25 = 20 FIT + 5 CAL; N500 = 400 + 100. Acquired sets nest, but FIT-only sets need not nest because the calibration suffix moves. Acquisition samples compounds, not whole clusters; FIT/CAL need not be chemically separated.</p>
+<p>All 12 methods share these <strong>600 policy × fold × draw × budget cells</strong>. Saved status confirms <strong>7,200 completed model tasks: 3,600 Random and 3,600 Butina</strong>. Neural seeds 42/43/44 repeat fitting, not splitting. Actual inner selection uses <strong>three-fold GroupKFold for both policies</strong>: chemical groups for Butina, unique record IDs for Random. The factory’s shuffled-KFold fallback is not the executed policy. CAL and TEST labels are excluded from model selection.</p>
+<h3>Strict follow-up: unchanged TEST, purged pool</h3>
+<p>Strict splitting retains the <strong>exact Butina TEST assignments</strong>, then removes any pool compound with Tanimoto similarity <strong>≥0.35 to any TEST member</strong>. Equality is removed; every retained pool–TEST pair is <strong>&lt;0.35</strong>. This is pairwise neighbor purging, not another Butina clustering. It matters because the unpurged Butina audit finds cross-fold nearest-neighbor similarity as high as about 0.772, with shared scaffolds remaining.</p>
+<table>
+<thead>
+<tr>
+<th>Fold</th>
+<th style="text-align:right">Random TEST</th>
+<th style="text-align:right">Butina / strict TEST</th>
+<th style="text-align:right">Butina pool</th>
+<th style="text-align:right">Strict retained</th>
+<th style="text-align:right">Purged</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td style="text-align:right">669</td>
+<td style="text-align:right">669</td>
+<td style="text-align:right">2,675</td>
+<td style="text-align:right">2,364</td>
+<td style="text-align:right">311</td>
+</tr>
+<tr>
+<td>1</td>
+<td style="text-align:right">669</td>
+<td style="text-align:right">669</td>
+<td style="text-align:right">2,675</td>
+<td style="text-align:right">2,365</td>
+<td style="text-align:right">310</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:right">669</td>
+<td style="text-align:right">669</td>
+<td style="text-align:right">2,675</td>
+<td style="text-align:right">2,327</td>
+<td style="text-align:right">348</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:right">669</td>
+<td style="text-align:right">668</td>
+<td style="text-align:right">2,676</td>
+<td style="text-align:right">2,359</td>
+<td style="text-align:right">317</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align:right">668</td>
+<td style="text-align:right">669</td>
+<td style="text-align:right">2,675</td>
+<td style="text-align:right">2,345</td>
+<td style="text-align:right">330</td>
+</tr>
+</tbody>
+</table>
+<p>Each original Butina draw order is filtered to eligible compounds <strong>without reshuffling</strong>. The same budgets plus eligible-full prefixes and 20% CAL suffix produce <strong>300 strict fold × draw × budget cells</strong>. All folds support N500. Retention varies by fold; strict fitting is not a new 80:20 split, nor a guarantee of separation between FIT and CAL.</p>
+<h3>Earlier scaffold-aware Butina: a different split</h3>
+<p>The inherited scaffold lockbox uses <code>scaffold_group_shuffle</code>, original-molecule Bemis–Murcko groups, seed <strong>20260505</strong>, requested holdout fraction <strong>0.20</strong>, with realized development/lockbox sizes 3,344 / 790. The packaged code restores the saved roles; it does not contain the original shuffle implementation, so further allocation details cannot be reconstructed from that code alone.</p>
+<p>Within development, <code>assign_scaffold_aware_butina_folds</code> uses Morgan/Tanimoto <strong>similarity 0.60 → distance 0.40</strong>, then unions Butina clusters sharing a Bemis–Murcko scaffold into indivisible connected components. Acyclic grouping is <code>ACYCLIC::&lt;canonical_smiles&gt;</code>, not one empty-scaffold group. Largest-first, smallest-fold allocation uses <code>default_rng</code> seed <strong>20260806</strong> for ties. Saved test counts are <strong>669 / 669 / 669 / 669 / 668</strong>. Each outer model trains on the other four folds; nested selection uses those four fold labels as inner validation folds, training on three at a time. Final neural seeds are 42/43/44. There is no separate interval-CAL subset in this historical comparison.</p>
+<p>The August repeated learning curves reuse these test folds: ten whole-family training-subset draws at targets 100 and 250, approximately proportional across outer-training folds. Seed formula: <code>20260813 + draw*10000000 + outer_fold*100000 + target*10 + inner_fold</code>. These are repeated family-subset fits, <strong>not repeated random outer partitions</strong> or the later exact-N acquisitions.</p>
+<h2>Results: which experiments use which split?</h2>
+<table>
+<thead>
+<tr>
+<th>Experiment family</th>
+<th>Saved split used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initial head-only/rich-2D, transfer, capacity, loss/LR, binary/dual-head and pair-pooling probes</td>
+<td>Initial scaffold-aware Butina 0.60 + Murcko-union folds; no low-data CAL</td>
+</tr>
+<tr>
+<td>Original 12-method low-data matrix; stable-readout and descriptor follow-ups</td>
+<td>Random and Butina 0.35; same five folds, ten draws, five budgets + full; follow-ups reuse assignments and acquisitions</td>
+</tr>
+<tr>
+<td>Strict follow-up panel</td>
+<td>Same Butina TEST; purged pool, ten filtered draws, five budgets + eligible-full</td>
+</tr>
+<tr>
+<td>Matched upstream head-only/LoRA, matched controls, MW controls</td>
+<td>Strict, <strong>all five folds, draw 0, N100/N500</strong>. Head/LoRA use seed 42, fixed recipe without inner tuning</td>
+</tr>
+<tr>
+<td>Descriptor + frozen-Nesso hybrid</td>
+<td>Strict <strong>draw 0, N500</strong>. Pilot fold 0; continuation folds 1–4 with byte-identical pilot reuse. Three grouped meta folds inside FIT plus deeper selection; CAL outcomes unused for mixture fitting</td>
+</tr>
+<tr>
+<td>Geometry and Emax/uncertainty diagnostics</td>
+<td>Saved predictions/identities; no new model-test splits</td>
+</tr>
+</tbody>
+</table>
+<p>The four-CYP scalar-control study has a <a href="../../evidence/CYP/protocol.md">separate dataset/protocol</a>, not an additional PXR split.</p>
+<h2>Compound-labeled downloads</h2>
+<p>Joined CSVs include <strong>Nesso <code>record_id</code>, original OADMET <code>original_id</code>, <code>OCNT_ID</code>, canonical/raw SMILES and saved chemical-group labels</strong>. Original fold and FIT/CAL values and row order are unchanged. Repeated rows denote tasks, not additional compounds.</p>
+<table>
+<thead>
+<tr>
+<th>Download</th>
+<th style="text-align:right">Rows</th>
+<th>Labels</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../evidence/reports/chemical-splits/initial-scaffold-holdout.csv">Initial scaffold holdout CSV</a></td>
+<td style="text-align:right">4,134</td>
+<td>Native molecule names, SMILES, scaffold, development/holdout, method/seed/fraction</td>
+</tr>
+<tr>
+<td><a href="../../evidence/reports/chemical-splits/initial-modeling-manifest.csv">Initial modeling manifest CSV</a></td>
+<td style="text-align:right">4,134</td>
+<td>Native compound/state IDs, SMILES, development/lockbox, initial <code>fold</code>, <code>butina_cluster</code>, <code>cluster_component</code>; lockbox folds intentionally empty</td>
+</tr>
+<tr>
+<td><a href="../../evidence/reports/chemical-splits/low-data-outer-assignments.csv">Random + Butina TEST-fold assignments</a></td>
+<td style="text-align:right">6,688</td>
+<td>One compound × policy row; its TEST <code>outer_fold</code>, and 0.35 <code>chemical_group</code></td>
+</tr>
+<tr>
+<td><a href="../../evidence/reports/chemical-splits/low-data-acquired-roles.csv">Random + Butina acquired FIT/CAL roles</a></td>
+<td style="text-align:right">360,020</td>
+<td>Task <code>split</code>, <code>outer_fold</code>, <code>draw</code>, <code>n_train</code>, native <code>role</code>, IDs/SMILES/group</td>
+</tr>
+<tr>
+<td><a href="../../evidence/reports/chemical-splits/strict-outer-assignments.csv">Strict TEST-fold assignments</a></td>
+<td style="text-align:right">3,344</td>
+<td>Unchanged Butina TEST; native <code>split=chemical_cluster</code> retained</td>
+</tr>
+<tr>
+<td><a href="../../evidence/reports/chemical-splits/strict-acquired-roles.csv">Strict acquired FIT/CAL roles</a></td>
+<td style="text-align:right">163,850</td>
+<td>All 300 tasks; native <code>split=strict_chemical</code>, roles, compound IDs/SMILES/group</td>
+</tr>
+<tr>
+<td><a href="../../evidence/reports/chemical-splits/strict-pool-audit.csv">Strict pool eligibility and purge audit</a></td>
+<td style="text-align:right">13,376</td>
+<td>Pool compound labels, retained/purged flag, maximum TEST similarity, nearest TEST ID and reason</td>
+</tr>
+</tbody>
+</table>
+<p>For a task, select TEST compounds by its fold in the assignment file; select FIT/CAL by matching policy/fold/draw/budget in the acquired file. In acquired rows, <code>outer_fold</code> names the <strong>task’s TEST fold</strong>, not the acquired compound’s own test assignment. Other pool compounds are not automatically FIT: they may be unacquired or purged. <code>n_train=-1</code> means full eligible outer pool, never all development data.</p>
+<p><a href="../../evidence/reports/chemical-splits/manifest.json">Counts, source bindings and SHA-256 manifest</a> · <a href="../../evidence/scripts/build_chemical_split_downloads.py">Executable exact-ID-join recipe</a> · <a href="../../experiment-content/identity-standardization.md">Methods Markdown</a></p>
+<h2>Implication and limits</h2>
+<p>Random tests new identities among related chemistry; Butina keeps centroid groups apart; strict purging additionally controls measured pool–TEST proximity. None provides fresh prospective validation. Draws and model seeds share TEST compounds and are not independent replications. The original specification mentions an earlier random five-fold scalar diagnostic, but packaged PXR artifacts do not provide its compound-level assignments; it must not be relabeled as the completed low-data Random comparator.</p>
+<p>The downloads are byte-equal native copies or exact joins validated on <code>row_index</code>, <code>record_id</code>, <code>feature_row</code> and SMILES. No splits, models or predictions were rerun. The superseded identity-standardization content remains in the physical revision archive, not on this methods page.</p>
+<details><summary>Source evidence</summary><p>Original reports and exact tables (historical report links may refer to unbundled files).</p><ul class="evidence"><li><a download href="../../evidence/reports/chemical-splits/low-data-acquired-roles.csv">reports/chemical-splits/low-data-acquired-roles.csv</a></li><li><a download href="../../evidence/reports/chemical-splits/low-data-outer-assignments.csv">reports/chemical-splits/low-data-outer-assignments.csv</a></li><li><a download href="../../evidence/reports/chemical-splits/strict-pool-audit.csv">reports/chemical-splits/strict-pool-audit.csv</a></li><li><a download href="../../evidence/reports/chemical-splits/manifest.json">reports/chemical-splits/manifest.json</a></li><li><a download href="../../evidence/reports/chemical-splits/strict-outer-assignments.csv">reports/chemical-splits/strict-outer-assignments.csv</a></li><li><a download href="../../evidence/reports/chemical-splits/initial-modeling-manifest.csv">reports/chemical-splits/initial-modeling-manifest.csv</a></li><li><a download href="../../evidence/reports/chemical-splits/initial-scaffold-holdout.csv">reports/chemical-splits/initial-scaffold-holdout.csv</a></li><li><a download href="../../evidence/reports/chemical-splits/strict-acquired-roles.csv">reports/chemical-splits/strict-acquired-roles.csv</a></li><li><a download href="../../evidence/scripts/build_chemical_split_downloads.py">scripts/build_chemical_split_downloads.py</a></li><li><a download href="../../evidence/src/nesso_pxr/splits.py">src/nesso_pxr/splits.py</a></li><li><a download href="../../evidence/src/nesso_pxr/chemistry.py">src/nesso_pxr/chemistry.py</a></li><li><a download href="../../evidence/src/nesso_pxr/low_data_contract.py">src/nesso_pxr/low_data_contract.py</a></li><li><a download href="../../evidence/src/nesso_pxr/low_data_models.py">src/nesso_pxr/low_data_models.py</a></li><li><a download href="../../evidence/artifacts/experiments/low_data_20260905_cut035_run2/prepared/protocol.json">artifacts/experiments/low_data_20260905_cut035_run2/prepared/protocol.json</a></li><li><a download href="../../evidence/artifacts/experiments/low_data_20260905_cut035_run2/prepared/split_audit.json">artifacts/experiments/low_data_20260905_cut035_run2/prepared/split_audit.json</a></li><li><a download href="../../evidence/experiments/20260906_affinity_comparison/train_protocol.json">experiments/20260906_affinity_comparison/train_protocol.json</a></li></ul></details></main><footer><p class="fineprint">Nesso → PXR · <a href="../../source-map.json">Evidence provenance</a> · <a href="../../experiment-content/index.md" download>Editable overview</a></p></footer></body></html>

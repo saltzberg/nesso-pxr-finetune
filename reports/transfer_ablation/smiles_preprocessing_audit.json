@@ -1,0 +1,36 @@
+{
+  "columns": {
+    "identity_canonical_smiles": {
+      "duplicate_row_count": 0,
+      "multi_fragment_dot_count": 0,
+      "unique": 4134
+    },
+    "prepared_smiles": {
+      "duplicate_row_count": 0,
+      "multi_fragment_dot_count": 0,
+      "unique": 4134
+    },
+    "raw_smiles": {
+      "duplicate_row_count": 0,
+      "multi_fragment_dot_count": 0,
+      "unique": 4134
+    }
+  },
+  "formal_charge_counts": {
+    "-1": 246,
+    "-2": 4,
+    "0": 3315,
+    "1": 509,
+    "2": 59,
+    "3": 1
+  },
+  "identity_groups_crossing_development_folds": 0,
+  "identity_processing": "RDKit parse plus canonical isomeric SMILES; no repository salt stripper, tautomer canonicalizer, or neutralizer",
+  "nesso_input_state": "one precomputed top_solution_state per compound; alternate states were not used",
+  "prepared_groups_crossing_development_folds": 0,
+  "prepared_smiles_development_lockbox_overlap": 0,
+  "rows": 4134,
+  "selection_reason_counts": {
+    "top_solution_state": 4134
+  }
+}

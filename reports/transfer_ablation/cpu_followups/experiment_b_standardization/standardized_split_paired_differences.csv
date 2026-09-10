@@ -1,0 +1,5 @@
+dataset,comparison,metric,estimate,ci_lower,ci_upper
+standardized_nested_development,2d_lightgbm_minus_mean384_ridge,mae,-0.11682989556091117,-0.13426899911153312,-0.09907062471394514
+standardized_nested_development,2d_lightgbm_minus_mean384_ridge,spearman,0.07673427886461948,0.05600325548114018,0.09908873097071097
+retrospective_standardized_lockbox_790,2d_lightgbm_minus_mean384_ridge,mae,-0.10769156876082742,-0.1385708901475423,-0.07878703604108493
+retrospective_standardized_lockbox_790,2d_lightgbm_minus_mean384_ridge,spearman,0.07814144490553043,0.03496166659500044,0.12465765370095945

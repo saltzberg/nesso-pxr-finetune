@@ -1,0 +1,120 @@
+{
+  "batch_size": 64,
+  "budgets": [
+    25,
+    50,
+    100,
+    250,
+    500
+  ],
+  "calibration_fraction": 0.2,
+  "checkpoint": "models/nesso-1/v1.0.0/model.safetensors",
+  "chemical_cluster_method": "butina",
+  "chemical_similarity_cutoff": 0.35,
+  "curation_weight_in_primary": false,
+  "data_scope": "development_only_3344_retrospective",
+  "draws": 10,
+  "epochs": 40,
+  "experiment_id": "low_data_followup_20260906_strict",
+  "external_publication_authorized": false,
+  "features": "data/published/nesso_features.safetensors",
+  "fingerprint_bits": 2048,
+  "grids": {
+    "knn_neighbors": [
+      1,
+      5
+    ],
+    "lightgbm_n_estimators": [
+      50,
+      150
+    ],
+    "neural_learning_rate": [
+      0.0001,
+      0.001
+    ],
+    "ridge_alpha": [
+      1.0,
+      100.0,
+      10000.0
+    ]
+  },
+  "head_lora_rank": 4,
+  "include_full_reference": true,
+  "inner_folds": 3,
+  "interval_coverages": [
+    0.8,
+    0.9
+  ],
+  "invalid_se_policy": "fail",
+  "manifest": "data/published/modeling_manifest.csv",
+  "methods": [
+    "native_continuous",
+    "weighted_median",
+    "native_affine",
+    "head_pretrained",
+    "head_random",
+    "morgan_ridge",
+    "descriptor_lightgbm_rdkit_mordred",
+    "repr_ridge_unscaled",
+    "repr_ridge_stable"
+  ],
+  "model_selection": "bounded inner CV entirely inside fit subset; calibration/test labels withheld",
+  "morgan_radius": 2,
+  "n_folds": 5,
+  "neural_huber_beta": 0.5,
+  "neural_objective": "assay-weighted smooth L1 in pEC50 coordinates",
+  "practical_improvement_margin": null,
+  "primary_metric": "weighted_mae",
+  "question": "How should pretrained Nesso-1 be adapted with 25\u2013500 PXR cellular-activation labels?",
+  "report_dir": "site/low-data",
+  "report_interval_guarantee": "No distribution-free coverage guarantee asserted for chemical shift",
+  "run_dir": "artifacts/experiments/low_data_followup_20260906/strict_split/panel",
+  "schema_version": 1,
+  "score_sensitivity_floors": [
+    0.05,
+    0.2
+  ],
+  "se_floor": 0.1,
+  "se_floor_rationale": "Fixed before new outcomes from the existing protocol floor grid; engineering cap, not independently measured assay precision.",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "split_policies": [
+    "strict_chemical"
+  ],
+  "split_seed": 20260905,
+  "status": "implementation_authorized",
+  "subset_seed": 1701,
+  "threads": 2,
+  "weight_definition": "1 / max(assay_standard_error, se_floor)",
+  "retrospective": true,
+  "strict_preparation": "artifacts/experiments/low_data_followup_20260906/strict_split",
+  "original_preparation": "artifacts/experiments/low_data_20260905_cut035_run2/prepared",
+  "descriptor_cache": "artifacts/experiments/low_data_followup_20260906/baselines/features",
+  "purge_predicate": "Morgan radius2/2048 Tanimoto >=.35 to ANY original chemical TEST member; includes calibration",
+  "subset_policy": "Filter exact original seeded full draw orders; nested acquired prefixes; ceil(.2*N) calibration suffix; fit-only subsets need not nest",
+  "feasibility": "Structure-only all-five-fold intersection of supported requested budgets, plus eligible-full; no threshold fallback; individual invalid inner-CV contracts are retained failures",
+  "method_configs": {
+    "original": "Original prepared protocol frozen here, no duration caps; Morgan ridge alpha [1,100,10000]",
+    "readouts": "Use full frozen protocol_readouts.json for its two ridge methods; alpha [1,100,10000,1000000]",
+    "baselines": "Use frozen module constants and protocol_baselines.json; descriptor slot separately named feasible recipe, NOT exact historical restoration"
+  },
+  "method_flows": {
+    "native_continuous": "frozen cached Nesso vectors -> released native head -> 6-native affinity; no target-label training; endpoint-mismatched pIC50-equivalent",
+    "weighted_median": "fit labels -> inverse-SE weighted lower median -> constant",
+    "native_affine": "frozen native scalar -> fit-only inverse-SE weighted squared affine regression, slope [0,2], free intercept",
+    "head_pretrained": "frozen member vectors -> released twin continuous head initialization -> within-fit grouped inner LR/epoch choice -> independently trained seeds -> mean",
+    "head_random": "same twin head architecture/random initialization -> same fitting/selection -> mean",
+    "morgan_ridge": "Morgan bits -> within-inner/final train-only preprocessing and weighted ridge -> grouped inner alpha choice",
+    "descriptor_lightgbm_rdkit_mordred": "canonical SMILES -> frozen row-wise RDKit2D+Mordred2D+Morgan -> inner/final training-only learned preprocessing/selectors -> LightGBM; distinct from unavailable historical feature universe",
+    "repr_ridge_unscaled": "concatenated frozen vectors -> unscaled weighted ridge; grouped inner alpha selection",
+    "repr_ridge_stable": "concatenated frozen vectors -> train-only weighted mean and floored SD per readout protocol -> weighted ridge; grouped inner alpha selection"
+  },
+  "postprocessing": "No point clipping. Calibration suffix labels only for conformal absolute-residual intervals, no distribution-free coverage guarantee under shift.",
+  "launch_gate": "Require verified A/B modules, protocols, descriptor identity cache and passing A/B/strict tests bound to source hashes; freeze complete source/input/runtime bindings before smoke and outcome panel.",
+  "queue": "five folds x ten draws x supported budgets plus eligible-full x fixed nine methods; two threads, systemd user, no elapsed-time cap",
+  "new_holdout_claim": false,
+  "upstream_adaptation": false
+}

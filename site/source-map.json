@@ -1,0 +1,1388 @@
+[
+  {
+    "bytes": 14746,
+    "sha256": "00d2ed30304a0281ddc4de5a7f29cdf2dfdcb21f763f888fc07a5617e1049331",
+    "site_path": "evidence/.hermes/plans/20260905-1954-nesso-low-data-adaptation.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/.hermes/plans/20260905-1954-nesso-low-data-adaptation.md",
+    "source_key": ".hermes/plans/20260905-1954-nesso-low-data-adaptation.md"
+  },
+  {
+    "bytes": 11787,
+    "sha256": "ff16f681cfda0b086e559224980a185ee0c5c9d8499518b72b75bfe7508a63d8",
+    "site_path": "evidence/CYP/README.md",
+    "source": "/home/dan/projects/ADMET-CYP/experiments/20260908_CYP-Nesso-MW-case-study/README.md",
+    "source_key": "CYP/README.md"
+  },
+  {
+    "bytes": 689,
+    "sha256": "dd28ee20e6b73d8459f48098f4c10109c6a444a8cf61a5d06cc53c27cf2b7339",
+    "site_path": "evidence/CYP/artifacts/coverage_uncertainty.csv",
+    "source": "/home/dan/projects/ADMET-CYP/experiments/20260908_CYP-Nesso-MW-case-study/artifacts/coverage_uncertainty.csv",
+    "source_key": "CYP/artifacts/coverage_uncertainty.csv"
+  },
+  {
+    "bytes": 143696,
+    "sha256": "464d5f0dc7be3e852f70237f022c2daf86b0d6e2228231f87269282f66e69e39",
+    "site_path": "evidence/CYP/artifacts/metrics.csv",
+    "source": "/home/dan/projects/ADMET-CYP/experiments/20260908_CYP-Nesso-MW-case-study/artifacts/metrics.csv",
+    "source_key": "CYP/artifacts/metrics.csv"
+  },
+  {
+    "bytes": 46486,
+    "sha256": "8307e64497e1934eaa40058facf1697f22f62db2b62de34b704e63d17faf1ebe",
+    "site_path": "evidence/CYP/low-mw.png",
+    "source": "/home/dan/projects/ADMET-CYP/experiments/20260908_CYP-Nesso-MW-case-study/low-mw.png",
+    "source_key": "CYP/low-mw.png"
+  },
+  {
+    "bytes": 61083,
+    "sha256": "70972a424669cea0dc543e9f457777ea7a032a2abf9d515c17cc2a39b923ef65",
+    "site_path": "evidence/CYP/mae.png",
+    "source": "/home/dan/projects/ADMET-CYP/experiments/20260908_CYP-Nesso-MW-case-study/mae.png",
+    "source_key": "CYP/mae.png"
+  },
+  {
+    "bytes": 4395,
+    "sha256": "cacac4c9914bebb53e2f7f9ec151a6b0fd19e8bf4ffe0e13a533b4af5ea7d13a",
+    "site_path": "evidence/CYP/protocol.md",
+    "source": "/home/dan/projects/ADMET-CYP/experiments/20260908_CYP-Nesso-MW-case-study/protocol.md",
+    "source_key": "CYP/protocol.md"
+  },
+  {
+    "bytes": 19040,
+    "sha256": "16396be0967df5b7ea226aa8194e5db1f6c442cc37b2ccc631280dbf1b68698d",
+    "site_path": "evidence/artifacts/architecture/architecture_audit.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/architecture/architecture_audit.md",
+    "source_key": "artifacts/architecture/architecture_audit.md"
+  },
+  {
+    "bytes": 2638,
+    "sha256": "154cf0604e1acd36e82a1cd1c45ac409286fac76ef3e7269de79479d1c3061f6",
+    "site_path": "evidence/artifacts/cloud/50146714/continuation.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/continuation.json",
+    "source_key": "artifacts/cloud/50146714/continuation.json"
+  },
+  {
+    "bytes": 213420,
+    "sha256": "96fa1dd243268b62653b3acad83e21fae5566e66f566a537445477fe31a9b63b",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_only__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_only__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_only__seed42/audit.json"
+  },
+  {
+    "bytes": 913,
+    "sha256": "09d562acbeb7b5073af77f3d9a05ccb29bab51def84b1dbae2ce00d15b681b2f",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_only__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_only__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_only__seed42/complete.json"
+  },
+  {
+    "bytes": 331,
+    "sha256": "152851be04e81640ad9fa6f2c4b774fcc1a0e9fc34c2edf3d4e27fe0bbd3de65",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_only__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_only__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_only__seed42/replay.json"
+  },
+  {
+    "bytes": 217699,
+    "sha256": "5692ff831eb7aac94e43c06d2cf8b2bc34db62d2d210e1c389fa9df08ac65e26",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_plus_lora__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_plus_lora__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_plus_lora__seed42/audit.json"
+  },
+  {
+    "bytes": 923,
+    "sha256": "7afff61a206f716ccedab15cb2dba6ad638347e954d89638c6b9345b3c95c3fd",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_plus_lora__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_plus_lora__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_plus_lora__seed42/complete.json"
+  },
+  {
+    "bytes": 341,
+    "sha256": "12f4d611bf6da816f137ae0fa935ddc876f1c0b8208ded47bfe0ffb091f8f8ef",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_plus_lora__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_plus_lora__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n100__head_plus_lora__seed42/replay.json"
+  },
+  {
+    "bytes": 225007,
+    "sha256": "291176d7c00a693b7f03aba027bb13ef84f57001d3c342d0e5839c8a2af78e69",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_only__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_only__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_only__seed42/audit.json"
+  },
+  {
+    "bytes": 913,
+    "sha256": "474c48625b02c5b0353db9f365a8d916b2d5c541c97bcac25e3caf2b3b747782",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_only__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_only__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_only__seed42/complete.json"
+  },
+  {
+    "bytes": 331,
+    "sha256": "6d64b7124960671d57496ebf241ef37a5733acaa0c979f23d1be526bd7e30ce2",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_only__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_only__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_only__seed42/replay.json"
+  },
+  {
+    "bytes": 229298,
+    "sha256": "14c1e2c9684b6ebbe3761fe5cbaa3eaa3417dc00f3e134357b6ea5f6554a0a54",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_plus_lora__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_plus_lora__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_plus_lora__seed42/audit.json"
+  },
+  {
+    "bytes": 923,
+    "sha256": "0e8fbdc20c1accdfdedb706460594614029afa59077a0c6b8952ca751e8b0752",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_plus_lora__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_plus_lora__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_plus_lora__seed42/complete.json"
+  },
+  {
+    "bytes": 341,
+    "sha256": "8b699d63abfe1a29bcb4fe8ba4d3e67fd911d3584bccaab090813f80ccdbe56b",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_plus_lora__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_plus_lora__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold0__draw0__n500__head_plus_lora__seed42/replay.json"
+  },
+  {
+    "bytes": 213408,
+    "sha256": "15eca4bce483a777e6638b76d4023244805e59a7ba836fa9bc4eb4ad937631cb",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_only__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_only__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_only__seed42/audit.json"
+  },
+  {
+    "bytes": 913,
+    "sha256": "6e48e7ed73d00a47fbebefb4000634160a5729101d3dc7084a63bc3b31fb7eec",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_only__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_only__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_only__seed42/complete.json"
+  },
+  {
+    "bytes": 331,
+    "sha256": "01be6646bbff6cef9704df5ee9068fa57d76ba28e202ecd8157413b92bf058f6",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_only__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_only__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_only__seed42/replay.json"
+  },
+  {
+    "bytes": 217690,
+    "sha256": "3a25507b15d334b676a6cb81649ec052adbfbbdf5c862b4d75e0e051e02d1642",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_plus_lora__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_plus_lora__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_plus_lora__seed42/audit.json"
+  },
+  {
+    "bytes": 923,
+    "sha256": "5d605fa9fa9239555c8d4361d7f69b654444368927f10ae493ced0be21e81ca7",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_plus_lora__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_plus_lora__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_plus_lora__seed42/complete.json"
+  },
+  {
+    "bytes": 341,
+    "sha256": "a2dab9cf2679ede0d541f4259fb33376bd7eb5f89eaadaeb173fde5c7e7492c5",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_plus_lora__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_plus_lora__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n100__head_plus_lora__seed42/replay.json"
+  },
+  {
+    "bytes": 225017,
+    "sha256": "92a5ac0d65110ef0a91a1ffaca9e579dd6d3fc77d1699188bd286688665f9eb1",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_only__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_only__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_only__seed42/audit.json"
+  },
+  {
+    "bytes": 913,
+    "sha256": "5acf4eb03692c37dab099b6af003198ea8160b91449796f4e001029d48309f1c",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_only__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_only__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_only__seed42/complete.json"
+  },
+  {
+    "bytes": 331,
+    "sha256": "b0d8631f102aec40edf2e2f92fe9f391997d3a1d1bc6363354268d4da29d65f9",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_only__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_only__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_only__seed42/replay.json"
+  },
+  {
+    "bytes": 229305,
+    "sha256": "df5bcf46d2d463b8f12d8407c76a21e0d88dbcdc9fdd5e9737655327c0c7a005",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_plus_lora__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_plus_lora__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_plus_lora__seed42/audit.json"
+  },
+  {
+    "bytes": 923,
+    "sha256": "6a561faa5c2d317826655d1c2996db63e8af4492fd0a51295a71a11876dc9585",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_plus_lora__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_plus_lora__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_plus_lora__seed42/complete.json"
+  },
+  {
+    "bytes": 341,
+    "sha256": "42b2819a42408022fc8493ccb103effdab6a0d44484935c2e0deb08ce51e984f",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_plus_lora__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_plus_lora__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold1__draw0__n500__head_plus_lora__seed42/replay.json"
+  },
+  {
+    "bytes": 213422,
+    "sha256": "2ff8f6c1285295cf23999655c789bd9f573468119ea272c91c4997009f134c73",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_only__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_only__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_only__seed42/audit.json"
+  },
+  {
+    "bytes": 913,
+    "sha256": "1909e28655cef1966fee201be069bd82f232b577cc08d11620eb41c2011cc329",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_only__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_only__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_only__seed42/complete.json"
+  },
+  {
+    "bytes": 331,
+    "sha256": "32d649d5c0f011086c3958570949ce3dd5626fe46f0a5cc20c7ae6272ab4d600",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_only__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_only__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_only__seed42/replay.json"
+  },
+  {
+    "bytes": 217707,
+    "sha256": "3b74e8bed20be36bab60b499a20be02ff9901f1e6fc262826142204c7db32597",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_plus_lora__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_plus_lora__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_plus_lora__seed42/audit.json"
+  },
+  {
+    "bytes": 923,
+    "sha256": "9160717bc72960b1fdc4031dd84e4b38de08bfb81dfc03c47c53f7af9f3c12d7",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_plus_lora__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_plus_lora__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_plus_lora__seed42/complete.json"
+  },
+  {
+    "bytes": 341,
+    "sha256": "73ee9bf438f4615084ec03175adecae06ba7ce848d462c96a4eb00f70badd79e",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_plus_lora__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_plus_lora__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n100__head_plus_lora__seed42/replay.json"
+  },
+  {
+    "bytes": 225019,
+    "sha256": "284514cec3e90054acb196edcfb5f4b9de99369e4e9ecf21482c64668d0fef65",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_only__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_only__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_only__seed42/audit.json"
+  },
+  {
+    "bytes": 913,
+    "sha256": "b5f8e2d936f5aa5a492193b67903cc86bdacf796e0a3c65f0b115d0eab4002dd",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_only__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_only__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_only__seed42/complete.json"
+  },
+  {
+    "bytes": 331,
+    "sha256": "9697af0586e0572442cc393c47d0020c32f777431a849ecc91177eec90ca0975",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_only__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_only__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_only__seed42/replay.json"
+  },
+  {
+    "bytes": 229292,
+    "sha256": "3661a6628cff8504b478e07f76e269003bc9e1ace776eba227759b5ed4df16fe",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_plus_lora__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_plus_lora__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_plus_lora__seed42/audit.json"
+  },
+  {
+    "bytes": 923,
+    "sha256": "4bf3e22c5ea49e8d880b861f14777b7bc1e77e5333c03a0a68470d86b1177cb1",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_plus_lora__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_plus_lora__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_plus_lora__seed42/complete.json"
+  },
+  {
+    "bytes": 341,
+    "sha256": "7938ea9723e17166d12153b36509b522a3fb3cd434f8fe638fea811ac9be8156",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_plus_lora__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_plus_lora__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold2__draw0__n500__head_plus_lora__seed42/replay.json"
+  },
+  {
+    "bytes": 213389,
+    "sha256": "4858b8504617a3ba279d9e3c92ebff1209b3e8b8d89dd476ad85f6bdebb95727",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_only__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_only__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_only__seed42/audit.json"
+  },
+  {
+    "bytes": 913,
+    "sha256": "29750134ed296be800f6fc04a2a505258094e87f359bfb4362cea8e2af349e69",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_only__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_only__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_only__seed42/complete.json"
+  },
+  {
+    "bytes": 331,
+    "sha256": "b6b2da98df829ab0f2fc0964f5a73e0a34775b1f930439ffafbb045cd837edb0",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_only__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_only__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_only__seed42/replay.json"
+  },
+  {
+    "bytes": 217669,
+    "sha256": "bb52d5243d959195bf9007264bf94b38332c1e50569bc1fe3eaeac43b96f3f21",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_plus_lora__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_plus_lora__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_plus_lora__seed42/audit.json"
+  },
+  {
+    "bytes": 923,
+    "sha256": "1fbb8962387eb018e9a14ae02c67000227d52ee10ef0f2581482c5ea5c1e9a9d",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_plus_lora__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_plus_lora__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_plus_lora__seed42/complete.json"
+  },
+  {
+    "bytes": 341,
+    "sha256": "e35c6899eca47f5cf6207f72d74cdfe794f3de1d33b293dac1115a41e623537f",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_plus_lora__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_plus_lora__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n100__head_plus_lora__seed42/replay.json"
+  },
+  {
+    "bytes": 224989,
+    "sha256": "5c577e4f548e7cd839813c75eaa65cb5b5480d3fb837e9c1357bde6909e38625",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_only__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_only__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_only__seed42/audit.json"
+  },
+  {
+    "bytes": 913,
+    "sha256": "110ddb7da0e5bd1c24508bbd37f77316c7c320a25e084e0ffcd3af87c8a94573",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_only__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_only__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_only__seed42/complete.json"
+  },
+  {
+    "bytes": 331,
+    "sha256": "37def9dcf2b6503db423f2cc850617b874135b9d1ac644d971912983b5dd8965",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_only__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_only__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_only__seed42/replay.json"
+  },
+  {
+    "bytes": 229270,
+    "sha256": "f438afc2f008bfd9c600eab368805143e8269610a331d8a733e7b82ece638e0f",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_plus_lora__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_plus_lora__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_plus_lora__seed42/audit.json"
+  },
+  {
+    "bytes": 923,
+    "sha256": "b9042c22f8e2d1b1990b82e5b2e1d69b8714583e73bb502e76f55a2b7addb960",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_plus_lora__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_plus_lora__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_plus_lora__seed42/complete.json"
+  },
+  {
+    "bytes": 341,
+    "sha256": "29c9e2909e2d00680a40ea005168faaabce137ad71d9c442c52262c8af2879f6",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_plus_lora__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_plus_lora__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold3__draw0__n500__head_plus_lora__seed42/replay.json"
+  },
+  {
+    "bytes": 213425,
+    "sha256": "1ed33b1fa5ebcc7727054d5b09b54b763197465bdcf238506e927eb549335e57",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_only__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_only__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_only__seed42/audit.json"
+  },
+  {
+    "bytes": 913,
+    "sha256": "aea826bd29a649df4a5bd85345583d2015ecf9cb50d52867089a99e98f1cb702",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_only__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_only__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_only__seed42/complete.json"
+  },
+  {
+    "bytes": 331,
+    "sha256": "71471d22f769ade4aacb5dbc93dc1d5f9225759e14547dfbb4d7de18fe90960c",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_only__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_only__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_only__seed42/replay.json"
+  },
+  {
+    "bytes": 217698,
+    "sha256": "f55d825fb5e7856d4aaa96f98d2eb807fcd3e5679617588da409bc6409754cba",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_plus_lora__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_plus_lora__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_plus_lora__seed42/audit.json"
+  },
+  {
+    "bytes": 923,
+    "sha256": "f1ea3870d1b2dfc51f8ff0a738ffe41c6a0de00c1954b03738533a4e7d0960aa",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_plus_lora__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_plus_lora__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_plus_lora__seed42/complete.json"
+  },
+  {
+    "bytes": 341,
+    "sha256": "ac0bc528b004ba3ae5dc56f0867e9b9c2fce51c1aef80bc718f0f6e4d10562ee",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_plus_lora__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_plus_lora__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n100__head_plus_lora__seed42/replay.json"
+  },
+  {
+    "bytes": 225019,
+    "sha256": "1edd9301ab1c23f1599ed3317342629c82a72081b4d47ea0c6a735e4eeefa3d1",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_only__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_only__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_only__seed42/audit.json"
+  },
+  {
+    "bytes": 913,
+    "sha256": "2f7215cdd2a7bbd5b9fa11e4ba4e8d10b8a50acab19489c60012dc4229717f87",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_only__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_only__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_only__seed42/complete.json"
+  },
+  {
+    "bytes": 331,
+    "sha256": "624e661a50cc8adaa1dbcc36406b2e81e3200a44e5903c7c6ff5f98ecfe65478",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_only__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_only__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_only__seed42/replay.json"
+  },
+  {
+    "bytes": 229298,
+    "sha256": "da1d7d1ebebdb0e1625d592ed43b2e833d5789161f7e707595bacc0e607491bf",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_plus_lora__seed42/audit.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_plus_lora__seed42/audit.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_plus_lora__seed42/audit.json"
+  },
+  {
+    "bytes": 923,
+    "sha256": "0257e487ae2c1f3a4c393f2077f5adf70c34f0575fd84cf24fdb174570527bee",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_plus_lora__seed42/complete.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_plus_lora__seed42/complete.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_plus_lora__seed42/complete.json"
+  },
+  {
+    "bytes": 341,
+    "sha256": "41ed4b01fcc685804216895bcc939c506a61c92a37f2099b2399529d4719397c",
+    "site_path": "evidence/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_plus_lora__seed42/replay.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_plus_lora__seed42/replay.json",
+    "source_key": "artifacts/cloud/50146714/remote_results/tasks/fold4__draw0__n500__head_plus_lora__seed42/replay.json"
+  },
+  {
+    "bytes": 891,
+    "sha256": "9054462ecfacc74a7938ad1290cf3135c363ee2cab15de6468ed8f9ab1ed5153",
+    "site_path": "evidence/artifacts/experiments/descriptor_nesso_blend_20260908/metrics.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/descriptor_nesso_blend_20260908/metrics.json",
+    "source_key": "artifacts/experiments/descriptor_nesso_blend_20260908/metrics.json"
+  },
+  {
+    "bytes": 77866,
+    "sha256": "7b7538981e9fc013e89b2512564e7e505279b4d054abf93c9d26c8c82a528ccb",
+    "site_path": "evidence/artifacts/experiments/descriptor_nesso_blend_20260908/test_predictions.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/descriptor_nesso_blend_20260908/test_predictions.csv",
+    "source_key": "artifacts/experiments/descriptor_nesso_blend_20260908/test_predictions.csv"
+  },
+  {
+    "bytes": 431515,
+    "sha256": "e77097e4d26dc789630b88e84db9160636c827929122b56503e2c28e79083bae",
+    "site_path": "evidence/artifacts/experiments/descriptor_nesso_blend_allfolds_20260908/all_test_predictions.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/descriptor_nesso_blend_allfolds_20260908/all_test_predictions.csv",
+    "source_key": "artifacts/experiments/descriptor_nesso_blend_allfolds_20260908/all_test_predictions.csv"
+  },
+  {
+    "bytes": 11372,
+    "sha256": "a6350809c4b5fde21ceb2e41fccdac422afe29b265cdd124d90889e2cc2f40c4",
+    "site_path": "evidence/artifacts/experiments/descriptor_nesso_blend_allfolds_20260908/metrics.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/descriptor_nesso_blend_allfolds_20260908/metrics.json",
+    "source_key": "artifacts/experiments/descriptor_nesso_blend_allfolds_20260908/metrics.json"
+  },
+  {
+    "bytes": 356,
+    "sha256": "d5494ba8e6635238acf7bae5acb16de7ccdb9376479c822659dc5b6f157395c4",
+    "site_path": "evidence/artifacts/experiments/descriptor_nesso_blend_allfolds_20260908/verification.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/descriptor_nesso_blend_allfolds_20260908/verification.json",
+    "source_key": "artifacts/experiments/descriptor_nesso_blend_allfolds_20260908/verification.json"
+  },
+  {
+    "bytes": 27274,
+    "sha256": "f184dfbd180ef7bb3b0ecd7e8fea99d6f7641d620e6cadfcf9807598cbb260b9",
+    "site_path": "evidence/artifacts/experiments/low_data_20260905_cut035_run2/independent_assessment.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/independent_assessment.md",
+    "source_key": "artifacts/experiments/low_data_20260905_cut035_run2/independent_assessment.md"
+  },
+  {
+    "bytes": 44984,
+    "sha256": "a38916e84b46a7a2dc57f60076b02e223c8569bc3af31b06fda9bd6056f4ce54",
+    "site_path": "evidence/artifacts/experiments/low_data_20260905_cut035_run2/independent_assessment_aggregates.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/independent_assessment_aggregates.csv",
+    "source_key": "artifacts/experiments/low_data_20260905_cut035_run2/independent_assessment_aggregates.csv"
+  },
+  {
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/prepared/protocol.json",
+    "source_key": "artifacts/experiments/low_data_20260905_cut035_run2/prepared/protocol.json",
+    "site_path": "evidence/artifacts/experiments/low_data_20260905_cut035_run2/prepared/protocol.json",
+    "bytes": 2839,
+    "sha256": "15aa4329f73cb4e7759c2e7e58f647061e2f6cec6ea23d93c66f1338d1facdc4"
+  },
+  {
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/prepared/split_audit.json",
+    "source_key": "artifacts/experiments/low_data_20260905_cut035_run2/prepared/split_audit.json",
+    "site_path": "evidence/artifacts/experiments/low_data_20260905_cut035_run2/prepared/split_audit.json",
+    "bytes": 12975,
+    "sha256": "da7f65da52a83a8ed4af855e04cdabf18f275f38dce818b0aca708f4eb237ff1"
+  },
+  {
+    "bytes": 472553,
+    "sha256": "c09f9a42881f094f1e87f866c8b2ac3ebeaa7b69e726463ad56c0f224a27f250",
+    "site_path": "evidence/artifacts/experiments/low_data_20260905_cut035_run2/status.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/status.json",
+    "source_key": "artifacts/experiments/low_data_20260905_cut035_run2/status.json"
+  },
+  {
+    "bytes": 365159,
+    "sha256": "2ed493beed89e5a02e30bd0a7e84b2bc9283e5c4ab7d6a3c86a9a5fda5b5e9df",
+    "site_path": "evidence/artifacts/experiments/low_data_followup_20260906/final_analysis/strata.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_followup_20260906/final_analysis/strata.csv",
+    "source_key": "artifacts/experiments/low_data_followup_20260906/final_analysis/strata.csv"
+  },
+  {
+    "bytes": 102532,
+    "sha256": "ac9cec051c656e05504b8669318fc942a8685ed20b746cbddc316e13855dc35b",
+    "site_path": "evidence/artifacts/experiments/low_data_followup_20260906/final_analysis/task_means.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_followup_20260906/final_analysis/task_means.csv",
+    "source_key": "artifacts/experiments/low_data_followup_20260906/final_analysis/task_means.csv"
+  },
+  {
+    "bytes": 3301,
+    "sha256": "d1aaebb15df59310b99e0ce422e3da46fead80db83a95f4fec46c94ef5e8104e",
+    "site_path": "evidence/experiments/20260905_low_data_adaptation/ADAPTER_FEASIBILITY.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260905_low_data_adaptation/ADAPTER_FEASIBILITY.md",
+    "source_key": "experiments/20260905_low_data_adaptation/ADAPTER_FEASIBILITY.md"
+  },
+  {
+    "bytes": 10876,
+    "sha256": "23f39e7668bac8e335543f11d01cfb52d12789b808d91a8f077223be7d2d7d86",
+    "site_path": "evidence/experiments/20260905_low_data_adaptation/MODEL_NOTES.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260905_low_data_adaptation/MODEL_NOTES.md",
+    "source_key": "experiments/20260905_low_data_adaptation/MODEL_NOTES.md"
+  },
+  {
+    "bytes": 9632,
+    "sha256": "330f6fc32c351015e49fbc6511fbbd5e50cdcedaec039412c35ccd0b57725a69",
+    "site_path": "evidence/experiments/20260905_low_data_adaptation/README.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260905_low_data_adaptation/README.md",
+    "source_key": "experiments/20260905_low_data_adaptation/README.md"
+  },
+  {
+    "bytes": 8152,
+    "sha256": "0a93aa6f9d6376fb028999911edc3599b48772cabbe9ff4ad1b938d9bbef326a",
+    "site_path": "evidence/experiments/20260906_affinity_comparison/CACHE.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_affinity_comparison/CACHE.md",
+    "source_key": "experiments/20260906_affinity_comparison/CACHE.md"
+  },
+  {
+    "bytes": 5138,
+    "sha256": "e96b5df61b837d67aa038ecca22ad80d3301cf0fa5db09645f58a2fd87672f44",
+    "site_path": "evidence/experiments/20260906_affinity_comparison/EXECUTION.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_affinity_comparison/EXECUTION.md",
+    "source_key": "experiments/20260906_affinity_comparison/EXECUTION.md"
+  },
+  {
+    "bytes": 18189,
+    "sha256": "b27df4dd305ebdac8d0fee7442e78c7025fdc82e620f169db6217b89d27489cd",
+    "site_path": "evidence/experiments/20260906_affinity_comparison/RESULTS.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_affinity_comparison/RESULTS.md",
+    "source_key": "experiments/20260906_affinity_comparison/RESULTS.md"
+  },
+  {
+    "bytes": 8026,
+    "sha256": "9cc5b6b77377a3a85f17205d89c3c503df38ef73d944fe66dd520bd4ec7a389c",
+    "site_path": "evidence/experiments/20260906_affinity_comparison/TRAIN.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_affinity_comparison/TRAIN.md",
+    "source_key": "experiments/20260906_affinity_comparison/TRAIN.md"
+  },
+  {
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_affinity_comparison/train_protocol.json",
+    "source_key": "experiments/20260906_affinity_comparison/train_protocol.json",
+    "site_path": "evidence/experiments/20260906_affinity_comparison/train_protocol.json",
+    "bytes": 2230,
+    "sha256": "3b57c3775bf3f7a38b5f4a0b93ce45d8fcef629d0b9b1a3ede276f732c087fb8"
+  },
+  {
+    "bytes": 4918,
+    "sha256": "8acadb210cd8a49d6a132ba99abfc11ef19b0518b3a274991dd474aac5f4780d",
+    "site_path": "evidence/experiments/20260906_affinity_representation/EXECUTION.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_affinity_representation/EXECUTION.md",
+    "source_key": "experiments/20260906_affinity_representation/EXECUTION.md"
+  },
+  {
+    "bytes": 10776,
+    "sha256": "e46af813e02fa174eb8d3ade754c406d023efc9a4599008fe1aee3ebcbe00ce5",
+    "site_path": "evidence/experiments/20260906_affinity_representation/README.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_affinity_representation/README.md",
+    "source_key": "experiments/20260906_affinity_representation/README.md"
+  },
+  {
+    "bytes": 8227,
+    "sha256": "8932c1953a09b309b2bac0123bd38e41cd0e21f60f4faefef083459ede9019ac",
+    "site_path": "evidence/experiments/20260906_low_data_followup/BASELINES.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_low_data_followup/BASELINES.md",
+    "source_key": "experiments/20260906_low_data_followup/BASELINES.md"
+  },
+  {
+    "bytes": 11031,
+    "sha256": "581385c3d076d8d39403b59577ad0c01490910f6abeb355e015a3e80942f86a5",
+    "site_path": "evidence/experiments/20260906_low_data_followup/READOUTS.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_low_data_followup/READOUTS.md",
+    "source_key": "experiments/20260906_low_data_followup/READOUTS.md"
+  },
+  {
+    "bytes": 5819,
+    "sha256": "d2cfc6ff45c2283e37166e8b171656d674c595f37afae40626422b0a4830a413",
+    "site_path": "evidence/experiments/20260906_low_data_followup/RESULTS.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_low_data_followup/RESULTS.md",
+    "source_key": "experiments/20260906_low_data_followup/RESULTS.md"
+  },
+  {
+    "bytes": 6896,
+    "sha256": "cbbcb8274760c4c14be3166d9a44233abd1ba365ff1b1679c28422a14999179b",
+    "site_path": "evidence/experiments/20260906_low_data_followup/STRICT_SPLIT.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_low_data_followup/STRICT_SPLIT.md",
+    "source_key": "experiments/20260906_low_data_followup/STRICT_SPLIT.md"
+  },
+  {
+    "bytes": 11624,
+    "sha256": "63e2e78841dbbe84fe96a155d65ca29110ba86a7277ddb0d1f4b78b72a7e6250",
+    "site_path": "evidence/experiments/20260908_PXR-MW-efficacy-diagnostic/README.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_PXR-MW-efficacy-diagnostic/README.md",
+    "source_key": "experiments/20260908_PXR-MW-efficacy-diagnostic/README.md"
+  },
+  {
+    "bytes": 3139225,
+    "sha256": "b436821b40e868e2222ed79646817eff24518fd35cbf99d756ec4986a9938ba9",
+    "site_path": "evidence/experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/merged_compounds.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/merged_compounds.csv",
+    "source_key": "experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/merged_compounds.csv"
+  },
+  {
+    "bytes": 402532,
+    "sha256": "52799334aee2a9bf25e1f554f000fd0bd1ccca9644c94d5b1f11b3c3a2d75c5c",
+    "site_path": "evidence/experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/mw_emax_uncertainty.png",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/mw_emax_uncertainty.png",
+    "source_key": "experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/mw_emax_uncertainty.png"
+  },
+  {
+    "bytes": 436256,
+    "sha256": "03e25f59001ebf2a79636d4510915dad7ef0d36b63d37b47014dac4f84c11398",
+    "site_path": "evidence/experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/native_score_outcomes.png",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/native_score_outcomes.png",
+    "source_key": "experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/native_score_outcomes.png"
+  },
+  {
+    "bytes": 2721,
+    "sha256": "689037826db1158237e7ad841bfa7f16d507706f651899b9ba06f6c874c96ba7",
+    "site_path": "evidence/experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/stratum_summaries.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/stratum_summaries.csv",
+    "source_key": "experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/stratum_summaries.csv"
+  },
+  {
+    "bytes": 6311,
+    "sha256": "8c695adef4e113d8a59ae2c20fcfc3a5f30a82fb6bd6cd89a141a531d08995d0",
+    "site_path": "evidence/experiments/20260908_PXR-MW-efficacy-diagnostic/documentation/provider_dataset_card.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_PXR-MW-efficacy-diagnostic/documentation/provider_dataset_card.md",
+    "source_key": "experiments/20260908_PXR-MW-efficacy-diagnostic/documentation/provider_dataset_card.md"
+  },
+  {
+    "bytes": 5486,
+    "sha256": "fa5dd4c5c74f7b235ddb19127206275e4eea32f9198d0d42925569a6ecbba94a",
+    "site_path": "evidence/experiments/20260908_descriptor_nesso_blend/README.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_descriptor_nesso_blend/README.md",
+    "source_key": "experiments/20260908_descriptor_nesso_blend/README.md"
+  },
+  {
+    "bytes": 10716,
+    "sha256": "5c409baacbda466398d728c7b3c9260b14c26a8a9ddff114076e76078c99e797",
+    "site_path": "evidence/experiments/20260908_descriptor_nesso_blend_allfolds/README.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_descriptor_nesso_blend_allfolds/README.md",
+    "source_key": "experiments/20260908_descriptor_nesso_blend_allfolds/README.md"
+  },
+  {
+    "bytes": 4211,
+    "sha256": "3d3212872b106e9284f56ac1edc45ed43c5bdc5533fd02e28bcdcb8f36cf19be",
+    "site_path": "evidence/experiments/20260908_mw_controls/README.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_mw_controls/README.md",
+    "source_key": "experiments/20260908_mw_controls/README.md"
+  },
+  {
+    "bytes": 39184,
+    "sha256": "5875a8f277b9e68d5905a7e7b2cee9568f06a5fa752628e933a74fda4de93175",
+    "site_path": "evidence/nesso1_pxr_finetuning_poc_spec.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/nesso1_pxr_finetuning_poc_spec.md",
+    "source_key": "nesso1_pxr_finetuning_poc_spec.md"
+  },
+  {
+    "bytes": 31282,
+    "sha256": "82074b95a816516dc34eefa66dae2ecaaae2fba2b5d959942af8941dfc9193e6",
+    "site_path": "evidence/reports/architecture/nesso-adaptation-comparison.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/nesso-adaptation-comparison.svg",
+    "source_key": "reports/architecture/nesso-adaptation-comparison.svg"
+  },
+  {
+    "bytes": 9804,
+    "sha256": "45736fda0faf2c1a6b1ee623a7a29c47685dfe3b36b30a3721fd98047f6d8af0",
+    "site_path": "evidence/reports/architecture/nesso-native-pipeline.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/nesso-native-pipeline.svg",
+    "source_key": "reports/architecture/nesso-native-pipeline.svg"
+  },
+  {
+    "bytes": 7148,
+    "sha256": "d346b8d725b37f270448ea8ce0face9800ccc4c0e5770be672b6fc7125e70f82",
+    "site_path": "evidence/reports/architecture/nesso-repeated-operators.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/nesso-repeated-operators.svg",
+    "source_key": "reports/architecture/nesso-repeated-operators.svg"
+  },
+  {
+    "bytes": 458804,
+    "sha256": "e5e2e8a53223dc10347a5591e7dfc9f4481a9051ff781d48c36e832d7e7bdeab",
+    "site_path": "evidence/reports/architecture/nesso1-architecture-redrawn.png",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/nesso1-architecture-redrawn.png",
+    "source_key": "reports/architecture/nesso1-architecture-redrawn.png"
+  },
+  {
+    "bytes": 21942,
+    "sha256": "519f9d213674466ce6b69c28ed3ba08b6f95e257707551a8691e78bc0f9f15f4",
+    "site_path": "evidence/reports/architecture/nesso1-architecture-redrawn.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/nesso1-architecture-redrawn.svg",
+    "source_key": "reports/architecture/nesso1-architecture-redrawn.svg"
+  },
+  {
+    "bytes": 24639,
+    "sha256": "dc0cce44471ba3d5ac4009c0fd547bfdbe93ebc0f03294ebe18bd82424b94adb",
+    "site_path": "evidence/reports/architecture/nesso1-architecture-selected-layout.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/nesso1-architecture-selected-layout.json",
+    "source_key": "reports/architecture/nesso1-architecture-selected-layout.json"
+  },
+  {
+    "bytes": 459152,
+    "sha256": "6f9a34a03742119bece1ef71376d33049fee250993f75d5d1aad4e79dcde42b7",
+    "site_path": "evidence/reports/architecture/nesso1-architecture-selected.png",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/nesso1-architecture-selected.png",
+    "source_key": "reports/architecture/nesso1-architecture-selected.png"
+  },
+  {
+    "bytes": 21942,
+    "sha256": "89cb7f3416022038c6d20ba80a4c1370a1cab7a89af4e6e490fe6175c0eda184",
+    "site_path": "evidence/reports/architecture/nesso1-architecture-selected.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/nesso1-architecture-selected.svg",
+    "source_key": "reports/architecture/nesso1-architecture-selected.svg"
+  },
+  {
+    "bytes": 32430,
+    "sha256": "d293b023b415078bf213750246a5b300f13699bc0f423618d3f4b1bfc735bad5",
+    "site_path": "evidence/reports/architecture/nesso1-finetuning-evidence.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/nesso1-finetuning-evidence.json",
+    "source_key": "reports/architecture/nesso1-finetuning-evidence.json"
+  },
+  {
+    "bytes": 1273,
+    "sha256": "8b0f6aa34cc2f5f0c3a72efec112ae6f6795166cabedac5fba7a125fa5bb25ea",
+    "site_path": "evidence/reports/architecture/nesso1-finetuning-layers.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/nesso1-finetuning-layers.csv",
+    "source_key": "reports/architecture/nesso1-finetuning-layers.csv"
+  },
+  {
+    "bytes": 6745,
+    "sha256": "dfb092c3e4964aa4a92f947da3ab8bef0855c6ca22ea88e01e74b449f4fc5a10",
+    "site_path": "evidence/reports/architecture/nesso1-finetuning-layout.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/nesso1-finetuning-layout.json",
+    "source_key": "reports/architecture/nesso1-finetuning-layout.json"
+  },
+  {
+    "bytes": 250250,
+    "sha256": "688b18a9aa6c5d3b5f0d888b689be24b53f96c731f5b67a4bf480f07beeb2378",
+    "site_path": "evidence/reports/architecture/nesso1-finetuning.png",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/nesso1-finetuning.png",
+    "source_key": "reports/architecture/nesso1-finetuning.png"
+  },
+  {
+    "bytes": 10052,
+    "sha256": "7a7b87086df0bb01c6b97bee77db4e1f9f700a48af22c8fd79f0e0ed0d078264",
+    "site_path": "evidence/reports/architecture/nesso1-finetuning.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/nesso1-finetuning.svg",
+    "source_key": "reports/architecture/nesso1-finetuning.svg"
+  },
+  {
+    "bytes": 18189,
+    "sha256": "b27df4dd305ebdac8d0fee7442e78c7025fdc82e620f169db6217b89d27489cd",
+    "site_path": "evidence/reports/architecture/results/RESULTS.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/RESULTS.md",
+    "source_key": "reports/architecture/results/RESULTS.md"
+  },
+  {
+    "bytes": 1698,
+    "sha256": "6e52c87243acea1e74b0b5d8c75ebd43473db019c85a8865db93caa41d5e3f9e",
+    "site_path": "evidence/reports/architecture/results/analysis_protocol.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/analysis_protocol.json",
+    "source_key": "reports/architecture/results/analysis_protocol.json"
+  },
+  {
+    "bytes": 166491,
+    "sha256": "36099a3407a311cb884acd6984e2321ca82aa8ebb3ca06bc30bcdfc6fb043aa2",
+    "site_path": "evidence/reports/architecture/results/control-predictions-full-range.png",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/control-predictions-full-range.png",
+    "source_key": "reports/architecture/results/control-predictions-full-range.png"
+  },
+  {
+    "bytes": 1542637,
+    "sha256": "1aa2be0cb8630ed65f2fe684a90664b4947355496ddb73f909ef53f51457a844",
+    "site_path": "evidence/reports/architecture/results/control-predictions-full-range.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/control-predictions-full-range.svg",
+    "source_key": "reports/architecture/results/control-predictions-full-range.svg"
+  },
+  {
+    "bytes": 1542174,
+    "sha256": "09e4290010a3c34513cf0d9cec651bbd3fc64c1f516ca437222a559ca860c3b9",
+    "site_path": "evidence/reports/architecture/results/error-change-versus-size.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/error-change-versus-size.svg",
+    "source_key": "reports/architecture/results/error-change-versus-size.svg"
+  },
+  {
+    "bytes": 8374526,
+    "sha256": "6bafc036a6108265b931f2872ebd7125d42cdd5447b9b85cad69194e545d0f0f",
+    "site_path": "evidence/reports/architecture/results/heldout_predictions.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/heldout_predictions.csv",
+    "source_key": "reports/architecture/results/heldout_predictions.csv"
+  },
+  {
+    "bytes": 566511,
+    "sha256": "706ba389fbc794d252d3eade4e52700105eb926eb6e23b448f5f0fb250f50b88",
+    "site_path": "evidence/reports/architecture/results/internal_feature_diagnostic/associations.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/internal_feature_diagnostic/associations.csv",
+    "source_key": "reports/architecture/results/internal_feature_diagnostic/associations.csv"
+  },
+  {
+    "bytes": 4211,
+    "sha256": "3d3212872b106e9284f56ac1edc45ed43c5bdc5533fd02e28bcdcb8f36cf19be",
+    "site_path": "evidence/reports/architecture/results/mw-controls/README.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/mw-controls/README.md",
+    "source_key": "reports/architecture/results/mw-controls/README.md"
+  },
+  {
+    "bytes": 2875,
+    "sha256": "1ad2f84a0eede3a3e42b0257bdc0ce6913dfd17f2c24f7feff3164e8ea35abf6",
+    "site_path": "evidence/reports/architecture/results/mw-controls/contrasts.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/mw-controls/contrasts.csv",
+    "source_key": "reports/architecture/results/mw-controls/contrasts.csv"
+  },
+  {
+    "bytes": 6147,
+    "sha256": "93bfe66db986d42cf956f718b0f917dbc5933ed1b31631f98a1a43ec552db474",
+    "site_path": "evidence/reports/architecture/results/mw-controls/design.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/mw-controls/design.md",
+    "source_key": "reports/architecture/results/mw-controls/design.md"
+  },
+  {
+    "bytes": 43579,
+    "sha256": "2d016654acdd23a7160b7c29c8d9c8ed36d8adaacac5dfc29750cf635ce5a39b",
+    "site_path": "evidence/reports/architecture/results/mw-controls/fold_metrics.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/mw-controls/fold_metrics.csv",
+    "source_key": "reports/architecture/results/mw-controls/fold_metrics.csv"
+  },
+  {
+    "bytes": 5885,
+    "sha256": "36330e9fb3ca32edfdc5e303a36772287ea29ca09b410541734ff6dd0a6921bf",
+    "site_path": "evidence/reports/architecture/results/mw-controls/independent_verification.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/mw-controls/independent_verification.json",
+    "source_key": "reports/architecture/results/mw-controls/independent_verification.json"
+  },
+  {
+    "bytes": 8579,
+    "sha256": "961f03c967429e51881ec939c902a9d6bd027148b2dd3140b81b87e2cfec4b57",
+    "site_path": "evidence/reports/architecture/results/mw-controls/index.html",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/mw-controls/index.html",
+    "source_key": "reports/architecture/results/mw-controls/index.html"
+  },
+  {
+    "bytes": 1310,
+    "sha256": "4823fe24fff01c24fb52d5e0ca5472d3c8382852544033b68d70e30becd4584f",
+    "site_path": "evidence/reports/architecture/results/mw-controls/manifest.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/mw-controls/manifest.json",
+    "source_key": "reports/architecture/results/mw-controls/manifest.json"
+  },
+  {
+    "bytes": 8780,
+    "sha256": "27753828d5c761df9ac498eb895732b579f01dea01a9fc07e52347e786f086b1",
+    "site_path": "evidence/reports/architecture/results/mw-controls/metrics.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/mw-controls/metrics.csv",
+    "source_key": "reports/architecture/results/mw-controls/metrics.csv"
+  },
+  {
+    "bytes": 159372,
+    "sha256": "d67fcf0f26c77b665a0a98d286a1628fac47feb12f350b6ed2f22fc087ee690a",
+    "site_path": "evidence/reports/architecture/results/mw-controls/paired-folds.png",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/mw-controls/paired-folds.png",
+    "source_key": "reports/architecture/results/mw-controls/paired-folds.png"
+  },
+  {
+    "bytes": 60277,
+    "sha256": "3cf5e92894aecf16c9fde133df0c658f0817e41f4c58310fda0925d08f3fec74",
+    "site_path": "evidence/reports/architecture/results/mw-controls/paired-folds.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/mw-controls/paired-folds.svg",
+    "source_key": "reports/architecture/results/mw-controls/paired-folds.svg"
+  },
+  {
+    "bytes": 4241136,
+    "sha256": "567f36c086b7c6a2b76fc16ab3a96ce702c2da4a3b2eb1983901ce1d6688a77f",
+    "site_path": "evidence/reports/architecture/results/mw-controls/predictions.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/mw-controls/predictions.csv",
+    "source_key": "reports/architecture/results/mw-controls/predictions.csv"
+  },
+  {
+    "bytes": 1421,
+    "sha256": "0d7ce8ef5f61452e3940fd35a9b470650b13f792c52f7c0814270837798ced21",
+    "site_path": "evidence/reports/architecture/results/mw-controls/protocol.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/mw-controls/protocol.json",
+    "source_key": "reports/architecture/results/mw-controls/protocol.json"
+  },
+  {
+    "bytes": 4486,
+    "sha256": "da3b38f6368b18ee26f5f4aeb824abeace9516bb81506c8d0ef6184e52a7fb18",
+    "site_path": "evidence/reports/architecture/results/mw-controls/render.py",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/mw-controls/render.py",
+    "source_key": "reports/architecture/results/mw-controls/render.py"
+  },
+  {
+    "bytes": 6918,
+    "sha256": "25f7713d2a84181716a49888f89a0d52e4080b4ce5f62f90450cc7f95f9511bb",
+    "site_path": "evidence/reports/architecture/results/mw-controls/run.py",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/mw-controls/run.py",
+    "source_key": "reports/architecture/results/mw-controls/run.py"
+  },
+  {
+    "bytes": 10591,
+    "sha256": "dffb6ad707399053d29b9e8b33531f75d879bd813ea4fe24b25e0b35513c8696",
+    "site_path": "evidence/reports/architecture/results/mw-controls/verification.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/mw-controls/verification.json",
+    "source_key": "reports/architecture/results/mw-controls/verification.json"
+  },
+  {
+    "bytes": 2747,
+    "sha256": "c436256dacb4043b2546b097be07fa6b73ebbf1ed709517f1cb25cb70554c2c9",
+    "site_path": "evidence/reports/architecture/results/mw-controls/verify.py",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/mw-controls/verify.py",
+    "source_key": "reports/architecture/results/mw-controls/verify.py"
+  },
+  {
+    "bytes": 6195,
+    "sha256": "514b0eb1aa4c7d87ec32d6d960b8eafa0f034cb6eb1ec93619551a3f94892b03",
+    "site_path": "evidence/reports/architecture/results/pooled_metrics.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/pooled_metrics.csv",
+    "source_key": "reports/architecture/results/pooled_metrics.csv"
+  },
+  {
+    "bytes": 566404,
+    "sha256": "1eb9abc9158af52b119131f6fbe1ec73a888d4d63e04c79378b323dd61f0babe",
+    "site_path": "evidence/reports/architecture/results/prediction-compression.png",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/prediction-compression.png",
+    "source_key": "reports/architecture/results/prediction-compression.png"
+  },
+  {
+    "bytes": 895,
+    "sha256": "cb15fa68bf7e2f7a81613fa68ab77b0175f2f48f3177d1887ea26088e61ca153",
+    "site_path": "evidence/reports/architecture/results/size_charge_correlations.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/size_charge_correlations.csv",
+    "source_key": "reports/architecture/results/size_charge_correlations.csv"
+  },
+  {
+    "bytes": 13919,
+    "sha256": "adc590a46693d2a5754109cd909a0e5338226f087e44a7b84cceabadfc65e533",
+    "site_path": "evidence/reports/architecture/results/sources.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/sources.csv",
+    "source_key": "reports/architecture/results/sources.csv"
+  },
+  {
+    "bytes": 26002,
+    "sha256": "0dc752e5c878aeaf101269b5f2da571810fe5c39deff3dd0c058806bcb385cc8",
+    "site_path": "evidence/reports/architecture/results/stratum_metrics.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/stratum_metrics.csv",
+    "source_key": "reports/architecture/results/stratum_metrics.csv"
+  },
+  {
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/chemical-splits/initial-modeling-manifest.csv",
+    "source_key": "reports/chemical-splits/initial-modeling-manifest.csv",
+    "site_path": "evidence/reports/chemical-splits/initial-modeling-manifest.csv",
+    "bytes": 2061579,
+    "sha256": "b643e4f493cceaabc90355e00cef7c7476878296be8425bfde156a9dbb9d1c5d"
+  },
+  {
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/chemical-splits/initial-scaffold-holdout.csv",
+    "source_key": "reports/chemical-splits/initial-scaffold-holdout.csv",
+    "site_path": "evidence/reports/chemical-splits/initial-scaffold-holdout.csv",
+    "bytes": 836979,
+    "sha256": "5681c5d22bbec9fe464ebc8bc7553437629836a2110763a90c2ff34d8bade81f"
+  },
+  {
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/chemical-splits/low-data-acquired-roles.csv",
+    "source_key": "reports/chemical-splits/low-data-acquired-roles.csv",
+    "site_path": "evidence/reports/chemical-splits/low-data-acquired-roles.csv",
+    "bytes": 66069992,
+    "sha256": "b9524e646fa56e8eeab820113838bf0277048ff11b124efd294ec3f170fa58ae"
+  },
+  {
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/chemical-splits/low-data-outer-assignments.csv",
+    "source_key": "reports/chemical-splits/low-data-outer-assignments.csv",
+    "site_path": "evidence/reports/chemical-splits/low-data-outer-assignments.csv",
+    "bytes": 1154814,
+    "sha256": "af27b7bcef6dbeddf494f97787758d3ec8246393b67ad7814a54dfaf65b94a62"
+  },
+  {
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/chemical-splits/manifest.json",
+    "source_key": "reports/chemical-splits/manifest.json",
+    "site_path": "evidence/reports/chemical-splits/manifest.json",
+    "bytes": 9497,
+    "sha256": "e03b427a5c3cb23dfab2c84feb023fd5e2b784118ddfe9c8965b19217ac3854a"
+  },
+  {
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/chemical-splits/strict-acquired-roles.csv",
+    "source_key": "reports/chemical-splits/strict-acquired-roles.csv",
+    "site_path": "evidence/reports/chemical-splits/strict-acquired-roles.csv",
+    "bytes": 30955397,
+    "sha256": "d2a61d04da1b263692dc77d10a185cffbb3b00c612392d35c1a535f6d96ba505"
+  },
+  {
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/chemical-splits/strict-outer-assignments.csv",
+    "source_key": "reports/chemical-splits/strict-outer-assignments.csv",
+    "site_path": "evidence/reports/chemical-splits/strict-outer-assignments.csv",
+    "bytes": 594183,
+    "sha256": "d1bf460021279f32f058b4fdd7932dc69476f25c1d62463d52c3df040056ae0d"
+  },
+  {
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/chemical-splits/strict-pool-audit.csv",
+    "source_key": "reports/chemical-splits/strict-pool-audit.csv",
+    "site_path": "evidence/reports/chemical-splits/strict-pool-audit.csv",
+    "bytes": 3118423,
+    "sha256": "652ae464a7c16eff6174ee0b83c35029027f43980cb88cdfc3270200c0af8c7c"
+  },
+  {
+    "bytes": 798885,
+    "sha256": "66eaddd36f21ca574806c3039c25971c595cc8612e4f356678cbbf35590d307b",
+    "site_path": "evidence/reports/methods-screen/native-points.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/methods-screen/native-points.csv",
+    "source_key": "reports/methods-screen/native-points.csv"
+  },
+  {
+    "bytes": 143717,
+    "sha256": "96e124282792235c03a38384b088fe4f35dca0420bf97357ee10e7c014d1c97a",
+    "site_path": "evidence/reports/methods-screen/native.png",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/methods-screen/native.png",
+    "source_key": "reports/methods-screen/native.png"
+  },
+  {
+    "bytes": 547303,
+    "sha256": "f7ebf08a6f529fc7cce05bfc2adb93c502291a219851d8f38884c9f5edc04b58",
+    "site_path": "evidence/reports/methods-screen/native.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/methods-screen/native.svg",
+    "source_key": "reports/methods-screen/native.svg"
+  },
+  {
+    "bytes": 779,
+    "sha256": "bfd0b286fecc4fb429902ba3dac1a2660fe87796211813dfd2c988414a50d7e2",
+    "site_path": "evidence/reports/methods-screen/verification.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/methods-screen/verification.json",
+    "source_key": "reports/methods-screen/verification.json"
+  },
+  {
+    "bytes": 11664,
+    "sha256": "064ec4f2afa5c5d81db485d01ea2b3c928a261465f7ddb75a6b5f47952ae5723",
+    "site_path": "evidence/reports/model_comparison/SCIENTIFIC_REPORT.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/model_comparison/SCIENTIFIC_REPORT.md",
+    "source_key": "reports/model_comparison/SCIENTIFIC_REPORT.md"
+  },
+  {
+    "bytes": 2635,
+    "sha256": "7a09fb84e7a597f7f9cc363443bfdb48b8c101cc55851bff19d9cfadf7f3d230",
+    "site_path": "evidence/reports/model_comparison/active_tail_metrics.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/model_comparison/active_tail_metrics.csv",
+    "source_key": "reports/model_comparison/active_tail_metrics.csv"
+  },
+  {
+    "bytes": 14679,
+    "sha256": "7048edf823f9ffe1f9f3d793da4317ced36bd9c3133b58b17cc046432b92c835",
+    "site_path": "evidence/reports/model_comparison/metrics.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/model_comparison/metrics.csv",
+    "source_key": "reports/model_comparison/metrics.csv"
+  },
+  {
+    "bytes": 2708,
+    "sha256": "d8501989954ef5028f10421677ed92f3fcb098c8acb364ea947a01200ba8fa6f",
+    "site_path": "evidence/reports/narrative/efficacy-mobile.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/narrative/efficacy-mobile.svg",
+    "source_key": "reports/narrative/efficacy-mobile.svg"
+  },
+  {
+    "bytes": 2718,
+    "sha256": "30ee405219f52f978728c1551132f0cd3807f01f298d5850ef41e92c71a01eaf",
+    "site_path": "evidence/reports/narrative/efficacy.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/narrative/efficacy.svg",
+    "source_key": "reports/narrative/efficacy.svg"
+  },
+  {
+    "bytes": 543651,
+    "sha256": "99ceef0d1d29cb1676b51897097393266f6b05f36e594d28ef0d24e9ccee2437",
+    "site_path": "evidence/reports/narrative/hybrid-mobile.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/narrative/hybrid-mobile.svg",
+    "source_key": "reports/narrative/hybrid-mobile.svg"
+  },
+  {
+    "bytes": 543668,
+    "sha256": "2cd0a7a9589e418ac09cd4b0e6e8b9a0f5c0b79970ed34fb53507d28973c2508",
+    "site_path": "evidence/reports/narrative/hybrid.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/narrative/hybrid.svg",
+    "source_key": "reports/narrative/hybrid.svg"
+  },
+  {
+    "bytes": 1093248,
+    "sha256": "bc2a964d2ed31ca088ba46c8e4e48b69516bfc069ace149c4d2f0a15d0ed10b5",
+    "site_path": "evidence/reports/narrative/mw-mobile.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/narrative/mw-mobile.svg",
+    "source_key": "reports/narrative/mw-mobile.svg"
+  },
+  {
+    "bytes": 818505,
+    "sha256": "f822707813bf5000ca9655518f3f7657cf79c6e007da999de9fe63b27a7d2060",
+    "site_path": "evidence/reports/narrative/mw-overview-mobile.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/narrative/mw-overview-mobile.svg",
+    "source_key": "reports/narrative/mw-overview-mobile.svg"
+  },
+  {
+    "bytes": 1505,
+    "sha256": "7ae7dd6f6907554fccf35dc7232a8fc7d8560b16b2bc1f535adcc0ef42a408cd",
+    "site_path": "evidence/reports/narrative/mw-overview-verification.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/narrative/mw-overview-verification.json",
+    "source_key": "reports/narrative/mw-overview-verification.json"
+  },
+  {
+    "bytes": 815169,
+    "sha256": "34118cb34153fefb7bd45aa072f4a906c0e0df92a7b99416237bd68404a8e5e3",
+    "site_path": "evidence/reports/narrative/mw-overview.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/narrative/mw-overview.svg",
+    "source_key": "reports/narrative/mw-overview.svg"
+  },
+  {
+    "bytes": 1086555,
+    "sha256": "84f0c18936baff705dcc0b627172f0ae655a8f5cc0c41813efdfd0b190ab5f06",
+    "site_path": "evidence/reports/narrative/mw.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/narrative/mw.svg",
+    "source_key": "reports/narrative/mw.svg"
+  },
+  {
+    "bytes": 1092809,
+    "sha256": "4b510854b7cc6e9cd3d74586bca7125b255dcd00f290c4d5ae2b429e68174530",
+    "site_path": "evidence/reports/narrative/transfer-mobile.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/narrative/transfer-mobile.svg",
+    "source_key": "reports/narrative/transfer-mobile.svg"
+  },
+  {
+    "bytes": 1086113,
+    "sha256": "2cc82399e8bbfd45c7acf6e949a9d6a6a20739f3c6500a94581f48f8a158e938",
+    "site_path": "evidence/reports/narrative/transfer.svg",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/narrative/transfer.svg",
+    "source_key": "reports/narrative/transfer.svg"
+  },
+  {
+    "bytes": 2248,
+    "sha256": "d0e297c2b8d751c349539d4fc887d63d5bd793ac90bbcb3ab2cbdd53842168a0",
+    "site_path": "evidence/reports/narrative/verification.json",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/narrative/verification.json",
+    "source_key": "reports/narrative/verification.json"
+  },
+  {
+    "bytes": 16478,
+    "sha256": "c50255c4cf0c5058c633adb9b4bad57d6366309805a63e492e5a850e5d4f7c0d",
+    "site_path": "evidence/reports/transfer_ablation/README.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/README.md",
+    "source_key": "reports/transfer_ablation/README.md"
+  },
+  {
+    "bytes": 13311,
+    "sha256": "1736c2d227e89a6421404503ede33d5260b89a7b1a5e665cd4b8868b36f257a6",
+    "site_path": "evidence/reports/transfer_ablation/binary_head_reanalysis/REPORT.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/binary_head_reanalysis/REPORT.md",
+    "source_key": "reports/transfer_ablation/binary_head_reanalysis/REPORT.md"
+  },
+  {
+    "bytes": 5386,
+    "sha256": "a07935e4f4d3dd3851e170d5e53d915ac83fead389b7b7ac7b03c6b2a41345f8",
+    "site_path": "evidence/reports/transfer_ablation/binary_head_reanalysis/proxy_classification_metrics.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/binary_head_reanalysis/proxy_classification_metrics.csv",
+    "source_key": "reports/transfer_ablation/binary_head_reanalysis/proxy_classification_metrics.csv"
+  },
+  {
+    "bytes": 20545,
+    "sha256": "b5d6f5ebb66c4052ad41dfb96dab94e3da4086f77904742ff91fd5af220cbc99",
+    "site_path": "evidence/reports/transfer_ablation/binary_head_reanalysis/regression_metrics.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/binary_head_reanalysis/regression_metrics.csv",
+    "source_key": "reports/transfer_ablation/binary_head_reanalysis/regression_metrics.csv"
+  },
+  {
+    "bytes": 9890,
+    "sha256": "083885c18eebba6187a1c267d664014688ae6b895048dcaeab6689c059e859e2",
+    "site_path": "evidence/reports/transfer_ablation/cpu_followups/README.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/cpu_followups/README.md",
+    "source_key": "reports/transfer_ablation/cpu_followups/README.md"
+  },
+  {
+    "bytes": 7377,
+    "sha256": "fe1a43f2362bf8e0af16765e7434511bbe0647b510e86d76752a73b08adceeee",
+    "site_path": "evidence/reports/transfer_ablation/cpu_followups/experiment_a_capacity/capacity_metrics.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/cpu_followups/experiment_a_capacity/capacity_metrics.csv",
+    "source_key": "reports/transfer_ablation/cpu_followups/experiment_a_capacity/capacity_metrics.csv"
+  },
+  {
+    "bytes": 1841,
+    "sha256": "e4d97663255412b27ce35a67df48d9f35091d4f76945b1538f8f49a656f3386c",
+    "site_path": "evidence/reports/transfer_ablation/cpu_followups/experiment_b_standardization/standardized_split_metrics.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/cpu_followups/experiment_b_standardization/standardized_split_metrics.csv",
+    "source_key": "reports/transfer_ablation/cpu_followups/experiment_b_standardization/standardized_split_metrics.csv"
+  },
+  {
+    "bytes": 4352,
+    "sha256": "76ab3bb2c33ca7557b0cecbd8bbeda2e6be6a0853e54dbfab72022caa9ab9eb5",
+    "site_path": "evidence/reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv",
+    "source_key": "reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv"
+  },
+  {
+    "bytes": 3064,
+    "sha256": "55e302bf511a116ddf382b34589e5e886374e522717ed7307d302873e7eac239",
+    "site_path": "evidence/reports/transfer_ablation/learning_rate_sensitivity.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/learning_rate_sensitivity.csv",
+    "source_key": "reports/transfer_ablation/learning_rate_sensitivity.csv"
+  },
+  {
+    "bytes": 1922,
+    "sha256": "6b2497d90a457ae8143fe4d7b5698108e7a173b7143c72e356f3f7f04516930d",
+    "site_path": "evidence/reports/transfer_ablation/pair_pool_full/REPORT.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/pair_pool_full/REPORT.md",
+    "source_key": "reports/transfer_ablation/pair_pool_full/REPORT.md"
+  },
+  {
+    "bytes": 4959,
+    "sha256": "0f2f5642ddbcf576821bcbcf89a003e39f3f552cb2cfcd347654cc1f0a9066aa",
+    "site_path": "evidence/reports/transfer_ablation/pair_pool_full/paired_family_bootstrap_differences.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/pair_pool_full/paired_family_bootstrap_differences.csv",
+    "source_key": "reports/transfer_ablation/pair_pool_full/paired_family_bootstrap_differences.csv"
+  },
+  {
+    "bytes": 5207,
+    "sha256": "01cc828366ebc640abcdf72e949d8d0f63ce22fbde01f035aca3498224c6d38f",
+    "site_path": "evidence/reports/transfer_ablation/pair_pool_full/ridge_probe_metrics.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/pair_pool_full/ridge_probe_metrics.csv",
+    "source_key": "reports/transfer_ablation/pair_pool_full/ridge_probe_metrics.csv"
+  },
+  {
+    "bytes": 2476,
+    "sha256": "622ed579946daab8086f7606fd9cb08e46fdf8a5469cf1e5233809af047686d1",
+    "site_path": "evidence/reports/transfer_ablation/representation_probe_metrics.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/representation_probe_metrics.csv",
+    "source_key": "reports/transfer_ablation/representation_probe_metrics.csv"
+  },
+  {
+    "bytes": 2487,
+    "sha256": "53e816f34df387a0008746b81aec3edfc659b6d1bd4459fcba629619f91af0c9",
+    "site_path": "evidence/reports/transfer_ablation/stacking_and_residual_metrics.csv",
+    "source": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/stacking_and_residual_metrics.csv",
+    "source_key": "reports/transfer_ablation/stacking_and_residual_metrics.csv"
+  },
+  {
+    "bytes": 7910,
+    "sha256": "8836524104947cf448cb245dffb2d7e45e22a0c4a0cc89d1302d54cf696cc9f2",
+    "site_path": "evidence/scripts/build_architecture_finetuning.py",
+    "source": "/home/dan/projects/nesso-finetune/PXR/scripts/build_architecture_finetuning.py",
+    "source_key": "scripts/build_architecture_finetuning.py"
+  },
+  {
+    "bytes": 12680,
+    "sha256": "b2d823e65da080c3dace98c8c36f88b7e862823eb964108ff7d14532aa313e8e",
+    "site_path": "evidence/scripts/build_architecture_redraw.py",
+    "source": "/home/dan/projects/nesso-finetune/PXR/scripts/build_architecture_redraw.py",
+    "source_key": "scripts/build_architecture_redraw.py"
+  },
+  {
+    "source": "/home/dan/projects/nesso-finetune/PXR/scripts/build_chemical_split_downloads.py",
+    "source_key": "scripts/build_chemical_split_downloads.py",
+    "site_path": "evidence/scripts/build_chemical_split_downloads.py",
+    "bytes": 7995,
+    "sha256": "3c7ad8e69a1b5acd7353b5c2f049fa867f87b42136d0a086939e346a8e2cdf50"
+  },
+  {
+    "bytes": 15025,
+    "sha256": "1e0084d57e7f40e911c1caa98e515175deb1653196ea73f17a24f1a06d151c03",
+    "site_path": "evidence/scripts/build_experimental_site.py",
+    "source": "/home/dan/projects/nesso-finetune/PXR/scripts/build_experimental_site.py",
+    "source_key": "scripts/build_experimental_site.py"
+  },
+  {
+    "bytes": 4961,
+    "sha256": "c05e606dce48c570eab15208aa1fbedf38e771b09e08236514356b6def83d885",
+    "site_path": "evidence/scripts/build_methods_screen.py",
+    "source": "/home/dan/projects/nesso-finetune/PXR/scripts/build_methods_screen.py",
+    "source_key": "scripts/build_methods_screen.py"
+  },
+  {
+    "bytes": 8663,
+    "sha256": "127bd09b5cd859cbe17cccfc07f83044dab8567144f2db4105bffadaaef879d6",
+    "site_path": "evidence/scripts/build_narrative_figures.py",
+    "source": "/home/dan/projects/nesso-finetune/PXR/scripts/build_narrative_figures.py",
+    "source_key": "scripts/build_narrative_figures.py"
+  },
+  {
+    "bytes": 3839,
+    "sha256": "2e2ec4223403cf0f191f08c1db87470001781d129d71a6b516fa7cf404066cfd",
+    "site_path": "evidence/site/experiment-content/architecture-finetuning.md",
+    "source": "/home/dan/projects/nesso-finetune/PXR/site/experiment-content/architecture-finetuning.md",
+    "source_key": "site/experiment-content/architecture-finetuning.md"
+  },
+  {
+    "source": "/home/dan/projects/nesso-finetune/PXR/src/nesso_pxr/chemistry.py",
+    "source_key": "src/nesso_pxr/chemistry.py",
+    "site_path": "evidence/src/nesso_pxr/chemistry.py",
+    "bytes": 1935,
+    "sha256": "a956f42c2336a1170e5653a2d0aa55d2923a33cfe364d504c38ef30b0d3ca5d5"
+  },
+  {
+    "source": "/home/dan/projects/nesso-finetune/PXR/src/nesso_pxr/low_data_contract.py",
+    "source_key": "src/nesso_pxr/low_data_contract.py",
+    "site_path": "evidence/src/nesso_pxr/low_data_contract.py",
+    "bytes": 32316,
+    "sha256": "dffe4d2912556499ddccb0a0eba3efd1cf2b1e38872040dd262c146207e8d472"
+  },
+  {
+    "source": "/home/dan/projects/nesso-finetune/PXR/src/nesso_pxr/low_data_models.py",
+    "source_key": "src/nesso_pxr/low_data_models.py",
+    "site_path": "evidence/src/nesso_pxr/low_data_models.py",
+    "bytes": 32232,
+    "sha256": "6f088ab4bcc0778a6144702908b5369fc6e7c2c54a81058f211d4e05a039fd3e"
+  },
+  {
+    "source": "/home/dan/projects/nesso-finetune/PXR/src/nesso_pxr/splits.py",
+    "source_key": "src/nesso_pxr/splits.py",
+    "site_path": "evidence/src/nesso_pxr/splits.py",
+    "bytes": 6324,
+    "sha256": "c1b25f582849becaa28819ed7b4b07ff453419eaa7b796ae0b773911a5743d34"
+  }
+]

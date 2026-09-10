@@ -1,0 +1,24 @@
+{
+  "slug": "geometry",
+  "message": "Smaller compounds tend to move more under adaptation",
+  "caption": "All 3,344 development compounds, one saved N500 head-plus-LoRA prediction each. N500 = 400 FIT + 100 CAL per fold, one draw and seed; five reused strict-chemical development folds, not independent replicates or a fresh holdout. Unweighted absolute movement |LoRA \u2212 native| is not error reduction. Native is the released IC50-equivalent scalar conversion, not measured cellular potency. Full MW and movement ranges retained; size association is descriptive, not a causal mechanism.",
+  "design": "A full-cohort continuous MW-versus-movement scatter exposes the size association without thresholds, regression lines, or selecting only successful corrections.",
+  "sources": [
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/merged_compounds.csv",
+      "sha256": "b436821b40e868e2222ed79646817eff24518fd35cbf99d756ec4986a9938ba9"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_affinity_comparison/RESULTS.md",
+      "sha256": "b27df4dd305ebdac8d0fee7442e78c7025fdc82e620f169db6217b89d27489cd"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/scripts/experiment_summary_figures/later.py",
+      "sha256": "643da076fa2c7f8cf378e6b7877d0a4a7bb3efe9ad8387016b266cf23bd39dab"
+    }
+  ],
+  "plotted_rows": 3344,
+  "svg": "assets/experiment-summaries/geometry.svg",
+  "png": "assets/experiment-summaries/geometry.png",
+  "data": "assets/experiment-summaries/geometry.csv"
+}

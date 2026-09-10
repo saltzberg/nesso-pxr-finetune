@@ -1,0 +1,515 @@
+{
+  "chapters": [
+    {
+      "page": "chapters/transfer/index.html",
+      "slug": "transfer",
+      "title": "Transfer and tuning"
+    },
+    {
+      "page": "chapters/mw/index.html",
+      "slug": "mw",
+      "title": "The molecular-weight control"
+    },
+    {
+      "page": "chapters/hybrid/index.html",
+      "slug": "hybrid",
+      "title": "Complementary frozen features"
+    },
+    {
+      "page": "chapters/interpretation/index.html",
+      "slug": "interpretation",
+      "title": "Interpretation and conclusion"
+    }
+  ],
+  "directory_coverage": {
+    "20260905_low_data_adaptation": [
+      "low-data",
+      "upstream-feasibility"
+    ],
+    "20260906_affinity_comparison": [
+      "upstream-comparison",
+      "geometry"
+    ],
+    "20260906_affinity_representation": [
+      "both-member-pilot"
+    ],
+    "20260906_low_data_followup": [
+      "stable-readouts",
+      "descriptor-followup",
+      "strict-followup"
+    ],
+    "20260908_PXR-MW-efficacy-diagnostic": [
+      "efficacy-uncertainty"
+    ],
+    "20260908_descriptor_nesso_blend": [
+      "hybrid-pilot"
+    ],
+    "20260908_descriptor_nesso_blend_allfolds": [
+      "hybrid-allfolds"
+    ],
+    "20260908_mw_controls": [
+      "mw-controls"
+    ]
+  },
+  "expected_count": 21,
+  "experiments": [
+    {
+      "canonical_markdown": "experiment-content/conception.md",
+      "design": "Prepared protein + ligand \u2192 pretrained Nesso [frozen] \u2192 two affinity vectors \u2192 continuous readouts [PXR-fitted] \u2192 6 \u2212 mean output. The original specification proposed staged calibration, head tuning and deeper adaptation.",
+      "limits": "Nesso predicts distograms and scalar affinity; it is not a cofolder that generates coordinates. Numerical affinity conversion does not make binding and cellular activation biologically equivalent.",
+      "page": "experiments/conception/index.html",
+      "question": "Does adapting Nesso improve PXR activity prediction, compete with ligand-only models, and add complementary information?",
+      "result": "The initial matched nested comparison answered yes to improvement over native, no to beating rich 2D descriptors. Later experiments refine the complementarity answer rather than erase this starting point.",
+      "show_in_navigation": true,
+      "slug": "conception",
+      "sources": [
+        "nesso1_pxr_finetuning_poc_spec.md",
+        ".hermes/plans/20260905-1954-nesso-low-data-adaptation.md",
+        "reports/model_comparison/SCIENTIFIC_REPORT.md"
+      ],
+      "status": "completed",
+      "summary_figure": "assets/experiment-summaries/conception.svg",
+      "summary_message": "Head adaptation improves on the native continuous score, but ligand-only LightGBM remains stronger.",
+      "title": "Conception: can binding features predict cellular activation?"
+    },
+    {
+      "canonical_markdown": "experiment-content/head-only.md",
+      "design": "Two cached 384D vectors [frozen] \u2192 twin pretrained continuous MLPs [fitted]. Five nested chemical-family folds; inner selection and three-seed refits. The matched rich 2D LightGBM selects features within training folds.",
+      "limits": "Historical 714-row qualified lockbox, later all-790 validation, and 513 challenge rows are distinct cohorts. These retrospective raw-MAE scores are not the later low-data weighted scores.",
+      "page": "experiments/head-only/index.html",
+      "question": "How much can the final regression heads recover?",
+      "result": "Development raw MAE: native 0.915, tuned heads 0.633, rich 2D 0.516. Both learned models compress the highest-potency tail.",
+      "show_in_navigation": true,
+      "slug": "head-only",
+      "sources": [
+        "reports/model_comparison/SCIENTIFIC_REPORT.md",
+        "reports/model_comparison/metrics.csv",
+        "reports/model_comparison/active_tail_metrics.csv"
+      ],
+      "status": "completed",
+      "summary_figure": "assets/experiment-summaries/head-only.svg",
+      "summary_message": "Both fitted models compress the potent tail despite lower overall error for LightGBM.",
+      "title": "Initial head-only versus rich 2D"
+    },
+    {
+      "canonical_markdown": "experiment-content/transfer-probes.md",
+      "design": "Frozen vectors \u2192 training-selected ridge or shallow MLP; compare expanded nested learning rates, target/loss sensitivities, residual ridge and learned stacking. Encoders remain frozen.",
+      "limits": "These controls cannot identify a protein-specific causal effect. Opened validation is retrospective.",
+      "page": "experiments/transfer-probes/index.html",
+      "question": "Is useful information in the vectors, or only in the pretrained nonlinear heads?",
+      "result": "Frozen mean-vector ridge reaches about 0.633 raw development MAE with better ranking than the original heads. Expanding optimization does not close the descriptor gap; much useful signal is linearly accessible.",
+      "show_in_navigation": true,
+      "slug": "transfer-probes",
+      "sources": [
+        "reports/transfer_ablation/README.md",
+        "reports/transfer_ablation/representation_probe_metrics.csv",
+        "reports/transfer_ablation/learning_rate_sensitivity.csv",
+        "reports/transfer_ablation/stacking_and_residual_metrics.csv"
+      ],
+      "status": "completed",
+      "summary_figure": "assets/experiment-summaries/transfer-probes.svg",
+      "summary_message": "Frozen-vector ridge recovers substantial PXR signal without the pretrained nonlinear heads.",
+      "title": "Transfer, learning-rate sensitivity and frozen probes"
+    },
+    {
+      "canonical_markdown": "experiment-content/capacity.md",
+      "design": "Frozen affinity representations \u2192 matched random-initialized readouts of different capacities [fitted using nested training selection].",
+      "limits": "Only downstream capacity changes; upstream pretraining is not ablated.",
+      "page": "experiments/capacity/index.html",
+      "question": "Does greater nonlinear readout capacity help?",
+      "result": "The completed CPU capacity matrix separates architecture from released-head initialization; larger readouts do not establish a solution to the persistent descriptor gap. Consult the complete per-model table rather than select a single favorable run.",
+      "show_in_navigation": true,
+      "slug": "capacity",
+      "sources": [
+        "reports/transfer_ablation/cpu_followups/README.md",
+        "reports/transfer_ablation/cpu_followups/experiment_a_capacity/capacity_metrics.csv"
+      ],
+      "status": "completed",
+      "summary_figure": "assets/experiment-summaries/capacity.svg",
+      "summary_message": "Extra readout capacity changes error modestly and inconsistently across frozen representations.",
+      "title": "Readout capacity control"
+    },
+    {
+      "canonical_markdown": "experiment-content/identity-standardization.md",
+      "design": "Saved compound identities \u2192 Random or Butina outer folds \u2192 matched FIT/CAL acquisitions; strict follow-up removes TEST neighbors.",
+      "limits": "Butina centroid groups alone do not enforce a pairwise similarity boundary; repeated draws reuse TEST compounds.",
+      "page": "experiments/identity-standardization/index.html",
+      "question": "How were Random, Butina and strict chemical splits used to test the models?",
+      "result": "Compound-labeled saved assignments and acquisitions for each split generation.",
+      "show_in_navigation": true,
+      "slug": "identity-standardization",
+      "sources": [
+        "reports/chemical-splits/low-data-acquired-roles.csv",
+        "reports/chemical-splits/low-data-outer-assignments.csv",
+        "reports/chemical-splits/strict-pool-audit.csv",
+        "reports/chemical-splits/manifest.json",
+        "reports/chemical-splits/strict-outer-assignments.csv",
+        "reports/chemical-splits/initial-modeling-manifest.csv",
+        "reports/chemical-splits/initial-scaffold-holdout.csv",
+        "reports/chemical-splits/strict-acquired-roles.csv",
+        "scripts/build_chemical_split_downloads.py",
+        "src/nesso_pxr/splits.py",
+        "src/nesso_pxr/chemistry.py",
+        "src/nesso_pxr/low_data_contract.py",
+        "src/nesso_pxr/low_data_models.py",
+        "artifacts/experiments/low_data_20260905_cut035_run2/prepared/protocol.json",
+        "artifacts/experiments/low_data_20260905_cut035_run2/prepared/split_audit.json",
+        "experiments/20260906_affinity_comparison/train_protocol.json"
+      ],
+      "status": "completed",
+      "summary_figure_enabled": false,
+      "title": "Chemical splits: Random and Butina"
+    },
+    {
+      "canonical_markdown": "experiment-content/loss-lr.md",
+      "design": "Released twin heads [fitted] on frozen vectors; objective and learning rate chosen inside each outer training set; fixed weight decay isolates this comparison.",
+      "limits": "Retrospective optimization evidence; freeze a recipe before testing new data.",
+      "page": "experiments/loss-lr/index.html",
+      "question": "Would objective selection relieve head compression?",
+      "result": "The joint nested selector reaches raw development MAE 0.6224, versus 0.6330 historically. None of its development predictions exceed pEC50 6: lower average error does not solve the active tail.",
+      "show_in_navigation": true,
+      "slug": "loss-lr",
+      "sources": [
+        "reports/transfer_ablation/cpu_followups/README.md",
+        "reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv"
+      ],
+      "status": "completed",
+      "summary_figure": "assets/experiment-summaries/loss-lr.svg",
+      "summary_message": "Joint loss and learning-rate selection reduces average error without restoring predictions above pEC50 6.",
+      "title": "Nested loss \u00d7 learning rate"
+    },
+    {
+      "canonical_markdown": "experiment-content/binary-dual.md",
+      "design": "Frozen vectors \u2192 released continuous and binary branches \u2192 training-fitted linear/quadratic mapping, or both branches [fine-tuned] with bounded fusion.",
+      "limits": "Binder probability is not a cellular activity classifier. Potency thresholds are functional proxies, not binding labels; the small dual-head gain is not robust across cohorts.",
+      "page": "experiments/binary-dual/index.html",
+      "question": "Was evaluating only the continuous output an incomplete test of Nesso?",
+      "result": "Combined quadratic calibration reaches raw development MAE 0.774; dual-branch adaptation 0.629 versus continuous-only 0.633. Dual-head challenge MAE worsens to 0.647 versus 0.601.",
+      "show_in_navigation": true,
+      "slug": "binary-dual",
+      "sources": [
+        "reports/transfer_ablation/binary_head_reanalysis/REPORT.md",
+        "reports/transfer_ablation/binary_head_reanalysis/regression_metrics.csv",
+        "reports/transfer_ablation/binary_head_reanalysis/proxy_classification_metrics.csv"
+      ],
+      "status": "completed",
+      "summary_figure": "assets/experiment-summaries/binary-dual.svg",
+      "summary_message": "Using both branches helps scalar calibration, but dual-head adaptation does not improve consistently across cohorts.",
+      "title": "Binary readout correction and dual heads"
+    },
+    {
+      "canonical_markdown": "experiment-content/pair-pooling.md",
+      "design": "Upstream protein-conditioned features [frozen] \u2192 all-pairs, ligand\u2013ligand-only or receptor\u2013ligand-only final pool \u2192 nested fitted mean-384D ridge.",
+      "limits": "Ligand\u2013ligand cells were already protein-conditioned. This does not show that Nesso ignores protein or establish a causal protein ablation.",
+      "page": "experiments/pair-pooling/index.html",
+      "question": "Are direct receptor\u2013ligand cells needed at the final pooling operation?",
+      "result": "All 4,134 compounds extracted with zero failures and positive-control parity. Ligand-only final pooling improves raw development MAE from 0.63279 to 0.60624; all-790 validation changes 0.59630 to 0.59421 with an unresolved paired interval.",
+      "show_in_navigation": true,
+      "slug": "pair-pooling",
+      "sources": [
+        "reports/transfer_ablation/pair_pool_full/REPORT.md",
+        "reports/transfer_ablation/pair_pool_full/ridge_probe_metrics.csv",
+        "reports/transfer_ablation/pair_pool_full/paired_family_bootstrap_differences.csv"
+      ],
+      "status": "completed",
+      "summary_figure": "assets/experiment-summaries/pair-pooling.svg",
+      "summary_message": "Ligand\u2013ligand final pooling improves development MAE, but its validation advantage is unresolved.",
+      "title": "Final pair pooling \u2014 completed"
+    },
+    {
+      "canonical_markdown": "experiment-content/low-data.md",
+      "design": "Frozen Nesso representations or Morgan features \u2192 12 fitted/native methods \u2192 within-budget interval calibration. Two split policies, five folds, ten paired draws, five small budgets plus full-pool reference; three neural seeds per task.",
+      "limits": "N25 means 20 FIT and five CAL labels; nominal 90% intervals can be unbounded. Full-pool is an outer-training-pool reference, not all 3,344 labels.",
+      "page": "experiments/low-data/index.html",
+      "question": "How should 25\u2013500 acquired PXR labels be spent?",
+      "result": "All 7,200 task systems completed. Continuous heads are practical Nesso candidates; released initialization has no consistent advantage. Original generic MLP/ridge failures expose scaling and extrapolation problems rather than absence of feature signal.",
+      "show_in_navigation": true,
+      "slug": "low-data",
+      "sources": [
+        "experiments/20260905_low_data_adaptation/README.md",
+        "experiments/20260905_low_data_adaptation/MODEL_NOTES.md",
+        "artifacts/experiments/low_data_20260905_cut035_run2/independent_assessment.md",
+        "artifacts/experiments/low_data_20260905_cut035_run2/independent_assessment_aggregates.csv",
+        "artifacts/experiments/low_data_20260905_cut035_run2/status.json"
+      ],
+      "status": "completed",
+      "summary_figure": "assets/experiment-summaries/low-data.svg",
+      "summary_message": "Continuous heads improve with more labels; the original vector probes show large, irregular errors.",
+      "title": "Original low-data matrix \u2014 completed"
+    },
+    {
+      "canonical_markdown": "experiment-content/stable-readouts.md",
+      "design": "Frozen native vectors \u2192 training-only stable preprocessing and fitted readout; ligand features \u2192 training-only reduction and fitted LightGBM. Strict branch purges FIT/CAL pools at Morgan similarity \u22650.35 to test. All labels remain inside the acquired budget.",
+      "limits": "All 8,100 new follow-up tasks completed, plus 1,200 original comparator tasks replayed. Repeated draws are dependent; chemical novelty and prospective coverage remain unresolved.",
+      "page": "experiments/stable-readouts/index.html",
+      "question": "Were poor vector probes an avoidable preprocessing problem?",
+      "result": "Stable scaling and target centering substantially improve MLP performance; added weight decay contributes little. Stable ridge is competitive, but its small N500 advantage over the pretrained head is unresolved.",
+      "show_in_navigation": true,
+      "slug": "stable-readouts",
+      "sources": [
+        "experiments/20260906_low_data_followup/READOUTS.md",
+        "experiments/20260906_low_data_followup/RESULTS.md",
+        "artifacts/experiments/low_data_followup_20260906/final_analysis/task_means.csv",
+        "artifacts/experiments/low_data_followup_20260906/final_analysis/strata.csv"
+      ],
+      "status": "completed",
+      "summary_figure": "assets/experiment-summaries/stable-readouts.svg",
+      "summary_message": "Stable scaling and target centering reduce MLP error; adding weight decay barely changes the curve.",
+      "title": "Stable scaling and readouts"
+    },
+    {
+      "canonical_markdown": "experiment-content/descriptor-followup.md",
+      "design": "Frozen native vectors \u2192 training-only stable preprocessing and fitted readout; ligand features \u2192 training-only reduction and fitted LightGBM. Strict branch purges FIT/CAL pools at Morgan similarity \u22650.35 to test. All labels remain inside the acquired budget.",
+      "limits": "All 8,100 new follow-up tasks completed, plus 1,200 original comparator tasks replayed. Repeated draws are dependent; chemical novelty and prospective coverage remain unresolved.",
+      "page": "experiments/descriptor-followup/index.html",
+      "question": "Does a broader ligand-only baseline change the low-data conclusion?",
+      "result": "Descriptor LightGBM has lower mean-task weighted error from N250 upward. N500: 0.497 versus adapted head 0.542. The head remains better within the pEC50 \u22654 stratum in this repeated-draw experiment.",
+      "show_in_navigation": true,
+      "slug": "descriptor-followup",
+      "sources": [
+        "experiments/20260906_low_data_followup/BASELINES.md",
+        "experiments/20260906_low_data_followup/RESULTS.md",
+        "artifacts/experiments/low_data_followup_20260906/final_analysis/task_means.csv",
+        "artifacts/experiments/low_data_followup_20260906/final_analysis/strata.csv"
+      ],
+      "status": "completed",
+      "summary_figure": "assets/experiment-summaries/descriptor-followup.svg",
+      "summary_message": "Descriptors overtake the head from N250 overall, while the head retains lower N500 error at pEC50 \u22654.",
+      "title": "Stronger low-data descriptor baseline"
+    },
+    {
+      "canonical_markdown": "experiment-content/strict-followup.md",
+      "design": "Frozen native vectors \u2192 training-only stable preprocessing and fitted readout; ligand features \u2192 training-only reduction and fitted LightGBM. Strict branch purges FIT/CAL pools at Morgan similarity \u22650.35 to test. All labels remain inside the acquired budget.",
+      "limits": "All 8,100 new follow-up tasks completed, plus 1,200 original comparator tasks replayed. Repeated draws are dependent; chemical novelty and prospective coverage remain unresolved.",
+      "page": "experiments/strict-followup/index.html",
+      "question": "Does purging neighbors change practical generalization?",
+      "result": "The completed strict audit changes aggregate scores little; actual nearest-FIT similarity below 0.2 remains harder. N500 90% intervals are near 89% coverage but broad.",
+      "show_in_navigation": true,
+      "slug": "strict-followup",
+      "sources": [
+        "experiments/20260906_low_data_followup/STRICT_SPLIT.md",
+        "experiments/20260906_low_data_followup/RESULTS.md",
+        "artifacts/experiments/low_data_followup_20260906/final_analysis/task_means.csv",
+        "artifacts/experiments/low_data_followup_20260906/final_analysis/strata.csv"
+      ],
+      "status": "completed",
+      "summary_figure": "assets/experiment-summaries/strict-followup.svg",
+      "summary_message": "Neighbor purging barely moves overall error, but the most novel strict-test predictions remain harder.",
+      "title": "Strict chemical separation"
+    },
+    {
+      "archive_reason": "Engineering feasibility; retained as source history, not a result experiment.",
+      "canonical_markdown": "experiment-content/upstream-feasibility.md",
+      "design": "Real prepared input \u2192 frozen trunk \u2192 first affinity member with injected adapters [engineering updates] \u2192 parity and saved-state replay.",
+      "limits": "The first pilot used an engineering objective without assay labels and only one member.",
+      "page": "experiments/upstream-feasibility/index.html",
+      "question": "Can gradients reach a real upstream affinity module without changing the trunk?",
+      "result": "Real-input gradient, frozen-weight, zero-update and adapter replay checks passed. This established a runnable intervention, not predictive superiority.",
+      "show_in_navigation": false,
+      "slug": "upstream-feasibility",
+      "sources": [
+        "experiments/20260905_low_data_adaptation/ADAPTER_FEASIBILITY.md"
+      ],
+      "status": "completed",
+      "title": "First-member upstream feasibility"
+    },
+    {
+      "archive_reason": "Engineering feasibility; retained as source history, not a result experiment.",
+      "canonical_markdown": "experiment-content/both-member-pilot.md",
+      "design": "Eight predetermined FIT records \u2192 frozen trunk capture \u2192 each member\u2019s tensors/RNG \u2192 continuous heads [fitted] with/without rank-4 adapters at esm_proj.1, esm_proj.3 and first transition fc1.",
+      "limits": "Two SGD updates on eight records are engineering feasibility, not held-out utility. Binary weights stay frozen, but upstream changes can change binary outputs.",
+      "page": "experiments/both-member-pilot/index.html",
+      "question": "Can both actual affinity members be captured and adapted reproducibly?",
+      "result": "Eight of eight records and both supervised arms completed. Native/differentiable, zero-update and saved-state replay discrepancies were exactly zero. Trainable parameters: 592,130 head-only; 616,706 with adapters.",
+      "show_in_navigation": false,
+      "slug": "both-member-pilot",
+      "sources": [
+        "experiments/20260906_affinity_representation/README.md",
+        "experiments/20260906_affinity_representation/EXECUTION.md"
+      ],
+      "status": "completed",
+      "title": "Both-member capture and supervised training"
+    },
+    {
+      "canonical_markdown": "experiment-content/upstream-comparison.md",
+      "design": "Both affinity members: pretrained continuous heads [fitted], plus rank-4 LoRA at esm_proj.1/.3 and pairformer_stack.layers.0.transition_z.fc1 [fitted only in LoRA arm]. Main trunk and external ESM encoder frozen. N100=80 FIT+20 CAL; N500=400+100; 40 full-FIT optimizer updates, one draw and seed, no tuning.",
+      "limits": "Low-potency correction supplies most net LoRA-versus-head gain; pEC50 \u22654 weighted error slightly worsens. This fixed training recipe does not exhaust optimization; no fresh holdout.",
+      "page": "experiments/upstream-comparison/index.html",
+      "question": "Does actual upstream adaptation add to the same trained heads?",
+      "result": "All 20 neural fits and 30 control cells completed. N500 pooled weighted MAE: head 0.5773, LoRA 0.5610, frozen ridge 0.5345, descriptors 0.5006. N100 favors LoRA on weighted MAE but not all metrics.",
+      "show_in_navigation": true,
+      "slug": "upstream-comparison",
+      "sources": [
+        "experiments/20260906_affinity_comparison/RESULTS.md",
+        "experiments/20260906_affinity_comparison/TRAIN.md",
+        "experiments/20260906_affinity_comparison/CACHE.md",
+        "reports/architecture/results/pooled_metrics.csv",
+        "reports/architecture/results/stratum_metrics.csv",
+        "reports/architecture/results/heldout_predictions.csv"
+      ],
+      "status": "completed",
+      "summary_figure": "assets/experiment-summaries/upstream-comparison.svg",
+      "summary_message": "LoRA adds a small gain; descriptors lead at 500 labels",
+      "title": "Matched upstream-LoRA predictive comparison"
+    },
+    {
+      "canonical_markdown": "experiment-content/geometry.md",
+      "design": "Saved native and adapted predictions + actual FIT-neighbor identities + MW/charge + frozen 768D native vectors \u2192 descriptive ranks, strata and PCA; nothing fitted for prospective prediction.",
+      "limits": "Full-cohort PCA is descriptive. Adapted internal tensors were not analyzed; neither feature norm nor proximity proves mechanism. Low MW and low potency are different variables.",
+      "page": "experiments/geometry/index.html",
+      "question": "What distinguishes compounds whose predictions change?",
+      "result": "Large movers are not merely closest FIT neighbors. Smaller compounds move more; native feature norm is associated with movement more strongly than accuracy improvement. Native PCA\u2019s first component captures 66.8% of variance.",
+      "show_in_navigation": true,
+      "slug": "geometry",
+      "sources": [
+        "experiments/20260906_affinity_comparison/RESULTS.md",
+        "reports/architecture/results/size_charge_correlations.csv",
+        "reports/architecture/results/internal_feature_diagnostic/associations.csv",
+        "reports/architecture/results/error-change-versus-size.svg"
+      ],
+      "status": "completed",
+      "summary_figure": "assets/experiment-summaries/geometry.svg",
+      "summary_message": "Smaller compounds tend to move more under adaptation",
+      "title": "Movement, chemistry and native feature geometry"
+    },
+    {
+      "canonical_markdown": "experiment-content/mw-controls.md",
+      "design": "Frozen native scalar + continuous MW \u2192 FIT-only weighted linear scaling: score only, MW only, additive score+MW, or score+MW+interaction. CAL is reserved for intervals; no threshold-based rule.",
+      "limits": "The interaction is four coefficients, not MW alone. A conspicuous subgroup correction is not proof that MW explains all aggregate gains, binding, or activation biology.",
+      "page": "experiments/mw-controls/index.html",
+      "question": "Is the low-MW correction uniquely neural?",
+      "result": "All 40 fits completed. For 237 compounds below 215 Da at N500, weighted MAE: native 1.834; LoRA 1.179; additive score+MW 1.163; interaction 0.863.",
+      "show_in_navigation": true,
+      "slug": "mw-controls",
+      "sources": [
+        "experiments/20260908_mw_controls/README.md",
+        "reports/architecture/results/mw-controls/metrics.csv",
+        "reports/architecture/results/mw-controls/contrasts.csv",
+        "reports/architecture/results/mw-controls/paired-folds.svg",
+        "reports/architecture/results/control-predictions-full-range.svg"
+      ],
+      "status": "completed",
+      "summary_figure": "assets/experiment-summaries/mw-controls.svg",
+      "summary_message": "A scalar interaction beats LoRA on small compounds\u2014not larger ones",
+      "title": "Can simple molecular-weight controls explain the correction?"
+    },
+    {
+      "canonical_markdown": "experiment-content/hybrid-pilot.md",
+      "design": "N500 strict fold0: 400 FIT \u2192 nested grouped OOF descriptor and stable-ridge predictions \u2192 convex mixture weight [FIT-selected]; native vectors frozen. CAL outcomes unused.",
+      "limits": "This is frozen-representation ridge, not LoRA. One inspected fold motivated the locked continuation; it is not independent confirmation.",
+      "page": "experiments/hybrid-pilot/index.html",
+      "question": "Can a weaker standalone representation add useful complementary signal?",
+      "result": "The pilot improves weighted MAE from descriptor 0.502895 to blend 0.485238, with selected Nesso weight about 0.3983. Higher-potency accuracy improves while lower-potency error worsens.",
+      "show_in_navigation": true,
+      "slug": "hybrid-pilot",
+      "sources": [
+        "experiments/20260908_descriptor_nesso_blend/README.md",
+        "artifacts/experiments/descriptor_nesso_blend_20260908/metrics.json",
+        "artifacts/experiments/descriptor_nesso_blend_20260908/test_predictions.csv"
+      ],
+      "status": "completed",
+      "summary_figure": "assets/experiment-summaries/hybrid-pilot.svg",
+      "summary_message": "The pilot blend helps higher potency, but hurts lower potency",
+      "title": "Descriptor + frozen-Nesso hybrid pilot"
+    },
+    {
+      "canonical_markdown": "experiment-content/hybrid-allfolds.md",
+      "design": "Frozen vectors \u2192 stable ridge and ligand descriptors \u2192 LightGBM [independently FIT-selected]. Three grouped meta folds and deeper selection create honest inner OOF inputs; convex weighted-MAE mixture fitted inside FIT. Fold0 reused byte-identically; folds1\u20134 newly fit.",
+      "limits": "The lower-potency group worsens in every fold. Weights are 1/max(SE,0.1); below4 is 31% of compounds but 16.4% of weight. Locked recipe means procedure, not one fixed mixture coefficient. No prospective holdout or retraining variability estimate.",
+      "page": "experiments/hybrid-allfolds/index.html",
+      "question": "Does the same training-selected blending procedure hold across the remaining folds?",
+      "result": "Pooled weighted MAE improves 0.500588 \u2192 0.486790; raw MAE 0.599636 \u2192 0.594731; Spearman 0.656863 \u2192 0.686392. Weighted error improves in all five folds. At pEC50 \u22654: 0.434197 \u2192 0.411839; below4: 0.840152 \u2192 0.870134.",
+      "show_in_navigation": true,
+      "slug": "hybrid-allfolds",
+      "sources": [
+        "experiments/20260908_descriptor_nesso_blend_allfolds/README.md",
+        "artifacts/experiments/descriptor_nesso_blend_allfolds_20260908/metrics.json",
+        "artifacts/experiments/descriptor_nesso_blend_allfolds_20260908/all_test_predictions.csv",
+        "artifacts/experiments/descriptor_nesso_blend_allfolds_20260908/verification.json"
+      ],
+      "status": "completed",
+      "summary_figure": "assets/experiment-summaries/hybrid-allfolds.svg",
+      "summary_message": "Every fold gains overall\u2014and pays a lower-potency penalty",
+      "title": "Locked hybrid \u2014 all five folds completed"
+    },
+    {
+      "canonical_markdown": "experiment-content/cyp-transfer.md",
+      "design": "Existing native protein/ligand/heme inference [frozen] + identity-SMILES MW \u2192 training-fold scaling and fitted OLS scalar controls \u2192 same-row pIC50 evaluation across CYP1A2, 2C9, 2D6 and 3A4.",
+      "limits": "CYP uses unweighted fitting and MAE: supplied std/CI are not justified sampling SE. Do not transfer PXR\u2019s uncertainty floor or potency threshold. This is not a general replication of the PXR effect.",
+      "page": "experiments/cyp-transfer/index.html",
+      "question": "Does the PXR MW effect recur for direct CYP inhibition?",
+      "result": "Additive MW helps CYP2C9 and CYP3A4; the score\u2013MW interaction does not consistently outperform additive. Same-CYP inhibitor baselines remain stronger overall. Small-MW groups contain only 22 / 11 / 21 / 30 compounds.",
+      "show_in_navigation": true,
+      "slug": "cyp-transfer",
+      "sources": [
+        "CYP/README.md",
+        "CYP/protocol.md",
+        "CYP/artifacts/metrics.csv",
+        "CYP/artifacts/coverage_uncertainty.csv",
+        "CYP/mae.png",
+        "CYP/low-mw.png"
+      ],
+      "status": "completed",
+      "summary_figure": "assets/experiment-summaries/cyp-transfer.svg",
+      "summary_message": "MW helps two CYP assays; the interaction is not a general gain",
+      "title": "Four-CYP transfer of scalar MW controls"
+    },
+    {
+      "canonical_markdown": "experiment-content/efficacy-uncertainty.md",
+      "design": "Exact 3,344 development IDs \u2192 provider Emax/SE fields + saved native/adapted predictions \u2192 MW strata and descriptive adjustments. No model inference or predictive fitting.",
+      "limits": "The proposed low normalized efficacy explanation is weakened, not established. Higher fit uncertainty is associated with size/potency, but neither scalar affinity nor low pEC50 proves binding without activation. Raw curves, control denominator and parameter covariance are unavailable; the adapter is not shown to learn efficacy.",
+      "page": "experiments/efficacy-uncertainty/index.html",
+      "question": "Are small molecules overcalled because they bind without activating PXR?",
+      "result": "Below215 versus larger: normalized Emax medians 1.240 vs 0.977; raw log2 fold-change Emax 2.17 vs 2.53; pEC50 SE 0.558 vs 0.141. All 237 small compounds pass normalized Emax \u22650.6 qualification.",
+      "show_in_navigation": true,
+      "slug": "efficacy-uncertainty",
+      "sources": [
+        "experiments/20260908_PXR-MW-efficacy-diagnostic/README.md",
+        "experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/stratum_summaries.csv",
+        "experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/merged_compounds.csv",
+        "experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/native_score_outcomes.png",
+        "experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/mw_emax_uncertainty.png",
+        "experiments/20260908_PXR-MW-efficacy-diagnostic/documentation/provider_dataset_card.md"
+      ],
+      "status": "completed",
+      "summary_figure": "assets/experiment-summaries/efficacy-uncertainty.svg",
+      "summary_message": "Small compounds have higher uncertainty, not lower normalized efficacy",
+      "title": "Emax and uncertainty: testing the biological explanation"
+    }
+  ],
+  "generated_pages": [
+    "index.html",
+    "architecture/index.html",
+    "evidence/reports/architecture/results/index.html",
+    "evidence/reports/architecture/results/mw-controls/index.html",
+    "experiments/conception/index.html",
+    "experiments/head-only/index.html",
+    "experiments/transfer-probes/index.html",
+    "experiments/capacity/index.html",
+    "experiments/identity-standardization/index.html",
+    "experiments/loss-lr/index.html",
+    "experiments/binary-dual/index.html",
+    "experiments/pair-pooling/index.html",
+    "experiments/low-data/index.html",
+    "experiments/stable-readouts/index.html",
+    "experiments/descriptor-followup/index.html",
+    "experiments/strict-followup/index.html",
+    "experiments/upstream-feasibility/index.html",
+    "experiments/both-member-pilot/index.html",
+    "experiments/upstream-comparison/index.html",
+    "experiments/geometry/index.html",
+    "experiments/mw-controls/index.html",
+    "experiments/hybrid-pilot/index.html",
+    "experiments/hybrid-allfolds/index.html",
+    "experiments/cyp-transfer/index.html",
+    "experiments/efficacy-uncertainty/index.html",
+    "chapters/transfer/index.html",
+    "chapters/mw/index.html",
+    "chapters/hybrid/index.html",
+    "chapters/interpretation/index.html",
+    "experiments/fine-tuning-screen/index.html"
+  ],
+  "summary_figure_count": 18,
+  "updated": "2026-09-08",
+  "visible_count": 19
+}

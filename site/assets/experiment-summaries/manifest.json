@@ -1,0 +1,445 @@
+{
+  "expected_count": 18,
+  "visible_experiment_count": 19,
+  "excluded_summary_slugs": [
+    "identity-standardization"
+  ],
+  "figures": [
+    {
+      "slug": "conception",
+      "message": "Head adaptation improves on the native continuous score, but ligand-only LightGBM remains stronger.",
+      "caption": "Same 3,344 development compounds and five chemical-family outer folds; pooled unweighted MAE, lower is better. Native continuous affinity is a pIC50-equivalent score, not a measured cellular pEC50. Learned readouts use training-only selection; fixed legacy 2D unsupervised prefilter was not rebuilt within folds. Retrospective evidence.",
+      "design": "Aligned aggregate dots on a common zero-based error axis expose both the adaptation gain and remaining descriptor gap; no uncertainty inferred.",
+      "sources": [
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/reports/model_comparison/metrics.csv",
+          "sha256": "7048edf823f9ffe1f9f3d793da4317ced36bd9c3133b58b17cc046432b92c835"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/reports/model_comparison/SCIENTIFIC_REPORT.md",
+          "sha256": "064ec4f2afa5c5d81db485d01ea2b3c928a261465f7ddb75a6b5f47952ae5723"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/nesso1_pxr_finetuning_poc_spec.md",
+          "sha256": "5875a8f277b9e68d5905a7e7b2cee9568f06a5fa752628e933a74fda4de93175"
+        }
+      ],
+      "plotted_rows": 4,
+      "svg": "assets/experiment-summaries/conception.svg",
+      "png": "assets/experiment-summaries/conception.png",
+      "data": "assets/experiment-summaries/conception.csv"
+    },
+    {
+      "slug": "head-only",
+      "message": "Both fitted models compress the potent tail despite lower overall error for LightGBM.",
+      "caption": "Each panel shows all 3,344 identical development compounds, using five-fold nested out-of-fold predictions; diagonal is exact prediction. Heads average three seeds. The 55 observed pEC50 >6 compounds include only one head prediction >6 and no LightGBM prediction >6. Closer to the diagonal is better; raw errors, not uncertainty-weighted scores. No lockbox or challenge rows.",
+      "design": "Matched observed-versus-predicted point clouds use identical square axes and transparency, revealing range compression without conclusion annotations.",
+      "sources": [
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/reports/model_comparison/nested_aligned_predictions.csv",
+          "sha256": "1f1936ee62e8e97286da3a6f2eb3f55120b2ef1262b4a6eea79087dc91e63e53"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/reports/model_comparison/metrics.csv",
+          "sha256": "7048edf823f9ffe1f9f3d793da4317ced36bd9c3133b58b17cc046432b92c835"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/reports/model_comparison/SCIENTIFIC_REPORT.md",
+          "sha256": "064ec4f2afa5c5d81db485d01ea2b3c928a261465f7ddb75a6b5f47952ae5723"
+        }
+      ],
+      "plotted_rows": 6688,
+      "svg": "assets/experiment-summaries/head-only.svg",
+      "png": "assets/experiment-summaries/head-only.png",
+      "data": "assets/experiment-summaries/head-only.csv"
+    },
+    {
+      "slug": "transfer-probes",
+      "message": "Frozen-vector ridge recovers substantial PXR signal without the pretrained nonlinear heads.",
+      "caption": "Pooled outer-fold development metrics for 3,344 compounds. Ridge penalties selected within training folds; mean and member probes use 384D, concatenation 768D. Raw MAE lower and Spearman higher are better. These estimates do not prove equivalence or protein-specific causality; exploratory nonnested MLP screens are not shown.",
+      "design": "Two aligned dot panels preserve the error-versus-ranking distinction and show every ridge representation alongside the historical heads and descriptor reference.",
+      "sources": [
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/representation_probe_metrics.csv",
+          "sha256": "622ed579946daab8086f7606fd9cb08e46fdf8a5469cf1e5233809af047686d1"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/README.md",
+          "sha256": "c50255c4cf0c5058c633adb9b4bad57d6366309805a63e492e5a850e5d4f7c0d"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/reports/model_comparison/metrics.csv",
+          "sha256": "7048edf823f9ffe1f9f3d793da4317ced36bd9c3133b58b17cc046432b92c835"
+        }
+      ],
+      "plotted_rows": 12,
+      "svg": "assets/experiment-summaries/transfer-probes.svg",
+      "png": "assets/experiment-summaries/transfer-probes.png",
+      "data": "assets/experiment-summaries/transfer-probes.csv"
+    },
+    {
+      "slug": "capacity",
+      "message": "Extra readout capacity changes error modestly and inconsistently across frozen representations.",
+      "caption": "Complete 4-representation \u00d7 3-readout matrix: 3,344 nested development and 790 retrospective validation compounds. Scaling and five tuning candidates per readout are training-only; neural predictions average three seeds. Raw MAE lower is better. Lines link architecture choices, not parameter counts. Primary mean-384D development gains over ridge have unresolved paired intervals; upstream pretraining is unchanged.",
+      "design": "Capacity ladders on a common error scale show all representation choices rather than selecting a favorable architecture or seed; validation is a separate panel.",
+      "sources": [
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/cpu_followups/experiment_a_capacity/capacity_metrics.csv",
+          "sha256": "fe1a43f2362bf8e0af16765e7434511bbe0647b510e86d76752a73b08adceeee"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/cpu_followups/README.md",
+          "sha256": "083885c18eebba6187a1c267d664014688ae6b895048dcaeab6689c059e859e2"
+        }
+      ],
+      "plotted_rows": 24,
+      "svg": "assets/experiment-summaries/capacity.svg",
+      "png": "assets/experiment-summaries/capacity.png",
+      "data": "assets/experiment-summaries/capacity.csv"
+    },
+    {
+      "slug": "loss-lr",
+      "message": "Joint loss and learning-rate selection reduces average error without restoring predictions above pEC50 6.",
+      "caption": "All 3,344 nested development predictions per model; 55 observations exceed pEC50 6. Each objective selects LR within outer training folds, with weight decay zero; joint selector also selects objective. Raw MAE lower is better; maximum prediction is a range diagnostic, not an accuracy metric. Dashed line marks pEC50 6. No uncertainty inferred from these maxima.",
+      "design": "Aligned objective rows pair average error with the actual prediction ceiling, keeping distinct units on separate axes and avoiding a misleading aggregate-only success claim.",
+      "sources": [
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv",
+          "sha256": "76ab3bb2c33ca7557b0cecbd8bbeda2e6be6a0853e54dbfab72022caa9ab9eb5"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/cpu_followups/README.md",
+          "sha256": "083885c18eebba6187a1c267d664014688ae6b895048dcaeab6689c059e859e2"
+        }
+      ],
+      "plotted_rows": 16,
+      "svg": "assets/experiment-summaries/loss-lr.svg",
+      "png": "assets/experiment-summaries/loss-lr.png",
+      "data": "assets/experiment-summaries/loss-lr.csv"
+    },
+    {
+      "slug": "binary-dual",
+      "message": "Using both branches helps scalar calibration, but dual-head adaptation does not improve consistently across cohorts.",
+      "caption": "Raw unweighted MAE, lower is better. Development uses 3,344 chemical-family outer-fold predictions; public challenge uses 513 retrospective public-label compounds. Calibration and adapters fitted on development only. Binary outputs predict binding, not cellular activation; calibrations here target functional pEC50. The challenge LightGBM is the established augmented/offset comparator, not the exact nested-development estimator.",
+      "design": "Identical method rows and shared error limits make the small development dual-head advantage and reversed challenge ordering visible, while retaining the scalar-calibration comparison.",
+      "sources": [
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/binary_head_reanalysis/regression_metrics.csv",
+          "sha256": "b5d6f5ebb66c4052ad41dfb96dab94e3da4086f77904742ff91fd5af220cbc99"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/binary_head_reanalysis/REPORT.md",
+          "sha256": "1736c2d227e89a6421404503ede33d5260b89a7b1a5e665cd4b8868b36f257a6"
+        }
+      ],
+      "plotted_rows": 10,
+      "svg": "assets/experiment-summaries/binary-dual.svg",
+      "png": "assets/experiment-summaries/binary-dual.png",
+      "data": "assets/experiment-summaries/binary-dual.csv"
+    },
+    {
+      "slug": "pair-pooling",
+      "message": "Ligand\u2013ligand final pooling improves development MAE, but its validation advantage is unresolved.",
+      "caption": "Nested mean-384D ridge, 3,344 development and 790 previously opened validation compounds. Left: unweighted compound-level pEC50 MAE for three final pools (lower is better). Right: ligand\u2013ligand minus all-pairs MAE; negative favors ligand\u2013ligand. Saved paired 95% chemical-family bootstrap intervals use 2,000 replicates (2,931 development and 735 validation clusters). Upstream features were frozen and already protein-conditioned; this is not a protein-removal ablation.",
+      "design": "Absolute paired marks anchor effect size; saved difference intervals directly expose the unresolved validation effect. Receptor\u2013ligand-only is a diagnostic tick, not the principal contrast; no value annotations.",
+      "sources": [
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/pair_pool_full/ridge_probe_metrics.csv",
+          "sha256": "01cc828366ebc640abcdf72e949d8d0f63ce22fbde01f035aca3498224c6d38f"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/pair_pool_full/paired_family_bootstrap_differences.csv",
+          "sha256": "0f2f5642ddbcf576821bcbcf89a003e39f3f552cb2cfcd347654cc1f0a9066aa"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/pair_pool_full/REPORT.md",
+          "sha256": "6b2497d90a457ae8143fe4d7b5698108e7a173b7143c72e356f3f7f04516930d"
+        }
+      ],
+      "plotted_rows": 8,
+      "svg": "assets/experiment-summaries/pair-pooling.svg",
+      "png": "assets/experiment-summaries/pair-pooling.png",
+      "data": "assets/experiment-summaries/pair-pooling.csv"
+    },
+    {
+      "slug": "low-data",
+      "message": "Continuous heads improve with more labels; the original vector probes show large, irregular errors.",
+      "caption": "Retrospective development cohort of 3,344 compounds; each mean-task point equally averages five outer folds \u00d7 ten paired draws (50 tasks), not a pooled weighted score. Neural predictions average three seeds before scoring; repeated draws are dependent. No inferential bands are drawn. Weighted MAE uses 1/max(assay SE, 0.10); lower is better. Budgets include 80% FIT/inner selection and 20% CAL labels. Original chemical-cluster split only, N25\u2013500; full outer-pool reference omitted. Panels have different y ranges to keep the practical head comparison legible. Saved-model inspection in the independent assessment found scaling/extrapolation failures; the curves alone do not isolate a scaling cause. Random versus pretrained refers only to head initialization, not upstream pretraining. Native output is an unchanged binding-affinity anchor, not native cellular pEC50.",
+      "design": "Separate probe failures from the practical comparison rather than compress all methods under an outlier-dominated y scale. Two explicit mean-task axes and external legends; no confidence interpretation of repeated draws.",
+      "sources": [
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/independent_assessment_aggregates.csv",
+          "sha256": "a38916e84b46a7a2dc57f60076b02e223c8569bc3af31b06fda9bd6056f4ce54"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/independent_assessment.md",
+          "sha256": "f184dfbd180ef7bb3b0ecd7e8fea99d6f7641d620e6cadfcf9807598cbb260b9"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260905_low_data_adaptation/README.md",
+          "sha256": "330f6fc32c351015e49fbc6511fbbd5e50cdcedaec039412c35ccd0b57725a69"
+        }
+      ],
+      "plotted_rows": 30,
+      "svg": "assets/experiment-summaries/low-data.svg",
+      "png": "assets/experiment-summaries/low-data.png",
+      "data": "assets/experiment-summaries/low-data.csv"
+    },
+    {
+      "slug": "stable-readouts",
+      "message": "Stable scaling and target centering reduce MLP error; adding weight decay barely changes the curve.",
+      "caption": "Retrospective development cohort of 3,344 compounds; each mean-task point equally averages five outer folds \u00d7 ten paired draws (50 tasks), not a pooled weighted score. Neural predictions average three seeds before scoring; repeated draws are dependent. No inferential bands are drawn. Weighted MAE uses 1/max(assay SE, 0.10); lower is better. Budgets include 80% FIT/inner selection and 20% CAL labels. Chemical-cluster split, original and follow-up MLP recipes, N25\u2013500. All use the same frozen concatenated 768D vectors and 768\u2013128\u20131 MLP architecture. Stable per-feature scaling has a training-only variance floor; centered variants subtract and restore the training weighted target mean. Only the final variant adds AdamW decay 0.01. The centered and regularized curves nearly coincide; no prediction clipping or outlier exclusion.",
+      "design": "A sequence of four matched recipe curves makes the large preprocessing changes and negligible incremental decay effect visible. Cross markers preserve the regularized curve where it overlaps the centered circles.",
+      "sources": [
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_followup_20260906/final_analysis/task_means.csv",
+          "sha256": "ac9cec051c656e05504b8669318fc942a8685ed20b746cbddc316e13855dc35b"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_low_data_followup/READOUTS.md",
+          "sha256": "581385c3d076d8d39403b59577ad0c01490910f6abeb355e015a3e80942f86a5"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_low_data_followup/RESULTS.md",
+          "sha256": "d2cfc6ff45c2283e37166e8b171656d674c595f37afae40626422b0a4830a413"
+        }
+      ],
+      "plotted_rows": 20,
+      "svg": "assets/experiment-summaries/stable-readouts.svg",
+      "png": "assets/experiment-summaries/stable-readouts.png",
+      "data": "assets/experiment-summaries/stable-readouts.csv"
+    },
+    {
+      "slug": "descriptor-followup",
+      "message": "Descriptors overtake the head from N250 overall, while the head retains lower N500 error at pEC50 \u22654.",
+      "caption": "Retrospective development cohort of 3,344 compounds; each mean-task point equally averages five outer folds \u00d7 ten paired draws (50 tasks), not a pooled weighted score. Neural predictions average three seeds before scoring; repeated draws are dependent. No inferential bands are drawn. Weighted MAE uses 1/max(assay SE, 0.10); lower is better. Budgets include 80% FIT/inner selection and 20% CAL labels. Strict chemical separation (retained FIT/CAL-to-test Morgan similarity <0.35). Left: mean-task scores. Right: N500 pooled within-stratum weighted errors across ten dependent draws, not means of task errors; 1,036 unique compounds / 10,360 predictions below pEC50 4 and 2,308 / 23,080 at or above 4 (16.35% and 83.65% of evaluation weight). Descriptor features are canonical-SMILES RDKit2D, Mordred2D and Morgan with training-only reduction; this is not the historical richer descriptor pipeline. Potency strata are retrospective, not a routing rule.",
+      "design": "Learning-curve crossing communicates the budget-dependent ordering; a separate potency panel shows the reversal that the overall score conceals. Explicit axis names keep mean-task and pooled metrics distinct.",
+      "sources": [
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_followup_20260906/final_analysis/task_means.csv",
+          "sha256": "ac9cec051c656e05504b8669318fc942a8685ed20b746cbddc316e13855dc35b"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_followup_20260906/final_analysis/strata.csv",
+          "sha256": "2ed493beed89e5a02e30bd0a7e84b2bc9283e5c4ab7d6a3c86a9a5fda5b5e9df"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_low_data_followup/BASELINES.md",
+          "sha256": "8932c1953a09b309b2bac0123bd38e41cd0e21f60f4faefef083459ede9019ac"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_low_data_followup/RESULTS.md",
+          "sha256": "d2cfc6ff45c2283e37166e8b171656d674c595f37afae40626422b0a4830a413"
+        }
+      ],
+      "plotted_rows": 14,
+      "svg": "assets/experiment-summaries/descriptor-followup.svg",
+      "png": "assets/experiment-summaries/descriptor-followup.png",
+      "data": "assets/experiment-summaries/descriptor-followup.csv"
+    },
+    {
+      "slug": "strict-followup",
+      "message": "Neighbor purging barely moves overall error, but the most novel strict-test predictions remain harder.",
+      "caption": "Retrospective development cohort of 3,344 compounds; each mean-task point equally averages five outer folds \u00d7 ten paired draws (50 tasks), not a pooled weighted score. Neural predictions average three seeds before scoring; repeated draws are dependent. No inferential bands are drawn. Weighted MAE uses 1/max(assay SE, 0.10); lower is better. Budgets include 80% FIT/inner selection and 20% CAL labels. N500 = 400 FIT + 100 CAL. Strict pools exclude every candidate with Morgan similarity \u22650.35 to any test compound; test identities are unchanged, training draws can change. Left: mean-task scores. Right: strict pooled within-stratum scores across ten dependent draws. Similarity <0.20 contains 906 prediction rows, 257 unique compounds and 1.93% of weight; 0.20\u2013<0.35 contains 32,534 rows, 3,319 unique compounds and 98.07% of weight. Stratum membership varies by FIT draw, so unique-compound counts overlap. The shared numerical y range supports comparison but the aggregation differs explicitly between panels; novelty results are descriptive, not prospective generalization guarantees.",
+      "design": "A flat paired split comparison contrasts with the steep novelty-stratum comparison on the same numerical scale. Three models show that the pattern is not peculiar to one readout; all text is axis, legend or panel identification.",
+      "sources": [
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_followup_20260906/final_analysis/task_means.csv",
+          "sha256": "ac9cec051c656e05504b8669318fc942a8685ed20b746cbddc316e13855dc35b"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_followup_20260906/final_analysis/strata.csv",
+          "sha256": "2ed493beed89e5a02e30bd0a7e84b2bc9283e5c4ab7d6a3c86a9a5fda5b5e9df"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_low_data_followup/STRICT_SPLIT.md",
+          "sha256": "cbbcb8274760c4c14be3166d9a44233abd1ba365ff1b1679c28422a14999179b"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_low_data_followup/RESULTS.md",
+          "sha256": "d2cfc6ff45c2283e37166e8b171656d674c595f37afae40626422b0a4830a413"
+        }
+      ],
+      "plotted_rows": 12,
+      "svg": "assets/experiment-summaries/strict-followup.svg",
+      "png": "assets/experiment-summaries/strict-followup.png",
+      "data": "assets/experiment-summaries/strict-followup.csv"
+    },
+    {
+      "slug": "upstream-comparison",
+      "message": "LoRA adds a small gain; descriptors lead at 500 labels",
+      "caption": "Pooled held-out scores, 3,344 compounds once per method and budget. N100 = 80 FIT + 20 CAL; N500 = 400 FIT + 100 CAL per fold, one draw and seed; five reused strict-chemical development folds, not independent replicates or a fresh holdout. Both neural arms used 40 full-FIT updates with matched optimizer; controls had different tuning procedures. Errors use weights 1/max(reported assay SE, 0.1); lower weighted MAE is better.",
+      "design": "Aligned method dot plots on a shared error scale compare the matched neural gain with practical controls; no bars on a truncated baseline.",
+      "sources": [
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/pooled_metrics.csv",
+          "sha256": "514b0eb1aa4c7d87ec32d6d960b8eafa0f034cb6eb1ec93619551a3f94892b03"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_affinity_comparison/RESULTS.md",
+          "sha256": "b27df4dd305ebdac8d0fee7442e78c7025fdc82e620f169db6217b89d27489cd"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/scripts/experiment_summary_figures/later.py",
+          "sha256": "643da076fa2c7f8cf378e6b7877d0a4a7bb3efe9ad8387016b266cf23bd39dab"
+        }
+      ],
+      "plotted_rows": 8,
+      "svg": "assets/experiment-summaries/upstream-comparison.svg",
+      "png": "assets/experiment-summaries/upstream-comparison.png",
+      "data": "assets/experiment-summaries/upstream-comparison.csv"
+    },
+    {
+      "slug": "geometry",
+      "message": "Smaller compounds tend to move more under adaptation",
+      "caption": "All 3,344 development compounds, one saved N500 head-plus-LoRA prediction each. N500 = 400 FIT + 100 CAL per fold, one draw and seed; five reused strict-chemical development folds, not independent replicates or a fresh holdout. Unweighted absolute movement |LoRA \u2212 native| is not error reduction. Native is the released IC50-equivalent scalar conversion, not measured cellular potency. Full MW and movement ranges retained; size association is descriptive, not a causal mechanism.",
+      "design": "A full-cohort continuous MW-versus-movement scatter exposes the size association without thresholds, regression lines, or selecting only successful corrections.",
+      "sources": [
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/merged_compounds.csv",
+          "sha256": "b436821b40e868e2222ed79646817eff24518fd35cbf99d756ec4986a9938ba9"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_affinity_comparison/RESULTS.md",
+          "sha256": "b27df4dd305ebdac8d0fee7442e78c7025fdc82e620f169db6217b89d27489cd"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/scripts/experiment_summary_figures/later.py",
+          "sha256": "643da076fa2c7f8cf378e6b7877d0a4a7bb3efe9ad8387016b266cf23bd39dab"
+        }
+      ],
+      "plotted_rows": 3344,
+      "svg": "assets/experiment-summaries/geometry.svg",
+      "png": "assets/experiment-summaries/geometry.png",
+      "data": "assets/experiment-summaries/geometry.csv"
+    },
+    {
+      "slug": "mw-controls",
+      "message": "A scalar interaction beats LoRA on small compounds\u2014not larger ones",
+      "caption": "Pooled N500 held-out scores: 237 compounds below 215 Da and 3,107 above; none exactly 215 Da. N500 = 400 FIT + 100 CAL per fold, one draw and seed; five reused strict-chemical development folds, not independent replicates or a fresh holdout. Score+MW has three fitted coefficients; interaction adds a fourth. Controls used FIT-only weighted least squares, not the neural objective; the native reference is unchanged. Errors use weights 1/max(reported assay SE, 0.1); lower weighted MAE is better. Subgroup correction does not imply a biological mechanism.",
+      "design": "Two molecular-size strata on identical error scales show both the simple-control success and its limit; direct method labels avoid a legend.",
+      "sources": [
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/reports/architecture/results/mw-controls/metrics.csv",
+          "sha256": "27753828d5c761df9ac498eb895732b579f01dea01a9fc07e52347e786f086b1"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_mw_controls/README.md",
+          "sha256": "3d3212872b106e9284f56ac1edc45ed43c5bdc5533fd02e28bcdcb8f36cf19be"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/scripts/experiment_summary_figures/later.py",
+          "sha256": "643da076fa2c7f8cf378e6b7877d0a4a7bb3efe9ad8387016b266cf23bd39dab"
+        }
+      ],
+      "plotted_rows": 8,
+      "svg": "assets/experiment-summaries/mw-controls.svg",
+      "png": "assets/experiment-summaries/mw-controls.png",
+      "data": "assets/experiment-summaries/mw-controls.csv"
+    },
+    {
+      "slug": "hybrid-pilot",
+      "message": "The pilot blend helps higher potency, but hurts lower potency",
+      "caption": "One preselected reused outer fold (fold 0), 669 compounds: 476 at pEC50 \u22654 and 193 below 4. N500 = 400 FIT + 100 CAL; CAL outcomes unused. Frozen-vector ridge receives a FIT-inner-OOF-selected mixture weight of approximately 0.3983; this is not LoRA. Errors use weights 1/max(reported assay SE, 0.1); lower weighted MAE is better. Group rows are within-stratum scores, not contributions to the total; the higher-potency group carries 83.42% of evaluation weight. Exploratory pilot, not independent confirmation.",
+      "design": "Paired dots show descriptor-to-blend direction separately for pooled and potency-stratum errors without confusing within-stratum error with weighted contribution.",
+      "sources": [
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/descriptor_nesso_blend_20260908/test_predictions.csv",
+          "sha256": "7b7538981e9fc013e89b2512564e7e505279b4d054abf93c9d26c8c82a528ccb"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/descriptor_nesso_blend_20260908/metrics.json",
+          "sha256": "9054462ecfacc74a7938ad1290cf3135c363ee2cab15de6468ed8f9ab1ed5153"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_descriptor_nesso_blend/README.md",
+          "sha256": "fa5dd4c5c74f7b235ddb19127206275e4eea32f9198d0d42925569a6ecbba94a"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/scripts/experiment_summary_figures/later.py",
+          "sha256": "643da076fa2c7f8cf378e6b7877d0a4a7bb3efe9ad8387016b266cf23bd39dab"
+        }
+      ],
+      "plotted_rows": 6,
+      "svg": "assets/experiment-summaries/hybrid-pilot.svg",
+      "png": "assets/experiment-summaries/hybrid-pilot.png",
+      "data": "assets/experiment-summaries/hybrid-pilot.csv"
+    },
+    {
+      "slug": "hybrid-allfolds",
+      "message": "Every fold gains overall\u2014and pays a lower-potency penalty",
+      "caption": "Paired within-fold weighted-MAE differences for the same held-out compounds: fold totals 669/669/669/668/669; 3,344 unique compounds overall, 1,036 below pEC50 4. N500 = 400 FIT + 100 CAL per fold, one draw and seed; five reused strict-chemical development folds, not independent replicates or a fresh holdout. Fold 0 reuses the inspected pilot byte-identically; folds 1\u20134 apply the locked procedure, selecting their own FIT-only blend weights. Errors use weights 1/max(reported assay SE, 0.1); lower weighted MAE is better. Below-4 compounds carry 16.4% of pooled weight; this is not uniform improvement or retraining-variability evidence.",
+      "design": "Aligned fold-level difference dots share a zero and scale, making consistent aggregate gains and consistent lower-potency losses directly visible without treating folds as independent confidence intervals.",
+      "sources": [
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/descriptor_nesso_blend_allfolds_20260908/all_test_predictions.csv",
+          "sha256": "e77097e4d26dc789630b88e84db9160636c827929122b56503e2c28e79083bae"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/descriptor_nesso_blend_allfolds_20260908/metrics.json",
+          "sha256": "a6350809c4b5fde21ceb2e41fccdac422afe29b265cdd124d90889e2cc2f40c4"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_descriptor_nesso_blend_allfolds/README.md",
+          "sha256": "5c409baacbda466398d728c7b3c9260b14c26a8a9ddff114076e76078c99e797"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/scripts/experiment_summary_figures/later.py",
+          "sha256": "643da076fa2c7f8cf378e6b7877d0a4a7bb3efe9ad8387016b266cf23bd39dab"
+        }
+      ],
+      "plotted_rows": 10,
+      "svg": "assets/experiment-summaries/hybrid-allfolds.svg",
+      "png": "assets/experiment-summaries/hybrid-allfolds.png",
+      "data": "assets/experiment-summaries/hybrid-allfolds.csv"
+    },
+    {
+      "slug": "cyp-transfer",
+      "message": "MW helps two CYP assays; the interaction is not a general gain",
+      "caption": "Primary five-fold Butina pooled same-row direct-inhibition evaluation, not TDI: CYP1A2/2C9/2D6/3A4 n=1,412/1,285/1,493/2,335 (6,525 compound\u2013endpoint observations, 4,905 unique compounds). Equal-weight OLS and MAE: supplied std/CI are not justified sampling SE, so no PXR uncertainty floor. Left: additive minus fitted-score-only; right: interaction minus additive. Whiskers are saved 95% paired whole-group bootstrap intervals (2,000 draws, seed 42), conditional on saved fits, no retraining uncertainty or multiplicity adjustment. Reused development splits, no fixed PXR N500 budget.",
+      "design": "Two aligned contrast panels retain all four endpoint identities and interval uncertainty; the zero line distinguishes additional information from general interaction benefit without overlaying seven methods.",
+      "sources": [
+        {
+          "path": "/home/dan/projects/ADMET-CYP/experiments/20260908_CYP-Nesso-MW-case-study/artifacts/contrasts.csv",
+          "sha256": "c66dbc8acff70f2d8363df3a08fa32a5bea396a4602b51a1d5ec79d54d2f7314"
+        },
+        {
+          "path": "/home/dan/projects/ADMET-CYP/experiments/20260908_CYP-Nesso-MW-case-study/README.md",
+          "sha256": "ff16f681cfda0b086e559224980a185ee0c5c9d8499518b72b75bfe7508a63d8"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/scripts/experiment_summary_figures/later.py",
+          "sha256": "643da076fa2c7f8cf378e6b7877d0a4a7bb3efe9ad8387016b266cf23bd39dab"
+        }
+      ],
+      "plotted_rows": 8,
+      "svg": "assets/experiment-summaries/cyp-transfer.svg",
+      "png": "assets/experiment-summaries/cyp-transfer.png",
+      "data": "assets/experiment-summaries/cyp-transfer.csv"
+    },
+    {
+      "slug": "efficacy-uncertainty",
+      "message": "Small compounds have higher uncertainty, not lower normalized efficacy",
+      "caption": "Unweighted empirical cumulative distributions for all 3,344 saved development IDs: 237 below 215 Da and 3,107 at least 215 Da; no missing values or Emax refiltering. Each compound appears once in each panel; each stratum has its own denominator. Normalized Emax uses a logarithmic x-axis and retains values above one and the full tail. Raw baseline-relative Emax is a different scale and is lower in small compounds. Higher reported SE describes less precise fitted potency, not a demonstrated biological cause; dose-response curves and the normalization denominator are unavailable. No model fit or inference.",
+      "design": "Full empirical distributions show the uncertainty shift alongside normalized efficacy without smoothing, box plots, median overlays, or truncating the long efficacy tail.",
+      "sources": [
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/merged_compounds.csv",
+          "sha256": "b436821b40e868e2222ed79646817eff24518fd35cbf99d756ec4986a9938ba9"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_PXR-MW-efficacy-diagnostic/README.md",
+          "sha256": "63e2e78841dbbe84fe96a155d65ca29110ba86a7277ddb0d1f4b78b72a7e6250"
+        },
+        {
+          "path": "/home/dan/projects/nesso-finetune/PXR/scripts/experiment_summary_figures/later.py",
+          "sha256": "643da076fa2c7f8cf378e6b7877d0a4a7bb3efe9ad8387016b266cf23bd39dab"
+        }
+      ],
+      "plotted_rows": 6688,
+      "svg": "assets/experiment-summaries/efficacy-uncertainty.svg",
+      "png": "assets/experiment-summaries/efficacy-uncertainty.png",
+      "data": "assets/experiment-summaries/efficacy-uncertainty.csv"
+    }
+  ]
+}

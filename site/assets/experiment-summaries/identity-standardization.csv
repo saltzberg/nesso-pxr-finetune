@@ -1,0 +1,5 @@
+dataset,model,n,source_path,source_row,metric,value,policy
+standardized_nested_development,mean384_ridge,3344.0,reports/transfer_ablation/cpu_followups/experiment_b_standardization/standardized_split_metrics.csv,0,mae,0.6327893414750589,1
+standardized_nested_development,2d_lightgbm,3344.0,reports/transfer_ablation/cpu_followups/experiment_b_standardization/standardized_split_metrics.csv,1,mae,0.5159594459141478,1
+historical_nested_development,mean384_ridge,3344.0,reports/transfer_ablation/cpu_followups/experiment_b_standardization/standardized_split_metrics.csv,4,mae,0.632789341475056,0
+historical_nested_development,2d_lightgbm,3344.0,reports/transfer_ablation/cpu_followups/experiment_b_standardization/standardized_split_metrics.csv,5,mae,0.5159594459141478,0

@@ -1,0 +1,13 @@
+{
+  "adaptation_arithmetic": "exact",
+  "adaptation_rows": 6688,
+  "analyzer_byte_identical_replay": true,
+  "association_rows": 4644,
+  "independent_qr_partial_spearman": -0.19371986891264603,
+  "independent_spearman": -0.31490397784609336,
+  "output_hashes_verified": 9,
+  "pc_orthogonality_and_variance": "PASS",
+  "status": "PASS",
+  "unique_compounds": 3344,
+  "verifier_sha256": "6532e0ebf1148ad283448af739a37913a549eafdfcf7b2656b6a0d817e954c6f"
+}

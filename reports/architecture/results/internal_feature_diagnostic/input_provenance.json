@@ -1,0 +1,21 @@
+{
+  "cache_binding": "c4ee247a465e65d7c5070a3a166e5282f68621bba0c5c85be359fb2b495c8cb7",
+  "cache_path": "/nvme1/dan/nesso-finetune/affinity_comparison_20260906/cache_v1",
+  "feature_definition": "Concatenation of affinity_module.native_output.affinity_repr (384) then affinity_module2 (384); not scalar_features and not mean-pooled across members.",
+  "input_sha256": {
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/analysis/affinity_comparison_20260907/mover_chemistry_all.csv": "c00594ed50696d76fec796253a1c6e61123ae699d2650bcc9a90bc9b4fa74349",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/analysis/affinity_comparison_20260907/proximity_all.csv": "4991a9a492011603ae495cf0862a2a6fb4cb0dc5a2f3e1610130592fe191ab8d",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/affinity_comparison_20260906/controls_v1/controls_bindings.json": "2880fb7c82aff9cb99dfd5ffd263f8881cf7b9b3521a57ea97af5e62cef4ba40",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/affinity_comparison_20260906/controls_v1/fresh_features/features.npz": "bed7f17aa7f01fc275be2b66016020addbc73fc2442e542078b362342f85f8e8",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/affinity_comparison_20260906/controls_v1/fresh_features/identities.csv": "b40a5f3f5a647dfb80a2d069223e1f50d1a2099adf6f3baf0658dbc8c648addd",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/affinity_comparison_20260906/controls_v1/fresh_features/manifest.json": "27192e5e3e87e4e40d940320c3f8e82eada853a1de5af1af625a9aad8d51eb3f",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/affinity_comparison_20260906/controls_v1/fresh_features/native_points.npy": "91e450a02a685e097f06c16c354c7d5fbc9e8513ca731b763756aa5353496cfa",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/prepared/inputs.csv": "bf6d233b1bf1ba6ef430151abcb74d607bbe42eee764c3438a73bbf1c70b8151",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_followup_20260906/strict_split/identities.csv": "7cea543e65737dbb3b6c20f1c937f7c0e057878def574e5ee155d6efd8ffa8ae",
+    "/home/dan/projects/nesso-finetune/PXR/data/published/modeling_manifest.csv": "b643e4f493cceaabc90355e00cef7c7476878296be8425bfde156a9dbb9d1c5d",
+    "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_affinity_comparison/code/controls.py": "a4b167b2ffdecd3bf799e8f034ced7fb283d7a041e25570ee00358468790ba42",
+    "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_affinity_comparison/code/train.py": "4b313035baf74f84792b5064dc077d9891a4ffb86a97956c69e9486834eeb1ad",
+    "/nvme1/dan/nesso-finetune/affinity_comparison_20260906/cache_v1/stage/manifest.json": "754eec03e0d8e478fc63df5cd1c608b3e4abd3f155aca0eb77c8b1a645a6125b"
+  },
+  "script_sha256": "ebf30ed5bbbff585f57d58dad5e6e1564d79f7ed1131f344d0d1022e279a04fc"
+}

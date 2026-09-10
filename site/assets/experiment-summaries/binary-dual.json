@@ -1,0 +1,20 @@
+{
+  "slug": "binary-dual",
+  "message": "Using both branches helps scalar calibration, but dual-head adaptation does not improve consistently across cohorts.",
+  "caption": "Raw unweighted MAE, lower is better. Development uses 3,344 chemical-family outer-fold predictions; public challenge uses 513 retrospective public-label compounds. Calibration and adapters fitted on development only. Binary outputs predict binding, not cellular activation; calibrations here target functional pEC50. The challenge LightGBM is the established augmented/offset comparator, not the exact nested-development estimator.",
+  "design": "Identical method rows and shared error limits make the small development dual-head advantage and reversed challenge ordering visible, while retaining the scalar-calibration comparison.",
+  "sources": [
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/binary_head_reanalysis/regression_metrics.csv",
+      "sha256": "b5d6f5ebb66c4052ad41dfb96dab94e3da4086f77904742ff91fd5af220cbc99"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/binary_head_reanalysis/REPORT.md",
+      "sha256": "1736c2d227e89a6421404503ede33d5260b89a7b1a5e665cd4b8868b36f257a6"
+    }
+  ],
+  "plotted_rows": 10,
+  "svg": "assets/experiment-summaries/binary-dual.svg",
+  "png": "assets/experiment-summaries/binary-dual.png",
+  "data": "assets/experiment-summaries/binary-dual.csv"
+}

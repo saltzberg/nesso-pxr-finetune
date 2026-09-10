@@ -1,0 +1,120 @@
+INDEPENDENT SIZE/CHARGE REVIEW
+Numerical checks passed; scientific attribution remains limited.
+
+{
+  "formula_max_abs_difference": 0.0,
+  "duplicate_keys": 0,
+  "finite_numeric_inputs": true,
+  "fitted_arm_matches": true,
+  "strata_flags_match": true,
+  "strata_max_abs_difference": 0.0,
+  "correlation_max_abs_difference": 1.1102230246251565e-16
+}
+
+Overall recomputed summaries
+ budget         method    n  improved  worse  unchanged  mean_error_delta  weighted_error_delta
+    100      head_only 3344      2169   1175          0         -0.123458             -0.037805
+    100 head_plus_lora 3344      2142   1202          0         -0.150615             -0.044120
+    500      head_only 3344      2258   1086          0         -0.120903             -0.049969
+    500 head_plus_lora 3344      2269   1075          0         -0.157589             -0.066209
+
+All subgroup summaries (negative error delta = improvement)
+ budget         method  small  charged  low_potency    n  median_MW  median_movement  mean_error_delta  weighted_error_delta  improved  worse  unchanged
+    100      head_only  False    False        False 2037    349.452         0.206411         -0.003546              0.023439      1029   1008          0
+    100      head_only  False    False         True  568    338.413         0.271726         -0.291779             -0.287761       543     25          0
+    100      head_only  False     True        False  269    352.862         0.194097         -0.007250              0.018959       147    122          0
+    100      head_only  False     True         True  274    306.008         0.317446         -0.325718             -0.312707       257     17          0
+    100      head_only   True    False         True   58    153.181         0.720026         -0.658183             -0.582808        56      2          0
+    100      head_only   True     True        False    2    162.728         0.600976         -0.500798             -0.562496         2      0          0
+    100      head_only   True     True         True  136    163.734         0.744991         -0.805274             -0.777721       135      1          0
+    100 head_plus_lora  False    False        False 2037    349.452         0.207425          0.006015              0.030673      1007   1030          0
+    100 head_plus_lora  False    False         True  568    338.413         0.359352         -0.379758             -0.372666       543     25          0
+    100 head_plus_lora  False     True        False  269    352.862         0.356261          0.048072              0.089113       129    140          0
+    100 head_plus_lora  False     True         True  274    306.008         0.472015         -0.481696             -0.472475       270      4          0
+    100 head_plus_lora   True    False         True   58    153.181         1.043463         -0.836123             -0.690108        56      2          0
+    100 head_plus_lora   True     True        False    2    162.728         0.973305         -0.286870             -0.356670         2      0          0
+    100 head_plus_lora   True     True         True  136    163.734         0.996472         -0.971197             -0.933272       135      1          0
+    500      head_only  False    False        False 2037    349.452         0.166178         -0.028390             -0.004116      1078    959          0
+    500      head_only  False    False         True  568    338.413         0.221499         -0.257465             -0.248365       568      0          0
+    500      head_only  False     True        False  269    352.862         0.199561         -0.009810              0.017904       144    125          0
+    500      head_only  False     True         True  274    306.008         0.262436         -0.297026             -0.284816       274      0          0
+    500      head_only   True    False         True   58    153.181         0.426748         -0.431621             -0.365825        56      2          0
+    500      head_only   True     True        False    2    162.728         0.557253         -0.557253             -0.649797         2      0          0
+    500      head_only   True     True         True  136    163.734         0.522205         -0.662200             -0.639696       136      0          0
+    500 head_plus_lora  False    False        False 2037    349.452         0.162869         -0.028643             -0.007373      1106    931          0
+    500 head_plus_lora  False    False         True  568    338.413         0.327085         -0.357017             -0.343247       564      4          0
+    500 head_plus_lora  False     True        False  269    352.862         0.332778          0.032947              0.076848       133    136          0
+    500 head_plus_lora  False     True         True  274    306.008         0.420235         -0.454945             -0.444000       274      0          0
+    500 head_plus_lora   True    False         True   58    153.181         0.700094         -0.647262             -0.546244        55      3          0
+    500 head_plus_lora   True     True        False    2    162.728         0.887213         -0.372962             -0.390513         2      0          0
+    500 head_plus_lora   True     True         True  136    163.734         0.761227         -0.821811             -0.767473       135      1          0
+
+Unique-compound coverage including empty cell
+ small  charged  low_potency    n
+ False    False        False 2037
+ False    False         True  568
+ False     True        False  269
+ False     True         True  274
+  True    False        False    0
+  True    False         True   58
+  True     True        False    2
+  True     True         True  136
+
+Independently QR-residualized correlations
+ budget         method                        outcome       rho  partial_rho_potency_charge_fold  partial_rho_plus_SE
+    100      head_only              absolute_movement -0.423855                        -0.334653            -0.337593
+    100      head_only difference_distance_from_truth  0.356568                         0.141893             0.145194
+    100 head_plus_lora              absolute_movement -0.429306                        -0.313179            -0.317459
+    100 head_plus_lora difference_distance_from_truth  0.343843                         0.114207             0.119115
+    500      head_only              absolute_movement -0.305659                        -0.207813            -0.206498
+    500      head_only difference_distance_from_truth  0.305322                         0.072337             0.074285
+    500 head_plus_lora              absolute_movement -0.313742                        -0.162512            -0.162826
+    500 head_plus_lora difference_distance_from_truth  0.304172                         0.050131             0.053768
+
+Scientific interpretation
+- The X coordinate is exactly abs(fitted-truth)-abs(native-truth). Positive means worse, negative means improved, zero means equal absolute error (not necessarily unchanged prediction). This is not signed prediction bias or absolute prediction movement.
+- Within these saved predictions, MW is negatively associated with absolute movement and positively associated with error change. Larger MW therefore tends toward less improvement/more worsening, not necessarily a positive error change for every large compound.
+- For error change, raw MW rank correlations 0.304-0.357 attenuate to 0.050-0.142 after rank-potency, charge-sign and fold residualization. Adding rank assay SE changes these only slightly (0.054-0.145). Movement associations remain negative after adjustment (-0.335 to -0.163).
+- Sparse overlap prevents clean attribution to MW rather than charge/potency: among 196 compounds below 200 Da, 194 have pEC50<4; the two with pEC50>=4 are charged. There are no small net-neutral compounds at pEC50>=4. Among small low-potency compounds, charged n=136 and net-neutral n=58.
+- Within the low-potency strata both small charge groups have more negative mean error changes than their >=200 Da counterparts for all four method/budget combinations. This descriptive within-bin contrast does not control continuous potency, chemistry, charge magnitude, or interactions.
+- Partial rank correlation here is Pearson correlation between residualized average ranks, with additive controls; it is not proof of a causal or fully independent MW effect. Missing overlap cannot be restored by residualization. No uncertainty intervals or significance claims were established.
+- Prepared net formal charge is not experimental ionization at assay pH; net-neutral can include zwitterionic species. pEC50 is measured functional potency, not necessarily binding affinity.
+- The 13376 rows are four repeated views of 3344 compounds, not 13376 independent compounds. Do not pool them for independent-observation inference. The analysis is retrospective, uses truth as a control, and does not establish a deployable correction.
+- Weighted and unweighted summaries differ and some subgroup means change sign; specify which estimand is quoted. The threshold MW<200 and potency split <4 are descriptive bins, not validated mechanistic cutoffs.
+
+Figure design review
+- Exact requested X-axis wording is retained, with signed error change on X and molecular weight on Y. Positive=worse is correct in the formula and verification manifest, but not explained by the axis text alone; put the formula and negative=better/positive=worse once in an adjacent caption or report text, without altering the literal axis label.
+- Shared padded limits, square panels, a restrained zero reference, single-color direct points, no regression lines, and explicit stratum counts support honest comparisons. Full sets and stratified panels preserve all rows.
+- The four charge/potency facets expose overlap limitations, but the absent small net-neutral higher-potency subgroup is implicit; retain an explicit zero-count coverage table in the sidecar/report. Current strata CSV omits that empty cell rather than miscounting it.
+- Tiny translucent points may obscure density and the rare two-compound small/higher-potency subgroup; use the coverage table for interpretation, not apparent point density. Do not crop MW extremes without disclosing omitted points.
+- Rendered generator in memory using its original plotting body and a read-only save callback; only its final manifest-write AST statement was suppressed in memory. Verified axes, plotted totals, point limits and visible text canvas bounds. No exported image or browser visual inspection was performed; host save callback styling remains outside this review.
+
+Figure execution checks
+[
+  {
+    "name": "error-change-versus-size",
+    "panels": 4,
+    "plotted_points": 13376,
+    "x_axis_labels_exact": true,
+    "points_within_limits": true,
+    "text_outside_canvas": []
+  },
+  {
+    "name": "error-change-stratified-n100",
+    "panels": 8,
+    "plotted_points": 6688,
+    "x_axis_labels_exact": true,
+    "points_within_limits": true,
+    "text_outside_canvas": []
+  },
+  {
+    "name": "error-change-stratified-n500",
+    "panels": 8,
+    "plotted_points": 6688,
+    "x_axis_labels_exact": true,
+    "points_within_limits": true,
+    "text_outside_canvas": []
+  }
+]
+
+No predictive fits or GPU work. Only the two requested review files were written.

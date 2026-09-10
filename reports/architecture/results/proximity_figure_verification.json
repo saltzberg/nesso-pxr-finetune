@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "panels": 4,
+  "rows_per_panel": 3344,
+  "highlighted_per_panel": 20,
+  "total_marks_before_highlight_overlay": 13376,
+  "xlim": [
+    -0.006,
+    0.36
+  ],
+  "ylim": [
+    -0.07,
+    4.6419772529602055
+  ],
+  "no_clipping": true,
+  "input_sha256": {
+    "proximity_all.csv": "4991a9a492011603ae495cf0862a2a6fb4cb0dc5a2f3e1610130592fe191ab8d",
+    "proximity_top20.csv": "5b59c62fc51250a7f14768cc89e2f7cfceeec02b2d64a6f273f8b8fe9ccb9804"
+  },
+  "code_sha256": "d8bf508b6b96042b5f16ca31ee12b874c6411c736b6aba442dcb05f253fbba91"
+}

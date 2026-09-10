@@ -1,0 +1,202 @@
+{
+  "schema_version": "1.1.0",
+  "experiment_id": "low_data_followup_20260906_baselines",
+  "question": "How should pretrained Nesso-1 be adapted with 25\u2013500 PXR cellular-activation labels?",
+  "status": "frozen_before_new_model_outcomes",
+  "data_scope": "development_only_3344_retrospective_hypothesis_generating",
+  "manifest": "data/published/modeling_manifest.csv",
+  "features": "data/published/nesso_features.safetensors",
+  "checkpoint": "models/nesso-1/v1.0.0/model.safetensors",
+  "run_dir": "artifacts/experiments/low_data_followup_20260906/baselines",
+  "adapter_pilot_dir": "artifacts/experiments/low_data_20260905/adapter_pilot",
+  "split_amendment": "Structure-only sensitivity selected Butina0.35 before outcome comparisons; original0.50 protocol and prepared artifacts retained separately. No series-extrapolation guarantee.",
+  "report_dir": "site/low-data",
+  "se_floor": 0.1,
+  "se_floor_rationale": "Fixed before new outcomes from the existing protocol floor grid; engineering cap, not independently measured assay precision.",
+  "score_sensitivity_floors": [
+    0.05,
+    0.2
+  ],
+  "weight_definition": "1 / max(assay_standard_error, se_floor)",
+  "primary_metric": "weighted_mae",
+  "curation_weight_in_primary": false,
+  "invalid_se_policy": "fail",
+  "budgets": [
+    25,
+    50,
+    100,
+    250,
+    500
+  ],
+  "include_full_reference": true,
+  "split_policies": [
+    "random",
+    "chemical_cluster"
+  ],
+  "n_folds": 5,
+  "draws": 10,
+  "split_seed": 20260905,
+  "subset_seed": 1701,
+  "morgan_radius": 2,
+  "fingerprint_bits": 2048,
+  "chemical_similarity_cutoff": 0.35,
+  "chemical_cluster_method": "butina",
+  "calibration_fraction": 0.2,
+  "interval_coverages": [
+    0.8,
+    0.9
+  ],
+  "inner_folds": 3,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "threads": 2,
+  "epochs": 40,
+  "batch_size": 64,
+  "grids": {
+    "ridge_alpha": [
+      1.0,
+      100.0,
+      10000.0
+    ],
+    "neural_learning_rate": [
+      0.0001,
+      0.001
+    ],
+    "lightgbm_n_estimators": [
+      50,
+      150
+    ],
+    "knn_neighbors": [
+      1,
+      5
+    ]
+  },
+  "methods": [
+    "weighted_median",
+    "native_affine",
+    "descriptor_lightgbm_rdkit_mordred"
+  ],
+  "neural_objective": "assay-weighted smooth L1 in pEC50 coordinates",
+  "neural_huber_beta": 0.5,
+  "head_lora_rank": 4,
+  "model_selection": "bounded inner CV entirely inside fit subset; calibration/test labels withheld",
+  "report_interval_guarantee": "No distribution-free coverage guarantee asserted for chemical shift",
+  "external_publication_authorized": false,
+  "historical_singleton_compound_percent": 83.76196172248804,
+  "practical_improvement_margin": null,
+  "frozen_at": "2026-09-06T13:57:26.414712+00:00",
+  "descriptor_feature_identity": "f61e16ecc3ebc618496dab63107892b41b56d29942e33853afa6ea8c6581f826",
+  "baseline_recipe": {
+    "identity": "canonical_rdkit2d_mordred2d_morgan_trainonly_reduction_lgbm_v1",
+    "variance_threshold": 0.01,
+    "correlation_threshold": 0.9,
+    "top_k": 1000,
+    "gain_selector_estimators": 150,
+    "gain_selector_leaves": 63,
+    "gain_selector_min_child_samples": 5,
+    "grid": [
+      {
+        "num_leaves": 7,
+        "min_child_samples": 5,
+        "n_estimators": 50
+      },
+      {
+        "num_leaves": 7,
+        "min_child_samples": 5,
+        "n_estimators": 150
+      },
+      {
+        "num_leaves": 7,
+        "min_child_samples": 5,
+        "n_estimators": 500
+      },
+      {
+        "num_leaves": 63,
+        "min_child_samples": 20,
+        "n_estimators": 50
+      },
+      {
+        "num_leaves": 63,
+        "min_child_samples": 20,
+        "n_estimators": 150
+      },
+      {
+        "num_leaves": 63,
+        "min_child_samples": 20,
+        "n_estimators": 500
+      }
+    ],
+    "learning_rate": 0.03,
+    "reg_lambda": 5.0,
+    "objective": "regression",
+    "affine_slope_bounds": [
+      0.0,
+      2.0
+    ]
+  },
+  "runtime_cap_seconds": null,
+  "original_prepared_dir": "artifacts/experiments/low_data_20260905_cut035_run2/prepared",
+  "descriptor_comparator_name": "canonical-SMILES RDKit2D + Mordred2D + Morgan, training-only reduced LightGBM",
+  "historical_reconstruction": false,
+  "historical_unavailable": "Unreduced all_ligands feature_registry.csv and source tables; exact prepared-top lineage/order/settings. Published reduced matrix cannot invert fitted column removal.",
+  "preprocessing": "finite-value mean imputation; nanvar ddof0 >.01; abs(mean-imputed standardized cross-product/n)>.90 connected components; representative missingness asc, variance desc, raw-index asc; 150-round gain top1000; every operation refit within each inner-training and final-fit subset",
+  "tuning": "six fixed rounds/capacity pairs; pooled inner-OOF inverse-SE weighted MAE; first candidate breaks exact ties; no early stopping or outer-aware selection",
+  "affine": "fit-only inverse-SE weighted squared regression, slope [0,2], unconstrained intercept; zero input variance slope=0; no prediction clipping",
+  "median": "fit-only weighted lower median using inverse max(SE,.10)",
+  "deterministic_seeds": "one actual final fit; arrays repeated for 42/43/44, no stochastic ensemble interpretation",
+  "source_sha256": {
+    "experiments/20260906_low_data_followup/code/baselines.py": "4ab20ace182994cbc9aece4b1ac1ffb1e4e36ae009baad1315ef2528f8b68335",
+    "experiments/20260906_low_data_followup/code/run_baselines.py": "f028081e790b57fa1ee80c22a66a6a1dbd80de7d5a71fbfccceb16dcc73f00c3",
+    "scripts/run_low_data.py": "a8e9ce4d3340819b2b11ed82d8b2e916dc2337ff5d65682ab05f48bd2cf9efb1",
+    "src/nesso_pxr/__init__.py": "fd04e1e7d50085ae4751b56d6f43c6205d2477c450f82252a07b4c15b9217182",
+    "src/nesso_pxr/audit.py": "814099ec295f668da1e5971948fbdf56120e24498db81e4db96ab0428bbc4563",
+    "src/nesso_pxr/binary_head_reanalysis.py": "7092547d0cf75f1a0efec8967fe910829c415495b08a0dd90faf828d1abf32fd",
+    "src/nesso_pxr/chemistry.py": "a956f42c2336a1170e5653a2d0aa55d2923a33cfe364d504c38ef30b0d3ca5d5",
+    "src/nesso_pxr/comparison.py": "f0a8c97a16488a27244b3ed5c1865dacc3e8c37a47b562cc582a66491ce3a91d",
+    "src/nesso_pxr/cpu_followups.py": "bb953bc40dc2222b39908cebe9247daf6e207349fe83fa4c15755cdefead85c2",
+    "src/nesso_pxr/critique_diagnostics.py": "55ee923daa60865560d8d0e04cb96135772d1340e1ae366878eb686da3fdd2a3",
+    "src/nesso_pxr/e0.py": "e318cfa2e2e5f0d1ba96b9dd432613a76971e2920a50325ec3979bd5c5e29a18",
+    "src/nesso_pxr/labels.py": "5e76024bc183720753b1b6a4706d447b352e667c18e6acb8b49b0c532a22f62a",
+    "src/nesso_pxr/low_data_adapter.py": "3d845412f089830d22515cc542ff437c48a9cf15b27dbc905d632aa98d004d5d",
+    "src/nesso_pxr/low_data_contract.py": "dffe4d2912556499ddccb0a0eba3efd1cf2b1e38872040dd262c146207e8d472",
+    "src/nesso_pxr/low_data_models.py": "6f088ab4bcc0778a6144702908b5369fc6e7c2c54a81058f211d4e05a039fd3e",
+    "src/nesso_pxr/low_data_report.py": "bb83fe28f870fa76e9594ff70ed216339aa5b85e0276e057d19fe6765f31e99d",
+    "src/nesso_pxr/pairwise_ablation.py": "491c704ff87e750c8b43158634458a97865a9e4a397999f979cb4cdcfd7c8839",
+    "src/nesso_pxr/protocol.py": "45ba9c645e555ea3dac4e9a20f1a8a7c4723617811c34e0a12779f6291e034d9",
+    "src/nesso_pxr/smoke.py": "954aed550ab0ab7316e5da5ec82f9ffd3841177e682239db6bbe9646692809c9",
+    "src/nesso_pxr/smoke_lightning.py": "844760c97e38d0bc05d799ce23ba29b743d9a739e362871056601589ddbe6b86",
+    "src/nesso_pxr/splits.py": "c1b25f582849becaa28819ed7b4b07ff453419eaa7b796ae0b773911a5743d34",
+    "src/nesso_pxr/train_cached.py": "be3c360eac41bd27606ac9dfb6c25021248758cf2ac2607bc2b7f061a91d4569",
+    "src/nesso_pxr/transfer_ablation.py": "ba8b85893cbe0100929d67621708557408a2c7419a67dd12dddb540fb2e663fa"
+  },
+  "input_sha256": {
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/prepared/assignments.csv": "0925a3a0eb86b64271d5c41e9a7d9051c79d501685bab15571ad5398180e6acf",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/prepared/coverage_audit.json": "d5530f0e6a26848355d3d63d56fc2a2b44966c88ab064ef245126fbfde638026",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/prepared/features.npz": "9d670ba41050d7070ae1976aa7c5972f43911023190ecd0b5171af9619606688",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/prepared/inputs.csv": "bf6d233b1bf1ba6ef430151abcb74d607bbe42eee764c3438a73bbf1c70b8151",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/prepared/outer_nearest_similarity.csv": "51e78433da8fcc6aa5548a3b8283e6617670bff2cb5fc530ead19a84f9b8c68b",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/prepared/preparation_manifest.json": "ed77920cab96f3c6668c5961c15c07afc94d25fa3a42035838a288ab27a11301",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/prepared/preparation_manifest.sha256": "e20227f6476dfb3b4df3cc52ffafcdbcce0f07385a541b28d85534ec8ad5f3e8",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/prepared/protocol.json": "15aa4329f73cb4e7759c2e7e58f647061e2f6cec6ea23d93c66f1338d1facdc4",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/prepared/split_audit.json": "da7f65da52a83a8ed4af855e04cdabf18f275f38dce818b0aca708f4eb237ff1",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/prepared/subsets.csv": "93167df1c00610d0a68c826f2777ec37f3bc04049358b43cfc35f6e77ecb250d",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_followup_20260906/baselines/features/descriptor_metadata.json": "aadfaddffd1fc7c8ca56de0f6b4de21a69f79b85981d4c0831a10f494e135e65",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_followup_20260906/baselines/features/descriptors.npz": "d9355b5f53c0577d7eed0001a1eb3b716aaca6101dd72bcc9ffb0964c38de087"
+  },
+  "runtime": {
+    "python": "3.12.0",
+    "packages": {
+      "numpy": "2.1.3",
+      "pandas": "2.3.3",
+      "scipy": "1.17.1",
+      "scikit-learn": "1.8.0",
+      "lightgbm": "4.6.0",
+      "rdkit": "2026.3.2",
+      "mordredcommunity": "2.0.7",
+      "torch": "2.12.0+cu130"
+    }
+  }
+}

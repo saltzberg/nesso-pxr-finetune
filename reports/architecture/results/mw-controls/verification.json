@@ -1,0 +1,303 @@
+{
+  "status": "PASS",
+  "completed_fits": 40,
+  "new_test_rows": 26752,
+  "metrics_rows": 54,
+  "equal215": 0,
+  "source_hashes": {
+    "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_mw_controls/protocol.json": "0d7ce8ef5f61452e3940fd35a9b470650b13f792c52f7c0814270837798ced21",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/cloud/50146714/remote_results/stage/manifest.json": "e69d340c090d25515a8ea462e75bbc6693620705e54cce0bb0e38cbcdc1b8d56",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/affinity_comparison_20260906/controls_v1/fresh_features/manifest.json": "27192e5e3e87e4e40d940320c3f8e82eada853a1de5af1af625a9aad8d51eb3f",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/affinity_comparison_20260906/controls_v1/fresh_features/features.npz": "bed7f17aa7f01fc275be2b66016020addbc73fc2442e542078b362342f85f8e8",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/affinity_comparison_20260906/controls_v1/fresh_features/identities.csv": "b40a5f3f5a647dfb80a2d069223e1f50d1a2099adf6f3baf0658dbc8c648addd",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/affinity_comparison_20260906/controls_v1/fresh_features/native_points.npy": "91e450a02a685e097f06c16c354c7d5fbc9e8513ca731b763756aa5353496cfa",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_20260905_cut035_run2/prepared/inputs.csv": "bf6d233b1bf1ba6ef430151abcb74d607bbe42eee764c3438a73bbf1c70b8151",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/analysis/affinity_comparison_20260907/mover_chemistry_all.csv": "c00594ed50696d76fec796253a1c6e61123ae699d2650bcc9a90bc9b4fa74349",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/analysis/affinity_comparison_20260907/heldout_predictions.csv": "6bafc036a6108265b931f2872ebd7125d42cdd5447b9b85cad69194e545d0f0f",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/analysis/affinity_comparison_20260907/pooled_metrics.csv": "514b0eb1aa4c7d87ec32d6d960b8eafa0f034cb6eb1ec93619551a3f94892b03"
+  },
+  "checks": [
+    {
+      "cell": "n100_fold0_mw",
+      "rank": 2,
+      "condition_number": 1.3096414748769376,
+      "normal_equation_max_error": 2.6645352591003757e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n100_fold0_native",
+      "rank": 2,
+      "condition_number": 1.0999084068289116,
+      "normal_equation_max_error": 2.220446049250313e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n100_fold0_native_mw",
+      "rank": 3,
+      "condition_number": 1.3952879026688751,
+      "normal_equation_max_error": 4.440892098500626e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n100_fold0_native_mw_interaction",
+      "rank": 4,
+      "condition_number": 1.4492166826047044,
+      "normal_equation_max_error": 7.194245199571014e-14,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n100_fold1_mw",
+      "rank": 2,
+      "condition_number": 1.3154136754409904,
+      "normal_equation_max_error": 3.552713678800501e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n100_fold1_native",
+      "rank": 2,
+      "condition_number": 1.1914184288147787,
+      "normal_equation_max_error": 8.881784197001252e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n100_fold1_native_mw",
+      "rank": 3,
+      "condition_number": 1.9158799240791182,
+      "normal_equation_max_error": 1.2434497875801753e-14,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n100_fold1_native_mw_interaction",
+      "rank": 4,
+      "condition_number": 2.1799337226977946,
+      "normal_equation_max_error": 6.128431095930864e-14,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n100_fold2_mw",
+      "rank": 2,
+      "condition_number": 1.1448773706968702,
+      "normal_equation_max_error": 1.7763568394002505e-14,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n100_fold2_native",
+      "rank": 2,
+      "condition_number": 1.1243558872288941,
+      "normal_equation_max_error": 3.9968028886505635e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n100_fold2_native_mw",
+      "rank": 3,
+      "condition_number": 1.3806111273379031,
+      "normal_equation_max_error": 8.881784197001252e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n100_fold2_native_mw_interaction",
+      "rank": 4,
+      "condition_number": 1.590322197587847,
+      "normal_equation_max_error": 7.638334409421077e-14,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n100_fold3_mw",
+      "rank": 2,
+      "condition_number": 1.3545087925677892,
+      "normal_equation_max_error": 2.6645352591003757e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n100_fold3_native",
+      "rank": 2,
+      "condition_number": 1.2013781057838118,
+      "normal_equation_max_error": 8.881784197001252e-16,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n100_fold3_native_mw",
+      "rank": 3,
+      "condition_number": 1.961439567429497,
+      "normal_equation_max_error": 4.440892098500626e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n100_fold3_native_mw_interaction",
+      "rank": 4,
+      "condition_number": 2.1604161120405685,
+      "normal_equation_max_error": 9.769962616701378e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n100_fold4_mw",
+      "rank": 2,
+      "condition_number": 1.4607991756526673,
+      "normal_equation_max_error": 3.552713678800501e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n100_fold4_native",
+      "rank": 2,
+      "condition_number": 1.1314781070067563,
+      "normal_equation_max_error": 7.105427357601002e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n100_fold4_native_mw",
+      "rank": 3,
+      "condition_number": 1.706745627933751,
+      "normal_equation_max_error": 5.329070518200751e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n100_fold4_native_mw_interaction",
+      "rank": 4,
+      "condition_number": 2.3782867322533976,
+      "normal_equation_max_error": 1.9539925233402755e-14,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold0_mw",
+      "rank": 2,
+      "condition_number": 1.1897266850534656,
+      "normal_equation_max_error": 3.552713678800501e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold0_native",
+      "rank": 2,
+      "condition_number": 1.1507061296457748,
+      "normal_equation_max_error": 7.105427357601002e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold0_native_mw",
+      "rank": 3,
+      "condition_number": 1.3721437893815978,
+      "normal_equation_max_error": 7.105427357601002e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold0_native_mw_interaction",
+      "rank": 4,
+      "condition_number": 2.08484931801628,
+      "normal_equation_max_error": 1.687538997430238e-14,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold1_mw",
+      "rank": 2,
+      "condition_number": 1.2708845851735402,
+      "normal_equation_max_error": 1.199040866595169e-14,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold1_native",
+      "rank": 2,
+      "condition_number": 1.1346693703562503,
+      "normal_equation_max_error": 1.0658141036401503e-14,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold1_native_mw",
+      "rank": 3,
+      "condition_number": 1.7034674871194566,
+      "normal_equation_max_error": 9.769962616701378e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold1_native_mw_interaction",
+      "rank": 4,
+      "condition_number": 2.2022152325445523,
+      "normal_equation_max_error": 6.217248937900877e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold2_mw",
+      "rank": 2,
+      "condition_number": 1.2520100695161371,
+      "normal_equation_max_error": 6.217248937900877e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold2_native",
+      "rank": 2,
+      "condition_number": 1.1246472717500373,
+      "normal_equation_max_error": 4.440892098500626e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold2_native_mw",
+      "rank": 3,
+      "condition_number": 1.4429853461892006,
+      "normal_equation_max_error": 6.217248937900877e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold2_native_mw_interaction",
+      "rank": 4,
+      "condition_number": 1.5154519367484844,
+      "normal_equation_max_error": 5.773159728050814e-14,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold3_mw",
+      "rank": 2,
+      "condition_number": 1.241715135088129,
+      "normal_equation_max_error": 8.881784197001252e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold3_native",
+      "rank": 2,
+      "condition_number": 1.1732177999555573,
+      "normal_equation_max_error": 5.329070518200751e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold3_native_mw",
+      "rank": 3,
+      "condition_number": 1.7053828406310143,
+      "normal_equation_max_error": 5.773159728050814e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold3_native_mw_interaction",
+      "rank": 4,
+      "condition_number": 2.6025454674970336,
+      "normal_equation_max_error": 9.325873406851315e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold4_mw",
+      "rank": 2,
+      "condition_number": 1.2453122038707798,
+      "normal_equation_max_error": 1.1546319456101628e-14,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold4_native",
+      "rank": 2,
+      "condition_number": 1.1470178848349555,
+      "normal_equation_max_error": 1.0658141036401503e-14,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold4_native_mw",
+      "rank": 3,
+      "condition_number": 1.540385431428675,
+      "normal_equation_max_error": 9.769962616701378e-15,
+      "serialized_replay_exact": true
+    },
+    {
+      "cell": "n500_fold4_native_mw_interaction",
+      "rank": 4,
+      "condition_number": 2.379811228883164,
+      "normal_equation_max_error": 1.4210854715202004e-14,
+      "serialized_replay_exact": true
+    }
+  ],
+  "reference_reconciliation": "PASS",
+  "code_sha256": "25f7713d2a84181716a49888f89a0d52e4080b4ce5f62f90450cc7f95f9511bb"
+}

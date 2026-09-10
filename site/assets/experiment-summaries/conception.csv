@@ -1,0 +1,5 @@
+dataset,subset,model,metric,value,source_path,source_row,source_metric
+nested_development,all,frozen_nesso,mae,0.914986958019398,reports/model_comparison/metrics.csv,10,estimate
+nested_development,all,affine_frozen_nesso,mae,0.8393458958558808,reports/model_comparison/metrics.csv,19,estimate
+nested_development,all,fine_tuned_nesso,mae,0.6329507983947217,reports/model_comparison/metrics.csv,28,estimate
+nested_development,all,nested_2d_lightgbm,mae,0.5159594459141478,reports/model_comparison/metrics.csv,37,estimate

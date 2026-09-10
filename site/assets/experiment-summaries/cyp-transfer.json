@@ -1,0 +1,24 @@
+{
+  "slug": "cyp-transfer",
+  "message": "MW helps two CYP assays; the interaction is not a general gain",
+  "caption": "Primary five-fold Butina pooled same-row direct-inhibition evaluation, not TDI: CYP1A2/2C9/2D6/3A4 n=1,412/1,285/1,493/2,335 (6,525 compound\u2013endpoint observations, 4,905 unique compounds). Equal-weight OLS and MAE: supplied std/CI are not justified sampling SE, so no PXR uncertainty floor. Left: additive minus fitted-score-only; right: interaction minus additive. Whiskers are saved 95% paired whole-group bootstrap intervals (2,000 draws, seed 42), conditional on saved fits, no retraining uncertainty or multiplicity adjustment. Reused development splits, no fixed PXR N500 budget.",
+  "design": "Two aligned contrast panels retain all four endpoint identities and interval uncertainty; the zero line distinguishes additional information from general interaction benefit without overlaying seven methods.",
+  "sources": [
+    {
+      "path": "/home/dan/projects/ADMET-CYP/experiments/20260908_CYP-Nesso-MW-case-study/artifacts/contrasts.csv",
+      "sha256": "c66dbc8acff70f2d8363df3a08fa32a5bea396a4602b51a1d5ec79d54d2f7314"
+    },
+    {
+      "path": "/home/dan/projects/ADMET-CYP/experiments/20260908_CYP-Nesso-MW-case-study/README.md",
+      "sha256": "ff16f681cfda0b086e559224980a185ee0c5c9d8499518b72b75bfe7508a63d8"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/scripts/experiment_summary_figures/later.py",
+      "sha256": "643da076fa2c7f8cf378e6b7877d0a4a7bb3efe9ad8387016b266cf23bd39dab"
+    }
+  ],
+  "plotted_rows": 8,
+  "svg": "assets/experiment-summaries/cyp-transfer.svg",
+  "png": "assets/experiment-summaries/cyp-transfer.png",
+  "data": "assets/experiment-summaries/cyp-transfer.csv"
+}

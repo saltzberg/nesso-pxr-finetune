@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 
 from nesso_pxr.protocol import sha256_file
@@ -29,23 +30,48 @@ FORBIDDEN = (
 )
 
 
-def test_tracked_text_has_no_machine_specific_paths() -> None:
-    candidates = [
-        REPO_ROOT / "Dockerfile",
-        REPO_ROOT / ".dockerignore",
-        REPO_ROOT / ".gitignore",
-    ]
-    candidates.extend(
-        path
-        for path in REPO_ROOT.rglob("*")
-        if path.is_file()
-        and path.suffix in TEXT_SUFFIXES
-        and ".git" not in path.parts
-        and ".pytest_cache" not in path.parts
-        and ".ruff_cache" not in path.parts
-        and "artifacts" not in path.parts
+def test_source_text_has_no_machine_specific_paths() -> None:
+    # The staged site is an immutable publication artifact and its source map
+    # preserves historical provenance. Enforce portability on executable and
+    # repository-maintained source text instead.
+    immutable_sources = set()
+    for record in json.loads((REPO_ROOT / "site/source-map.json").read_text()):
+        source = REPO_ROOT / record["source_key"]
+        copy = REPO_ROOT / "site" / record["site_path"]
+        if source.is_file() and sha256_file(source) == sha256_file(copy):
+            immutable_sources.add(source.resolve())
+    summary_manifest = json.loads(
+        (REPO_ROOT / "site/assets/experiment-summaries/manifest.json").read_text()
     )
-    for path in candidates:
+    for figure in summary_manifest["figures"]:
+        for record in figure["sources"]:
+            source = Path(record["path"])
+            if source.is_file() and sha256_file(source) == record["sha256"]:
+                immutable_sources.add(source.resolve())
+
+    tracked = subprocess.run(
+        ["git", "ls-files", "-z"],
+        cwd=REPO_ROOT,
+        check=True,
+        capture_output=True,
+    ).stdout.decode().split("\0")
+    candidates = {
+        REPO_ROOT / relative
+        for relative in tracked
+        if relative
+        and not relative.startswith("site/")
+        and not relative.startswith("experiments/")
+        and Path(relative).suffix in TEXT_SUFFIXES
+    }
+    # This checkout intentionally contains untracked active implementation files.
+    # Include executable/test surfaces without sweeping immutable result trees.
+    for root in (REPO_ROOT / "src", REPO_ROOT / "scripts", REPO_ROOT / "tests"):
+        candidates.update(root.rglob("*.py"))
+    candidates.update((REPO_ROOT / "experiments").glob("*/code/*.py"))
+
+    for path in sorted(candidates):
+        if path.resolve() in immutable_sources:
+            continue
         text = path.read_text(encoding="utf-8")
         for forbidden in FORBIDDEN:
             assert forbidden not in text, f"{path} contains {forbidden!r}"

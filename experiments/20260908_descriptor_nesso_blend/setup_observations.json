@@ -1,0 +1,9 @@
+{
+  "phase": "pre-fit source discovery; no scientific fit occurred",
+  "resolved": true,
+  "observations": [
+    "Historical binding initially rejected changed cache.py, controls.py and test_affinity_comparison_controls.py. Exact immutable source snapshots verified. Current controls.py differs only in adding zip strict=True; source-equivalence assertion added and both current helper and original snapshot bound. Cache producer and historical test are not imported or run for feature extraction in this pilot; their original snapshots are retained.",
+    "Fresh native identities.csv has only row_index and record_id, not four columns. Corrected comparison to those exact columns, then separately verified full row_index/record_id/feature_row/canonical_smiles map against producer cache records and strict identities. No source map or input bytes changed.",
+    "64 focused tests passed before fits. SciPy warns that threads=2 is passed through to HiGHS; this explicitly bounds the independent LP solver and is not a fit failure."
+  ]
+}

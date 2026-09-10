@@ -1,0 +1,14 @@
+{
+  "provider_dataset_card.md": {
+    "url": "https://huggingface.co/datasets/openadmet/pxr-challenge-train-test/raw/main/README.md",
+    "sha256": "8c695adef4e113d8a59ae2c20fcfc3a5f30a82fb6bd6cd89a141a531d08995d0"
+  },
+  "provider_assay_blog.html": {
+    "url": "https://openadmet.ghost.io/announcing-the-next-openadmet-blind-challenge-predicting-pxr-induction/",
+    "sha256": "a0a75c0a422efb1128617bd52bdc079140a394e1bcfb6e153c2f5808b82016e6"
+  },
+  "provider_curation_FAQ.txt": {
+    "url": "https://docs.google.com/document/d/14-2EL4Zk8g3NNO7bi33gA3fHz_ef98bBigunJMH3Ui4/export?format=txt",
+    "sha256": "a10ce5fa55a9980db916ce7c3d8b1ceafd75af1a6e9dd0200f3040e499b740b0"
+  }
+}

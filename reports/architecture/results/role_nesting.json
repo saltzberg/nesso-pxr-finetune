@@ -1,0 +1,22 @@
+[
+  {
+    "fold": 0,
+    "small_calibration_becomes_large_fit": 20
+  },
+  {
+    "fold": 1,
+    "small_calibration_becomes_large_fit": 20
+  },
+  {
+    "fold": 2,
+    "small_calibration_becomes_large_fit": 20
+  },
+  {
+    "fold": 3,
+    "small_calibration_becomes_large_fit": 20
+  },
+  {
+    "fold": 4,
+    "small_calibration_becomes_large_fit": 20
+  }
+]

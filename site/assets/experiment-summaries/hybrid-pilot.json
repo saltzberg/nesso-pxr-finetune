@@ -1,0 +1,28 @@
+{
+  "slug": "hybrid-pilot",
+  "message": "The pilot blend helps higher potency, but hurts lower potency",
+  "caption": "One preselected reused outer fold (fold 0), 669 compounds: 476 at pEC50 \u22654 and 193 below 4. N500 = 400 FIT + 100 CAL; CAL outcomes unused. Frozen-vector ridge receives a FIT-inner-OOF-selected mixture weight of approximately 0.3983; this is not LoRA. Errors use weights 1/max(reported assay SE, 0.1); lower weighted MAE is better. Group rows are within-stratum scores, not contributions to the total; the higher-potency group carries 83.42% of evaluation weight. Exploratory pilot, not independent confirmation.",
+  "design": "Paired dots show descriptor-to-blend direction separately for pooled and potency-stratum errors without confusing within-stratum error with weighted contribution.",
+  "sources": [
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/descriptor_nesso_blend_20260908/test_predictions.csv",
+      "sha256": "7b7538981e9fc013e89b2512564e7e505279b4d054abf93c9d26c8c82a528ccb"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/descriptor_nesso_blend_20260908/metrics.json",
+      "sha256": "9054462ecfacc74a7938ad1290cf3135c363ee2cab15de6468ed8f9ab1ed5153"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_descriptor_nesso_blend/README.md",
+      "sha256": "fa5dd4c5c74f7b235ddb19127206275e4eea32f9198d0d42925569a6ecbba94a"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/scripts/experiment_summary_figures/later.py",
+      "sha256": "643da076fa2c7f8cf378e6b7877d0a4a7bb3efe9ad8387016b266cf23bd39dab"
+    }
+  ],
+  "plotted_rows": 6,
+  "svg": "assets/experiment-summaries/hybrid-pilot.svg",
+  "png": "assets/experiment-summaries/hybrid-pilot.png",
+  "data": "assets/experiment-summaries/hybrid-pilot.csv"
+}

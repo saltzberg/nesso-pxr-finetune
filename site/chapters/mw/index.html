@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>The molecular-weight control · Nesso PXR</title><link rel="stylesheet" href="../../assets/style.css"><style>main img{max-width:100%;height:auto} .evidence{overflow-wrap:anywhere} table{display:block;overflow-x:auto} .study-status{color:#276749} .study-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px} .study-grid a{border:1px solid #d8d4cc;padding:16px;text-decoration:none} .study-grid small{display:block;color:#66635f;margin-top:8px} figure.narrative{max-width:880px;display:flex;flex-direction:column;gap:8px} figure.narrative .plot-key{margin:0} @media(max-width:600px){figure.narrative .plot-key{order:-1}} .figure-link{cursor:zoom-in;display:block} .figure-link picture{display:block} header nav{display:flex;flex-wrap:wrap;gap:8px 19px} header nav a{margin:0;white-space:nowrap} figure.narrative img{border:0} .plot-key{font:13px/1.5 system-ui,sans-serif;margin-top:12px} .small-dot{color:#ad501b} .other-dot{color:#356c78} .reading-path{font:14px/1.8 system-ui,sans-serif;border-block:1px solid #d8d4cc;padding:16px 0;max-width:100%} details{margin:28px 0} summary{cursor:pointer;font:600 15px/1.5 system-ui,sans-serif} .chapter-nav{margin:28px 0}</style></head><body><header><div class="masthead"><div class="brand">Nesso-1 · PXR experimental case study</div><p class="updated-at">Updated 2026-09-08</p></div><nav><a href="../../index.html">Overview</a><a href="../../chapters/transfer/index.html">Read the story</a><a href="../../index.html#experiments">Supporting archive</a><a href="../../architecture/index.html">Architecture</a></nav></header><main><h1>2 · Can molecular weight reproduce the correction?</h1>
+<p>Native Nesso substantially overpredicts the measured potency of small molecules. Among <strong>237 of 3,344 compounds below 215 Da</strong>, the correction from native to LoRA is conspicuous. But a visible correction does not tell us which information was learned—or whether a neural model was necessary.</p>
+<h2>Four simple controls distinguish the possibilities</h2>
+<p>The control experiment reused the exact N500 FIT/CAL/test roles. It fitted unregularized weighted least squares on FIT rows, with continuous predictors standardized using FIT statistics. The objective was weighted squared error, not the neural Huber loss or the reported weighted MAE. No test-selected threshold or extra neural training was used.</p>
+<ul>
+<li><strong>MW alone:</strong> intercept + molecular weight.</li>
+<li><strong>Native-score calibration:</strong> intercept + native score.</li>
+<li><strong>Additive control:</strong> intercept + native score + MW.</li>
+<li><strong>Interaction:</strong> the additive control plus native score × MW—four coefficients, not “MW alone.”</li>
+</ul>
+<p>CAL labels determined residual prediction intervals, not the plotted point predictions. The pre-existing 215 Da boundary is only a diagnostic grouping; each control is a continuous function applied to all molecules.</p>
+<figure class="narrative"><a class="figure-link" href="../../evidence/reports/narrative/mw.svg" title="Open full-size figure"><picture><source media="(max-width: 600px)" srcset="../../evidence/reports/narrative/mw-mobile.svg"><img src="../../evidence/reports/narrative/mw.svg" alt="Native, MW-only, additive and interaction controls against observed assay pEC50"></picture></a><figcaption>Adding the native score to MW improves on MW alone; the interaction further reduces small-molecule error. Size helps calibration but is not a complete potency model.</figcaption></figure>
+<table>
+<thead>
+<tr>
+<th>Below 215 Da · N500</th>
+<th style="text-align:right">Weighted MAE ↓</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Native unchanged</td>
+<td style="text-align:right">1.834</td>
+</tr>
+<tr>
+<td>Native-score calibration</td>
+<td style="text-align:right">1.570</td>
+</tr>
+<tr>
+<td>MW alone</td>
+<td style="text-align:right">1.308</td>
+</tr>
+<tr>
+<td>Heads + LoRA</td>
+<td style="text-align:right">1.179</td>
+</tr>
+<tr>
+<td>Native score + MW</td>
+<td style="text-align:right">1.163</td>
+</tr>
+<tr>
+<td>Score–MW interaction</td>
+<td style="text-align:right">0.863</td>
+</tr>
+<tr>
+<td>Ligand descriptors</td>
+<td style="text-align:right">0.604</td>
+</tr>
+</tbody>
+</table>
+<p>The additive control roughly matches LoRA in this subgroup, while the interaction improves further. Descriptors still do better. This narrows the interpretation: the small-molecule correction is not uniquely neural, and adding a simple covariate can repair a substantial systematic bias.</p>
+<h2>A subgroup story is not the whole score</h2>
+<p>Small molecules are a minority of compounds and carry little precision weight. Their improvement is therefore much more visually prominent than its contribution to total weighted error. Low molecular weight is also not the same variable as low observed potency. Neither this control nor LoRA proves that Nesso has learned cellular efficacy.</p>
+<p><a href="../hybrid/index.html">Continue: do frozen representations add information beyond descriptors? →</a></p>
+<p><a href="../../evidence/reports/architecture/results/mw-controls/index.html">Original MW-control report</a> · <a href="../../experiments/mw-controls/index.html">Detailed control experiment and exact tables</a></p>
+<nav class="chapter-nav"><a href="../transfer/index.html">Transfer and tuning</a> · <a href="../hybrid/index.html">Complementary frozen features</a> · <a href="../interpretation/index.html">Interpretation and conclusion</a></nav><p class="fineprint"><a download href="../../experiment-content/chapters/mw.md">Editable chapter Markdown</a></p></main><footer><p class="fineprint">Nesso → PXR · <a href="../../source-map.json">Evidence provenance</a> · <a href="../../experiment-content/index.md" download>Editable overview</a></p></footer></body></html>

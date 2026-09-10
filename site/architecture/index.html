@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Architecture · Nesso PXR</title><link rel="stylesheet" href="../assets/style.css"><style>main img{max-width:100%;height:auto} .evidence{overflow-wrap:anywhere} table{display:block;overflow-x:auto} .study-status{color:#276749} .study-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px} .study-grid a{border:1px solid #d8d4cc;padding:16px;text-decoration:none} .study-grid small{display:block;color:#66635f;margin-top:8px} figure.narrative{max-width:880px;display:flex;flex-direction:column;gap:8px} figure.narrative .plot-key{margin:0} @media(max-width:600px){figure.narrative .plot-key{order:-1}} .figure-link{cursor:zoom-in;display:block} .figure-link picture{display:block} header nav{display:flex;flex-wrap:wrap;gap:8px 19px} header nav a{margin:0;white-space:nowrap} figure.narrative img{border:0} .plot-key{font:13px/1.5 system-ui,sans-serif;margin-top:12px} .small-dot{color:#ad501b} .other-dot{color:#356c78} .reading-path{font:14px/1.8 system-ui,sans-serif;border-block:1px solid #d8d4cc;padding:16px 0;max-width:100%} details{margin:28px 0} summary{cursor:pointer;font:600 15px/1.5 system-ui,sans-serif} .chapter-nav{margin:28px 0}</style><style>header,main,footer{width:min(1700px,calc(100% - 40px))}.architecture-figure{max-width:none}.architecture-canvas{overflow-x:auto}.architecture-figure img{border:0;min-width:1100px}.architecture-figure figcaption{max-width:1000px}#fine-tuning{scroll-margin-top:20px;overflow-wrap:anywhere}#fine-tuning p,#fine-tuning table{max-width:1100px}</style></head><body><header><div class="masthead"><div class="brand">Nesso-1 · PXR experimental case study</div><p class="updated-at">Updated 2026-09-08</p></div><nav><a href="../index.html">Overview</a><a href="../chapters/transfer/index.html">Read the story</a><a href="../index.html#experiments">Supporting archive</a><a href="../architecture/index.html">Architecture</a></nav></header><main><h1>Nesso-1 architecture</h1><p>Nesso-1 predicts affinity from a coarse-grained pairwise representation, not an all-atom structure. The diagram follows the inputs, token encoding, pair-only trunk, structural latent representation and affinity outputs.</p><figure class="architecture-figure"><div class="architecture-canvas"><a href="../evidence/reports/architecture/nesso1-architecture-selected.svg" title="Open full-size architecture"><img src="../evidence/reports/architecture/nesso1-architecture-selected.svg" alt="Detailed Nesso-1 architecture: protein and ligand inputs, token encoders, initial pair matrix, recycled pair-only trunk, distogram and affinity branch"></a></div><figcaption>Solid arrows show the main computational flow. Dashed connections show conditioning and recycling. <strong style="color:#527185">Affinity Pairformer (pale blue)</strong>: selected LoRA adapters inside each affinity branch, including local <code>esm_proj</code> projections—not the external ESM model. <strong style="color:#8c7153">Affinity output (pale sand)</strong>: trained continuous readout in both members. Only the selected layers below train; all base weights outside the readout stay frozen. Open the vector figure to zoom; on small screens, scroll horizontally.</figcaption></figure><p class="fineprint"><a href="../evidence/reports/architecture/nesso1-architecture-selected.svg">Open full-size SVG</a> · <a download href="../evidence/reports/architecture/nesso1-architecture-selected.png">Download PNG</a></p><section id="fine-tuning"><h2>Which layers did we fine-tune?</h2>
+<p><a href="../evidence/reports/architecture/nesso1-finetuning-layers.csv">Exact layer inventory (CSV)</a></p>
+<h3>Head-only versus head + LoRA</h3>
+<p><strong>Head-only</strong> updates the weights and biases of the three continuous-output Linear layers in <strong>both native ensemble members</strong>: <code>affinity_module</code> and <code>affinity_module2</code>. The two intervening ReLUs have no parameters. This trains <strong>592,130 parameters</strong> across the two heads; the shared pooled-feature MLP stays frozen.</p>
+<p><strong>Head + LoRA</strong> trains those same heads and adds <strong>24,576 parameters</strong> at three upstream projections per member, for <strong>616,706 trainable parameters</strong> in total. Each adapter uses rank <strong>4</strong>, alpha <strong>4</strong>, and scale <strong>alpha/r = 1</strong>: the effective projection is <code>W_base + B A</code>. Only <code>lora_A</code> and <code>lora_B</code> are trained there; the original projection weights and any biases remain frozen. The external ESM model is frozen: the adapted <code>esm_proj</code> layers are small projections <strong>inside each affinity module</strong>, not layers of the external protein language model.</p>
+<h3>Exact module paths and dimensions</h3>
+<p>The continuous heads map the pooled affinity representation to a scalar. The local ESM projections map protein-language-model features into affinity token features. The selected <code>fc1</code> transforms pair features inside the first gated affinity transition.</p>
+<p>Every suffix below occurs under <strong>both</strong> <code>affinity_module.</code> and <code>affinity_module2.</code>. The CSV lists all full paths separately. Matrix shapes use <code>[output, input]</code> order; A and B have no adapter biases.</p>
+<table>
+<thead>
+<tr>
+<th>Module suffix under each member</th>
+<th>Linear input → output</th>
+<th>Trained tensors per member</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>affinity_heads.to_affinity_pred_value.0</code></td>
+<td>384 → 384</td>
+<td>weight <code>[384,384]</code>, bias <code>[384]</code></td>
+</tr>
+<tr>
+<td><code>affinity_heads.to_affinity_pred_value.2</code></td>
+<td>384 → 384</td>
+<td>weight <code>[384,384]</code>, bias <code>[384]</code></td>
+</tr>
+<tr>
+<td><code>affinity_heads.to_affinity_pred_value.4</code></td>
+<td>384 → 1</td>
+<td>weight <code>[1,384]</code>, bias <code>[1]</code></td>
+</tr>
+<tr>
+<td><code>esm_proj.1</code></td>
+<td>1280 → 384</td>
+<td>A <code>[4,1280]</code>, B <code>[384,4]</code> (LoRA arm only)</td>
+</tr>
+<tr>
+<td><code>esm_proj.3</code></td>
+<td>384 → 384</td>
+<td>A <code>[4,384]</code>, B <code>[384,4]</code> (LoRA arm only)</td>
+</tr>
+<tr>
+<td><code>pairformer_stack.layers.0.transition_z.fc1</code></td>
+<td>128 → 512</td>
+<td>A <code>[4,128]</code>, B <code>[512,4]</code> (LoRA arm only)</td>
+</tr>
+</tbody>
+</table>
+<p>Only <code>fc1</code> in the <strong>first affinity Pairformer block</strong> receives LoRA—not the main trunk, not the attention projections, and not the other seven affinity blocks. The transition remains gated: <code>SiLU(fc1(x)) × fc2(x) → fc3</code>, with its normalization, <code>fc2</code> and <code>fc3</code> frozen. The input encoders, main pair-only trunk, ESM preprocessing, distogram path and every other base parameter or buffer remain frozen.</p>
+<p>The binary branch (<code>affinity_heads.to_affinity_pred_score</code> and <code>affinity_heads.to_affinity_logits_binary</code>) and shared <code>affinity_heads.affinity_out_mlp</code> also stay frozen. Binary outputs can still change when upstream adapters change their input representation. The <a href="../experiments/binary-dual/index.html">binary-dual side experiment</a> is a separate comparison, <strong>not</strong> the training scope shown here.</p>
+<h3>Evidence from the completed comparison</h3>
+<p>This is the scope of the <strong>20 completed matched fits</strong>: five reused chemical development folds × two label budgets (100 and 500) × two arms, seed 42, 40 epochs. Both member scalars are averaged and converted as <code>6 − mean</code> for adapted cellular pEC50; this is not native cellular-endpoint support. These are reused development folds, not a new untouched holdout.</p>
+<p><a href="../evidence/reports/architecture/nesso1-finetuning-evidence.json">Completed-fit scope audit</a> · <a href="../evidence/artifacts/architecture/architecture_audit.md">Architecture and shapes</a> · <a href="../evidence/experiments/20260906_affinity_comparison/train_protocol.json">Training protocol</a> · <a href="../chapters/transfer/index.html">Comparison results</a> · <a href="../experiment-content/architecture-finetuning.md">Editable Markdown</a> · <a href="../source-map.json">Source hashes</a>.</p>
+</section></main><footer><p class="fineprint">Nesso → PXR · <a href="../source-map.json">Evidence provenance</a> · <a href="../experiment-content/index.md" download>Editable overview</a></p></footer></body></html>

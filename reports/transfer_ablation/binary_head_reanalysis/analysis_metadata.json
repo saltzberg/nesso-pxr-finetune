@@ -1,0 +1,50 @@
+{
+  "bootstrap_replicates": 2000,
+  "challenge_rows": 513,
+  "development_rows": 3344,
+  "elapsed_seconds": 168.97857314394787,
+  "mlp_config": {
+    "activation": "relu",
+    "alpha": 0.001,
+    "batch_size": 64,
+    "early_stopping": false,
+    "hidden_layer_sizes": [
+      32
+    ],
+    "learning_rate_init": 0.001,
+    "max_iter": 100,
+    "random_state": 42,
+    "shuffle": true,
+    "solver": "adam"
+  },
+  "pandas": "3.0.2",
+  "proxy_semantics": "functional potency proxies, not binding ground truth",
+  "proxy_thresholds": [
+    4.0,
+    5.0,
+    6.0
+  ],
+  "python": "3.13.12",
+  "released_binder_cutoff": 0.5,
+  "ridge_alphas": [
+    0.0,
+    0.0001,
+    0.001,
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0,
+    1000.0
+  ],
+  "scikit_learn": "1.9.0",
+  "scope": "CPU-only Nesso binary-head correction; no external publication",
+  "status": "pass",
+  "thread_environment": {
+    "MKL_NUM_THREADS": "4",
+    "NUMEXPR_NUM_THREADS": "4",
+    "OMP_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "4"
+  },
+  "validation_rows": 790
+}

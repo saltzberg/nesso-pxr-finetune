@@ -1,0 +1,24 @@
+{
+  "slug": "efficacy-uncertainty",
+  "message": "Small compounds have higher uncertainty, not lower normalized efficacy",
+  "caption": "Unweighted empirical cumulative distributions for all 3,344 saved development IDs: 237 below 215 Da and 3,107 at least 215 Da; no missing values or Emax refiltering. Each compound appears once in each panel; each stratum has its own denominator. Normalized Emax uses a logarithmic x-axis and retains values above one and the full tail. Raw baseline-relative Emax is a different scale and is lower in small compounds. Higher reported SE describes less precise fitted potency, not a demonstrated biological cause; dose-response curves and the normalization denominator are unavailable. No model fit or inference.",
+  "design": "Full empirical distributions show the uncertainty shift alongside normalized efficacy without smoothing, box plots, median overlays, or truncating the long efficacy tail.",
+  "sources": [
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_PXR-MW-efficacy-diagnostic/artifacts/merged_compounds.csv",
+      "sha256": "b436821b40e868e2222ed79646817eff24518fd35cbf99d756ec4986a9938ba9"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260908_PXR-MW-efficacy-diagnostic/README.md",
+      "sha256": "63e2e78841dbbe84fe96a155d65ca29110ba86a7277ddb0d1f4b78b72a7e6250"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/scripts/experiment_summary_figures/later.py",
+      "sha256": "643da076fa2c7f8cf378e6b7877d0a4a7bb3efe9ad8387016b266cf23bd39dab"
+    }
+  ],
+  "plotted_rows": 6688,
+  "svg": "assets/experiment-summaries/efficacy-uncertainty.svg",
+  "png": "assets/experiment-summaries/efficacy-uncertainty.png",
+  "data": "assets/experiment-summaries/efficacy-uncertainty.csv"
+}

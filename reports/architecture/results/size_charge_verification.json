@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "rows": 13376,
+  "unique_compounds": 3344,
+  "correlations": [
+    {
+      "budget": 100,
+      "method": "head_only",
+      "outcome": "absolute_movement",
+      "rho": -0.42385513207877545,
+      "partial_rho_potency_charge_fold": -0.33465284366001036,
+      "partial_rho_plus_SE": -0.3375929835505129
+    },
+    {
+      "budget": 100,
+      "method": "head_only",
+      "outcome": "difference_distance_from_truth",
+      "rho": 0.35656752346159004,
+      "partial_rho_potency_charge_fold": 0.14189250215471835,
+      "partial_rho_plus_SE": 0.14519448576679211
+    },
+    {
+      "budget": 100,
+      "method": "head_plus_lora",
+      "outcome": "absolute_movement",
+      "rho": -0.4293055044567223,
+      "partial_rho_potency_charge_fold": -0.31317912384933383,
+      "partial_rho_plus_SE": -0.31745877629378727
+    },
+    {
+      "budget": 100,
+      "method": "head_plus_lora",
+      "outcome": "difference_distance_from_truth",
+      "rho": 0.34384288573558464,
+      "partial_rho_potency_charge_fold": 0.11420703288050488,
+      "partial_rho_plus_SE": 0.11911506564247946
+    },
+    {
+      "budget": 500,
+      "method": "head_only",
+      "outcome": "absolute_movement",
+      "rho": -0.30565901644028876,
+      "partial_rho_potency_charge_fold": -0.2078126698887922,
+      "partial_rho_plus_SE": -0.20649847421749534
+    },
+    {
+      "budget": 500,
+      "method": "head_only",
+      "outcome": "difference_distance_from_truth",
+      "rho": 0.30532177582104364,
+      "partial_rho_potency_charge_fold": 0.07233685135399318,
+      "partial_rho_plus_SE": 0.07428460578914237
+    },
+    {
+      "budget": 500,
+      "method": "head_plus_lora",
+      "outcome": "absolute_movement",
+      "rho": -0.3137419856350239,
+      "partial_rho_potency_charge_fold": -0.16251208871529396,
+      "partial_rho_plus_SE": -0.16282627296675475
+    },
+    {
+      "budget": 500,
+      "method": "head_plus_lora",
+      "outcome": "difference_distance_from_truth",
+      "rho": 0.30417158163542085,
+      "partial_rho_potency_charge_fold": 0.05013076008892338,
+      "partial_rho_plus_SE": 0.053767684179242124
+    }
+  ],
+  "formula": "abs(fitted-truth)-abs(native-truth)",
+  "new_predictive_fits": 0,
+  "diagnostic_regressions": "rank residualization only",
+  "inputs": {
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/analysis/affinity_comparison_20260907/proximity_all.csv": "4991a9a492011603ae495cf0862a2a6fb4cb0dc5a2f3e1610130592fe191ab8d",
+    "/home/dan/projects/nesso-finetune/PXR/artifacts/analysis/affinity_comparison_20260907/mover_chemistry_all.csv": "c00594ed50696d76fec796253a1c6e61123ae699d2650bcc9a90bc9b4fa74349",
+    "/home/dan/projects/nesso-finetune/PXR/data/published/modeling_manifest.csv": "b643e4f493cceaabc90355e00cef7c7476878296be8425bfde156a9dbb9d1c5d"
+  },
+  "code_sha256": "d86519209221772068664ab3f392f00a587c0eafc24ef697a9fcd38866dfdc15"
+}

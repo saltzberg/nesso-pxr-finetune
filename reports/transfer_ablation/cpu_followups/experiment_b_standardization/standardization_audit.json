@@ -1,0 +1,131 @@
+{
+  "comparison_guard": "Metrics under historical and standardized folds are not ordinary per-row paired deltas because each row is predicted by a differently composed training set.",
+  "fraction_changing_fold_after_optimal_label_alignment": 0.0,
+  "historical_alignment_mapping": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4
+  },
+  "identity_schemes": {
+    "change_counts": {
+      "charge_parent_changed_fragment_parent": 6,
+      "charge_parent_nonzero_charge": 7,
+      "cleanup_changed_canonical_smiles": 9,
+      "fragment_parent_changed_cleaned_smiles": 1,
+      "fragment_parent_charge_changed_from_canonical": 1,
+      "fragment_parent_nonzero_charge": 13,
+      "nesso_prepared_nonzero_charge": 819,
+      "prepared_smiles_changed_from_identity_canonical": 809,
+      "raw_canonical_nonzero_charge": 12,
+      "raw_multifragment_rows": 0,
+      "tautomer_parent_changed_fragment_parent": 330
+    },
+    "charge_parent": {
+      "collision_identities": 0,
+      "collision_identities_with_pEC50_range_ge_0_5": 0,
+      "collision_identities_with_pEC50_range_ge_1_0": 0,
+      "column": "charge_parent_smiles",
+      "development_identities_crossing_historical_folds": 0,
+      "identities_crossing_development_lockbox_roles": 0,
+      "maximum_collision_size": 1,
+      "maximum_within_identity_pEC50_range": 0.0,
+      "rows_in_collisions": 0,
+      "unique_identities": 4134,
+      "valid_rows": 4134
+    },
+    "cleaned": {
+      "collision_identities": 0,
+      "collision_identities_with_pEC50_range_ge_0_5": 0,
+      "collision_identities_with_pEC50_range_ge_1_0": 0,
+      "column": "cleaned_smiles",
+      "development_identities_crossing_historical_folds": 0,
+      "identities_crossing_development_lockbox_roles": 0,
+      "maximum_collision_size": 1,
+      "maximum_within_identity_pEC50_range": 0.0,
+      "rows_in_collisions": 0,
+      "unique_identities": 4134,
+      "valid_rows": 4134
+    },
+    "connectivity": {
+      "collision_identities": 4,
+      "collision_identities_with_pEC50_range_ge_0_5": 3,
+      "collision_identities_with_pEC50_range_ge_1_0": 1,
+      "column": "connectivity_inchikey",
+      "development_identities_crossing_historical_folds": 0,
+      "identities_crossing_development_lockbox_roles": 0,
+      "maximum_collision_size": 2,
+      "maximum_within_identity_pEC50_range": 1.2200000000000002,
+      "rows_in_collisions": 8,
+      "unique_identities": 4130,
+      "valid_rows": 4134
+    },
+    "fragment_parent_primary": {
+      "collision_identities": 0,
+      "collision_identities_with_pEC50_range_ge_0_5": 0,
+      "collision_identities_with_pEC50_range_ge_1_0": 0,
+      "column": "fragment_parent_smiles",
+      "development_identities_crossing_historical_folds": 0,
+      "identities_crossing_development_lockbox_roles": 0,
+      "maximum_collision_size": 1,
+      "maximum_within_identity_pEC50_range": 0.0,
+      "rows_in_collisions": 0,
+      "unique_identities": 4134,
+      "valid_rows": 4134
+    },
+    "raw_smiles": {
+      "collision_identities": 0,
+      "collision_identities_with_pEC50_range_ge_0_5": 0,
+      "collision_identities_with_pEC50_range_ge_1_0": 0,
+      "column": "raw_smiles",
+      "development_identities_crossing_historical_folds": 0,
+      "identities_crossing_development_lockbox_roles": 0,
+      "maximum_collision_size": 1,
+      "maximum_within_identity_pEC50_range": 0.0,
+      "rows_in_collisions": 0,
+      "unique_identities": 4134,
+      "valid_rows": 4134
+    },
+    "rdkit_canonical": {
+      "collision_identities": 0,
+      "collision_identities_with_pEC50_range_ge_0_5": 0,
+      "collision_identities_with_pEC50_range_ge_1_0": 0,
+      "column": "rdkit_canonical_smiles",
+      "development_identities_crossing_historical_folds": 0,
+      "identities_crossing_development_lockbox_roles": 0,
+      "maximum_collision_size": 1,
+      "maximum_within_identity_pEC50_range": 0.0,
+      "rows_in_collisions": 0,
+      "unique_identities": 4134,
+      "valid_rows": 4134
+    },
+    "tautomer_parent": {
+      "collision_identities": 1,
+      "collision_identities_with_pEC50_range_ge_0_5": 0,
+      "collision_identities_with_pEC50_range_ge_1_0": 0,
+      "column": "tautomer_parent_smiles",
+      "development_identities_crossing_historical_folds": 0,
+      "identities_crossing_development_lockbox_roles": 0,
+      "maximum_collision_size": 2,
+      "maximum_within_identity_pEC50_range": 0.004999999999999893,
+      "rows_in_collisions": 2,
+      "unique_identities": 4133,
+      "valid_rows": 4134
+    }
+  },
+  "largest_standardized_family": 155,
+  "lockbox_neighbors_ge_0_6": 21,
+  "lockbox_status": "retrospective_validation",
+  "primary_standardization": "RDKit Cleanup then FragmentParent(skipStandardize=True); charge retained",
+  "representation_inputs": {
+    "lightgbm": "published reduced descriptors from original prepared structures",
+    "nesso": "cached representations from the actual original prepared Nesso inputs",
+    "standardized_chemistry": "used for family folds, identity audit, and similarity only"
+  },
+  "rows_changing_fold_after_optimal_label_alignment": 0,
+  "standardization_failures": 0,
+  "standardized_families": 2931,
+  "status": "pass",
+  "validation_neighbors_ge_0_6": 0
+}

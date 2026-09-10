@@ -1,0 +1,320 @@
+{
+  "counts": {
+    "completed_low_data_models": {
+      "chemical_cluster": 3600,
+      "random": 3600
+    },
+    "low-data": {
+      "acquired_rows": 360020,
+      "assignment_rows": 6688,
+      "fold_counts": [
+        {
+          "n_test": 669,
+          "outer_fold": "0",
+          "split": "chemical_cluster"
+        },
+        {
+          "n_test": 669,
+          "outer_fold": "1",
+          "split": "chemical_cluster"
+        },
+        {
+          "n_test": 669,
+          "outer_fold": "2",
+          "split": "chemical_cluster"
+        },
+        {
+          "n_test": 668,
+          "outer_fold": "3",
+          "split": "chemical_cluster"
+        },
+        {
+          "n_test": 669,
+          "outer_fold": "4",
+          "split": "chemical_cluster"
+        },
+        {
+          "n_test": 669,
+          "outer_fold": "0",
+          "split": "random"
+        },
+        {
+          "n_test": 669,
+          "outer_fold": "1",
+          "split": "random"
+        },
+        {
+          "n_test": 669,
+          "outer_fold": "2",
+          "split": "random"
+        },
+        {
+          "n_test": 669,
+          "outer_fold": "3",
+          "split": "random"
+        },
+        {
+          "n_test": 668,
+          "outer_fold": "4",
+          "split": "random"
+        }
+      ],
+      "role_counts": {
+        "calibration": 72020,
+        "fit": 288000
+      },
+      "tasks": 600
+    },
+    "strict": {
+      "acquired_rows": 163850,
+      "assignment_rows": 3344,
+      "fold_counts": [
+        {
+          "n_test": 669,
+          "outer_fold": "0",
+          "split": "chemical_cluster"
+        },
+        {
+          "n_test": 669,
+          "outer_fold": "1",
+          "split": "chemical_cluster"
+        },
+        {
+          "n_test": 669,
+          "outer_fold": "2",
+          "split": "chemical_cluster"
+        },
+        {
+          "n_test": 668,
+          "outer_fold": "3",
+          "split": "chemical_cluster"
+        },
+        {
+          "n_test": 669,
+          "outer_fold": "4",
+          "split": "chemical_cluster"
+        }
+      ],
+      "pool_counts": [
+        {
+          "eligible": "False",
+          "n": 311,
+          "outer_fold": "0"
+        },
+        {
+          "eligible": "True",
+          "n": 2364,
+          "outer_fold": "0"
+        },
+        {
+          "eligible": "False",
+          "n": 310,
+          "outer_fold": "1"
+        },
+        {
+          "eligible": "True",
+          "n": 2365,
+          "outer_fold": "1"
+        },
+        {
+          "eligible": "False",
+          "n": 348,
+          "outer_fold": "2"
+        },
+        {
+          "eligible": "True",
+          "n": 2327,
+          "outer_fold": "2"
+        },
+        {
+          "eligible": "False",
+          "n": 317,
+          "outer_fold": "3"
+        },
+        {
+          "eligible": "True",
+          "n": 2359,
+          "outer_fold": "3"
+        },
+        {
+          "eligible": "False",
+          "n": 330,
+          "outer_fold": "4"
+        },
+        {
+          "eligible": "True",
+          "n": 2345,
+          "outer_fold": "4"
+        }
+      ],
+      "role_counts": {
+        "calibration": 32780,
+        "fit": 131070
+      },
+      "tasks": 300
+    }
+  },
+  "derivation": "Exact many-to-one row_index -> saved identities, verified record_id AND feature_row AND canonical_smiles against published manifest; original IDs attached by record_id. No new splits, labels, fitting, chemistry transformations or prediction execution. Outer assignment fold is the saved TEST fold; other folds form the outer pool, not necessarily acquired FIT. Native fit/calibration role strings are unchanged. Strict outer file retains native chemical_cluster label because TEST assignments are identical; strict acquired roles use native strict_chemical.",
+  "exports": {
+    "initial-modeling-manifest.csv": {
+      "byte_equal_source": "data/published/modeling_manifest.csv",
+      "columns": [
+        "feature_row",
+        "row_id",
+        "source",
+        "original_id",
+        "OCNT_ID",
+        "raw_smiles",
+        "identity_canonical_smiles",
+        "role",
+        "pEC50",
+        "pEC50_standard_error",
+        "curation_sample_weight",
+        "legacy_fold",
+        "log2_fc_estimate",
+        "log2_fc_stderr",
+        "concentration_M",
+        "original_ligand_id",
+        "prepared_ligand_id",
+        "prepared_smiles",
+        "formal_charge",
+        "selection_reason",
+        "record_id",
+        "holdout_role",
+        "modeling_role",
+        "canonical_smiles",
+        "bemis_murcko_scaffold",
+        "scaffold_group",
+        "butina_cluster",
+        "cluster_component",
+        "fold",
+        "audit_scaffold",
+        "audit_scaffold_group"
+      ],
+      "rows": 4134,
+      "sha256": "b643e4f493cceaabc90355e00cef7c7476878296be8425bfde156a9dbb9d1c5d"
+    },
+    "initial-scaffold-holdout.csv": {
+      "byte_equal_source": "data/derived/holdout_assignments.csv",
+      "columns": [
+        "Molecule Name",
+        "SMILES",
+        "canonical_smiles",
+        "bemis_murcko_scaffold",
+        "pEC50",
+        "Emax.vs.pos.ctrl_estimate (dimensionless)",
+        "pEC50_std.error (-log10(molarity))",
+        "holdout_role",
+        "holdout_split_method",
+        "holdout_seed",
+        "holdout_fraction_requested"
+      ],
+      "rows": 4134,
+      "sha256": "5681c5d22bbec9fe464ebc8bc7553437629836a2110763a90c2ff34d8bade81f"
+    },
+    "low-data-acquired-roles.csv": {
+      "columns": [
+        "split",
+        "outer_fold",
+        "draw",
+        "n_train",
+        "row_index",
+        "role",
+        "record_id",
+        "feature_row",
+        "canonical_smiles",
+        "original_id",
+        "OCNT_ID",
+        "raw_smiles",
+        "chemical_group"
+      ],
+      "rows": 360020,
+      "sha256": "b9524e646fa56e8eeab820113838bf0277048ff11b124efd294ec3f170fa58ae"
+    },
+    "low-data-outer-assignments.csv": {
+      "columns": [
+        "split",
+        "outer_fold",
+        "row_index",
+        "chemical_group",
+        "record_id",
+        "feature_row",
+        "canonical_smiles",
+        "original_id",
+        "OCNT_ID",
+        "raw_smiles"
+      ],
+      "rows": 6688,
+      "sha256": "af27b7bcef6dbeddf494f97787758d3ec8246393b67ad7814a54dfaf65b94a62"
+    },
+    "strict-acquired-roles.csv": {
+      "columns": [
+        "split",
+        "outer_fold",
+        "draw",
+        "n_train",
+        "row_index",
+        "role",
+        "record_id",
+        "feature_row",
+        "canonical_smiles",
+        "original_id",
+        "OCNT_ID",
+        "raw_smiles",
+        "chemical_group"
+      ],
+      "rows": 163850,
+      "sha256": "d2a61d04da1b263692dc77d10a185cffbb3b00c612392d35c1a535f6d96ba505"
+    },
+    "strict-outer-assignments.csv": {
+      "columns": [
+        "split",
+        "outer_fold",
+        "row_index",
+        "chemical_group",
+        "record_id",
+        "feature_row",
+        "canonical_smiles",
+        "original_id",
+        "OCNT_ID",
+        "raw_smiles"
+      ],
+      "rows": 3344,
+      "sha256": "d1bf460021279f32f058b4fdd7932dc69476f25c1d62463d52c3df040056ae0d"
+    },
+    "strict-pool-audit.csv": {
+      "columns": [
+        "outer_fold",
+        "row_index",
+        "record_id",
+        "canonical_smiles",
+        "eligible",
+        "max_test_similarity",
+        "nearest_test_row_index",
+        "nearest_test_record_id",
+        "reason",
+        "original_id",
+        "OCNT_ID",
+        "raw_smiles",
+        "chemical_group"
+      ],
+      "rows": 13376,
+      "sha256": "652ae464a7c16eff6174ee0b83c35029027f43980cb88cdfc3270200c0af8c7c"
+    }
+  },
+  "sources": {
+    "artifacts/experiments/low_data_20260905_cut035_run2/prepared/assignments.csv": "0925a3a0eb86b64271d5c41e9a7d9051c79d501685bab15571ad5398180e6acf",
+    "artifacts/experiments/low_data_20260905_cut035_run2/prepared/inputs.csv": "bf6d233b1bf1ba6ef430151abcb74d607bbe42eee764c3438a73bbf1c70b8151",
+    "artifacts/experiments/low_data_20260905_cut035_run2/prepared/preparation_manifest.json": "ed77920cab96f3c6668c5961c15c07afc94d25fa3a42035838a288ab27a11301",
+    "artifacts/experiments/low_data_20260905_cut035_run2/prepared/subsets.csv": "93167df1c00610d0a68c826f2777ec37f3bc04049358b43cfc35f6e77ecb250d",
+    "artifacts/experiments/low_data_20260905_cut035_run2/status.json": "c09f9a42881f094f1e87f866c8b2ac3ebeaa7b69e726463ad56c0f224a27f250",
+    "artifacts/experiments/low_data_followup_20260906/strict_split/assignments.csv": "d3d5eb1afd6807e504a6cd5943520df6910a31a6697b4b036d0a3f5648667659",
+    "artifacts/experiments/low_data_followup_20260906/strict_split/identities.csv": "7cea543e65737dbb3b6c20f1c937f7c0e057878def574e5ee155d6efd8ffa8ae",
+    "artifacts/experiments/low_data_followup_20260906/strict_split/pool_audit.csv": "95796b00f258b9170f14be4076d5b92e7d4bf8d4c32ab4298ccf8accc6189ebe",
+    "artifacts/experiments/low_data_followup_20260906/strict_split/preparation_manifest.json": "330d0bfc331b6ccbfae5c86bc04ab6d901386a77a074125a42418a195bc104cb",
+    "artifacts/experiments/low_data_followup_20260906/strict_split/subsets.csv": "4e1a42add3f54f67dc95368ad0c90767414fd657d0eefdbccdaa02cf281fe5a9",
+    "data/derived/holdout_assignments.csv": "5681c5d22bbec9fe464ebc8bc7553437629836a2110763a90c2ff34d8bade81f",
+    "data/published/modeling_manifest.csv": "b643e4f493cceaabc90355e00cef7c7476878296be8425bfde156a9dbb9d1c5d",
+    "scripts/build_chemical_split_downloads.py": "3c7ad8e69a1b5acd7353b5c2f049fa867f87b42136d0a086939e346a8e2cdf50"
+  }
+}

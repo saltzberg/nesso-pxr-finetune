@@ -1,0 +1,41 @@
+{
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20260812,
+  "ccd_sha256": "7ed0ccd3903f19627926a5e41a5c0b5309c127a071cb9498dcae96926799ffd8",
+  "checkpoint_sha256": "9928a8a824d147d665e76656804af1cd91c86731516d0b561f9fd1c91ee45622",
+  "development_bootstrap_group": "cluster_component",
+  "development_evaluation": "five-fold nested chemical-family CV",
+  "evidence_boundary": "Ligand-ligand z cells remain protein-conditioned upstream; this surgical test isolates only direct final receptor-ligand pooling.",
+  "feature_sha256": "7132980068ddf2c671bc6b0134164ca4031122b25bc6650b20cf244299883de4",
+  "historical_features_sha256": "30db43a2b17c50ae870f0c046cb125c10b09c81f366c635a4282c2267db287e5",
+  "hparams_sha256": "06aa0c44fcd44eaa2c5c2473bfcf0d9a3af892d867e5279859bb22eb0f6e2d72",
+  "lockbox_bootstrap_group": "audit_scaffold_group",
+  "lockbox_evaluation": "fit on development only; all 790 labels evaluation only",
+  "lockbox_status": "previously_opened_retrospective_evaluation",
+  "manifest_sha256": "b643e4f493cceaabc90355e00cef7c7476878296be8425bfde156a9dbb9d1c5d",
+  "metadata_sha256": "58c9967029274732dde5f49619e5d4b195a8bbcbfdb12970fc8040c3d533acc9",
+  "nesso_hub_revision": "1896c84c7186c506c7efd79051480809d51098bf",
+  "nesso_image_digest": "sha256:e3519ab0faa11d098f14f57b628530c21df748ab7c632f5b071754548e058a24",
+  "primary_comparison": "ligand_ligand_only_minus_all_pairs",
+  "primary_representation": "ridge_mean_384d",
+  "representation_sensitivity_analyses": [
+    "ridge_member1_384d",
+    "ridge_member2_384d",
+    "ridge_mean_384d",
+    "ridge_concat_768d"
+  ],
+  "ridge_alphas": [
+    0.0,
+    0.0001,
+    0.001,
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0,
+    1000.0
+  ],
+  "scientific_question": "Do direct receptor-ligand pair cells in Nesso-1's final affinity pool add predictive signal beyond ligand-ligand pair cells?",
+  "selection_sha256": "4f288272e3836ca12ae7fe4a66bd6694d29a65b3b55aca84d2f479b57cdfe53a",
+  "status": "complete"
+}

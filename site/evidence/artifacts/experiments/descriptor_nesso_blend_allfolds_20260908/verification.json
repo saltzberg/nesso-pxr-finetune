@@ -1,0 +1,14 @@
+{
+  "all_source_and_output_hashes_verified": true,
+  "failures": [],
+  "folds": 5,
+  "max_prediction_abs_error": 0.0,
+  "models_replayed": 40,
+  "new_model_systems": 32,
+  "no_refit_guards_passed": 5,
+  "pilot_bytes_unchanged": true,
+  "reused_model_systems": 8,
+  "status": "PASS",
+  "transform_calls_audited": 340,
+  "unique_test_ids_per_method": 3344
+}

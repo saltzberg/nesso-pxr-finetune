@@ -1,0 +1,24 @@
+{
+  "slug": "head-only",
+  "message": "Both fitted models compress the potent tail despite lower overall error for LightGBM.",
+  "caption": "Each panel shows all 3,344 identical development compounds, using five-fold nested out-of-fold predictions; diagonal is exact prediction. Heads average three seeds. The 55 observed pEC50 >6 compounds include only one head prediction >6 and no LightGBM prediction >6. Closer to the diagonal is better; raw errors, not uncertainty-weighted scores. No lockbox or challenge rows.",
+  "design": "Matched observed-versus-predicted point clouds use identical square axes and transparency, revealing range compression without conclusion annotations.",
+  "sources": [
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/model_comparison/nested_aligned_predictions.csv",
+      "sha256": "1f1936ee62e8e97286da3a6f2eb3f55120b2ef1262b4a6eea79087dc91e63e53"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/model_comparison/metrics.csv",
+      "sha256": "7048edf823f9ffe1f9f3d793da4317ced36bd9c3133b58b17cc046432b92c835"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/model_comparison/SCIENTIFIC_REPORT.md",
+      "sha256": "064ec4f2afa5c5d81db485d01ea2b3c928a261465f7ddb75a6b5f47952ae5723"
+    }
+  ],
+  "plotted_rows": 6688,
+  "svg": "assets/experiment-summaries/head-only.svg",
+  "png": "assets/experiment-summaries/head-only.png",
+  "data": "assets/experiment-summaries/head-only.csv"
+}

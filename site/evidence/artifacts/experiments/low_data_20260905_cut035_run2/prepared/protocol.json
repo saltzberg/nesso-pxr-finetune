@@ -1,0 +1,101 @@
+{
+  "adapter_pilot_dir": "artifacts/experiments/low_data_20260905/adapter_pilot",
+  "batch_size": 64,
+  "budgets": [
+    25,
+    50,
+    100,
+    250,
+    500
+  ],
+  "calibration_fraction": 0.2,
+  "checkpoint": "models/nesso-1/v1.0.0/model.safetensors",
+  "chemical_cluster_method": "butina",
+  "chemical_similarity_cutoff": 0.35,
+  "curation_weight_in_primary": false,
+  "data_scope": "development_only_3344_retrospective",
+  "draws": 10,
+  "epochs": 40,
+  "experiment_id": "low_data_20260905_cut035",
+  "external_publication_authorized": false,
+  "features": "data/published/nesso_features.safetensors",
+  "fingerprint_bits": 2048,
+  "grids": {
+    "knn_neighbors": [
+      1,
+      5
+    ],
+    "lightgbm_n_estimators": [
+      50,
+      150
+    ],
+    "neural_learning_rate": [
+      0.0001,
+      0.001
+    ],
+    "ridge_alpha": [
+      1.0,
+      100.0,
+      10000.0
+    ]
+  },
+  "head_lora_rank": 4,
+  "historical_singleton_compound_percent": 83.76196172248804,
+  "include_full_reference": true,
+  "inner_folds": 3,
+  "interval_coverages": [
+    0.8,
+    0.9
+  ],
+  "invalid_se_policy": "fail",
+  "manifest": "data/published/modeling_manifest.csv",
+  "maximum_adapter_pilot_minutes": 10,
+  "maximum_queue_hours": 6,
+  "methods": [
+    "weighted_mean",
+    "native_continuous",
+    "scalar_ridge",
+    "repr_ridge",
+    "repr_mlp",
+    "head_random",
+    "head_pretrained",
+    "dual_head",
+    "head_lora",
+    "morgan_ridge",
+    "morgan_lightgbm",
+    "morgan_knn"
+  ],
+  "model_selection": "bounded inner CV entirely inside fit subset; calibration/test labels withheld",
+  "morgan_radius": 2,
+  "n_folds": 5,
+  "neural_huber_beta": 0.5,
+  "neural_objective": "assay-weighted smooth L1 in pEC50 coordinates",
+  "practical_improvement_margin": null,
+  "primary_metric": "weighted_mae",
+  "question": "How should pretrained Nesso-1 be adapted with 25\u2013500 PXR cellular-activation labels?",
+  "report_dir": "site/low-data",
+  "report_interval_guarantee": "No distribution-free coverage guarantee asserted for chemical shift",
+  "run_dir": "artifacts/experiments/low_data_20260905_cut035_run2",
+  "schema_version": "1.1.0",
+  "score_sensitivity_floors": [
+    0.05,
+    0.2
+  ],
+  "se_floor": 0.1,
+  "se_floor_rationale": "Fixed before new outcomes from the existing protocol floor grid; engineering cap, not independently measured assay precision.",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "split_amendment": "Structure-only sensitivity selected Butina0.35 before outcome comparisons; original0.50 protocol and prepared artifacts retained separately. No series-extrapolation guarantee.",
+  "split_policies": [
+    "random",
+    "chemical_cluster"
+  ],
+  "split_seed": 20260905,
+  "status": "implementation_authorized",
+  "subset_seed": 1701,
+  "threads": 4,
+  "weight_definition": "1 / max(assay_standard_error, se_floor)"
+}

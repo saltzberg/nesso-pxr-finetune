@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "created_utc": "2026-09-07T11:05:49.719795+00:00",
+  "classification": "adapted_prediction_system",
+  "parent_train_binding": "afb7014f4cc5bef487b094a1665e234526896d4e72c1af6eac16b87b76bace4b",
+  "parent_cache_binding": "c4ee247a465e65d7c5070a3a166e5282f68621bba0c5c85be359fb2b495c8cb7",
+  "original_sources_immutable": true,
+  "approved": true,
+  "approval": {
+    "session": "20260907_094609_10580b",
+    "user_response": "yes, raise the tolerance to 0.0001 - I really am not worried about such tinny differences."
+  },
+  "cross_hardware_absolute_tolerance": 0.0001,
+  "cross_hardware_relative_tolerance": 0.0,
+  "same_hardware_native_vs_diff_absolute_tolerance": 0.0,
+  "new_fit_saved_state_replay_absolute_tolerance": 0.0,
+  "historically_completed_tasks": [
+    "fold0__draw0__n100__head_only__seed42",
+    "fold0__draw0__n100__head_plus_lora__seed42",
+    "fold0__draw0__n500__head_only__seed42"
+  ],
+  "scientific_changes": [],
+  "operational_amendment": "Per-task readiness replaces the prior queue global-cache-before-training gate. All task packets retain first-access SHA256 and stat checks. The complete cache is still fully verified before declaring matrix complete. Separate output root; historical fits copied byte-identically, replayed cross-hardware under approved tolerance, never refitted. Original same-hardware proof files retained. Resumed task uses original saved epoch/optimizer state. No architecture-only explanation asserted for numerical differences. Not the original complete container; core torch/CUDA and exact Nesso source were qualified separately.",
+  "execution_files": {
+    "remote_worker.py": "a4aa2009409c4470eab4abd5e5cdb138d265e99a5a1764613ce5c59b7cf4faf8",
+    "remote_controller.py": "ce3fd92c40a2dbc07268dc9760d78f5cb911c6673ba8c95f400db813f93f4f86",
+    "test_remote_continuation.py": "6769205af5c82f23ad6af3cdc38a09d497cfd7b388de4a2d4c7931bd932a455a",
+    "remote_runtime.json": "89d935b2dcb6522a086aa64e998247fa0be979a9cfb6f9eac5b44a6eecfb42c8"
+  },
+  "remote_output": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/affinity_comparison_20260906/train_vast_50146714_v1",
+  "supersedes_continuation_binding": "b3786145b5fc693d6afd02acebb5c5c74553972838814b3d9e0212f7b191e07c",
+  "updated_utc": "2026-09-07T11:24:11.586786+00:00",
+  "approval_history": [
+    {
+      "session": "20260907_094609_10580b",
+      "message_id": 247517,
+      "tool_call_id": "call_rlXQI2Eao6JEhmZHhrTb02VU",
+      "user_response": "Approve the bounded cross-machine tolerance and continue"
+    }
+  ],
+  "binding": "b6b12289338ae5b0c3c3921d428e5329161660609cf0c2b30b0d212039d7cce5"
+}

@@ -1,0 +1,49 @@
+{
+  "n": 3344,
+  "raw_n": 4139,
+  "curated_n": 4134,
+  "development_primary": 3072,
+  "lower_emax": 272,
+  "small": 237,
+  "exactly215": 0,
+  "groups": 1975,
+  "singleton_groups": 1458,
+  "largest_group": 36,
+  "common_support": [
+    4.126391887664795,
+    5.663596153259277
+  ],
+  "missingness": {
+    "MW": 0,
+    "native": 0,
+    "pEC50": 0,
+    "Emax_ratio": 0,
+    "Emax_log2FC": 0,
+    "pEC50_standard_error": 0,
+    "Emax_ratio_SE": 0,
+    "Emax_log2FC_SE": 0,
+    "native_binary_probability": 0
+  },
+  "identity_checks": "PASS: record/order/feature row/identity SMILES/OCNT/raw SMILES/labels/curated efficacy/qualification/group parity",
+  "discrepancies": {
+    "chemistry_native_max_abs": 9.5367431640625e-07,
+    "saved_reference_native_max_abs": 0.0,
+    "prepared_vs_raw_SE_max_abs": 0.0,
+    "historical_binary_packet_scalar_max_abs": 0.7034088373184204,
+    "historical_binary_packet_scalar_differing_gt1e_5": 3342
+  },
+  "raw_hard_exclusions": [
+    "OADMET-0003276",
+    "OADMET-0003563",
+    "OADMET-0003707",
+    "OADMET-0003788",
+    "OADMET-0004843"
+  ],
+  "runtime": {
+    "python": "/home/dan/swr/miniconda3/envs/cheminf/bin/python",
+    "numpy": "2.1.3",
+    "pandas": "2.3.3",
+    "matplotlib": "3.10.8",
+    "threads": 1
+  }
+}

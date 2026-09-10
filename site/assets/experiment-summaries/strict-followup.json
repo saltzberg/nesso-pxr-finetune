@@ -1,0 +1,28 @@
+{
+  "slug": "strict-followup",
+  "message": "Neighbor purging barely moves overall error, but the most novel strict-test predictions remain harder.",
+  "caption": "Retrospective development cohort of 3,344 compounds; each mean-task point equally averages five outer folds \u00d7 ten paired draws (50 tasks), not a pooled weighted score. Neural predictions average three seeds before scoring; repeated draws are dependent. No inferential bands are drawn. Weighted MAE uses 1/max(assay SE, 0.10); lower is better. Budgets include 80% FIT/inner selection and 20% CAL labels. N500 = 400 FIT + 100 CAL. Strict pools exclude every candidate with Morgan similarity \u22650.35 to any test compound; test identities are unchanged, training draws can change. Left: mean-task scores. Right: strict pooled within-stratum scores across ten dependent draws. Similarity <0.20 contains 906 prediction rows, 257 unique compounds and 1.93% of weight; 0.20\u2013<0.35 contains 32,534 rows, 3,319 unique compounds and 98.07% of weight. Stratum membership varies by FIT draw, so unique-compound counts overlap. The shared numerical y range supports comparison but the aggregation differs explicitly between panels; novelty results are descriptive, not prospective generalization guarantees.",
+  "design": "A flat paired split comparison contrasts with the steep novelty-stratum comparison on the same numerical scale. Three models show that the pattern is not peculiar to one readout; all text is axis, legend or panel identification.",
+  "sources": [
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_followup_20260906/final_analysis/task_means.csv",
+      "sha256": "ac9cec051c656e05504b8669318fc942a8685ed20b746cbddc316e13855dc35b"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/artifacts/experiments/low_data_followup_20260906/final_analysis/strata.csv",
+      "sha256": "2ed493beed89e5a02e30bd0a7e84b2bc9283e5c4ab7d6a3c86a9a5fda5b5e9df"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_low_data_followup/STRICT_SPLIT.md",
+      "sha256": "cbbcb8274760c4c14be3166d9a44233abd1ba365ff1b1679c28422a14999179b"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/experiments/20260906_low_data_followup/RESULTS.md",
+      "sha256": "d2cfc6ff45c2283e37166e8b171656d674c595f37afae40626422b0a4830a413"
+    }
+  ],
+  "plotted_rows": 12,
+  "svg": "assets/experiment-summaries/strict-followup.svg",
+  "png": "assets/experiment-summaries/strict-followup.png",
+  "data": "assets/experiment-summaries/strict-followup.csv"
+}

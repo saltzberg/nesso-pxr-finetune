@@ -1,26 +1,76 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="description" content="A project to adapt Nesso-1 for PXR activity prediction.">
-<title>Summary · Nesso-1 PXR Model</title><link rel="stylesheet" href="assets/style.css"></head>
-<body><header><div class="masthead"><div class="brand">Nesso-1 · PXR Model</div><p class="updated-at">Updated <time datetime="2026-08-09T14:52Z">2026-08-09 14:52 UTC</time></p></div><nav><a href="index.html" class="active">Summary</a><a href="data.html">Data</a><a href="modeling.html">Models</a><a href="training-results.html">Results</a></nav></header>
-<main>
-<div class="eyebrow">Project summary · matched comparison complete</div>
-<h1>Fine-tuning Nesso helps, but a 2D model remains stronger</h1>
-<p class="lede">This project tests whether PXR measurements can improve Nesso-1's activity predictions and whether the adapted model competes with a conventional molecular model. The answer is yes to the first question and no to the second.</p>
-<div class="callout decision"><div class="label">Main result</div><p>In a matched nested comparison on 3,344 compounds, fine-tuned Nesso reached an average error of 0.633 pEC50, improved from 0.915 for unchanged Nesso. A 2D LightGBM model reached 0.516. The same ordering appears on the historical check set and the public challenge data.</p></div>
-<div class="callout"><div class="label">Evidence status</div><p>The 513 challenge labels were public before this analysis. Those results are retrospective external-dataset evidence, not a temporal blind test.</p></div>
-<h2>What the project now shows</h2>
-<ol class="result-list">
-  <li>Fine-tuning transfers useful PXR signal into Nesso's two prediction heads.</li>
-  <li>A training-fold mean confirms that both learned models contain substantial signal.</li>
-  <li>Nested chemical-family cross-validation keeps each outer test fold out of model choice and stopping.</li>
-  <li>The established 2D model is more accurate and orders compounds better than fine-tuned Nesso.</li>
-  <li>The models make related mistakes: signed residual correlations are 0.77–0.82, although Nesso is better for about 39–40% of individual compounds.</li>
-  <li>Both models compress the highly active tail and rarely predict pEC50 above 6.</li>
-</ol>
-<h2>Project pages</h2>
-<div class="page-grid">
-  <a class="page-link" href="data.html"><strong>Data</strong><span>The development clusters, historical lockbox, public challenge set, and which outcomes informed each analysis.</span></a>
-  <a class="page-link" href="modeling.html"><strong>Models</strong><span>How cached-head Nesso and the 2D LightGBM comparator were trained under the nested design.</span></a>
-  <a class="page-link" href="training-results.html"><strong>Results</strong><span>Matched estimates, confidence intervals, residual agreement, calibration, and active-tail limitations.</span></a>
-</div>
-</main><footer>The public challenge outcomes were not used to fit these models, but this evaluation was retrospective. This page is unlisted and blocked from search indexing.</footer></body></html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Finetuning Nesso-1 to predict PXR induction · Nesso PXR</title><link rel="stylesheet" href="assets/style.css"><style>main img{max-width:100%;height:auto} .evidence{overflow-wrap:anywhere} table{display:block;overflow-x:auto} .study-status{color:#276749} .study-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px} .study-grid a{border:1px solid #d8d4cc;padding:16px;text-decoration:none} .study-grid small{display:block;color:#66635f;margin-top:8px} figure.narrative{max-width:880px;display:flex;flex-direction:column;gap:8px} figure.narrative .plot-key{margin:0} @media(max-width:600px){figure.narrative .plot-key{order:-1}} .figure-link{cursor:zoom-in;display:block} .figure-link picture{display:block} header nav{display:flex;flex-wrap:wrap;gap:8px 19px} header nav a{margin:0;white-space:nowrap} figure.narrative img{border:0} .plot-key{font:13px/1.5 system-ui,sans-serif;margin-top:12px} .small-dot{color:#ad501b} .other-dot{color:#356c78} .reading-path{font:14px/1.8 system-ui,sans-serif;border-block:1px solid #d8d4cc;padding:16px 0;max-width:100%} details{margin:28px 0} summary{cursor:pointer;font:600 15px/1.5 system-ui,sans-serif} .chapter-nav{margin:28px 0}</style><style>.page-outline{position:fixed;left:24px;top:30px;width:200px;font:13px/1.5 system-ui,sans-serif}
+.page-outline nav{display:flex;flex-direction:column;gap:12px}.page-outline nav a{margin:0}
+.overview-page header,.overview-page main,.overview-page footer{width:calc(100% - 300px);max-width:1120px;margin-left:260px;margin-right:40px}
+.page-outline-top{display:flex;flex-wrap:wrap;gap:10px 18px;border-bottom:1px solid var(--rule);padding-bottom:18px;margin:0 0 28px}
+.page-outline-top a{margin:0}.overview-page [id]{scroll-margin-top:24px}
+@media(max-width:950px){.page-outline{display:none}.overview-page header,.overview-page main,.overview-page footer{width:calc(100% - 40px);margin-left:20px;margin-right:20px}}
+</style></head><body class="overview-page"><aside class="page-outline"><nav aria-label="Page outline"><b>On this page</b><a href="#introduction">Introduction</a><a href="#methodology">1. General methodology</a><a href="#results">2. Results</a><a href="#transfer">2.1. Transfer and tuning</a><a href="#mw">2.2. Molecular-weight controls</a><a href="#hybrid">2.3. Frozen features</a><a href="#interpretation">2.4. Interpretation</a><a href="#experiments">Supporting experiments</a></nav></aside><header><div class="masthead"><div class="brand">Nesso-1 · PXR experimental case study</div><p class="updated-at">Updated 2026-09-08</p></div></header><main><nav class="page-outline-top" aria-label="Important subpages"><a href="architecture/index.html">Nesso-1 Architecture</a><a href="https://github.com/saltzberg/nesso-pxr-finetune">GitHub repository</a></nav><div class="eyebrow">Nesso → cellular PXR activity · a retrospective case study</div>
+<h1 id="introduction">Finetuning Nesso-1 to predict PXR induction</h1>
+<p><a href="https://huggingface.co/blog/recursionpharma/nesso1">Nesso-1</a>, developed by Recursion Pharmaceuticals, is a protein-ligand affinity prediction model that is built on cofolding architecture, but without producing atomic-level structures.  The benefit of this is similar performance to full-atomic models, but significantly increased throughput and significantly smaller resources needed to fine-tune.</p>
+<p>The OpenADMET <a href="https://huggingface.co/spaces/openadmet/pxr-challenge">blind challenge for PXR</a> provided a new dataset of ~5000 matched-assay measurements of induction (pEC50).  Performance of stock affinity models and even custom ML models was relatively poor. I wondered if we could fine-tune Nesso-1 on this data and produce a model that can better predict this specific PXR endpoint.  This would demonstrate two things - 1) the adaptability of Nesso-1 to new data and 2) application of Nesso-1 to a different endpoint (induction rather than binding).</p>
+<p>The unchanged Nesso-1 score transfers poorly to this PXR induction endpoint: most predictions are compressed into a narrow band, despite a much broader observed potency range. This motivates testing whether fine-tuning can adapt its features to this cellular endpoint.</p>
+<figure class="native-baseline" style="max-width:540px;margin-left:0"><a href="evidence/reports/methods-screen/native.svg" title="Open full-size native prediction plot"><img src="evidence/reports/methods-screen/native.svg" alt="Nesso-1 native affinity-equivalent predictions versus observed PXR pEC50; weighted MAE 0.6272, with compressed predictions and a numerical agreement diagonal"></a><figcaption>3,344 saved native predictions (N500 cohort). Weighted MAE = Σ wᵢ |predictionᵢ − observedᵢ| / Σ wᵢ; wᵢ = 1/max(reported pEC50 SEᵢ, 0.1), normalized by summed weights. The affinity-equivalent conversion is 6 minus the mean of both continuous member values, not cellular pEC50. Dashed diagonal: numerical agreement; shared full-range axes.</figcaption></figure>
+<p><a href="evidence/reports/methods-screen/native.png">Download PNG</a> · <a href="evidence/reports/methods-screen/native.svg">Download SVG</a> · <a href="evidence/reports/methods-screen/native-points.csv">Plotted predictions</a> · <a href="evidence/reports/methods-screen/verification.json">Exact metric and provenance</a></p>
+<h2 id="methodology">1. General methodology</h2>
+<p>We examined the Nesso-1 architecture and selected promising layers for fine-tuning on the PXR endpoint. We first tested the final regression heads using cached representations, then tested low-rank adapters (LoRA) in the upstream affinity module. The main trunk and external ESM model were not trained.</p>
+<p>We compared these fitted models with unchanged Nesso, readouts of frozen Nesso representations, and ligand-only descriptors. Molecular-weight controls tested whether a simpler correction could explain the visible gains; a separate hybrid tested whether frozen Nesso features added information beyond descriptors. The comparisons below use reused development folds and are retrospective, not a new blind-challenge evaluation.</p>
+<p>Methods and experiments:</p>
+<ul>
+<li><a href="architecture/index.html">Architecture analysis and layer selection</a></li>
+<li><a href="experiments/head-only/index.html">Head only tuning</a></li>
+<li><a href="experiments/fine-tuning-screen/index.html">Fine-tuning screen</a></li>
+<li><a href="experiments/identity-standardization/index.html">Chemical splits</a></li>
+</ul>
+<h2 id="results">2. Results</h2>
+<h3 id="transfer">2.1. Tuning helps, but descriptors remain stronger</h3>
+<p>The native score is compressed around a narrow potency range. Fitting the final heads moves predictions toward the assay values; adding upstream LoRA helps further, without closing the gap to ligand descriptors. The matched <strong>N500</strong> comparison uses 400 fitting labels and 100 calibration labels per fold, with one label draw and seed across five reused development folds—not five independent replications.</p>
+<figure class="narrative"><a class="figure-link" href="evidence/reports/narrative/transfer.svg" title="Open full-size figure"><picture><source media="(max-width: 600px)" srcset="evidence/reports/narrative/transfer-mobile.svg"><img src="evidence/reports/narrative/transfer.svg" alt="Four shared-axis scatterplots comparing native Nesso, fitted heads, upstream LoRA and ligand descriptors against observed assay pEC50"></picture></a><figcaption>Orange points above the diagonal show native overprediction of small molecules. Tuning reduces that bias, but the descriptor model has lower overall error.</figcaption></figure>
+<p>Prediction panels share full-range axes and subgroup colors.</p>
+<p><a href="chapters/transfer/index.html">What was actually fitted, and how much did it help? →</a></p>
+<p><a href="experiments/head-only/index.html">Related experiments: head-only tuning</a> · <a href="experiments/upstream-comparison/index.html">Upstream LoRA comparison</a>.</p>
+<h3 id="mw">2.2. A molecular-weight control explains much of the visible correction</h3>
+<p>With the observation that much of the LoRA effect was seen in correctly lowering the potency prediction of small molecules, I wanted to see if adding a single molecular weight feature to Nesso would perform similarly.</p>
+<p>Compared to the Nesso LoRA, the simple molecular weight model is able to produce very similar results.</p>
+<figure class="narrative"><a class="figure-link" href="evidence/reports/narrative/mw-overview.svg" title="Open full-size figure"><picture><source media="(max-width: 600px)" srcset="evidence/reports/narrative/mw-overview-mobile.svg"><img loading="lazy" src="evidence/reports/narrative/mw-overview.svg" alt="Nesso-1 Native centered above Nesso-1 LoRA and Nesso-1 Native + MW, with shared axes"></picture></a><figcaption>LoRA and the additive native-score + molecular-weight model both reduce the small-molecule overprediction seen in native Nesso-1. Orange points are compounds below 215 Da.</figcaption></figure>
+<p>Weighted MAE is absolute error averaged with weights <strong>1/max(reported pEC50 SE, 0.1)</strong>; raw MAE weights compounds equally.</p>
+<p><a href="chapters/mw/index.html">Molecular-weight control methods and supporting results →</a></p>
+<p><a href="experiments/mw-controls/index.html">Related experiment: molecular-weight controls</a>.</p>
+<h3 id="hybrid">2.3. Frozen features add something descriptors miss</h3>
+<p>The strongest completed combination keeps Nesso frozen and blends a ridge readout of its representations with descriptor LightGBM. Weighted MAE moves from <strong>0.501 to 0.487</strong>; ranking improves too. This is a modest complementary signal, not a visual transformation of the prediction cloud.</p>
+<figure class="narrative"><a class="figure-link" href="evidence/reports/narrative/hybrid.svg" title="Open full-size figure"><picture><source media="(max-width: 600px)" srcset="evidence/reports/narrative/hybrid-mobile.svg"><img loading="lazy" src="evidence/reports/narrative/hybrid.svg" alt="Matched descriptor and frozen-representation blend predictions"></picture></a><figcaption>The blend improves overall error but worsens error below pEC50 4. High-potency underprediction remains.</figcaption></figure>
+<p><a href="chapters/hybrid/index.html">See the size of the gain and the potency trade-off →</a></p>
+<p><a href="experiments/hybrid-pilot/index.html">Related experiments: hybrid pilot</a> · <a href="experiments/hybrid-allfolds/index.html">All-fold hybrid comparison</a>.</p>
+<h3 id="interpretation">2.4. The correction is real; the proposed mechanism is not established</h3>
+<p>Do small molecules bind without activating PXR? The efficacy diagnostic does not establish that explanation. Their normalized Emax is <strong>higher</strong>, not lower, while their pEC50 uncertainty is much larger. The raw and normalized Emax scales tell different stories.</p>
+<table>
+<thead>
+<tr>
+<th>Assay summary (median)</th>
+<th style="text-align:right">MW &lt;215 Da (n=237)</th>
+<th style="text-align:right">MW ≥215 Da (n=3,107)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Positive-control-normalized Emax</td>
+<td style="text-align:right">1.240</td>
+<td style="text-align:right">0.977</td>
+</tr>
+<tr>
+<td>Baseline-relative Emax (log2 fold change)</td>
+<td style="text-align:right">2.170</td>
+<td style="text-align:right">2.530</td>
+</tr>
+<tr>
+<td>pEC50 standard error</td>
+<td style="text-align:right">0.558</td>
+<td style="text-align:right">0.141</td>
+</tr>
+</tbody>
+</table>
+<p>Small molecules have higher normalized efficacy, lower baseline-relative response, and less precise fitted potency. These are subgroup medians, not a causal explanation.</p>
+<p><strong>Conclusion:</strong> retain descriptors as the standalone reference and the frozen-feature hybrid as an incremental candidate. Its weighted improvement must be considered alongside the lower-potency penalty. The next decisive comparison needs a frozen selection rule and untouched evaluation, not another retrospective winner.</p>
+<p><a href="chapters/interpretation/index.html">Examine the efficacy test, CYP side branch and next decision →</a></p>
+<p><a href="experiments/efficacy-uncertainty/index.html">Related experiments: efficacy and uncertainty</a> · <a href="experiments/cyp-transfer/index.html">CYP transfer</a>.</p>
+<details id="experiments"><summary>Supporting experiments · 19 studies</summary><p>Complete study records and original evidence, including diagnostic side branches.</p><div class="study-grid"><a href="experiments/conception/index.html"><strong>Conception: can binding features predict cellular activation?</strong><small>Completed · Does adapting Nesso improve PXR activity prediction, compete with ligand-only models, and add complementary information?</small></a><a href="experiments/head-only/index.html"><strong>Initial head-only versus rich 2D</strong><small>Completed · How much can the final regression heads recover?</small></a><a href="experiments/transfer-probes/index.html"><strong>Transfer, learning-rate sensitivity and frozen probes</strong><small>Completed · Is useful information in the vectors, or only in the pretrained nonlinear heads?</small></a><a href="experiments/capacity/index.html"><strong>Readout capacity control</strong><small>Completed · Does greater nonlinear readout capacity help?</small></a><a href="experiments/identity-standardization/index.html"><strong>Chemical splits: Random and Butina</strong><small>Completed · How were Random, Butina and strict chemical splits used to test the models?</small></a><a href="experiments/loss-lr/index.html"><strong>Nested loss × learning rate</strong><small>Completed · Would objective selection relieve head compression?</small></a><a href="experiments/binary-dual/index.html"><strong>Binary readout correction and dual heads</strong><small>Completed · Was evaluating only the continuous output an incomplete test of Nesso?</small></a><a href="experiments/pair-pooling/index.html"><strong>Final pair pooling — completed</strong><small>Completed · Are direct receptor–ligand cells needed at the final pooling operation?</small></a><a href="experiments/low-data/index.html"><strong>Original low-data matrix — completed</strong><small>Completed · How should 25–500 acquired PXR labels be spent?</small></a><a href="experiments/stable-readouts/index.html"><strong>Stable scaling and readouts</strong><small>Completed · Were poor vector probes an avoidable preprocessing problem?</small></a><a href="experiments/descriptor-followup/index.html"><strong>Stronger low-data descriptor baseline</strong><small>Completed · Does a broader ligand-only baseline change the low-data conclusion?</small></a><a href="experiments/strict-followup/index.html"><strong>Strict chemical separation</strong><small>Completed · Does purging neighbors change practical generalization?</small></a><a href="experiments/upstream-comparison/index.html"><strong>Matched upstream-LoRA predictive comparison</strong><small>Completed · Does actual upstream adaptation add to the same trained heads?</small></a><a href="experiments/geometry/index.html"><strong>Movement, chemistry and native feature geometry</strong><small>Completed · What distinguishes compounds whose predictions change?</small></a><a href="experiments/mw-controls/index.html"><strong>Can simple molecular-weight controls explain the correction?</strong><small>Completed · Is the low-MW correction uniquely neural?</small></a><a href="experiments/hybrid-pilot/index.html"><strong>Descriptor + frozen-Nesso hybrid pilot</strong><small>Completed · Can a weaker standalone representation add useful complementary signal?</small></a><a href="experiments/hybrid-allfolds/index.html"><strong>Locked hybrid — all five folds completed</strong><small>Completed · Does the same training-selected blending procedure hold across the remaining folds?</small></a><a href="experiments/cyp-transfer/index.html"><strong>Four-CYP transfer of scalar MW controls</strong><small>Completed · Does the PXR MW effect recur for direct CYP inhibition?</small></a><a href="experiments/efficacy-uncertainty/index.html"><strong>Emax and uncertainty: testing the biological explanation</strong><small>Completed · Are small molecules overcalled because they bind without activating PXR?</small></a></div></details><p><a href="experiment-content/index.md" download>Edit/read the canonical overview Markdown</a> · <a href="source-map.json" download>Source map and SHA-256 hashes</a></p></main><footer><p class="fineprint">Nesso → PXR · <a href="source-map.json">Evidence provenance</a> · <a href="experiment-content/index.md" download>Editable overview</a></p></footer></body></html>

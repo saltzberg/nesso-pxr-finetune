@@ -1,0 +1,24 @@
+{
+  "slug": "transfer-probes",
+  "message": "Frozen-vector ridge recovers substantial PXR signal without the pretrained nonlinear heads.",
+  "caption": "Pooled outer-fold development metrics for 3,344 compounds. Ridge penalties selected within training folds; mean and member probes use 384D, concatenation 768D. Raw MAE lower and Spearman higher are better. These estimates do not prove equivalence or protein-specific causality; exploratory nonnested MLP screens are not shown.",
+  "design": "Two aligned dot panels preserve the error-versus-ranking distinction and show every ridge representation alongside the historical heads and descriptor reference.",
+  "sources": [
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/representation_probe_metrics.csv",
+      "sha256": "622ed579946daab8086f7606fd9cb08e46fdf8a5469cf1e5233809af047686d1"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/README.md",
+      "sha256": "c50255c4cf0c5058c633adb9b4bad57d6366309805a63e492e5a850e5d4f7c0d"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/model_comparison/metrics.csv",
+      "sha256": "7048edf823f9ffe1f9f3d793da4317ced36bd9c3133b58b17cc046432b92c835"
+    }
+  ],
+  "plotted_rows": 12,
+  "svg": "assets/experiment-summaries/transfer-probes.svg",
+  "png": "assets/experiment-summaries/transfer-probes.png",
+  "data": "assets/experiment-summaries/transfer-probes.csv"
+}

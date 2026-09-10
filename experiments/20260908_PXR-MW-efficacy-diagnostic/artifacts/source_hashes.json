@@ -1,0 +1,15 @@
+{
+  "artifacts/analysis/affinity_comparison_20260907/heldout_predictions.csv": "6bafc036a6108265b931f2872ebd7125d42cdd5447b9b85cad69194e545d0f0f",
+  "artifacts/analysis/affinity_comparison_20260907/mover_chemistry_all.csv": "c00594ed50696d76fec796253a1c6e61123ae699d2650bcc9a90bc9b4fa74349",
+  "artifacts/experiments/affinity_comparison_20260906/controls_v1/fresh_features/features.npz": "bed7f17aa7f01fc275be2b66016020addbc73fc2442e542078b362342f85f8e8",
+  "artifacts/experiments/affinity_comparison_20260906/controls_v1/fresh_features/identities.csv": "b40a5f3f5a647dfb80a2d069223e1f50d1a2099adf6f3baf0658dbc8c648addd",
+  "artifacts/experiments/affinity_comparison_20260906/controls_v1/fresh_features/manifest.json": "27192e5e3e87e4e40d940320c3f8e82eada853a1de5af1af625a9aad8d51eb3f",
+  "artifacts/experiments/affinity_comparison_20260906/controls_v1/fresh_features/native_points.npy": "91e450a02a685e097f06c16c354c7d5fbc9e8513ca731b763756aa5353496cfa",
+  "artifacts/experiments/low_data_20260905_cut035_run2/prepared/inputs.csv": "bf6d233b1bf1ba6ef430151abcb74d607bbe42eee764c3438a73bbf1c70b8151",
+  "data/derived/pxr_train_curated_weighted.csv": "bcf4d0aea019bf8c7f73cb9f65fae8c2901b7fcfe3a8284f951425bca014e3ed",
+  "data/openadmet/pxr-challenge_TRAIN.csv": "55f2fa5910352a7516aa8239eebfd6d7cd659bfc57c01f64ae061a7da6e517eb",
+  "data/published/modeling_manifest.csv": "b643e4f493cceaabc90355e00cef7c7476878296be8425bfde156a9dbb9d1c5d",
+  "experiments/20260908_PXR-MW-efficacy-diagnostic/protocol.json": "7485d5e1e4cc011e50e8a71c2882b8b7c17f47d6d89592bffb4259d70e6bc4db",
+  "experiments/20260908_PXR-MW-efficacy-diagnostic/run.py": "b9c412ba5cf26f12255c8ba0cf66a495b67df17e4a8afc19f36c9523ff77fa56",
+  "reports/transfer_ablation/binary_head_reanalysis/development_predictions.csv": "f4d22059aa0edb7dffe5cc10955f49a8ff028493c5b46185bc62d85523bee8a2"
+}

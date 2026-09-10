@@ -1,0 +1,20 @@
+{
+  "slug": "capacity",
+  "message": "Extra readout capacity changes error modestly and inconsistently across frozen representations.",
+  "caption": "Complete 4-representation \u00d7 3-readout matrix: 3,344 nested development and 790 retrospective validation compounds. Scaling and five tuning candidates per readout are training-only; neural predictions average three seeds. Raw MAE lower is better. Lines link architecture choices, not parameter counts. Primary mean-384D development gains over ridge have unresolved paired intervals; upstream pretraining is unchanged.",
+  "design": "Capacity ladders on a common error scale show all representation choices rather than selecting a favorable architecture or seed; validation is a separate panel.",
+  "sources": [
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/cpu_followups/experiment_a_capacity/capacity_metrics.csv",
+      "sha256": "fe1a43f2362bf8e0af16765e7434511bbe0647b510e86d76752a73b08adceeee"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/transfer_ablation/cpu_followups/README.md",
+      "sha256": "083885c18eebba6187a1c267d664014688ae6b895048dcaeab6689c059e859e2"
+    }
+  ],
+  "plotted_rows": 24,
+  "svg": "assets/experiment-summaries/capacity.svg",
+  "png": "assets/experiment-summaries/capacity.png",
+  "data": "assets/experiment-summaries/capacity.csv"
+}

@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "image": "sha256:e3519ab0faa11d098f14f57b628530c21df748ab7c632f5b071754548e058a24",
+  "image_id": "sha256:e3519ab0faa11d098f14f57b628530c21df748ab7c632f5b071754548e058a24",
+  "members": [
+    "affinity_module",
+    "affinity_module2"
+  ],
+  "native": {
+    "pose_protein_cutoff": 15.0,
+    "recycling_steps": 5,
+    "affinity_protein_cutoff": 15.0,
+    "refine_protein_inference": true,
+    "refine_protein_cutoff": 22.0,
+    "refine_protein_tokens_budget": 256,
+    "save_metadata": false
+  },
+  "precision": "bf16-mixed trunk; native affinity autocast disabled (FP32); differentiable affinity autocast disabled",
+  "num_workers": 1,
+  "matmul_precision": "highest",
+  "rng": {
+    "namespace": "pxr-affinity-representation-v1",
+    "base_seed": 20260906,
+    "formula": "first 4 SHA256 bytes big-endian of namespace|base_seed|record_id, modulo 2147483647",
+    "capture": "seed each singleton native predict immediately before execution; independent of restart and prior records",
+    "replay": "restore separately captured CPU/CUDA RNG at each member invocation on every training and prediction pass",
+    "historical_comparability": "new per-record RNG stream, deliberately distinct from old seed42 sequential caches; not historical bitwise continuation"
+  },
+  "experiment": "20260906_affinity_comparison_native_cache",
+  "classification": "native_zero_shot_capture",
+  "selection": {
+    "count": 3344,
+    "order": "original prepared inputs.csv row_index 0..3343",
+    "modeling_role": "development"
+  },
+  "inputs": {
+    "cohort": "artifacts/experiments/low_data_20260905_cut035_run2/prepared/inputs.csv",
+    "manifest": "data/published/modeling_manifest.csv",
+    "processed": "artifacts/experiments/e0/full/processed",
+    "checkpoint": "models/nesso-1/v1.0.0",
+    "ccd": "models/nesso-1/ccd.pkl"
+  },
+  "pilot_root": "artifacts/experiments/affinity_representation_20260906/pilot_v1",
+  "pilot_binding": "42bf2dddb3fecbc7a9b1ecd20038bf8fcd00cc010a40552ec3b012d96871a6e3",
+  "capture_numeric_outcomes": false
+}

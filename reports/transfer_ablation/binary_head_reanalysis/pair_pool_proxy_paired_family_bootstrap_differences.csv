@@ -1,0 +1,13 @@
+threshold,comparison,metric,estimate,ci_lower,ci_upper,bootstrap_replicates,bootstrap_clusters,dataset
+4.0,ligand_ligand_only_minus_all_pairs,roc_auc,0.019351232576969135,0.010207847069338135,0.029523458661737924,2000,2931,development
+4.0,ligand_ligand_only_minus_all_pairs,average_precision,0.022616795297270675,0.012719054555038392,0.031832628086799104,2000,2931,development
+5.0,ligand_ligand_only_minus_all_pairs,roc_auc,0.009102912392533913,0.0005357350030947505,0.017199356915865723,2000,2931,development
+5.0,ligand_ligand_only_minus_all_pairs,average_precision,0.014624900366274785,0.00426953587011699,0.0254842264353419,2000,2931,development
+6.0,ligand_ligand_only_minus_all_pairs,roc_auc,-0.025254171011470206,-0.05949265900417198,0.01045292236297,2000,2931,development
+6.0,ligand_ligand_only_minus_all_pairs,average_precision,-0.00324858290192568,-0.010106195411801508,0.0039042092795547375,2000,2931,development
+4.0,ligand_ligand_only_minus_all_pairs,roc_auc,0.02437714776632305,0.00705726620782926,0.041024053240588845,2000,735,validation
+4.0,ligand_ligand_only_minus_all_pairs,average_precision,0.026009528852632968,0.01219477726097827,0.038477960314443796,2000,735,validation
+5.0,ligand_ligand_only_minus_all_pairs,roc_auc,0.013843346454215588,-0.0018040338453098352,0.02986248026843367,2000,735,validation
+5.0,ligand_ligand_only_minus_all_pairs,average_precision,0.023236959497666798,0.0026182475715671935,0.041231136431726816,2000,735,validation
+6.0,ligand_ligand_only_minus_all_pairs,roc_auc,-0.025039123630672955,-0.1315841029946823,0.08361034453512871,2000,735,validation
+6.0,ligand_ligand_only_minus_all_pairs,average_precision,-0.011372873085053282,-0.057878791056394575,0.013829969973909229,2000,735,validation

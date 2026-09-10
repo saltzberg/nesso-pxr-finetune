@@ -1,0 +1,174 @@
+{
+  "created_utc": "2026-08-12",
+  "status": "frozen_before_new_lockbox_scoring",
+  "scope_note": "The historical 790-compound lockbox has already been examined. Every lockbox result produced here is retrospective validation, never prospective confirmation, and is excluded from model/hyperparameter selection.",
+  "shared": {
+    "development_rows": 3344,
+    "lockbox_rows": 790,
+    "outer_folds": 5,
+    "historical_fold_column": "fold",
+    "historical_family_column": "cluster_component",
+    "primary_metric": "pooled out-of-fold MAE",
+    "secondary_metric": "pooled out-of-fold Spearman correlation",
+    "selection_order": [
+      "lowest pooled inner MAE",
+      "highest pooled inner Spearman",
+      "earliest candidate in the declared grid"
+    ],
+    "bootstrap": {
+      "unit": "chemical family",
+      "replicates": 2000,
+      "seed": 20260812,
+      "interval": "percentile 95%",
+      "difference_orientation": "first model minus second model"
+    },
+    "seeds": [42, 43, 44],
+    "lockbox_policy": "Select hyperparameters and refit duration using development folds only, refit on all development data, then score lockbox once per frozen development-selected model.",
+    "resources": {
+      "cpu_affinity": "physical CPUs 6-11",
+      "maximum_workers": 6,
+      "maximum_ram_gib": 24,
+      "cuda_visible_devices": "",
+      "nice": 10,
+      "omp_num_threads": 1,
+      "mkl_num_threads": 1,
+      "openblas_num_threads": 1,
+      "numexpr_num_threads": 1,
+      "veclib_maximum_threads": 1,
+      "malloc_arena_max": 2,
+      "stage_order": [
+        "experiment_a_capacity",
+        "experiment_b_standardization",
+        "experiment_c_loss_lr"
+      ]
+    }
+  },
+  "experiment_a_capacity": {
+    "question": "How much nonlinear readout capacity is needed to expose PXR signal in frozen Nesso representations?",
+    "primary_representation": "elementwise mean of the two frozen 384D affinity representations",
+    "secondary_representations": [
+      "member1 384D",
+      "member2 384D",
+      "concatenated member1/member2 768D"
+    ],
+    "model_classes": {
+      "ridge": {
+        "alphas": [0.0, 1.0, 10.0, 100.0, 1000.0],
+        "scaling": "StandardScaler fit on each training partition"
+      },
+      "one_hidden_mlp": {
+        "hidden_layers": [384],
+        "activation": "ReLU"
+      },
+      "two_hidden_mlp": {
+        "hidden_layers": [384, 384],
+        "activation": "ReLU"
+      }
+    },
+    "mlp_candidates": [
+      {"learning_rate": 0.0001, "weight_decay": 0.0},
+      {"learning_rate": 0.0003, "weight_decay": 0.0},
+      {"learning_rate": 0.001, "weight_decay": 0.0},
+      {"learning_rate": 0.0003, "weight_decay": 0.0001},
+      {"learning_rate": 0.001, "weight_decay": 0.0001}
+    ],
+    "mlp_training": {
+      "loss": "Huber delta=0.5 on direct pEC50",
+      "batch_size": 64,
+      "max_epochs": 40,
+      "patience": 6,
+      "early_stopping_min_delta_mae": 0.002,
+      "gradient_clip_norm": 1.0,
+      "selection_seed": 42,
+      "outer_refit_seeds": [42, 43, 44],
+      "outer_refit_epochs": "rounded median inner best epoch for the selected candidate; minimum 1",
+      "scaling": "feature mean/SD fit only on the applicable training partition"
+    },
+    "primary_comparisons": [
+      "mean384 one-hidden MLP minus mean384 ridge",
+      "mean384 two-hidden MLP minus mean384 ridge",
+      "mean384 two-hidden MLP minus mean384 one-hidden MLP",
+      "each mean384 probe minus the published pretrained twin-head fine-tune"
+    ],
+    "seed_variability": "Report each outer-refit seed separately plus the three-seed mean prediction."
+  },
+  "experiment_b_standardization": {
+    "question": "Could chemical form handling or near-analogue leakage make the historical chemical split optimistic, and do conclusions survive a standardized split?",
+    "primary_standardization": "RDKit MolStandardize Cleanup followed by FragmentParent; formal charge is retained rather than neutralized.",
+    "sensitivity_schemes": [
+      "raw supplied SMILES",
+      "RDKit canonical isomeric SMILES",
+      "Cleanup canonical SMILES",
+      "Cleanup plus FragmentParent canonical SMILES",
+      "ChargeParent canonical SMILES (explicit neutralization sensitivity)",
+      "TautomerParent canonical SMILES",
+      "first InChIKey block from the primary fragment parent (connectivity sensitivity)"
+    ],
+    "split": {
+      "primary_smiles": "fragment_parent_smiles",
+      "identity_constraints": [
+        "identical primary standardized SMILES",
+        "identical primary connectivity InChIKey block"
+      ],
+      "fingerprint": "count-free Morgan radius 2, 2048 bits",
+      "butina_similarity_cutoff": 0.6,
+      "butina_distance_cutoff": 0.4,
+      "additional_union": "Bemis-Murcko scaffold group; acyclic molecules use full primary standardized SMILES",
+      "assignment": "largest component first, seeded random tie order and assignment to a currently smallest fold",
+      "seed": 20260806,
+      "folds": 5
+    },
+    "split_audit": {
+      "nearest_training_neighbor_thresholds": [0.5, 0.6],
+      "quantiles": [0.0, 0.05, 0.5, 0.95, 1.0],
+      "historical_alignment": "Hungarian relabeling maximizes row overlap solely for reporting assignment changes; modeling uses the original deterministic standardized fold labels."
+    },
+    "models": {
+      "frozen_nesso_ridge": "mean384 representation with alphas [0,1,10,100,1000], selected inside each outer training partition",
+      "lightgbm": "published reduced 2D feature table and historical nested feature-selection/stopping recipe, but with the standardized chemical-family folds; those descriptor inputs remain based on the original prepared structures"
+    },
+    "interpretation": "Fold-level metric changes across historical and standardized assignments are not ordinary row-paired model deltas. Overall OOF metrics reuse the same rows but arise from different training sets."
+  },
+  "experiment_c_loss_lr": {
+    "question": "Was the historical learning-rate boundary or Huber delta=0.5 responsible for optimization behavior and high-end compression?",
+    "architecture": "Released pretrained twin Nesso heads, each 384->384->384->1 with ReLU, initialized from the pinned checkpoint.",
+    "target_coordinate": "6-pEC50, matching the released head; exactly equivalent to direct pEC50 after sign/offset transformation of the final layer.",
+    "loss_combination": "0.50 ensemble mean + 0.25 member1 + 0.25 member2",
+    "objectives": [
+      {"name": "mse"},
+      {"name": "mae"},
+      {"name": "huber", "delta": 0.25},
+      {"name": "huber", "delta": 0.5},
+      {"name": "huber", "delta": 1.0},
+      {"name": "huber", "delta": 2.0}
+    ],
+    "learning_rates": [0.0003, 0.001, 0.003, 0.01, 0.03],
+    "training": {
+      "optimizer": "AdamW",
+      "weight_decay": 0.0,
+      "batch_size": 64,
+      "max_epochs": 30,
+      "patience": 5,
+      "early_stopping_min_delta_mae": 0.005,
+      "gradient_clip_norm": 1.0,
+      "selection_seed": 42,
+      "outer_refit_seeds": [42, 43, 44],
+      "outer_refit_epochs": "rounded median inner best epoch; minimum 1"
+    },
+    "nested_outputs": "For every objective, select LR inside each outer training partition and produce three-seed outer OOF predictions. Also report an all-objective global selector as secondary.",
+    "high_activity_tail": {
+      "threshold": "observed pEC50 > 6.0",
+      "metrics": [
+        "tail MAE",
+        "overall predicted count >6",
+        "active-tail predicted count >6",
+        "prediction minimum and maximum"
+      ]
+    },
+    "primary_comparisons": [
+      "each development-selected objective minus nested Huber delta=0.5",
+      "globally selected objective/LR minus published historical fine-tuned head"
+    ],
+    "loss_scale_note": "Native validation losses are compared across learning rates within an objective; MAE is used across different objective families because MSE, MAE, and Huber have different numerical scales."
+  }
+}

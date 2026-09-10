@@ -1,0 +1,17 @@
+dataset,model,n,active_n,predicted_above_6,source_path,source_row,metric,value
+nested_development,mse,3344.0,55,0,reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv,0,mae,0.6545751995228046
+nested_development,mae,3344.0,55,0,reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv,1,mae,0.6292819272977046
+nested_development,huber_0.25,3344.0,55,0,reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv,2,mae,0.6329270512007753
+nested_development,huber_0.5,3344.0,55,0,reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv,3,mae,0.6348719836184014
+nested_development,huber_1,3344.0,55,0,reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv,4,mae,0.6272571298560381
+nested_development,huber_2,3344.0,55,0,reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv,5,mae,0.6344918694126851
+nested_development,global_selector,3344.0,55,0,reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv,6,mae,0.6223748557171676
+nested_development,published_historical_ft,3344.0,55,1,reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv,14,mae,0.6329507983947217
+nested_development,mse,3344.0,55,0,reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv,0,prediction_maximum,5.875296115875244
+nested_development,mae,3344.0,55,0,reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv,1,prediction_maximum,5.62793493270874
+nested_development,huber_0.25,3344.0,55,0,reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv,2,prediction_maximum,5.922075430552165
+nested_development,huber_0.5,3344.0,55,0,reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv,3,prediction_maximum,5.555085976918538
+nested_development,huber_1,3344.0,55,0,reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv,4,prediction_maximum,5.654290835062663
+nested_development,huber_2,3344.0,55,0,reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv,5,prediction_maximum,5.711740652720134
+nested_development,global_selector,3344.0,55,0,reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv,6,prediction_maximum,5.555085976918538
+nested_development,published_historical_ft,3344.0,55,1,reports/transfer_ablation/cpu_followups/experiment_c_loss_lr/loss_lr_metrics.csv,14,prediction_maximum,6.070027192433675

@@ -1,0 +1,24 @@
+{
+  "slug": "conception",
+  "message": "Head adaptation improves on the native continuous score, but ligand-only LightGBM remains stronger.",
+  "caption": "Same 3,344 development compounds and five chemical-family outer folds; pooled unweighted MAE, lower is better. Native continuous affinity is a pIC50-equivalent score, not a measured cellular pEC50. Learned readouts use training-only selection; fixed legacy 2D unsupervised prefilter was not rebuilt within folds. Retrospective evidence.",
+  "design": "Aligned aggregate dots on a common zero-based error axis expose both the adaptation gain and remaining descriptor gap; no uncertainty inferred.",
+  "sources": [
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/model_comparison/metrics.csv",
+      "sha256": "7048edf823f9ffe1f9f3d793da4317ced36bd9c3133b58b17cc046432b92c835"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/reports/model_comparison/SCIENTIFIC_REPORT.md",
+      "sha256": "064ec4f2afa5c5d81db485d01ea2b3c928a261465f7ddb75a6b5f47952ae5723"
+    },
+    {
+      "path": "/home/dan/projects/nesso-finetune/PXR/nesso1_pxr_finetuning_poc_spec.md",
+      "sha256": "5875a8f277b9e68d5905a7e7b2cee9568f06a5fa752628e933a74fda4de93175"
+    }
+  ],
+  "plotted_rows": 4,
+  "svg": "assets/experiment-summaries/conception.svg",
+  "png": "assets/experiment-summaries/conception.png",
+  "data": "assets/experiment-summaries/conception.csv"
+}

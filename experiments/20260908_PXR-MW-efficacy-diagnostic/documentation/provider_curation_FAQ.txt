@@ -1,0 +1,46 @@
+﻿Response to some queries about PXR data 
+
+
+At OpenADMET we are very passionate about creating high quality reference datasets for ADMET targets of broad community interest. This means getting data curation as clean as possible so that people can use our datasets into the future as high quality references and playgrounds for experiments. With this in mind we aim to correct or eliminate as many data curation issues as possible prior to staging our datasets.  Sadly, we are not perfect and some things slip through the cracks.
+
+Helpful participants have identified several minor issues with the dataset as currently staged on HuggingFace. We will run through them here, detail their source and what action we have decided to take to increase clarity and data integrity. Let us know if there are any other inconsistencies you spot! These are valuable for us to make sure that we produce the best and most consistent dataset possible.
+
+
+Duplicated SMILES under different Octant IDs 
+
+
+Two entries appeared to be a duplicate of the same SMILES (​OCNT-0390047 and OCNT-2328920). This was the result of stripping iron from a chelating agent, leaving a ligand that was identical to another entry. To reduce the confusion, these entries have been removed from the dataset.
+Other compounds removed
+
+Three compounds were removed due to the processing pipeline making the SMILES misleading. These were: cisplatin (OCNT-2329004). carboplatin (OCNT-2328569), and sodium nitroprusside (OCNT-2328982). Ivermectin (OCNT-2328997, OADMET-0003812) was also removed to avoid confusion as it is a mix of two compounds in a roughly 80:20 ratio. Who knew drugs could be so funky and sorry we missed them! These changes mostly affect the single concentration data. 
+Two structures that generate the same InChiKey
+
+
+Two compounds (OADMET-0003684,OCNT-2328450 and OADMET-0003733,OCNT-2328658) generate the same InChiKey, but differ due to stereochemical differences. In one instance, a carbon-carbon double bond is defined as E, whereas in the other the stereochemistry of this bond is undefined. These compounds were purchased and assayed separately, and so we will leave them as they are. 
+Conflicting stereochemistry issue 
+
+
+One entry had conflicting stereochemistry reported between the single concentration data and the DRCs (OADMET-0003716, OCNT-2328557). This entry is Vinblastine, a complex natural product chemotherapy medication with 9 stereocentres. It is unclear the source of this discrepancy, and we have updated the DRCs data to use the resolved natural product SMILES.
+
+
+Disagreements in tautomer / protonation state between dose-response data and single concentration data. 
+
+
+This was the result of not staging our single concentration data on our CDD Vault while our DRC data was (lesson learned). This issue is to do with SMILES standardisation and charge states rather than any differences in chemistry or assay conditions, with the OpenADMET ID and OCNT ID correctly linking the two. This can be easily dealt with by SMILES canonicalisation in RDKit or transfer of one SMILES between the two columns. With this in mind we will leave this one in the hands of our participants. This inconsistency will be solved for future challenges. This is also the cause of slight mismatches between promotion rates when counting with InChiKeys, counting should be done with OpenADMET or OCNT IDs. We have also made the join between these datasets slightly more robust to reflect the numbers in the diagram.
+
+
+Consistency with previous communications 
+
+
+With the modifications applied above we have gone back and edited our previous diagrams and blog posts for self consistency as well as noted the changes made here in the FAQ.
+
+
+If you want to use the previous versions of the datasets you can via the git history on the HuggingFace dataset.
+
+
+
+
+ Additional Changes 
+
+
+We have also updated the confidence intervals in the DRC datasets with some more technically sound treatment for compounds that have more than one replicate.

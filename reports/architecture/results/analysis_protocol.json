@@ -1,0 +1,12 @@
+{
+  "purpose": "Read-only retrospective interpretation of the completed affinity adaptation comparison; no new model fits",
+  "primary_comparison": "head_plus_lora minus head_only, separately at N100 and N500",
+  "context_controls": ["native_continuous", "repr_ridge_stable", "descriptor_lightgbm_rdkit_mordred"],
+  "primary_metric": "pooled held-out inverse-max(assay_SE,0.1) weighted MAE",
+  "secondary_metrics": ["unweighted MAE", "Spearman", "signed bias", "prediction SD/IQR relative to observed", "80/90 interval coverage and width"],
+  "fold_reporting": "All five individual folds and unweighted mean of fold metrics, separate from pooled metrics",
+  "bootstrap": {"replicates":4000,"seed":20260907,"resampling_unit":"existing chemical_group, stratified by saved outer_fold","paired":true,"interval":"2.5th and 97.5th percentiles","scope":"conditional on saved models, draw0, seed42 and reused development folds; no refitting, no independent prospective inference"},
+  "diagnostics": ["inherited potency bins <4,4to5,5to6,>=6; additional >=4 summary", "SE floor sensitivity 0.05 and 0.2", "training weighted-Huber trajectories, without new held-out checkpoint selection", "nearest eligible-pool similarity bins [0,.2),[.2,.3),[.3,.35)", "chemical-group sizes and coverage"],
+  "fit_roles": "N100=80 fitting+20 interval calibration; N500=400 fitting+100 interval calibration",
+  "scope_limits": ["Single acquired-set draw and initialization seed", "Development folds were previously used", "Native pIC50-equivalent anchor is not native cellular pEC50 support", "Ridge and descriptor tuning differ from matched fixed neural recipe", "No threshold selected and no automatic model promotion"]
+}

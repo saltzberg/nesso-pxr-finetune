@@ -1,0 +1,17 @@
+{
+  "created_utc": "2026-09-07T16:05:24.449603+00:00",
+  "scope": "released Nesso1 architecture and current head_only/head_plus_lora arms; N100/N500 same graph",
+  "checkpoint_schema_verified": true,
+  "model_parameters": 41223928,
+  "files": {
+    "index.html": "16560b1f744fd1da59297ac4c477f24c2f13130e4b4cb56c5dc49d74f6f75c71",
+    "module_inventory.json": "c93eb8263e3864b0612dfb203d779b83bf4aa86fdfaa6b46be29fd6a57636b74",
+    "nesso-adaptation-comparison.png": "c3a742f768e4847152a015cca94469971474aa2719c055ed52c4c13fc521b505",
+    "nesso-adaptation-comparison.svg": "82074b95a816516dc34eefa66dae2ecaaae2fba2b5d959942af8941dfc9193e6",
+    "nesso-native-pipeline.png": "f27c9cd369058541b7f84e9126856e576b3c2b58f65074f338155030923f60ac",
+    "nesso-native-pipeline.svg": "45736fda0faf2c1a6b1ee623a7a29c47685dfe3b36b30a3721fd98047f6d8af0",
+    "nesso-repeated-operators.png": "044f159f612e7a328c1c0f9b99870a4895cefac371979da4ce862f793a5a67e9",
+    "nesso-repeated-operators.svg": "d346b8d725b37f270448ea8ce0face9800ccc4c0e5770be672b6fc7125e70f82"
+  },
+  "source_inventory_sha256": "c93eb8263e3864b0612dfb203d779b83bf4aa86fdfaa6b46be29fd6a57636b74"
+}

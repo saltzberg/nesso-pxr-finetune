@@ -1,0 +1,14 @@
+{
+  "assay_standard_error_median": 0.153,
+  "assay_standard_error_q75": 0.246,
+  "huber_delta_0_5_fold_error": 3.1622776601683795,
+  "huber_delta_0_5_over_median_standard_error": 3.2679738562091503,
+  "interpretation": "Delta 0.5 is a fixed heuristic, not an assay-derived estimate. The expanded screens are post-hoc sensitivity analyses.",
+  "pEC50_iqr": 1.5325000000000002,
+  "pEC50_maximum": 7.54855421686747,
+  "pEC50_median": 4.63,
+  "pEC50_minimum": 1.61,
+  "pEC50_q25": 3.5775,
+  "pEC50_q75": 5.11,
+  "selected_posthoc_learning_rate": 0.01
+}

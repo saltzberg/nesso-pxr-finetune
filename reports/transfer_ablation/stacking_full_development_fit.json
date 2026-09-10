@@ -1,0 +1,10 @@
+{
+  "convex_2d_weight": 0.8914824259424632,
+  "convex_nesso_weight": 0.10851757405753686,
+  "linear_2d_coefficient": 0.874149633121929,
+  "linear_intercept": -0.43573647261138765,
+  "linear_nesso_coefficient": 0.21651458460069206,
+  "method_note": "Meta-models fit development OOF predictions and are evaluated retrospectively on the previously opened common lockbox.",
+  "residual_ridge_alpha": 1000.0,
+  "residual_ridge_development_oof_mae": 0.5235589406229483
+}
